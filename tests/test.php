@@ -1,2 +1,3 @@
 <?php
-	echo 'for test';
+echo 'for test';
+echo 'new test';
