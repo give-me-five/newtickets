@@ -16,12 +16,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-<<<<<<< HEAD
 //加载登录页面
 Route::get('/admin',"Admin\IndexController@index");
 Route::resource('/admin/shopdetail', 'Admin\ShopdetailController');
 Route::resource('/admin/relshop', 'Admin\RelshopController');
-=======
+
 
 
 //加载注册页面
@@ -57,4 +56,4 @@ Route::get("admin/users/child","Admin\UsersController@child");
 //Route::resource('login','LoginController');
 ////用户详情
 //Route::resource('userDetail','UserDetailController');
->>>>>>> b1122073447cf45f4e8bf349d2b46041404d23eb
+
