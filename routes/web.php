@@ -13,10 +13,36 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
+<<<<<<< HEAD
 //加载登录页面
 Route::get('/admin',"Admin\IndexController@index");
 Route::resource('/admin/shopdetail', 'Admin\ShopdetailController');
 Route::resource('/admin/relshop', 'Admin\RelshopController');
+=======
+
+
+//加载注册页面
+Route::get("reg","RegController@index");
+//加载验证码
+Route::get("reg/code","RegController@code");
+//执行注册
+Route::post("reg/doLogin","RegController@doLogin");
+
+
+//加载登录页面
+Route::get("login","LoginController@index");
+//执行登录
+Route::post("login/doLogin","LoginController@doLogin");
+//加载验证码
+Route::get("login/code","LoginController@code");
+
+////用户注册
+//Route::resource('user','UserController');
+////会员登录
+//Route::resource('login','LoginController');
+////用户详情
+//Route::resource('userDetail','UserDetailController');
+>>>>>>> b1122073447cf45f4e8bf349d2b46041404d23eb
