@@ -163,9 +163,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-
         //阿里短信接口
         iscms\Alisms\AlidayuServiceProvider::class,
+
 
         /*
          * Package Service Providers...
