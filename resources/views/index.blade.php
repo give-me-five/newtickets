@@ -32,7 +32,7 @@
               <span class="caret"></span>
               <ul class="user-menu">
                 <li><a href="/login/">登录</a></li>
-                <li><a href="/user/">注册</a></li>
+                <li><a href="/reg/">注册</a></li>
               </ul>
             </div>
         </div>
