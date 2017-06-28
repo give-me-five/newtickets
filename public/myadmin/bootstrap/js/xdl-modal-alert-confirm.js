@@ -91,7 +91,7 @@ window.Modal = function (){
           alr.html(html);
           alr.modal({
             width: 500,
-            backdrop: 'static'
+            backdrop:'static'
           });
     }
 
