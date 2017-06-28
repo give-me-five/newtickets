@@ -1,0 +1,392 @@
+@extends('home.base')
+  @section('content')
+<div class="banner">
+    <div class="wrapper clearfix">
+      <div class="celeInfo-left">
+        <div class="avater-shadow">
+          <img class="avater" src="/uploads/m_{{ $first->picname }}" alt="">
+            <div class="movie-ver"><i class="imax3d"></i></div>
+        </div>
+      </div>
+      <div class="celeInfo-right clearfix">
+          <div class="movie-brief-container">
+              <h3 class="name">{{$first->title}}</h3>
+              <!-- <div class="ename ellipsis">Transformers: The Last Knight</div> -->
+              <ul>
+                <li class="ellipsis">动作,冒险,科幻</li>
+                <li class="ellipsis">
+                {{ $first->region }} / {{ $first->duration }}
+                </li>
+                <li class="ellipsis">{{ $first->firsttime }} 大陆上映</li>
+              </ul>
+          </div>
+          <div class="action-buyBtn">
+              <div class="action clearfix" data-val="{movieid:248645}">
+                <a class="wish " data-wish="false" data-score="">
+                  <div>
+                    <i class="icon wish-icon"></i>
+                      <span class="wish-msg" data-act="wish-click">想看</span>
+                  </div>
+                </a>
+                <a class="score-btn ">
+                  <div>
+                    <i class="icon score-btn-icon"></i>
+                    <span class="score-btn-msg" data-act="comment-open-click">
+                        评分
+                    </span>
+                  </div>
+                </a>
+              </div>
+              <a class="btn buy" href="http://www.meituan.com/dianying/248645?#content" target="_blank">立即购票</a>
+          </div>
+          <div class="movie-stats-container">
+              <div class="movie-index">
+                  <p class="movie-index-title">用户评分</p>
+                  <div class="movie-index-content score normal-score">
+                      <span class="index-left info-num ">
+                        <span class="stonefont">{{ $first->score }}</span>
+                      </span>
+                      <div class="index-right">
+                        <div class="star-wrapper">
+                          <div class="star-on" style="width: 73%;"></div>
+                        </div>
+                         <span class="score-num"><span class="stonefont">10078</span>人评分</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="movie-index">
+                <p class="movie-index-title">专业评分</p>
+                <div class="movie-index-content score pro-score">
+                    <span class="no-info">暂无</span>
+                </div>
+              </div>
+              <div class="movie-index">
+                <p class="movie-index-title">累计票房</p>
+                <div class="movie-index-content box">
+                    <span class="stonefont">18.23</span><span class="unit">亿</span>
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+
+<div class="container" id="app">
+<div class="main-content-container clearfix">
+  <div class="main-content">
+    <div class="tab-container">
+      <div class="tab-title-container clearfix">
+          <div class="tab-title active" data-act="tab-desc-click">影片基本介绍</div>
+      </div>
+      <div class="tab-content-container">
+          <div class="tab-desc tab-content active" data-val="{tabtype:'desc'}">
+              <div class="module">
+                  <div class="mod-title">
+                    <h3>剧情简介</h3>
+                  </div>
+                  <div class="mod-content">
+                      <span class="dra">{{$first->introduction}}</span>
+                  </div>
+              </div>
+              <div class="module">
+                <div class="mod-title">
+                  <h3>演职人员</h3>
+                    <!-- <a class="more" href="#celebrity" data-act="all-actor-click">全部</a> -->
+                </div>
+                <div class="mod-content">
+                    <div class="celebrity-container clearfix">
+                        <div class="celebrity-group">
+                            <div class="celebrity-type">
+                              导演
+                            </div>
+                            <ul class="celebrity-list clearfix">
+                                <li class="celebrity " data-act="celebrity-click" data-val="{celebrityid:31088}">
+                                    <a href="http://maoyan.com/films/celebrity/31088" target="_blank" class="portrait">
+                                      <img class="default-img" alt="" src="de08685f04fbd3944554f4e15ead6e0040971.jpg@128w_170h_1e_1c">
+                                    </a>
+                                    <div class="info">
+                                      <a href="http://maoyan.com/films/celebrity/31088" target="_blank" class="name">
+                                        迈克尔·贝
+                                      </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="celebrity-group">
+                          <div class="celebrity-type">
+                            演员
+                          </div>
+                          <ul class="celebrity-list clearfix">
+                              <li class="celebrity actor" data-act="celebrity-click" data-val="{celebrityid:1902}">
+                                  <a href="http://maoyan.com/films/celebrity/1902" target="_blank" class="portrait">
+                                    <img class="default-img" alt="" src="dd51d43308044d5b346b02789421d8eb56861.jpg@128w_170h_1e_1c">
+                                  </a>
+                                  <div class="info">
+                                    <a href="http://maoyan.com/films/celebrity/1902" target="_blank" class="name">
+                                      马克·沃尔伯格
+                                    </a>
+                                      <br><span class="role">饰：凯德·伊格尔 Cade Yeager</span>
+                                  </div>
+                              </li>
+                              <li class="celebrity actor" data-act="celebrity-click" data-val="{celebrityid:1028162}">
+                                  <a href="http://maoyan.com/films/celebrity/1028162" target="_blank" class="portrait">
+                                    <img class="default-img" alt="" src="8d27b1b7dc7f0817aa87eaac002fde2839208.jpg@128w_170h_1e_1c">
+                                  </a>
+                                  <div class="info">
+                                    <a href="http://maoyan.com/films/celebrity/1028162" target="_blank" class="name">
+                                      伊莎贝拉·莫奈
+                                    </a>
+                                      <br><span class="role">饰：伊莎贝拉
+                                Izabella</span>
+                                  </div>
+                              </li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="module">
+                  <div class="mod-title">
+                    <h3>热门短评</h3>
+                  </div>
+                  <div class="mod-content">
+                      <div class="comment-list-container" data-hot="10">
+                          <ul>
+                              <li class="comment-container " data-val="{commentid:110366644}">
+                                <div class="portrait-container">
+                                  <div class="portrait">
+                                    <img src="ccd73b01aeeb08593763f04b8a06dcc868322.jpg@100w_100h_1e_1c" alt="">
+                                  </div>
+                                  <i class="level-3-icon"></i>
+                                </div>
+                                <div class="main">
+                                  <div class="main-header clearfix">
+                                    <div class="user">
+                                      <span class="name">韩宗辑之父</span>
+                                      
+                                        <span class="tag">购</span>
+                                    </div>
+                                    <div class="time" title="2017-06-23 02:23:29">
+                                        <span title="2017-06-23 02:23:29">13小时前</span>
+                                    </div>
+                                    <div class="approve " data-id="110366644">
+                                      <i data-act="comment-approve-click" class="approve-icon"></i><span class="num">499</span>
+                                    </div>
+                                  </div>
+                                  <div class="comment-content">不太明白为什么有人会觉得不好 陪我从小学到大学 不止情怀和感情 最后主角走到一起 结局圆满的一幕 真的温馨</div>
+                                </div>
+                              </li>  
+                          </ul>
+                      </div>
+                      <a class="comment-entry" data-act="comment-no-content-click">写短评</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="related">
+  <div class="module">
+    <div class="mod-title">
+      <h3>相关资讯</h3>
+    </div>
+    <div class="mod-content">
+        <dl class="news-list">
+          <dd class="news-item" data-act="new-click" data-val="{newsid:21786}">
+            <div class="news-img">
+              <a href="http://maoyan.com/films/news/21786" target="_blank">
+                <img class="news-img-default" src="loading_2.e3d934bf.png">
+                <img class="news-img-detail" src="944d7de8aadfab163bae5f7fdc4dd063289071.png@140w_86h_1e_1c">
+              </a>
+            </div>
+            <div class="news-main">
+              <div class="news-title">
+                <a href="http://maoyan.com/films/news/21786" target="_blank">《变形金刚5》今日内地公映，六大看点全揭秘</a>
+              </div>
+              <div class="news-info">
+                <span class="news-source">猫眼电影</span><!--
+                --><span><i class="news-icon news-icon-views"></i>13028</span><!--
+                --><span><i class="news-icon news-icon-comments"></i>10</span>
+              </div>
+            </div>
+          </dd>
+          <dd class="news-item" data-act="new-click" data-val="{newsid:21781}">
+            <div class="news-img">
+              <a href="http://maoyan.com/films/news/21781" target="_blank">
+                <img class="news-img-default" src="loading_2.e3d934bf.png">
+                <img class="news-img-detail" src="6f11d3c0f418da629d23e0a27c3b7ea1205883.jpg@140w_86h_1e_1c">
+              </a>
+            </div>
+            <div class="news-main">
+              <div class="news-title">
+                <a href="http://maoyan.com/films/news/21781" target="_blank">《变形金刚5》票房破亿，午夜场坐收4100万，创系列新高</a>
+              </div>
+              <div class="news-info">
+                <span class="news-source">猫眼电影</span><!--
+                --><span><i class="news-icon news-icon-views"></i>8918</span><!--
+                --><span><i class="news-icon news-icon-comments"></i>51</span>
+              </div>
+            </div>
+          </dd>
+          <dd class="news-item" data-act="new-click" data-val="{newsid:21753}">
+            <div class="news-img">
+              <a href="http://maoyan.com/films/news/21753" target="_blank">
+                <img class="news-img-default" src="loading_2.e3d934bf.png">
+                <img class="news-img-detail" src="55696e6f108a3e191dab1562c55de5111126151.png@140w_86h_1e_1c">
+              </a>
+            </div>
+            <div class="news-main">
+              <div class="news-title">
+                <a href="http://maoyan.com/films/news/21753" target="_blank">这位缺席了第四部的《变形金刚》老面孔，以为自己再也演不上了</a>
+              </div>
+              <div class="news-info">
+                <span class="news-source">猫眼电影</span><!--
+                --><span><i class="news-icon news-icon-views"></i>22796</span><!--
+                --><span><i class="news-icon news-icon-comments"></i>9</span>
+              </div>
+            </div>
+          </dd>
+        </dl>
+    </div>
+  </div>
+  <div class="module">
+    <div class="mod-title">
+      <h3>相关电影</h3>
+    </div>
+    <div class="mod-content">
+              <div class="related-movies">
+<dl class="movie-list">
+  <dd>
+    <div class="movie-item">
+      <a href="http://maoyan.com/films/78379" target="_blank" data-act="movie-click" data-val="{movieid:78379}">
+      <div class="movie-poster">
+        <img class="poster-default" src="loading_2.e3d934bf.png">
+        <img src="85534dd17ed002104db25254d1825728127189.jpg@106w_145h_1e_1c">
+      </div>
+      </a>
+      <div class="movie-ver"></div>
+    </div>
+    <div class="channel-detail movie-item-title" title="变形金刚4：绝迹重生">
+      <a href="http://maoyan.com/films/78379" target="_blank" data-act="movies-click" data-val="{movieId:78379}">变形金刚4：绝迹重生</a>
+    </div>
+<div class="channel-detail channel-detail-orange"><i class="integer">9.</i><i class="fraction">2</i></div>
+  
+  </dd><dd>
+    <div class="movie-item">
+      <a href="http://maoyan.com/films/47" target="_blank" data-act="movie-click" data-val="{movieid:47}">
+      <div class="movie-poster">
+        <img class="poster-default" src="loading_2.e3d934bf.png">
+        <img src="__40729683__8445804.jpg@106w_145h_1e_1c">
+      </div>
+      </a>
+      <div class="movie-ver"></div>
+    </div>
+    <div class="channel-detail movie-item-title" title="变形金刚3">
+      <a href="http://maoyan.com/films/47" target="_blank" data-act="movies-click" data-val="{movieId:47}">变形金刚3</a>
+    </div>
+<div class="channel-detail channel-detail-orange"><i class="integer">8.</i><i class="fraction">7</i></div>
+  
+  </dd><dd>
+    <div class="movie-item">
+      <a href="http://maoyan.com/films/30799" target="_blank" data-act="movie-click" data-val="{movieid:30799}">
+      <div class="movie-poster">
+        <img class="poster-default" src="loading_2.e3d934bf.png">
+        <img src="9813738.jpg@106w_145h_1e_1c">
+      </div>
+      </a>
+      <div class="movie-ver"></div>
+    </div>
+    <div class="channel-detail movie-item-title" title="变形金刚2">
+      <a href="http://maoyan.com/films/30799" target="_blank" data-act="movies-click" data-val="{movieId:30799}">变形金刚2</a>
+    </div>
+<div class="channel-detail channel-detail-orange"><i class="integer">8.</i><i class="fraction">7</i></div>
+  
+  </dd><dd>
+    <div class="movie-item">
+      <a href="http://maoyan.com/films/20652" target="_blank" data-act="movie-click" data-val="{movieid:20652}">
+      <div class="movie-poster">
+        <img class="poster-default" src="loading_2.e3d934bf.png">
+        <img src="__40637604__2861442.jpg@106w_145h_1e_1c">
+      </div>
+      </a>
+      <div class="movie-ver"></div>
+    </div>
+    <div class="channel-detail movie-item-title" title="变形金刚">
+      <a href="http://maoyan.com/films/20652" target="_blank" data-act="movies-click" data-val="{movieId:20652}">变形金刚</a>
+    </div>
+<div class="channel-detail channel-detail-orange"><i class="integer">8.</i><i class="fraction">9</i></div>
+  
+  </dd><dd>
+    <div class="movie-item">
+      <a href="http://maoyan.com/films/248683" target="_blank" data-act="movie-click" data-val="{movieid:248683}">
+      <div class="movie-poster">
+        <img class="poster-default" src="loading_2.e3d934bf.png">
+        <img src="fbe5f97c016c9f4520109dc70f458d4d83363.jpg@106w_145h_1e_1c">
+      </div>
+      </a>
+      <div class="movie-ver"></div>
+    </div>
+    <div class="channel-detail movie-item-title" title="银河护卫队2">
+      <a href="http://maoyan.com/films/248683" target="_blank" data-act="movies-click" data-val="{movieId:248683}">银河护卫队2</a>
+    </div>
+<div class="channel-detail channel-detail-orange"><i class="integer">9.</i><i class="fraction">0</i></div>
+  
+  </dd><dd>
+    <div class="movie-item">
+      <a href="http://maoyan.com/films/247875" target="_blank" data-act="movie-click" data-val="{movieid:247875}">
+      <div class="movie-poster">
+        <img class="poster-default" src="loading_2.e3d934bf.png">
+        <img src="0b7cc256954866593a8e79009acade71487726.jpg@106w_145h_1e_1c">
+      </div>
+      </a>
+      <div class="movie-ver"></div>
+    </div>
+    <div class="channel-detail movie-item-title" title="金刚狼3：殊死一战">
+      <a href="http://maoyan.com/films/247875" target="_blank" data-act="movies-click" data-val="{movieId:247875}">金刚狼3：殊死一战</a>
+    </div>
+<div class="channel-detail channel-detail-orange"><i class="integer">8.</i><i class="fraction">6</i></div>
+  
+</dd></dl>
+
+</div>
+
+
+    </div>
+  </div>
+  </div>
+</div>
+<script id="comment-form-container" type="text/template">
+  <form id="comment-form" data-val="{movieid:248645}">
+    <div class="score-msg-container ">
+        <div class="score"><span class="num"></span>分</div>
+        <div class="score-message"></div>
+        <div class="no-score">
+          请点击星星评分
+        </div>
+    </div>
+    <div class="score-star-contaienr">
+      <ul class="score-star clearfix" data-score="">
+    <li>
+<i class="half-star left "></i><i class="half-star right "></i>    </li>
+    <li>
+<i class="half-star left "></i><i class="half-star right "></i>    </li>
+    <li>
+<i class="half-star left "></i><i class="half-star right "></i>    </li>
+    <li>
+<i class="half-star left "></i><i class="half-star right "></i>    </li>
+    <li>
+<i class="half-star left "></i><i class="half-star right "></i>    </li>
+</ul>
+
+    </div>
+    <div class="content-container">
+      <textarea placeholder="快来说说你的看法吧" name="content" id="" cols="30" rows="10"></textarea>
+      <span class="word-count-info"></span>
+    </div>
+    <input type="hidden" name="score" />
+    <input class="btn" type="submit" value="提交" data-act="comment-submit-click" />
+  </form>
+  <div class="close">×</div>
+</script>
+    </div>
+@endsection
