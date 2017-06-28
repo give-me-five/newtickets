@@ -12,7 +12,6 @@ class Reg extends Model
     protected $primaryKey = "id";
     //批量赋值属性
     protected $fillable = ['phone','password','addtime'];
-
     //不被批量赋值属性
     protected $guarded = ['id'];
 }
