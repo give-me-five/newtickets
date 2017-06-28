@@ -36,18 +36,18 @@ Route::get('/admin/film/create',"Admin\FilmController@create");
 Route::post('/admin/film/create',"Admin\FilmController@store"); 
 
 //加载登录页面
+
+Route::get('/shop',"Shop\IndexController@index");
+Route::get('/shop/login',"Shop\LoginController@index");
+Route::get('/shop/sigup',"Shop\LoginController@sigup");
+Route::resource('/shop/shopdetail', 'Shop\ShopdetailController');
+Route::resource('/shop/hall', 'Shop\HallController');
+Route::resource('/shop/projection', 'Shop\ProjectionController');
+
 Route::get('/admin',"Admin\IndexController@index");
 Route::resource('/admin/shopdetail', 'Admin\ShopdetailController');
 Route::resource('/admin/relshop', 'Admin\RelshopController');
 
-
-
-//加载注册页面
-Route::get("reg","RegController@index");
-//加载验证码
-Route::get("reg/code","RegController@code");
-//执行注册
-Route::post("reg/doLogin","RegController@doLogin");
 
 
 //加载登录页面
@@ -75,4 +75,5 @@ Route::get("admin/users/child","Admin\UsersController@child");
 //Route::resource('login','LoginController');
 ////用户详情
 //Route::resource('userDetail','UserDetailController');
+
 
