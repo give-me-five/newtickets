@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 //加载登录页面
 Route::get('/shop',"Shop\IndexController@index");
+Route::get('/shop/login',"Shop\LoginController@index");
+Route::get('/shop/sigup',"Shop\LoginController@sigup");
 Route::resource('/shop/shopdetail', 'Shop\ShopdetailController');
 Route::resource('/shop/hall', 'Shop\HallController');
 Route::resource('/shop/projection', 'Shop\ProjectionController');

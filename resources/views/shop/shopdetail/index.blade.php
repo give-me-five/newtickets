@@ -34,7 +34,7 @@
                       <th>营业执照</th>
                       <th>状态</th>
                       <th>注册时间</th>
-                      <th style="width: 100px">操作</th>
+                      
                     </tr>
 					@foreach ($shopdetail as $vo)
 					 <tr>
@@ -48,8 +48,6 @@
                       <td>{{ $vo->licence }}</td>
                       <td>{{ $vo->status }}</td>
                       <td>{{ $vo->addtime }}</td>
-                      <td><button onclick="window.location='{{ url('admin/shopdetail')}}/create'" class="btn btn-xs btn-danger">添加</button> 
-                      <button class="btn btn-xs btn-primary">编辑</button> </td>
                     </tr>
 					@endforeach
                   </table>
