@@ -247,4 +247,3 @@
                 </div>
             </div>
 
-@endsection
