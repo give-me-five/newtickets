@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//后台首页路由
+Route::get('/admin',"Admin\IndexController@index"); //后台首页路由
+Route::get('/admin/film',"Admin\FilmController@index"); //后台影片信息浏览路由
+//后台影片信息添加路由
+Route::get('/admin/film/create',"Admin\FilmController@create"); 
+Route::post('/admin/film/create',"Admin\FilmController@store"); 
