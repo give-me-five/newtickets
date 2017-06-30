@@ -238,11 +238,6 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
 
 		'Captcha' => Mews\Captcha\Facades\Captcha::class,
-
-        'Image' => Intervention\Image\Facades\Image::class,
-
-
-
     ],
 
 ];
