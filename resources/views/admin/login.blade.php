@@ -45,12 +45,7 @@
           <div class="row">
           <div class="col-xs-6"> 
               <div class="form-group has-feedback" style="width:140px;">
-
                 <input type="text" name="code" class="form-control" placeholder="验证码"/>
-
-
-                <input type="text" name="code" class="form-control" placeholder="验证码"/>
-
                 <span class="glyphicon glyphicon-th form-control-feedback"></span>
               </div>
           </div>

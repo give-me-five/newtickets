@@ -386,9 +386,7 @@
                 手机动态码登录
                 <i></i>
             </a>
-            账号登录
 
-                普通登录
                 <i></i>
             </a>
             手机登录
@@ -402,11 +400,7 @@
                 <div class="form-field form-field--icon">
                     <i class="icon icon-password"></i>
                     <input id="login-password" class="f-text" name="password" placeholder="短信验证码" type="password">
-
                     <a href="">点击获取验证码</a>
-
-                    <a href="">点击获取验证码</a>
-
                 </div>
                 <div class="form-field form-field--ops">
                     <input name="origin" value="account-login" type="hidden">

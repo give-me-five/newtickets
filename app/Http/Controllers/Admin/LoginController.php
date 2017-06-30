@@ -18,57 +18,41 @@ class LoginController extends Controller
     //执行登录
     public function doLogin(Request $request)
     {
-<<<<<<< HEAD
-=======
 
-
-        session('adimin','');
-
-       // return view("admin.users.index");
-        return redirect('admin/users/child');
-
->>>>>>> 214a745345c32dca4a96cab392bc8f13f4126f31
         //获取管理员账号
         $account = $request->input('account');
         //判断管理员账号是否存在
-        if(!empty($account)){
+        if(!empty($account)) {
             //获取密码
-<<<<<<< HEAD
             $pass = $request->input('pass');
-=======
-            $pass = \Hash::make($request->input('pass'));
->>>>>>> 214a745345c32dca4a96cab392bc8f13f4126f31
             //获取验证码
             $mycode = $request->input('code');
             $code = session()->get('code');
             //判断验证码是否相等
-            if($mycode != $code){
-                return back()->with('msg',"验证码错误");
+            if ($mycode != $code) {
+                return back()->with('msg', "验证码错误");
             }
             //根据管理员账号获取管理员信息
-            $info = Login::where('account',$account)->first();
-            if($info && $info->status == 2){
+            $info = Login::where('account', $account)->first();
+            if ($info && $info->status == 2) {
                 //判断密码是否相等
-<<<<<<< HEAD
-                if (\Hash::check($info->password, $pass)){
-=======
-                if($info->pass == $pass){
->>>>>>> 214a745345c32dca4a96cab392bc8f13f4126f31
-                    session()->put("adminusers",$info);
-                    //跳转后台主页
-                    //return redirect('admin/index');
-                    return redirect('admin/users/child');
-                }else{
-                    return back()->with('msg',"账号或密码错误");
+
+                if (\Hash::check($info->password, $pass)) {
+
+                    if ($info->pass == $pass) {
+
+                        session()->put("adminusers", $info);
+                        //跳转后台主页
+                        //return redirect('admin/index');
+                        return redirect('admin/users/child');
+                    } else {
+                        return back()->with('msg', "账号或密码错误");
+                    }
+                } else {
+                    return back()->with('msg', "账号或密码错误");
                 }
-            }else {
-                return back()->with('msg', "账号或密码错误");
             }
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 214a745345c32dca4a96cab392bc8f13f4126f31
     }
     //验证码
     public function code()

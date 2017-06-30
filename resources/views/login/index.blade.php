@@ -378,7 +378,6 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
 
         <div class="login-section" data-params="{&quot;service&quot;:&quot;www&quot;,&quot;isDialog&quot;:false }">
 
-
     <form id="J-normal-form" action="">
 
 
@@ -396,28 +395,20 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
             </a>
             账号登录
         </span>
-
         <div class="form-field form-field--icon">
-            <i class="icon icon-user"></i>
-
-            <input id="login-email" class="f-text" name="email" placeholder="用户名" value="" type="text">
-        </div>
-        <div class="form-field form-field--icon">
-            <i class="icon icon-password"></i>
-            <input id="login-password" class="f-text" name="password" placeholder="密码" type="password">
-        </div>
-        <div class="form-field form-field--icon">
-            <input type="text" name="code" class="f-text J-pwd2"  placeholder="验证码" type="code"/>
 
             <input id="" class="f-text" name="name" placeholder="用户名" value="" type="text">
         </div>
         <div class="form-field form-field--icon">
             <i class="icon icon-password"></i>
-            <input id="" class="f-text" name="password" placeholder="密码" type="password">
+            <input id="login-password" class="f-text" name="password" placeholder="密码" type="password">
+        </div>
+
+        <div class="form-field form-field--icon">
+            <i class="icon icon-password"></i>
+            <input type="text" name="code" class="f-text J-pwd2"  placeholder="验证码" type="code"/>
         </div>
         <div class="form-field form-field--icon">
-            <input type="text" name="mycode" class="f-text J-pwd2"  placeholder="验证码" type="code"/>
-
             <img src="{{ url('reg/code') }}" onclick="this.src='{{ url('reg/code') }}?id='+Math.random(); " width="100" height="34"/>
         </div>
         <div class="form-field J-form-field-captcha form-field--captcha" style="display: none;">
@@ -504,6 +495,9 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
 
 <script src="{{asset('login/dat_001.dat')}}"></script>
 <script src="{{asset('login/dat_002.dat')}}"></script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 214a745345c32dca4a96cab392bc8f13f4126f31
 </body>
 </html>
