@@ -39,12 +39,18 @@
           </div>
           <div class="form-group has-feedback">
             <input type="password" name="pass" class="form-control" placeholder="密码"/>
+
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
           <div class="col-xs-6"> 
               <div class="form-group has-feedback" style="width:140px;">
+
                 <input type="text" name="code" class="form-control" placeholder="验证码"/>
+
+
+                <input type="text" name="code" class="form-control" placeholder="验证码"/>
+
                 <span class="glyphicon glyphicon-th form-control-feedback"></span>
               </div>
           </div>
@@ -65,7 +71,13 @@
             </div><!-- /.col -->
           </div>
         </form>
+
         <a href="#" style="font-size:12px;">忘记密码</a>&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+        <a href="#" style="font-size:12px;">忘记密码</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="register.html" class="text-center" style="font-size:12px;">注册会员</a>
+
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
 

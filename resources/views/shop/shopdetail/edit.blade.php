@@ -63,7 +63,11 @@
                     <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">营业执照</label>
                       <div class="col-sm-4">
+
                         <input type="text" name="licence" class="form-control" value="{{ $vo->licence }}">
+
+                        <input type="file" name="licence" value="{{ $vo->licence }}">
+
                       </div>
                     </div>
                   </div><<!-- /.box-body -->

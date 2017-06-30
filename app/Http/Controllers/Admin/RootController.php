@@ -44,6 +44,7 @@ class RootController extends Controller
      */
     public function store(Request $request)
     {
+
         //获取用户数据
         $account = $request->account;
         $password = \Hash::make($request->pass);
@@ -67,6 +68,7 @@ class RootController extends Controller
             return back()->with("msg","添加失败");
             return redirect("/admin/create");
         }
+
     }
 
     /**

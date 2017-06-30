@@ -26,11 +26,13 @@
                 <td>{{ $list->firsttime }}</td>
                 <td>{{ $list->lasttime }}</td>
                 <td>
+
                     @if($list->status == 1)
                         <a href="{{url('/admin/users/del')}}/{{$list->id}}" onclick="return del()">点击禁用</a>
                     @else
                         <a href="{{url('/admin/users/reset')}}/{{$list->id}}" onclick="return reset()">点击启用</a>
                     @endif
+
                 </td>
             </tr>
         </tbody>
@@ -47,7 +49,9 @@
     }
     //启用
     function reset(){
-        if(confirm('该用户违反相关规定以被禁用，你确定要重新启用吗？？')){
+
+        if(confirm('该用户违反相关规定也被禁用，你确定要重新启用吗？？')){
+
             return true;
         }else{
             return false;

@@ -234,8 +234,12 @@
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
+
                                 <div class="widget-title am-fl">会员列表&nbsp;&nbsp;&nbsp;&nbsp;</div>
                                 <div class="widget-title am-fl"><a href="/admin/root/create/">添加管理员</a></div>
+
+                                <div class="widget-title am-fl">会员列表</div>
+
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>

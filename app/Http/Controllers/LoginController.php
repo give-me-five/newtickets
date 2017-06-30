@@ -29,6 +29,13 @@ class LoginController extends Controller
         $mycode = $request->input('mycode');
         $code = session()->get('code');
         //判断验证码是否正确
+
+        if($mycode != $code){
+            return back()->with('msg',"验证码错误");
+        }
+        //获取密码
+        $password = $request->input('password');
+
         if($mycode != $code){
             return back()->with('msg',"验证码错误");
         }
@@ -41,6 +48,7 @@ class LoginController extends Controller
         if($users){
             //判断密码是否正确
             if (\Hash::check($users->password, $password)) {
+
                 $status = User::where('id',$users->uid)->value('status');
                 //如果是1,有权限
                 if($status == 1 ){
@@ -56,7 +64,7 @@ class LoginController extends Controller
             }
         }else{
             return back()->with('msg','账号或密码错误');
-       }
+        }
     }
     //验证码
     public function code()

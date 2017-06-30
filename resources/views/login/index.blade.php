@@ -377,10 +377,16 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
 </div>
 
         <div class="login-section" data-params="{&quot;service&quot;:&quot;www&quot;,&quot;isDialog&quot;:false }">
+
+
+    <form id="J-normal-form" action="">
+
+
          @if(session('msg'))
                 <p class="login-box-msg" style="color:red;">{{session('msg')}}
          @endif
     <form id="J-normal-form" action="/login/doLogin" method="post">
+
         <div class="validate-info" style="visibility: hidden;"></div>
         {{ csrf_field() }}
         <span class="login-type" data-mtevent="login.mobile.switch">
@@ -393,6 +399,16 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
 
         <div class="form-field form-field--icon">
             <i class="icon icon-user"></i>
+
+            <input id="login-email" class="f-text" name="email" placeholder="用户名" value="" type="text">
+        </div>
+        <div class="form-field form-field--icon">
+            <i class="icon icon-password"></i>
+            <input id="login-password" class="f-text" name="password" placeholder="密码" type="password">
+        </div>
+        <div class="form-field form-field--icon">
+            <input type="text" name="code" class="f-text J-pwd2"  placeholder="验证码" type="code"/>
+
             <input id="" class="f-text" name="name" placeholder="用户名" value="" type="text">
         </div>
         <div class="form-field form-field--icon">
@@ -401,6 +417,7 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
         </div>
         <div class="form-field form-field--icon">
             <input type="text" name="mycode" class="f-text J-pwd2"  placeholder="验证码" type="code"/>
+
             <img src="{{ url('reg/code') }}" onclick="this.src='{{ url('reg/code') }}?id='+Math.random(); " width="100" height="34"/>
         </div>
         <div class="form-field J-form-field-captcha form-field--captcha" style="display: none;">
@@ -454,6 +471,10 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
         </div>
 
         <div class="form-field form-field--ops">
+
+            <input name="origin" value="account-login" type="hidden">
+            <input name="fingerprint" class="J-fingerprint" value="0-0-1-" type="hidden">
+            <input name="csrf" value="tttHA5ki-CiH4qlVqJRdhVRv-RswqO8P5ifc" type="hidden">
 
             <input data-mtevent="login.mobile.submit" class="btn" name="commit" value="登录" type="submit">
         </div>

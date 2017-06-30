@@ -640,7 +640,7 @@
 <div class="footer" style="visibility: visible;">
     <p class="friendly-links">
         友情链接 :
-        <a href="http://www.meituan.com/" data-query="utm_source=wwwmaoyan" target="_blank">美团网</a>
+        <a href="{{url('shop/sigup')}}" data-query="utm_source=wwwmaoyan" target="_blank">商家入驻</a>
         <span></span>
         <a href="http://i.meituan.com/client" data-query="utm_source=wwwmaoyan" target="_blank">美团下载</a>
     </p>
