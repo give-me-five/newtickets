@@ -43,41 +43,33 @@
 
                 </div>
 
+					@if(session("msg"))
+						<p class="login-box-msg" style="color:red;">{{session("msg")}}</p>
+					@endif
 
 
-                <form class="am-form tpl-form-line-form">
+                <form class="am-form tpl-form-line-form" action="{{url('shop/doLogin')}}" method="post">
+					<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="请输入账号">
+                        <input type="text" class="tpl-form-input" name="name" id="user-name" placeholder="请输入账号">
 
                     </div>
 
                     <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="user-name" placeholder="请输入密码">
+                        <input type="password" name="password" class="tpl-form-input" id="user-name" placeholder="请输入密码">
 
                     </div>
-                    <div class="am-form-group tpl-login-remember-me">
-                        <input id="remember-me" type="checkbox">
-                        <label for="remember-me">
-       
-                        记住密码
-                         </label>
-
-                    </div>
+                  
 
 					<div class="am-form-group">
 
-                        <button type="button" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">登录</button>
-						
-						
-
+                        <button type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">登录</button>
+					
                     </div>
-
-
-
 
                     <div class="am-form-group">
 					
-						<a href="/shop/sigup">注册</a>
+						<li class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn"><a href="{{url('shop/sigup')}}">注册</a></li>
 						
 
                     </div>

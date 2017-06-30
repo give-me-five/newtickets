@@ -17,25 +17,33 @@ class LoginController extends Controller
 	public function doLogin(Request $request)
 	{
 		//执行登陆判断
-		$email = $request->input("email");
+		$name = $request->input("name");
 		$password = $request->input("password");
-		//获取对应用户信息
-		$user = \DB::table("users")->where("email",$email)->first();
-		if(!empty($user)){
+		$shop = \DB::table("shop_detail")->where("name",$name)->first();
+		if(!empty($shop)){
 			//判断密码
-			if(md5($password)==$user->password){
+			if($password==$shop->password){
 				//存储session跳转页面
-				session()->set("adminuser",$user);
-				return redirect("admin");
+				$list=session()->put("adminuser",$shop);
+				
+				return redirect("shop");
 				//echo "测试成功!";
 			}
 		}
 		return back()->with("msg","账号或密码错误！");
 	}
 
+	public function Logout(Request $request)
+	{
+		$request->session()->pull('adminuser');
+		return redirect("/shop");
+	}
 	//注册
 	public function sigup()
 	{
+		
 		return view("shop.login.sigup");
 	}
+	
+
 }

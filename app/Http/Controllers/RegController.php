@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Gregwar\Captcha\CaptchaBuilder;
 use Illuminate\Http\Request;
 use App\Models\Reg;
+use Illuminate\Support\Facades\Hash;
 use Session;
 
 class RegController extends Controller
@@ -77,10 +78,28 @@ class RegController extends Controller
 
         $mycode = $request->input("code");
         $code = Session("code");
-        var_dump($mycode);
-        var_dump($code);
-//        if($mycode !== $code){
-//            return back()->with("msg","验证码错误！！！");
-//        }
+        if($mycode != $code){
+            return back()->with("msg","验证码错误");
+        }
+        $password = \Hash::make($request->input('password'));
+        $id  = \DB::table('users')->insertGetId(['phone'=>$phone,'password'=>$password]);
+        if($id>0){
+            $reg = new Reg();
+            $reg->where("id",$id)->update(['uid'=>$id]);
+            \DB::table('users_detail')->insert(['id'=>$id]);
+            return redirect("reg/success");
+        }else{
+            return redirect("reg/lose");
+        }
+    }
+    //注册成功
+    public function success()
+    {
+        return view("reg.success");
+    }
+
+    //注册失败
+    public function lose(){
+        return view("/reg/lose");
     }
 }

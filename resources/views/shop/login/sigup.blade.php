@@ -48,7 +48,7 @@
                 <form class="am-form tpl-form-line-form">
                 
                     <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="账号">
+                        <input type="text" class="tpl-form-input" name="myname" id="user-name" placeholder="账号">
                     </div>
 
                     <div class="am-form-group">
