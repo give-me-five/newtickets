@@ -14,4 +14,11 @@ class Reg extends Model
     protected $fillable = ['phone','password','addtime'];
     //不被批量赋值属性
     protected $guarded = ['id'];
+    /**
+     * 表明模型是否应该被打上时间戳
+     *
+     * @var bool
+     */
+    public $timestamps = false;
+
 }

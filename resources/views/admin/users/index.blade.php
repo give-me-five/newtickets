@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/amazeui.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/amazeui.datatables.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap.min.css')}}"/>
     <script src="{{ asset('admin/assets/js/jquery.min.js') }}"></script>
+    <script src="{{asset('/js/jQuery-1.8.3.min.js')}}" type="text/javascript"></script>
 
 </head>
 
@@ -50,10 +52,10 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
-                            <a href="javascript:;">欢迎你, <span>Amaze UI</span> </a>
+{{--                            <a href="javascript:;">欢迎你, <span>{{ session()->get('adminusers')->account }}</span> </a>--}}
                         </li>
 
-                        <!-- 新邮件 -->
+                                <!-- 新邮件 -->
                         <li class="am-dropdown tpl-dropdown" data-am-dropdown>
                             <a href="javascript:;" class="am-dropdown-toggle tpl-dropdown-toggle" data-am-dropdown-toggle>
                                 <i class="am-icon-envelope"></i>
@@ -202,13 +204,22 @@
 
             <!-- 菜单 -->
             <ul class="sidebar-nav">
-              
+
                 <li class="sidebar-nav-link">
                     <a href="/admin/users/child" class="active">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 会员管理
                     </a>
                 </li>
-               
+
+            </ul>
+            <ul class="sidebar-nav">
+
+                <li class="sidebar-nav-link">
+                    <a href="/admin/root/" class="active">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 管理员
+                    </a>
+                </li>
+
             </ul>
         </div>
 
@@ -228,18 +239,18 @@
                                 </div>
                             </div>
                             <div class="widget-body  widget-body-lg am-fr">
-
+                                @section('contents')
                                 <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
                                     <thead>
                                         <tr>
                                             <th>id号</th>
+                                            <th>会员详情id</th>
                                             <th>账号</th>
-                                            <th>添加时间</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @section('contents')
+
                                         <tr class="gradeX">
                                             <td>Amaze UI 模式窗口</td>
                                             <td>张鹏飞</td>
@@ -247,28 +258,28 @@
                                             <td>
                                                 <div class="tpl-table-black-operation">
                                                     <a href="javascript:;">
-                                                        <i class="am-icon-pencil"></i> 编辑
+                                                        <i class="am-icon-pencil"></i> 禁用
                                                     </a>
                                                     <a href="javascript:;" class="tpl-table-black-operation-del">
-                                                        <i class="am-icon-trash"></i> 删除
+                                                        <i class="am-icon-trash"></i> 查看会员详情
                                                     </a>
                                                 </div>
                                             </td>
                                         </tr>
-                                    @show
+
                                <!-- more data -->
                                     </tbody>
                                 </table>
-
+                                @show
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
+
     </div>
-    </div>
+
     <script src="{{ asset('admin/assets/js/amazeui.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/amazeui.datatables.min.js') }}"></script>
     <script src="{{ asset('admin/assets/js/dataTables.responsive.min.js') }}"></script>

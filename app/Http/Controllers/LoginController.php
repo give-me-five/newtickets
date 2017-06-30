@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 //导入验证码命名空间
 use Gregwar\Captcha\CaptchaBuilder;
 use Illuminate\Http\Request;
+use App\Models\Users;
 use App\Models\User;
 use Session;
+use Request as ip;
 //会员登录/注册控制器
 class LoginController extends Controller
 {
@@ -15,15 +17,54 @@ class LoginController extends Controller
     {
         return view("login.index");
     }
-    //加载注册模板
-    public function register()
+    //加载手机登录模板
+    public function phone()
     {
-        return view("login.register");
+        return view("login.phone");
     }
     //执行登录
     public function doLogin(Request $request)
     {
-       
+        //获取验证码
+        $mycode = $request->input('mycode');
+        $code = session()->get('code');
+        //判断验证码是否正确
+//        if($mycode != $code){
+//            return back()->with('msg',"验证码错误");
+//        }
+        //获取密码
+        $password = bcrypt($request->input('password'));
+        echo $password;
+
+        //获取用户名
+        $name = $request->input('name');
+        //判断用户名是否存在
+        $users = Users::where('phone',$name)->first();
+        if($users){
+            //判断密码是否正确
+            if (\Hash::check($users->password, $password)) {
+                echo "ok";
+            }
+          //  $2y$10$v5T8l7P7NmG1j6BP7K8dCuoQd3EB3gYjGt2DR1FYnIb1mIqhmyYca
+            //$2y$10$x6DZp/hjfKOKvRqK2h0UpuWFouerRpZ5ikPaLPtYtl3nyNoLglj1W
+//            if($users->password != $password){
+//                return back()->with('msg','账号或密码错误');
+//            }
+//            获取用户名状态
+//            $status = User::where('id',$users->uid)->value('status');
+//            //如果是1,有权限
+//            if($status == 1 ){
+//                //存储用户信息
+//                session()->put('users',$users);
+//
+//            }else{
+//                //如果状态不是1,被禁用
+//                echo "<script>alert('您违反相关规定,账号已被禁用')</script>";
+//                return back()->with();
+//            }
+//        }else{
+//            return back()->with('msg','账号或密码错误');
+       }
     }
     //验证码
     public function code()

@@ -163,8 +163,12 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+		//验证码
+		Mews\Captcha\CaptchaServiceProvider::class,
         //阿里短信接口
         iscms\Alisms\AlidayuServiceProvider::class,
+        //图片裁剪
+        Intervention\Image\ImageServiceProvider::class,
 
 
         /*
@@ -230,6 +234,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+		'Captcha' => Mews\Captcha\Facades\Captcha::class,
+
+        'Image' => Intervention\Image\Facades\Image::class,
+
 
     ],
 

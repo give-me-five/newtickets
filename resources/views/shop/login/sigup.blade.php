@@ -17,10 +17,10 @@
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/amazeui.datatables.min.css')}}" />
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/app.css')}}">
     <script src="{{asset('myadmin/assets/js/jquery.min.js')}}"></script>
-
+	 <script type="text/javascript" src="{{asset('myadmin/js/jQuery-2.1.4.min.js')}}"></script>
 </head>
 
-<body data-type="login">
+<body >
     <script src="{{asset('myadmin/assets/js/theme.js')}}"></script>
     <div class="am-g tpl-g">
         <!-- 风格切换 -->
@@ -45,55 +45,53 @@
               </span>
 
 
-                <form class="am-form tpl-form-line-form">
-                
+                <form action="{{url('shop/sigup')}}" method="post" class="am-form tpl-form-line-form">
+					<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="账号">
-                    </div>
-
-                    <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="user-name" placeholder="请输入密码">
+                        <input type="text" class="tpl-form-input" name="myname" id="user-name" placeholder="账号，5-20位数字、字母或下划线">
                     </div>
 
                     <div class="am-form-group">
-                        <input type="password" class="tpl-form-input" id="user-name" placeholder="再次输入密码">
+                        <input type="password" name="mypassword" class="tpl-form-input" id="user-name" placeholder="密码，6-16位数字、字母或下划线">
                     </div>
-					<div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="商家名称">
-                    </div>
-					<div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="手机">
-                    </div>
-					<div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="法人代表">
-                    </div>
-					<div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="身份证号">
-                    </div>
-					<div class="am-form-group">
-                        <input type="text" class="tpl-form-input" id="user-name" placeholder="地址">
-                    </div>
-					<div class="am-form-group">
-                        营业执照<input type="file" class="tpl-form-input" id="user-name" placeholder="营业执照">
-                    </div>
-
-                    <div class="am-form-group tpl-login-remember-me">
-                        <input id="remember-me" type="checkbox">
-                        <label for="remember-me">
-       
-                        我已阅读并同意 <a href="javascript:;">《用户注册协议》</a> 
-                         </label>
-
-                    </div>
-
-
-
-
-
 
                     <div class="am-form-group">
+                        <input type="password" name="twopassword" class="tpl-form-input" id="user-name" placeholder="再次填写上面的密码">
+                    </div>
+					<div class="am-form-group">
+                        <input type="text" name="shopname" class="tpl-form-input" id="user-name" placeholder="商家名称">
+                    </div>
+					<div class="am-form-group">
+                        <input type="text" name="myphone" class="tpl-form-input" id="user-name" placeholder="账号使用者手机">
+                    </div>
+					<div class="am-form-group">
+                        <input type="text" name="legal" class="tpl-form-input" id="user-name" placeholder="法人代表">
+                    </div>
+					<div class="am-form-group">
+                        <input type="text" name="id_card" class="tpl-form-input" id="user-name" placeholder="身份证号">
+                    </div>
+					 
+					<div id="fid">区域：</div>
+					<div class="am-form-group">
+                        营业执照：<input type="file" name="licence" class="tpl-form-input" id="user-name">
+                    </div>
+					<!--加载验证码-->
+					 <div class="am-form-group">
+					 
+						<div class="col-xs-6"> 
+							  <div class="form-group has-feedback" style="width:140px;">
+								<input type="text" name="mycode" class="form-control" placeholder="验证码"/>
+							  </div>
 
-                        <button type="button" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交</button>
+						  </div>
+						  <div style="float:right" class="col-xs-6">
+							  <img src="{{url('shop/getcode')}}" onclick="this.src='{{url('shop/getcode')}}?id='+Math.random(); " width="100" height="34"/>
+						  </div>
+					  </div>
+					
+                    <div class="am-form-group">
+
+                        <button type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交</button>
 
                     </div>
                 </form>
@@ -102,7 +100,40 @@
     </div>
     <script src="{{asset('myadmin/assets/js/amazeui.min.js')}}"></script>
     <script src="{{asset('myadmin/assets/js/app.js')}}"></script>
-
+	
+	<script type="text/javascript">
+          function loadDistrict(upid){
+             $.ajax({
+                url:"{{URL('/shop/sigup')}}/"+upid,
+                type:"get",
+                dataType:"json",
+                async:true,
+                success:function(data){
+                    if(data.length<1){
+                        return;
+                    }
+                    var select = "<select class=\"form-control\">";
+                    select += "<option>-请选择-</option>";
+                    for(var i=0;i<data.length;i++){
+                        select += "<option value='"+data[i].id+"'>";
+                        select += data[i].city;
+                        select += "</option>";
+                    }
+                    select +="</select>";
+                    //添加
+                    //$("#fid").append(select);
+                    $(select).change(function(){
+                                $(this).nextAll("select").remove();
+                                var id = $(this).find("option:selected").val();
+                                loadDistrict(id);
+                          }).appendTo("#fid");
+                },
+             });
+          }
+          
+          loadDistrict(0);
+          
+        </script>
 </body>
 
 </html>

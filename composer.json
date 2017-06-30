@@ -7,11 +7,14 @@
     "require": {
         "php": ">=5.6.4",
         "barryvdh/laravel-debugbar": "^2.4",
+        "barryvdh/laravel-ide-helper": "v2.3.2",
         "gregwar/captcha": "1.*",
+        "intervention/image": "^2.3",
         "iscms/alisms-for-laravel": "^0.0.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "barryvdh/laravel-ide-helper": "v2.3.2"
+        "mews/captcha": "^2.1",
+		"ollieread/multiauth": "dev-master"
 
     },
     "require-dev": {
