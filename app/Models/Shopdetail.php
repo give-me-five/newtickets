@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Shop_Detail extends Model
+class Shopdetail extends Model
 {
     //设置表php
     protected $table = 'shop_detail';

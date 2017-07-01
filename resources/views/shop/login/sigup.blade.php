@@ -9,6 +9,7 @@
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" href="{{asset('myadmin/assets/i/favicon.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{asset('myadmin/assets/i/app-icon72x72@2x.png')}}">
@@ -45,10 +46,15 @@
               </span>
 
 
-                <form action="{{url('shop/sigup')}}" method="post" class="am-form tpl-form-line-form">
+                <form action="{{url('shop/registered')}}" method="post" class="am-form tpl-form-line-form" name="myform" onsubmit="reuturn doSubmit">
 					<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                    
                     <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" name="myname" id="user-name" placeholder="账号，5-20位数字、字母或下划线">
+                        <input type="text" name="shopname" class="tpl-form-input" id="user-name" placeholder="商家名称">
+                    </div>
+
+                    <div class="am-form-group">
+                        <input type="text" class="tpl-form-input" name="myname" onblur="checkMyname()" id="user-name" placeholder="账号，5-20位数字、字母或下划线">
                     </div>
 
                     <div class="am-form-group">
@@ -57,24 +63,7 @@
 
                     <div class="am-form-group">
                         <input type="password" name="twopassword" class="tpl-form-input" id="user-name" placeholder="再次填写上面的密码">
-                    </div>
-					<div class="am-form-group">
-                        <input type="text" name="shopname" class="tpl-form-input" id="user-name" placeholder="商家名称">
-                    </div>
-					<div class="am-form-group">
-                        <input type="text" name="myphone" class="tpl-form-input" id="user-name" placeholder="账号使用者手机">
-                    </div>
-					<div class="am-form-group">
-                        <input type="text" name="legal" class="tpl-form-input" id="user-name" placeholder="法人代表">
-                    </div>
-					<div class="am-form-group">
-                        <input type="text" name="id_card" class="tpl-form-input" id="user-name" placeholder="身份证号">
-                    </div>
-					 
-					<div id="fid">区域：</div>
-					<div class="am-form-group">
-                        营业执照：<input type="file" name="licence" class="tpl-form-input" id="user-name">
-                    </div>
+                    </div>					
 					<!--加载验证码-->
 					 <div class="am-form-group">
 					 
@@ -100,40 +89,120 @@
     </div>
     <script src="{{asset('myadmin/assets/js/amazeui.min.js')}}"></script>
     <script src="{{asset('myadmin/assets/js/app.js')}}"></script>
-	
-	<script type="text/javascript">
-          function loadDistrict(upid){
-             $.ajax({
-                url:"{{URL('/shop/sigup')}}/"+upid,
-                type:"get",
-                dataType:"json",
-                async:true,
-                success:function(data){
-                    if(data.length<1){
-                        return;
-                    }
-                    var select = "<select class=\"form-control\">";
-                    select += "<option>-请选择-</option>";
-                    for(var i=0;i<data.length;i++){
-                        select += "<option value='"+data[i].id+"'>";
-                        select += data[i].city;
-                        select += "</option>";
-                    }
-                    select +="</select>";
-                    //添加
-                    //$("#fid").append(select);
-                    $(select).change(function(){
-                                $(this).nextAll("select").remove();
-                                var id = $(this).find("option:selected").val();
-                                loadDistrict(id);
-                          }).appendTo("#fid");
-                },
-             });
-          }
-          
-          loadDistrict(0);
-          
-        </script>
+    <!--执行注册验证-->
+   <script>
+    function doSubmit(){
+        return checkMyname() &&  checkPassword() && checkTWopassword();
+    }
+    //判断用户名是否合法
+    function checkMyname(){
+        //获取用户输入的信息
+        var uname = $("input[name='myname']").val();
+        //var myname = document.myform.myname.value;
+        //删除信息
+        $("input[name='myname']").nextAll("span").remove();
+        //判断用户是否合法
+        if(uname.match(/^[0-9,a-z,A-Z]{5,20}$/)==null){
+            $("<span style='color:red;'>用户名不合法请重新输入</span>").insertAfter("input[name='myname']");
+            return false;
+        }
+        //执行ajax判断
+        $.ajax({
+            headers: {
+                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+            },
+            url:"/shop/registered",
+            type:"post",
+            data:"myname="+uname,
+            datatype:"text",
+            success:function(data){
+                if(data==1){
+                   $("<span style='color:red;'>您输入的用户名"+uname+"已存在</span>").insertafter("input[name='myname']");
+                    //document.myform.myname.value = "";
+                    return false;
+                }
+                if(data==2){
+                    $("<span style='color:red;'>用户名不可用</span>").insertafter("input[name='myname']");
+                    return false;
+                }else{
+                    $("<span style='color:green;'>用户名可用</span>").insertafter("input[name='myname']");
+                }
+            }
+        });
+        return true;
+    }
+    //密码验证
+    function checkpassword(){
+        //获取用户的输入密码
+        var password = document.myform.password.value;
+        $("input[name='password']").nextall('span').remove();
+
+        if(password==""){
+            $("<span style='color:red'>密码不能为空</span>").insertafter("input[name='password']");
+            return false
+        }
+        if(password.match(/^[a-za-z0-9_]{6,20}$/)==null){
+            $("<span style='color:red'>密码不合法请重新输入</span>").insertafter("input[name='password']");
+            return false;
+        }
+        //执行ajax验证
+        $.ajax({
+            headers: {
+                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+            },
+            url:'/reg/dologin',
+            type:'post',
+            data:'password='+password,
+            datatype:'text',
+            success:function(data){
+                //密码不合法
+                if(data==4){
+                    $("<span style='color:red'>密码格式不合法</span>").insertafter("input[name='password']");
+                    return false;
+                }else{
+                    $("<span style='color:green'>密码可用</span>").insertafter("input[name='password']");
+                }
+            }
+        });
+        return true;
+    }
+    //确认密码验证
+    function checkpassword2()
+    {
+        //获取确认密码
+        var password2 = document.myform.password2.value;
+        var password = document.myform.password.value;
+        $("input[name='password2']").nextall("span").remove();
+        if(password2 != password){
+            $("<span style='color:red'>两次密码不一致请重新输入</span>").insertafter("input[name='password2']");
+            document.myform.password2.value ="";
+            return false;
+        }
+        if(password2==""){
+            $("<span style='color:red'>密码不能为空</span>").insertafter("input[name='password2']");
+            return false
+        }
+        $.ajax({
+            headers: {
+                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
+            },
+            url:'/reg/dologin',
+            type:'post',
+            data:'password2='+password2+"password"+password,
+            datatype:'text',
+            success:function(data){
+                if(data==6){
+                    $("<span style='color:red'>两次密码不一致请重新输入</span>").insertafter("input[name='password2']");
+                    document.myform.password2.value ="";
+                    return false;
+                }else{
+                    $("<span style='color:green'>密码一致</span>").insertafter("input[name='password2']");
+                }
+            }
+        });
+        return true;
+    }
+</script> 
 </body>
 
 </html>

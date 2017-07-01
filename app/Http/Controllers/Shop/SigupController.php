@@ -20,63 +20,56 @@ class SigupController extends Controller
 	{
 		$myname=$request->input('myname');
 		$name=Shopdetail::where('name',"=",$myname);
+        print_r($name);
+        die();
 		if(!empty($name)){
-			//用户名存在
+			//用户名已存在
 			return 1;
 		}
 		//执行注册判断
 		$name=preg_match("/^[0-9,a-z,A-Z]{5,20}$/",$myname);
 		if($name){
-			//用户名不存在
+			//用户名格式不正确
 			return 2;
 		}else{
 			//用户名可用
 			echo 3;
 		}
 		
-		//判断密码开始
-        //获取用户输入密码
-        $mypassword = $request->input("mypassword");
-        $password = preg_match("//^[0-9,a-z,A-Z]{6,16}$/",$mypassword);
-        if($password){
-            //密码不合法
-            return 4;
-        }else{
-            // 密码可用
-            echo 5;
-        }
-        //密码验证结束
+		// //判断密码
+  //       //获取用户输入密码
+  //       $mypassword = $request->input("mypassword");
+  //       $password = preg_match("//^[0-9,a-z,A-Z]{6,16}$/",$mypassword);
+  //       if($password){
+  //           //密码不合法
+  //           return 4;
+  //       }else{
+  //           // 密码可用
+  //           echo 5;
+  //       }
 
-        //密码二次验证
-        $twopassword = $request->input("twopassword");
-        $password = $request->input("mypassword");
-        if($password != $twopassword){
-            //密码不一致
-            return 6;
-        }else{
-            //密码一致
-            echo 7;
-        }
-        //二次密码验证结束
+       
+  //       //密码二次验证
+  //       $twopassword = $request->input("twopassword");
+  //       $password = $request->input("mypassword");
+  //       if($password != $twopassword){
+  //           //密码不一致
+  //           return 6;
+  //       }else{
+  //           //密码一致
+  //           echo 7;
+  //       }
+        
 		
-		//判断手机号
-		$myphone=$request->input("myphone");
-		$phone=preg_match("//^[1]{1}[3,4,5,6,7,8,9]{1}[0-9]{9}$/",$myphone);
-		if($phone){
-			//手机号正确
-			return 8;
-		}else{
-			//手机号不可用
-			return 9;
-		}
-		//判断验证码
-        $mycode = $request->input("mycode");
-        $yanzhengma = $request->session()->get('phrase');
-        if($mycode != $yangzhengma){
-            return back()->with("msg","验证码错误");
-        }
-        $password = md5($password);
-        $id  = \DB::table(shop_detail)->insertGetId(['name'=>$name,'phone'=>$phone,'password'=>$password]);
+		// //判断验证码
+  //       $mycode = $request->input("mycode");
+  //       $yanzhengma = $request->session()->get('phrase');
+  //       if($mycode != $yangzhengma){
+  //           return back()->with("msg","验证码错误");
+  //       }
+  //       $password = md5($password);
+  //       //执行添加
+  //       $id  = \DB::table(shop_detail)->insertGetId(['name'=>$name,'phone'=>$phone,'password'=>$password]);
        
 	}
 	//加载验证码

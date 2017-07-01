@@ -23,25 +23,25 @@
                   <h3 class="box-title"><i class="fa fa-plus"></i> 添加影厅信息</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form action="{{url('admin/stu')}}" method="post" class="form-horizontal">
+                <form action="{{url('shop/store')}}" method="post" class="form-horizontal">
                   <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">影厅名称：</label>
                       <div class="col-sm-4">
-                        <input type="text" name="name" class="form-control" id="inputEmail3" placeholder="姓名">
+                        <input type="text" name="title" class="form-control" id="inputEmail3" placeholder="影厅名称">
                       </div>
                     </div>
 				      	<div class="form-group">
                       <label for="inputPassword3" class="col-sm-2 control-label">座位布局：</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="年龄" name="age">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="座位布局" name="layout">
                       </div>
                     </div>
 					     <div class="form-group">
                       <label for="inputPassword3" class="col-sm-2 control-label">座位数量：</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="班级号" name="classid">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="座位数量" name="number">
                       </div>
                     </div>
                   </div><!-- /.box-body -->

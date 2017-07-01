@@ -39,9 +39,12 @@
                       <td>
                       <button onclick="window.location='{{url('shop/edit')}}/{{$vo->id}}'" class="btn btn-xs btn-primary">编辑</button> </td>
                     </tr>
+
 					@endforeach
+
                   </table>
                 </div><!-- /.box-body -->
+                {{ $lt->links() }}
               </div><!-- /.box -->
             </div><!-- /.col -->
             

@@ -31,27 +31,21 @@
                   <input type="hidden" name="_method" value="put">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">放映厅名称</label>
                       <div class="col-sm-4">
-                        <input type="text" name="name" class="form-control" value="">
+                        <input type="text" name="title" class="form-control" value="">
                       </div>
                     </div>
 					<div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">性别</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">座位数</label>
                       <div class="col-sm-4">
-                        <input type="text" name="sex" class="form-control" value="">
+                        <input type="text" name="座位数" class="form-control" value="">
                       </div>
                     </div>
 					<div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">年龄</label>
+                      <label for="inputEmail3" class="col-sm-2 control-label">座位布局</label>
                       <div class="col-sm-4">
-                        <input type="text" name="age" class="form-control" value="">
-                      </div>
-                    </div>
-					<div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">班级</label>
-                      <div class="col-sm-4">
-                        <input type="text" name="classid" class="form-control" value="">
+                        <input type="text" name="number" class="form-control" value="">
                       </div>
                     </div>
 					
