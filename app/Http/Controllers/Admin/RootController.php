@@ -33,7 +33,7 @@ class RootController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.root.add");
     }
 
     /**
@@ -44,7 +44,31 @@ class RootController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //获取用户数据
+        $account = $request->account;
+        $password = \Hash::make($request->pass);
+        $name = $request->name;
+        //判断账号是否存在
+        $info = Admin::where("account",$account)->first();
+        if($info) {
+            return back()->with('msg','账号已存在');
+        }
+        //判断添加账号是否为超级管理员
+        if($account == "adminuser"){
+            //执行超级管理员添加
+            $id = \DB::table('admin')->insertGetId(["account"=>$account,"pass"=>$password,"name"=>$name,"role"=>1,"status"=>2,"addtime"=>time()]);
+        }else{
+            //执行普通管理员添加
+            $id = \DB::table('admin')->insertGetId(["account"=>$account,"pass"=>$password,"name"=>$name,"role"=>1,"status"=>3,"addtime"=>time()]);
+        }
+        if($id>0){
+            return redirect("/admin/root");
+        }else{
+            return back()->with("msg","添加失败");
+            return redirect("/admin/create");
+        }
+
     }
 
     /**

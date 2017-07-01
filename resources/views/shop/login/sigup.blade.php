@@ -54,7 +54,8 @@
                     </div>
 
                     <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" name="myname" onblur="checkMyname()" id="user-name" placeholder="账号，5-20位数字、字母或下划线">
+                        <input type="text" class="tpl-form-input" name="myname" onblur="checkMyname()" id="user-name" placeholder="账号，5-20位数字、字母或下划线"
+
                     </div>
 
                     <div class="am-form-group">

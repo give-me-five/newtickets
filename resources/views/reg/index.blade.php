@@ -105,7 +105,6 @@
         //获取用户的输入密码
         var password = document.myform.password.value;
         $("input[name='password']").nextAll('span').remove();
-
         if(password==""){
             $("<span style='color:red'>密码不能为空</span>").insertAfter("input[name='password']");
             return false

@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-
 class AdminMiddleware
 {
     /**
@@ -16,15 +15,9 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-
-        if(!$request->session()->has('admin')){
-            return redirect('admin/login');
-        }
-
-//        if(!$request->session()->has('adminusers')){
+//        if(!$request->session()->has('admin')){
 //            return redirect('admin/login');
 //        }
-
         return $next($request);
     }
 }

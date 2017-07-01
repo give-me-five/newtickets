@@ -81,11 +81,7 @@ class RegController extends Controller
         if($mycode != $code){
             return back()->with("msg","验证码错误");
         }
-
-        $password = md5($password);
-
         $password = \Hash::make($request->input('password'));
-
         $id  = \DB::table('users')->insertGetId(['phone'=>$phone,'password'=>$password]);
         if($id>0){
             $reg = new Reg();

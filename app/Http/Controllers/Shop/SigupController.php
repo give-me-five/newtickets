@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Models\Shopdetail;
+
+
 use Gregwar\Captcha\CaptchaBuilder;
+
 
 class SigupController extends Controller
 {
@@ -70,6 +73,7 @@ class SigupController extends Controller
   //       $password = md5($password);
   //       //执行添加
   //       $id  = \DB::table(shop_detail)->insertGetId(['name'=>$name,'phone'=>$phone,'password'=>$password]);
+
        
 	}
 	//加载验证码

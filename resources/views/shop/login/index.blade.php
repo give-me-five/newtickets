@@ -64,7 +64,14 @@
 					<div class="am-form-group">
 
                         <button type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">登录</button>
+
 					
+                    </div>
+
+                    <div class="am-form-group">
+					
+						<li class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn"><a href="{{url('shop/sigup')}}">注册</a></li>
+
                     </div>
 
                 </form>

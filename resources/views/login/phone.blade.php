@@ -382,17 +382,15 @@
                 {{ csrf_field() }}
                 <span class="login-type" data-mtevent="login.mobile.switch">
             <a id="J-mobile-link" href="/login/">
-<<<<<<< HEAD
+
                 手机动态码登录
                 <i></i>
             </a>
-            账号登录
-=======
-                普通登录
+
                 <i></i>
             </a>
             手机登录
->>>>>>> 41194a3edf1fa7ae50a28ff0e0051b77536144e0
+
         </span>
 
                 <div class="form-field form-field--icon">
@@ -402,10 +400,7 @@
                 <div class="form-field form-field--icon">
                     <i class="icon icon-password"></i>
                     <input id="login-password" class="f-text" name="password" placeholder="短信验证码" type="password">
-<<<<<<< HEAD
-=======
                     <a href="">点击获取验证码</a>
->>>>>>> 41194a3edf1fa7ae50a28ff0e0051b77536144e0
                 </div>
                 <div class="form-field form-field--ops">
                     <input name="origin" value="account-login" type="hidden">
@@ -437,13 +432,6 @@
 
 <script src="{{asset('login/dat_001.dat')}}"></script>
 <script src="{{asset('login/dat_002.dat')}}"></script>
-<<<<<<< HEAD
 
-
-
-
-
-=======
->>>>>>> 41194a3edf1fa7ae50a28ff0e0051b77536144e0
 </body>
 </html>

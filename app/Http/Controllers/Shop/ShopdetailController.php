@@ -17,7 +17,8 @@ class ShopdetailController extends Controller
     public function index(request $request)
     {
         //加载商户页面
-		//$shopdetail=Shopdetail::all();
+
+		$shopdetail=$request->session()->all();
 		$name=$request->session()->get('adminuser')->name;
 		$shopdetail=\DB::table("shop_detail")->where('name',$name)->first();
 		return view("shop.shopdetail.index",compact("shopdetail"));
@@ -76,12 +77,18 @@ class ShopdetailController extends Controller
      */
     public function update(Request $request, $id)
     {
-		
-		
+
+		$this->validate($request, [
+          
+			'phone' => 'required|numeric',
+        ]);
+        $data = $request->only("shopname","phone","legal","id_card","licence");
+
 		$this->validate($request, [
           'phone' => 'required|numeric',
         ]);
         $data = $request->only("shopname","phone","legal","id_card");
+
 		
         $shop_detail = \DB::table("shop_detail")->where("id",$id)->update($data);
 		
