@@ -299,9 +299,9 @@
               <img src="{{asset('myadmin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>亚力山大-皮尔斯</p>
+              <p>{{session('adminuser')->name}}</p>
 
-              <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+              <a href="{{url('shop/Logout')}}"><i class="fa fa-circle text-success"></i>退出</a>
             </div>
           </div>
           <!-- search form -->
@@ -324,6 +324,7 @@
               <ul class="treeview-menu">
                 <li class="active"><a href="{{url('shop/shopdetail')}}"><i class="fa fa-circle-o"></i> 商家详情表</a></li>
                 <li><a href="{{url('shop/hall')}}"><i class="fa fa-circle-o"></i>影厅信息</a></li>
+				<li><a href="{{url('shop/create')}}"><i class="fa fa-circle-o"></i>添加影厅</a></li>
                 <li><a href="{{url('shop/projection')}}"><i class="fa fa-circle-o"></i>放映信息</a></li>
               </ul>
             </li>

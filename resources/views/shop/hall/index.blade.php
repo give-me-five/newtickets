@@ -30,18 +30,21 @@
                       <th>布局</th>
                       <th style="width: 100px">操作</th>
                     </tr>
-					@foreach ($hall as $vo)
+					@foreach ($lt as $vo)
 					 <tr>
                       <td>{{ $vo->id }}</td>
                       <td>{{ $vo->title }}</td>
                       <td>{{ $vo->number }}</td>
                       <td>{{ $vo->layout }}</td>
-                      <td><button onclick="window.location='{{ url('admin/shopdetail')}}/create'" class="btn btn-xs btn-danger">添加</button> 
-                      <button class="btn btn-xs btn-primary">编辑</button> </td>
+                      <td>
+                      <button onclick="window.location='{{url('shop/edit')}}/{{$vo->id}}'" class="btn btn-xs btn-primary">编辑</button> </td>
                     </tr>
+
 					@endforeach
+
                   </table>
                 </div><!-- /.box-body -->
+                {{ $lt->links() }}
               </div><!-- /.box -->
             </div><!-- /.col -->
             

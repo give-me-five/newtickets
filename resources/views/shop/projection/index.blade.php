@@ -32,7 +32,7 @@
                       <th>座位信息</th>
                       <th style="width: 100px">操作</th>
                     </tr>
-					@foreach ($projection as $vo)
+					@foreach ($tad as $vo)
 					 <tr>
                       <td>{{ $vo->id }}</td>
                       
