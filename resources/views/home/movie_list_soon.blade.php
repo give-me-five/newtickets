@@ -21,13 +21,13 @@
                     <a data-act="tag-click" data-val="{TagName:'全部'}" href="javascript:void(0);" style="cursor: default;">全部</a>
                   </li>
                   <li>
-                    <a data-act="tag-click" data-val="{TagName:'爱情'}" href="http://maoyan.com/films?showType=1&amp;catId=3">爱情</a>
+                    <a data-act="tag-click" data-val="{TagName:'爱情'}" href="">爱情</a>
                   </li><li>
-                    <a data-act="tag-click" data-val="{TagName:'喜剧'}" href="http://maoyan.com/films?showType=1&amp;catId=2">喜剧</a>
+                    <a data-act="tag-click" data-val="{TagName:'喜剧'}" href="">喜剧</a>
                   </li><li>
-                    <a data-act="tag-click" data-val="{TagName:'动画'}" href="http://maoyan.com/films?showType=1&amp;catId=4">动画</a>
+                    <a data-act="tag-click" data-val="{TagName:'动画'}" href="">动画</a>
                   </li><li>
-                    <a data-act="tag-click" data-val="{TagName:'剧情'}" href="http://maoyan.com/films?showType=1&amp;catId=1">剧情</a>
+                    <a data-act="tag-click" data-val="{TagName:'剧情'}" href="">剧情</a>
                   </li>
               </ul>
             </li>
@@ -38,11 +38,11 @@
                     <a data-act="tag-click" data-val="{TagName:'全部'}" href="javascript:void(0);" style="cursor: default;">全部</a>
                   </li>
                   <li>
-                    <a data-act="tag-click" data-val="{TagName:'大陆'}" href="http://maoyan.com/films?showType=1&amp;sourceId=2">大陆</a>
+                    <a data-act="tag-click" data-val="{TagName:'大陆'}" href="">大陆</a>
                   </li><li>
-                    <a data-act="tag-click" data-val="{TagName:'美国'}" href="http://maoyan.com/films?showType=1&amp;sourceId=3">美国</a>
+                    <a data-act="tag-click" data-val="{TagName:'美国'}" href="">美国</a>
                   </li><li>
-                    <a data-act="tag-click" data-val="{TagName:'韩国'}" href="http://maoyan.com/films?showType=1&amp;sourceId=7">韩国</a>
+                    <a data-act="tag-click" data-val="{TagName:'韩国'}" href="">韩国</a>
                   </li>
               </ul>
             </li>

@@ -335,7 +335,7 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
          @section('content')
-            这是页面主内容区。
+          
           @show
       </div><!-- /.content-wrapper -->
       <footer class="main-footer">

@@ -431,7 +431,7 @@ i.cert-person-icon { display: inline-block; width: 17px; height: 17px; backgroun
 .celebrity-container .celebrity { float: left; width: 128px; margin-left: 20px; margin-bottom: 20px; text-overflow: ellipsis; white-space: nowrap; }
 .celebrity-container .celebrity .portrait { margin-bottom: 6px; width: 128px; height: 170px; overflow: hidden; }
 .celebrity-container .celebrity .portrait img { width: 128px; height: 170px; }
-.celebrity-container .celebrity .name, .celebrity-container .celebrity .role { display: inline-block; width: 128px; text-align: center; padding-bottom: 1px; margin-bottom: -1px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+.celebrity-container .celebrity .name, .celebrity-container .celebrity .role {text-align: center; padding-bottom: 1px; margin-bottom: -1px; white-space: nowrap; }
 .celebrity-container .celebrity .name { margin-top: 8px; line-height: 1.2; color: rgb(51, 51, 51); }
 .celebrity-container .celebrity .role { font-size: 14px; line-height: 1.2; color: rgb(102, 102, 102); }
 .comment-container { margin-top: 20px; }

@@ -17,7 +17,7 @@
 .detail-wrap .detail-cont .cont-info .comment .quot, .detail-wrap .detail-cont .cont-info .comment .quotend { display: inline-block; overflow: hidden; height: 24px; width: 30px; font-size: 300%; font-family: arial; line-height: 60px; }
 .detail-wrap .detail-cont .cont-info .comment .quotend { text-align: right; }
 .detail-wrap .detail-cont .cont-info li { width: 100%; padding-bottom: 12px; display: inline-block; }
-.detail-wrap .detail-cont .cont-info .shrink { height: 40px; display: inline-block; overflow: hidden; padding: 0px; transition: height 0.2s ease 0s; }
+.detail-wrap .detail-cont .cont-info .shrink { height: 100px; display: inline-block; overflow: hidden; padding: 0px; transition: height 0.2s ease 0s; }
 .detail-wrap .detail-cont .cont-info .shrink .shrink-btn { overflow-wrap: normal; white-space: nowrap; float: right; }
 .detail-wrap .detail-cont .cont-info .showit::after { display: inline-block; width: 120%; height: 0px; content: " "; word-break: break-all; text-overflow: ellipsis; white-space: nowrap; }
 .detail-wrap .detail-cont .cont-view { float: right; width: 156px; padding-top: 40px; }

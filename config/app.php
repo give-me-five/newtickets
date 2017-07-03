@@ -165,8 +165,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         //阿里短信接口
         iscms\Alisms\AlidayuServiceProvider::class,
-
-
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -230,7 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];

@@ -4,7 +4,7 @@
     <div class="wrapper clearfix">
       <div class="celeInfo-left">
         <div class="avater-shadow">
-          <img class="avater" src="/uploads/m_{{ $first->picname }}" alt="">
+          <img class="avater" src="/uploads/{{$first->picname}}" alt="">
             <div class="movie-ver"><i class="imax3d"></i></div>
         </div>
       </div>
@@ -13,7 +13,7 @@
               <h3 class="name">{{$first->title}}</h3>
               <!-- <div class="ename ellipsis">Transformers: The Last Knight</div> -->
               <ul>
-                <li class="ellipsis">动作,冒险,科幻</li>
+                <li class="ellipsis">{{$first->fid}}</li>
                 <li class="ellipsis">
                 {{ $first->region }} / {{ $first->duration }}
                 </li>
@@ -54,12 +54,7 @@
                       </div>
                   </div>
               </div>
-              <div class="movie-index">
-                <p class="movie-index-title">专业评分</p>
-                <div class="movie-index-content score pro-score">
-                    <span class="no-info">暂无</span>
-                </div>
-              </div>
+              
               <div class="movie-index">
                 <p class="movie-index-title">累计票房</p>
                 <div class="movie-index-content box">
@@ -101,12 +96,10 @@
                             </div>
                             <ul class="celebrity-list clearfix">
                                 <li class="celebrity " data-act="celebrity-click" data-val="{celebrityid:31088}">
-                                    <a href="http://maoyan.com/films/celebrity/31088" target="_blank" class="portrait">
-                                      <img class="default-img" alt="" src="de08685f04fbd3944554f4e15ead6e0040971.jpg@128w_170h_1e_1c">
-                                    </a>
+                                    
                                     <div class="info">
-                                      <a href="http://maoyan.com/films/celebrity/31088" target="_blank" class="name">
-                                        迈克尔·贝
+                                      <a href="" target="_blank" class="name">
+                                        {{$first->director}}
                                       </a>
                                     </div>
                                 </li>
@@ -117,27 +110,14 @@
                             演员
                           </div>
                           <ul class="celebrity-list clearfix">
-                              <li class="celebrity actor" data-act="celebrity-click" data-val="{celebrityid:1902}">
-                                  <a href="http://maoyan.com/films/celebrity/1902" target="_blank" class="portrait">
-                                    <img class="default-img" alt="" src="dd51d43308044d5b346b02789421d8eb56861.jpg@128w_170h_1e_1c">
-                                  </a>
-                                  <div class="info">
-                                    <a href="http://maoyan.com/films/celebrity/1902" target="_blank" class="name">
-                                      马克·沃尔伯格
-                                    </a>
-                                      <br><span class="role">饰：凯德·伊格尔 Cade Yeager</span>
-                                  </div>
-                              </li>
+                             
                               <li class="celebrity actor" data-act="celebrity-click" data-val="{celebrityid:1028162}">
-                                  <a href="http://maoyan.com/films/celebrity/1028162" target="_blank" class="portrait">
-                                    <img class="default-img" alt="" src="8d27b1b7dc7f0817aa87eaac002fde2839208.jpg@128w_170h_1e_1c">
-                                  </a>
+                                  
                                   <div class="info">
-                                    <a href="http://maoyan.com/films/celebrity/1028162" target="_blank" class="name">
-                                      伊莎贝拉·莫奈
+                                    <a href="" class="name">
+                                      {{$first->actor}}
                                     </a>
-                                      <br><span class="role">饰：伊莎贝拉
-                                Izabella</span>
+                                      <br>
                                   </div>
                               </li>
                           </ul>
