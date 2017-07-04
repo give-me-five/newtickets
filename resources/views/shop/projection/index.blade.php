@@ -27,19 +27,26 @@
                       <th style="width:60px">ID号</th>
                       <th>影片</th>
                       <th>放映厅</th>
+                      <th>影院</th>
+
                       <th>放映时间</th>
                       <th>价格</th>
                       <th>座位信息</th>
                       <th style="width: 100px">操作</th>
                     </tr>
-					@foreach ($tad as $vo)
-					 <tr>
-                      <td>{{ $vo->id }}</td>
-                      
+					     @foreach ($list as $vo)
+					           <tr>
+                     <td>{{ $vo->id }}</td>
+                     <td>{{ $vo->fid }}</td>
+                     <td>{{ $vo->hid }}</td>
+                     <td>{{ $vo->cid }}</td>
+                     <td>{{ $vo->datetime }}</td>
+                     <td>{{ $vo->price }}</td>
+                     <td>{{ $vo->seatinfo }}</td>
                       <td><button onclick="window.location='{{ url('admin/shopdetail')}}/create'" class="btn btn-xs btn-danger">添加</button> 
                       <button class="btn btn-xs btn-primary">编辑</button> </td>
                     </tr>
-					@endforeach
+					     @endforeach
                   </table>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
