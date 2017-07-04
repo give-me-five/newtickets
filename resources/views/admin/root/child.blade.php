@@ -1,6 +1,9 @@
-@extends('admin.root.index')
-
+@extends('admin.index')
+@section('sidebar')
+    <div class="widget-title am-fl">管理员列表</div>
+@endsection
 @section("contents")
+    <div style="width:100px;float: right;" class="widget-title am-fl"><a href="/admin/root/create/">添加管理员</a></div>
     <form action="/admin/root/" method="get" class="form-inline">
         {{csrf_field()}}
         <div class="form-group">
@@ -28,12 +31,9 @@
                     <td>{{ $info->account}}</td>
                     <td>{{ $info->name }}</td>
                     <td> @if($info->status == 2 || $info->status == 3) 启用 @else 禁用 @endif</td>
-                    <td>{{ $info->addtime }}</td>
+                    <td>{{ date("Y-m-d H:i:s",$info->addtime) }}</td>
                     <td>
                         <div class="tpl-table-black-operation">
-                            <a href="/admin/root/{{ $info->id }}">
-                                <i class="am-icon-pencil"></i> 查看会员详情
-                            </a>
                             @if($info->status == 2 || $info->status == 3)
                                 <a href="javascript:doDel({{$info->id}})" class="tpl-table-black-operation-del">
                                     <i class="am-icon-trash"></i> 点击禁用
@@ -52,24 +52,25 @@
         </table>
         {{ $list->appends($where)->links() }}
 @endsection
+{{--伪造表单--}}
 <form action="" method="post" name="myform">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
 </form>
 <script>
-    //启用
-    function reset(){
-        if(confirm('你确定要启用吗？？')){
-            return true;
-        }else{
-            return false;
+        //启用
+        function reset(){
+            if(confirm('你确定要启用吗？？')){
+                return true;
+            }else{
+                return false;
+            }
         }
-    }
-
-    function doDel(id){
-        if(confirm('你确定要禁用吗？？')){
-            window.myform.action = "/admin/root/"+id;
-            window.myform.submit();
+        //禁用
+        function doDel(id){
+            if(confirm('你确定要禁用吗？？')){
+                window.myform.action = "/admin/root/"+id;
+                window.myform.submit();
+            }
         }
-    }
 </script>

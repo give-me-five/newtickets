@@ -164,7 +164,7 @@
                         <!-- 退出 -->
                         <li class="am-text-sm">
                             <a href="javascript:;">
-                                <span class="am-icon-sign-out"></span> 退出
+                                <span class="am-icon-sign-out"></span> <a href="/admin/login/loginout">退出</a>
                             </a>
                         </li>
                     </ul>
@@ -236,7 +236,7 @@
                             <div class="widget-head am-cf">
 
                                 <div class="widget-title am-fl">管理员列表&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="widget-title am-fl"><a href="/admin/root/create/">添加管理员</a></div>
+
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>

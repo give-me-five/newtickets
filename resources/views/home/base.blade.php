@@ -46,8 +46,8 @@
               <img src="{{asset('home/images/panda.png')}}">
               <span class="caret"></span>
               <ul class="user-menu">
-                <li><a href="javascript:void 0">登录</a></li>
-                <li><a href="javascript:void 0">注册</a></li>
+                <li><a href="/login/">登录</a></li>
+                <li><a href="/reg/">注册</a></li>
               </ul>
             </div>
         </div>

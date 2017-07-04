@@ -197,7 +197,7 @@
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
               禁言小张
           </span>
-                    <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
+                    <a href="/admin/pass" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 修改密码</a>
                 </div>
             </div>
 
@@ -221,6 +221,15 @@
                 </li>
 
             </ul>
+            <ul class="sidebar-nav">
+
+                <li class="sidebar-nav-link">
+                    <a href="/admin/merchant/" class="active">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 商家管理
+                    </a>
+                </li>
+
+            </ul>
         </div>
 
 
@@ -233,8 +242,9 @@
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
+                                @section('sidebar')
                                 <div class="widget-title am-fl">会员列表</div>
-
+                                @show
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>

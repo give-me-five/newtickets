@@ -1,6 +1,6 @@
 @extends('admin.index')
 @section("contents")
-    <form action="/admin/root" method="post" onsubmit=" return doSubmit()" name="myform">
+    <form action="/admin/pass/update" method="post" onsubmit=" return doSubmit()" name="myform">
         {{ csrf_field() }}
         <center>
         @if(session('msg'))
@@ -10,23 +10,23 @@
         <table style="width:600px;margin: 0px auto;" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
                 <tr>
                     <td>账号：</td>
-                    <td><input size= "30" type="text" name="account" placeholder="由6到16位的数字，字母，下划线组成" onblur="checkAnt()"/></td>
+                    <td><input size= "30" value="{{ session("admin")->account }}" style="border:0px" type="text" name="account" readonly/></td>
                 </tr>
                 <tr>
-                    <td>密码：</td>
+                    <td>原密码：</td>
+                    <td><input size= "30" type="password" name="rpass"  ></td>
+                </tr>
+                <tr>
+                    <td>新密码：</td>
                     <td><input size= "30" type="password" name="pass" placeholder="由6到16位的数字，字母，下划线组成" onblur="checkPass()"></td>
                 </tr>
                 <tr>
                     <td>确认密码：</td>
-                    <td><input size= "30" type="password" name="pass2" onblur="checkPass2()"></td>
-                </tr>
-                <tr>
-                    <td>真实姓名：</td>
-                    <td><input size= "30" type="text" name="name" onblur="checkName()"></td>
+                    <td><input size= "30" type="password" name="pass2" placeholder="" onblur="checkPass2()"></td>
                 </tr>
                 <tr >
                     <td colspan="2" align="center">
-                        <input type="submit"/>
+                        <input type="submit" value="修改"/>
                         <input type="reset"/>
                     </td>
                 </tr>
@@ -35,20 +35,7 @@
 @endsection
 <script>
     function doSubmit(){
-        return checkAnt() && checkPass() && checkPass2() && checkName();
-    }
-    //账号验证
-    function checkAnt(){
-        var account = document.myform.account.value;
-        $("input[name='account']").nextAll("span").remove();
-        if(account == ""){
-            $("<span style='color:red'>账号不能为空</span>").insertAfter("input[name='account']");
-            return false;
-        }
-        if(account.match(/^[a-zA-Z0-9_]{6,15}$/)==null){
-            $("<span style='color:red'>账号不符合规则</span>").insertAfter("input[name='account']");
-            return false;
-        }
+        return  checkPass() && checkPass2() ;
     }
     //密码验证
     function checkPass(){
@@ -74,15 +61,6 @@
         }
         if(pass2 != pass){
             $("<span style='color:red'>密码不一致</span>").insertAfter("input[name='pass2']");
-            return false;
-        }
-    }
-    //验证真是姓名
-    function checkName(){
-        var name = window.myform.name.value;
-        $("input[name='name']").nextAll("span").remove();
-        if(name == ""){
-            $("<span style='color:red'>真实姓名不能为空</span>").insertAfter("input[name='name']");
             return false;
         }
     }

@@ -378,9 +378,6 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
 
         <div class="login-section" data-params="{&quot;service&quot;:&quot;www&quot;,&quot;isDialog&quot;:false }">
 
-    <form id="J-normal-form" action="">
-
-
          @if(session('msg'))
                 <p class="login-box-msg" style="color:red;">{{session('msg')}}
          @endif
@@ -495,9 +492,5 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
 
 <script src="{{asset('login/dat_001.dat')}}"></script>
 <script src="{{asset('login/dat_002.dat')}}"></script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 214a745345c32dca4a96cab392bc8f13f4126f31
 </body>
 </html>

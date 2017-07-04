@@ -24,7 +24,7 @@
                 @if(session("msg"))
                     <p class="login-box-msg" style="color:red;">{{session("msg")}}</p>
                 @endif
-                <form action="/reg/doLogin" method="post" name="myform" onsubmit="return doSubmit();" >
+                <form action="/reg/regLogin" method="post" name="myform" onsubmit="return doSubmit();" >
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-field form-field--mobile">
                         <label>手机号</label>
@@ -112,26 +112,10 @@
         if(password.match(/^[A-Za-z0-9_]{6,20}$/)==null){
             $("<span style='color:red'>密码不合法请重新输入</span>").insertAfter("input[name='password']");
             return false;
+        }else{
+            $("<span style='color:green'>可用</span>").insertAfter("input[name='password']");
         }
-        //执行ajax验证
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url:'/reg/doLogin',
-            type:'post',
-            data:'password='+password,
-            datatype:'text',
-            success:function(data){
-                //密码不合法
-                if(data==4){
-                    $("<span style='color:red'>密码格式不合法</span>").insertAfter("input[name='password']");
-                    return false;
-                }else{
-                    $("<span style='color:green'>密码可用</span>").insertAfter("input[name='password']");
-                }
-            }
-        });
+
         return true;
     }
     //确认密码验证
@@ -145,29 +129,14 @@
             $("<span style='color:red'>两次密码不一致请重新输入</span>").insertAfter("input[name='password2']");
             document.myform.password2.value ="";
             return false;
+        }else{
+            $("<span style='color:green'>密码一致</span>").insertAfter("input[name='password2']");
+            return true;
         }
         if(password2==""){
             $("<span style='color:red'>密码不能为空</span>").insertAfter("input[name='password2']");
             return false
         }
-        $.ajax({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            url:'/reg/doLogin',
-            type:'post',
-            data:'password2='+password2+"password"+password,
-            datatype:'text',
-            success:function(data){
-                if(data==6){
-                    $("<span style='color:red'>两次密码不一致请重新输入</span>").insertAfter("input[name='password2']");
-                    document.myform.password2.value ="";
-                    return false;
-                }else{
-                    $("<span style='color:green'>密码一致</span>").insertAfter("input[name='password2']");
-                }
-            }
-        });
         return true;
     }
 </script>
