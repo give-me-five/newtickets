@@ -69,6 +69,7 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
 	Route::get('/',"Shop\IndexController@index");
 	Route::resource('shopdetail', 'Shop\ShopdetailController');
 
+    Route::resource('layout', 'LayoutController');
 	Route::resource('hall', 'Shop\HallController');
 	Route::resource('projection', 'Shop\ProjectionController');
 
