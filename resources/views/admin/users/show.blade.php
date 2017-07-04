@@ -1,4 +1,4 @@
-@extends('admin.users.index')
+@extends('admin.base')
 
 @section("contents")
     <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">

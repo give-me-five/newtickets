@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>熊猫电影后台管理系统</title>
-    <meta name="description" content="熊猫电影">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
@@ -185,35 +185,75 @@
         </div>
         <!-- 侧边导航栏 -->
         <div class="left-sidebar">
+            <!-- 用户信息 -->
+            <div class="tpl-sidebar-user-panel">
+                <div class="tpl-user-panel-slide-toggleable">
+                    <div class="tpl-user-panel-profile-picture">
+                        <img src="{{asset('myadmin/img/user04.png')}}" alt="">
+                    </div>
+                    <span class="user-panel-logged-in-text">
+              <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+              管理员
+          </span>
+                    <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
+                </div>
+            </div>
 
             <!-- 菜单 -->
             <ul class="sidebar-nav">
-                <li class="sidebar-nav-heading">熊猫电影管理</li>
+                
                 <li class="sidebar-nav-link">
                     <a href="{{url('/admin')}}" class="active">
                         <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
                     </a>
                 </li>
-                <li class="sidebar-nav-link">
+                  <li class="sidebar-nav-link">
                     <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 站点设置
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 会员管理
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="{{url('/admin/setup')}}">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span>查看设置
+                            <a href="{{url('admin/users/child')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览会员
                             </a>
                         </li>
 
-                        <li class="sidebar-nav-link">
-                            <a href="{{url('/admin/film/create')}}">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加站点信息
-                            </a>
-                        </li>
+                        
                     </ul>
                 </li>
-                <li class="sidebar-nav-link">
+                  <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 商家管理
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('/admin/film')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览商家
+                            </a>
+                        </li>
+
+                       
+                    </ul>
+                </li>
+                  <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 权限管理
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('root')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览管理员
+                            </a>
+                        </li>
+
+                        
+                    </ul>
+                </li>
+
+                    <li class="sidebar-nav-link">
                     <a href="javascript:;" class="sidebar-nav-sub-title">
                         <i class="am-icon-table sidebar-nav-link-logo"></i> 影片管理
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
@@ -234,45 +274,43 @@
                 </li>
                 <li class="sidebar-nav-link">
                     <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 新闻管理
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 影评管理
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('/admin/film_comment')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览影评
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 站点管理
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('/admin/setup')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览站点
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 资讯管理
                         <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
                             <a href="{{url('/admin/news')}}">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览新闻
-                            </a>
-                        </li>
-
-                        <li class="sidebar-nav-link">
-                            <a href="{{url('/admin/news/create')}}">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 添加新闻
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览资讯
                             </a>
                         </li>
                     </ul>
                 </li>
-                
-                <li class="sidebar-nav-link">
-                    <a href="javascript:;" class="sidebar-nav-sub-title">
-                        <i class="am-icon-table sidebar-nav-link-logo"></i> 商家管理
-                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-                    </a>
-                    <ul class="sidebar-nav sidebar-nav-sub">
-                        <li class="sidebar-nav-link">
-                            <a href="table-list.html">
-                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 商家列表
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-nav-link">
-                    <a href="{{url('/admin/news')}}">
-                        <i class="am-icon-calendar sidebar-nav-link-logo"></i>友情链接
-                    </a>
-                </li>
-                
-                
-
             </ul>
         </div>
 
@@ -282,7 +320,7 @@
 
           <!--  内容区 -->
             @section('content')
-                这是页面主内容区。
+                
             @show
         </div>
     </div>

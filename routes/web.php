@@ -34,12 +34,9 @@ Route::get('/admin/film/create',"Admin\FilmController@create");
 Route::post('/admin/film/create', 'Admin\FilmController@store');
 Route::get('/admin/film/{id}/edit', 'Admin\FilmController@edit');
 Route::post('/admin/film/update/{id}', 'Admin\FilmController@update');
-/*Route::post('/admin/film/create', 'Admin\FilmController@doUpload'); */
-
+//后台影片评论路由
+Route::get('/admin/film_comment','Admin\film_commentController@index');
 //加载登录页面
-
-
-
 Route::get('/shop/login',"Shop\LoginController@index");
 //商户执行登录
 Route::post('/shop/doLogin',"Shop\LoginController@doLogin");
