@@ -5,16 +5,6 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
-
-    <link rel="dns-prefetch" href="https://s0.meituan.net/">
-
-    <link rel="apple-touch-icon" href="https://s0.meituan.net/img/apple-touch-icon-ipad.png">
-    <link rel="shortcut icon" href="{{asset('log/1e4d71577b7922f1ab756d202e1ac4af1342.ico')}}">
-    <link rel="icon" href="{{asset('log/1e4d71577b7922f1ab756d202e1ac4af1342.ico')}}" sizes="16x16 32x32">
-
-    <link rel="alternate" href="http://www.meituan.com/feed" title="订阅更新" type="application/rss+xml">
-
-    <link rel="canonical" href="https://passport.meituan.com/account/unitivelogin?service=maoyan&amp;continue=http%3A%2F%2Fmaoyan.com%2Fpassport%2Flogin%3Fredirect%3D%252F">
     <meta name="keywords" content="美团,登录,注册,美团登录,美团注册">
 
     <title>登录 | 猫眼电影</title>
