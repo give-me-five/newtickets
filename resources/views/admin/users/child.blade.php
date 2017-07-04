@@ -1,4 +1,4 @@
-@extends('admin.users.index')
+@extends('admin.index')
 
 @section("contents")
     <form action="/admin/users/child" method="get" class="form-inline">
@@ -15,6 +15,7 @@
             <th>id号</th>
             <th>会员详情id</th>
             <th>账号</th>
+            <th>ip地址</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ $info->id }}</td>
                 <td>{{ $info->uid}}</td>
                 <td>{{ $info->phone }}</td>
+                <td>{{ $info->login_ip }}</td>
                 <td>
                     <div class="tpl-table-black-operation">
                         <a href="{{ url('/admin/users/show') }}/{{ $info->uid }}">

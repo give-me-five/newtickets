@@ -37,9 +37,6 @@ Route::post('/admin/film/update/{id}', 'Admin\FilmController@update');
 /*Route::post('/admin/film/create', 'Admin\FilmController@doUpload'); */
 
 //加载登录页面
-
-
-
 Route::get('/shop/login',"Shop\LoginController@index");
 //商户执行登录
 Route::post('/shop/doLogin',"Shop\LoginController@doLogin");
@@ -47,13 +44,10 @@ Route::post('/shop/doLogin',"Shop\LoginController@doLogin");
 Route::get('/shop/Logout',"Shop\LoginController@Logout");
 //加载商户注册页面
 Route::get('/shop/sigup',"Shop\SigupController@index");
-
 //执行商户注册
 Route::post('/shop/registered',"Shop\SigupController@registered");
-
 //加载选择区域
-Route::get('/shop/sigup/{upid}',"Shop\SigupController@region"); 
-
+Route::get('/shop/sigup/{upid}',"Shop\SigupController@region");
 //加载验证码
 Route::get('/shop/getcode',"shop\SigupController@getCode"); 
 
@@ -81,86 +75,82 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     //修改影厅信息
     Route::get('/edit/{id}','Shop\HallController@edit');
 
-	
 });
 
-Route::get('/admin',"Admin\IndexController@index");
-Route::resource('/admin/shopdetail', 'Admin\ShopdetailController');
-Route::resource('/admin/relshop', 'Admin\RelshopController');
-
-//加载注册页面
-Route::get("reg","RegController@index");
-//加载验证码
-Route::get("reg/code","RegController@code");
-//执行注册
-Route::post("reg/doLogin","RegController@doLogin");
 
 //新闻资讯路由
 Route::resource('/admin/news',"Admin\NewController");//后台新闻资讯浏览
-
 //站点设置
 Route::resource('/admin/setup',"Admin\SetupController");
 
 
+
 //加载注册页面
 Route::get("reg","RegController@index");
 //加载验证码
 Route::get("reg/code","RegController@code");
-//执行注册
+//执行ajax验证
 Route::post("reg/doLogin","RegController@doLogin");
-
-
-Route::get("reg/success","RegController@success");
-
-
+//执行注册
+Route::post("reg/regLogin","RegController@regLogin");
 //注册成功
 Route::get("reg/success","RegController@success");
 //注册失败
 Route::get("reg/lose","RegController@lose");
 
 
+
 //加载登录页面
 Route::get("login","LoginController@index");
-//加载手机登录页面
-Route::get("login/phone","LoginController@phone");
 //执行登录
 Route::post("login/doLogin","LoginController@doLogin");
+//加载手机登录页面
+Route::get("login/phone","LoginController@phone");
+//手机验证码登录
+Route::get("login/doPhone","LoginController@doPhone");
+//执行登录
+Route::post("login/doPhone","LoginController@doPhone");
 //加载验证码
 Route::get("login/code","LoginController@code");
+
+
 //后台登录页面
 Route::get("admin/login","Admin\LoginController@login");
 //后台登录验证码
 Route::get("admin/login/code","Admin\LoginController@code");
 //执行登录
 Route::post("admin/login/doLogin","Admin\LoginController@doLogin");
-
-//会员列表
-Route::get("admin/users/child","Admin\UsersController@child");
-////用户注册
-//Route::resource('user','UserController');
-////会员登录
-//Route::resource('login','LoginController');
-////用户详情
-//Route::resource('userDetail','UserDetailController');
-
-
-
+//退出登录
+Route::get("admin/login/loginout","Admin\LoginController@loginout");
 //中间件(权限控制)
 
 
-
+//后台路由组
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
-        //会员列表
-        Route::get("/users/child","Admin\UsersController@child");
-        //执行用户禁用
-        Route::get("/users/del/{id?}","Admin\UsersController@del");
-        //执行用户启用
-        Route::get("/users/reset/{id?}","Admin\UsersController@reset");
-        //查看用户详情
-        Route::get("/users/show/{uid?}","Admin\UsersController@show");
-        //管理员
-        Route::resource('root',"Admin\RootController");
+    //会员列表
+    Route::get("/users/child","Admin\UsersController@child");
+    //执行用户禁用
+    Route::get("/users/del/{id?}","Admin\UsersController@del");
+    //执行用户启用
+    Route::get("/users/reset/{id?}","Admin\UsersController@reset");
+    //查看用户详情
+    Route::get("/users/show/{uid?}","Admin\UsersController@show");
+    //管理员
+    Route::resource('root',"Admin\RootController");
+    //加载修改密码主页
+    Route::get("/pass","Admin\PassController@index");
+    //执行密码修改
+    Route::post("/pass/update","Admin\PassController@update");
+    //商家列表
+    Route::get("/merchant","Admin\MerchantController@index");
+    //商家禁用操作
+    Route::get("/merchant/edit/{id?}","Admin\MerchantController@edit");
+    //商家审核通过
+    Route::get("/merchant/success/{id?}","Admin\MerchantController@success");
+    //商家审核未通过
+    Route::get("/merchant/lose/{id?}","Admin\MerchantController@lose");
+    //商家禁用操作
+    Route::get("/merchant/forbidden/{id?}","Admin\MerchantController@forbidden");
 });
-
 
 

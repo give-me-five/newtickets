@@ -6,7 +6,6 @@ use Gregwar\Captcha\CaptchaBuilder;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Login;
-use App\Models\Shop_Detail;
 
 class LoginController extends Controller
 {
@@ -18,13 +17,21 @@ class LoginController extends Controller
     //执行登录
     public function doLogin(Request $request)
     {
-
         //获取管理员账号
         $account = $request->input('account');
+        //判断账号是否为空
+        if(empty($account)){
+            return back()->with("msg","账号不能为空");
+        }
+        //获取密码
+        $pass = $request->input('pass');
+        //判断密码是否为空
+        if(empty($pass)){
+            return back()->with("msg","密码不能为空");
+        }
         //判断管理员账号是否存在
         if(!empty($account)) {
-            //获取密码
-            $pass = $request->input('pass');
+
             //获取验证码
             $mycode = $request->input('code');
             $code = session()->get('code');
@@ -34,23 +41,18 @@ class LoginController extends Controller
             }
             //根据管理员账号获取管理员信息
             $info = Login::where('account', $account)->first();
-            if ($info && $info->status == 2) {
+            if ($info) {
                 //判断密码是否相等
-
-                if (\Hash::check($info->password, $pass)) {
-
-                    if ($info->pass == $pass) {
-
-                        session()->put("adminusers", $info);
+                if (decrypt($info->pass) == $pass) {
+                    session(["admin"=>$info]);
                         //跳转后台主页
                         //return redirect('admin/index');
-                        return redirect('admin/users/child');
-                    } else {
-                        return back()->with('msg', "账号或密码错误");
-                    }
+                    return redirect('admin/users/child');
                 } else {
                     return back()->with('msg', "账号或密码错误");
                 }
+            }else{
+                return back()->with('msg', "账号或密码错误");
             }
         }
     }
@@ -68,5 +70,10 @@ class LoginController extends Controller
         header("Cache-Control: no-cache, must-revalidate");
         header('Content-Type: image/jpeg');
         $builder->output();
+    }
+    //退出登录
+    public function loginout(Request $request){
+        $request->session()->forget('adminuser');
+        return redirect("admin/login");
     }
 }

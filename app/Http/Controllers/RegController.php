@@ -29,7 +29,7 @@ class RegController extends Controller
         header('Content-Type: image/jpeg');
         $builder->output();
     }
-    //执行登录
+    //执行ajax验证
     public function doLogin(Request $request)
     {
         //判断用户名开始
@@ -40,52 +40,39 @@ class RegController extends Controller
             //用户名存在
             return 1;
         }
-        //判断是否合法
-        $info = preg_match("/^1[34578]\d{9}&/",$phone);
-        if($info){
-            //用户名不合法
-            return 2;
-        }else{
-            //用户名可用
-            echo 3;
-        }
-        //判断用户名结束
 
-        //判断密码开始
-        //获取用户输入密码
-        $password = $request->input("password");
-        $info = preg_match("/^\w_{6,20}$/",$password);
-        if($info){
-            //密码不合法
-            return 4;
-        }else{
-            // 密码可用
-            echo 5;
-        }
-        //密码验证结束
-
-        //密码二次验证
-        $password2 = $request->input("password2");
-        $password = $request->input("password");
-        if($password != $password2){
-            //密码不一致
-            return 6;
-        }else{
-            //密码一致
-            echo 7;
-        }
-        //二次密码验证结束
-
+    }
+    //执行注册
+    public function regLogin(Request $request)
+    {
+        //获取用户名
+        $phone = $request->input("phone");
+        //获取验证码
         $mycode = $request->input("code");
         $code = Session("code");
+        //判断验证码是否合法
         if($mycode != $code){
             return back()->with("msg","验证码错误");
         }
-        $password = \Hash::make($request->input('password'));
+        //判断用户名是否合法
+        $info = preg_match("/^1[34578]\d{9}&/",$phone);
+        if(!empty($info)){
+            return back()->with("msg","用户名不合法");
+        }
+        //判断密码是否合法
+        $password = $request->input('password');
+        $pass = preg_match("/^\w_{6,20}$/",$password);
+        if(!empty($pass)){
+            return back()->with("msg","密码不合法");
+        }
+        //密码加密
+        $password = encrypt($password);
         $id  = \DB::table('users')->insertGetId(['phone'=>$phone,'password'=>$password]);
         if($id>0){
             $reg = new Reg();
+            //更新关联id
             $reg->where("id",$id)->update(['uid'=>$id]);
+            //插入关联id
             \DB::table('users_detail')->insert(['id'=>$id]);
             return redirect("reg/success");
         }else{

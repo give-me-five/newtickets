@@ -377,7 +377,7 @@
         </div>
 
         <div class="login-section" data-params="{&quot;service&quot;:&quot;www&quot;,&quot;isDialog&quot;:false }">
-            <form id="J-normal-form" action="">
+            <form id="J-normal-form" action="/login/doPhone">
                 <div class="validate-info" style="visibility: hidden;"></div>
                 {{ csrf_field() }}
                 <span class="login-type" data-mtevent="login.mobile.switch">
@@ -400,7 +400,7 @@
                 <div class="form-field form-field--icon">
                     <i class="icon icon-password"></i>
                     <input id="login-password" class="f-text" name="password" placeholder="短信验证码" type="password">
-                    <a href="">点击获取验证码</a>
+                    <a href="/login/doPhone">点击获取验证码</a>
                 </div>
                 <div class="form-field form-field--ops">
                     <input name="origin" value="account-login" type="hidden">

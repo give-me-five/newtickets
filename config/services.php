@@ -34,5 +34,9 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
-
+    'dayusms' => [
+        'key' => 'LTAIzemDiJQPlA1B',
+        'secret' => '1P7Ww85M6J1Po2dwRfqwLvwoSFI4Bq',
+        'signName' => '学习用',
+    ],
 ];
