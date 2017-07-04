@@ -45,7 +45,15 @@ Route::get('/shop/Logout',"Shop\LoginController@Logout");
 //加载商户注册页面
 Route::get('/shop/sigup',"Shop\SigupController@index");
 //执行商户注册
+
 Route::post('/shop/registered',"Shop\SigupController@registered");
+
+Route::post('/shop/sigup/registered',"Shop\SigupController@registered");
+//完善商户信息
+Route::post('/shop/information/upload',"Shop\InformationController@upload");
+
+
+
 //加载选择区域
 Route::get('/shop/sigup/{upid}',"Shop\SigupController@region");
 //加载验证码
@@ -60,14 +68,8 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     Route::resource('shopdetail', 'Shop\ShopdetailController');
 	//加载商家后台影厅页
     Route::get('/hall', 'Shop\HallController@index');
-	Route::get('/',"Shop\IndexController@index");
-	Route::resource('shopdetail', 'Shop\ShopdetailController');
-
-	Route::resource('hall', 'Shop\HallController');
-	Route::resource('projection', 'Shop\ProjectionController');
-
-	Route::get('/hall', 'Shop\HallController@index');
-	Route::resource('projection', 'Shop\ProjectionController');
+	//加载放映信息
+    Route::get('/projection', 'Shop\ProjectionController@index');
     //添加影厅
     Route::get('/create','Shop\HallController@create');
     //执行添加
@@ -76,6 +78,17 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     Route::get('/edit/{id}','Shop\HallController@edit');
 
 });
+
+Route::get('/admin',"Admin\IndexController@index");
+Route::resource('/admin/shopdetail', 'Admin\ShopdetailController');
+Route::resource('/admin/relshop', 'Admin\RelshopController');
+
+//加载注册页面
+Route::get("reg","RegController@index");
+//加载验证码
+Route::get("reg/code","RegController@code");
+//执行注册
+Route::post("reg/doLogin","RegController@doLogin");
 
 
 //新闻资讯路由

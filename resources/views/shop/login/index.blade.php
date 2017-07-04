@@ -67,13 +67,6 @@
 
 					
                     </div>
-
-                    <div class="am-form-group">
-					
-						<li class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn"><a href="{{url('shop/sigup')}}">注册</a></li>
-
-                    </div>
-
                 </form>
             </div>
         </div>

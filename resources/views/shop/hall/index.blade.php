@@ -30,7 +30,7 @@
                       <th>布局</th>
                       <th style="width: 100px">操作</th>
                     </tr>
-					@foreach ($lt as $vo)
+					@foreach ($hall as $vo)
 					 <tr>
                       <td>{{ $vo->id }}</td>
                       <td>{{ $vo->title }}</td>
@@ -44,7 +44,7 @@
 
                   </table>
                 </div><!-- /.box-body -->
-                {{ $lt->links() }}
+                {{ $hall->links() }}
               </div><!-- /.box -->
             </div><!-- /.col -->
             
