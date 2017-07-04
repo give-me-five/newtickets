@@ -62,8 +62,11 @@ class SigupController extends Controller
             ['name'=>$myname,'password'=>$mypassword]
             );
         if($id>0){
-          $shopid=\DB::table('shop_detail')->where("id",$id)->first();
-          session()->put("sigup",$shopid);
+          $shopid=\DB::table('shop_detail')->where("id",$id)->value('id');
+          //把相对应的id添加到详情表cid中
+          $list=\DB::table("shop_detail_copy")->insertGetId(
+            ["cid"=>$shopid]
+            );
         }
         return view("shop.login.information");
     	
