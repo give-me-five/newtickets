@@ -18,8 +18,7 @@
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/amazeui.datatables.min.css')}}" />
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/app.css')}}">
     <script src="{{asset('myadmin/assets/js/jquery.min.js')}}"></script>
-	 <script type="text/javascript" src="{{asset('myadmin/js/jQuery-2.1.4.min.js')}}"></script>
-</head>
+    <script type="text/javascript" src="{{asset('myadmin/js/jQuery-2.1.4.min.js')}}"></script>
 
 <body >
     <script src="{{asset('myadmin/assets/js/theme.js')}}"></script>
@@ -45,25 +44,27 @@
                   创建一个新的用户
               </span>
 
-
-                <form action="{{url('shop/registered')}}" method="post" class="am-form tpl-form-line-form" name="myform" onsubmit="reuturn doSubmit">
+                @if(session("msg"))
+                <p class="login-box-msg" style="color:red;">{{session("msg")}}</p>
+                @endif
+                <form action="{{url('shop/sigup/registered')}}" method="post" class="am-form tpl-form-line-form" name="myform" onsubmit="return doSubmit">
 					<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     
                     <div class="am-form-group">
-                        <input type="text" name="shopname" class="tpl-form-input" id="user-name" placeholder="商家名称">
+                        <input type="text" name="shopname" class="tpl-form-input" id="user-name" placeholder="商家名称"/>
                     </div>
 
                     <div class="am-form-group">
-                        <input type="text" class="tpl-form-input" name="myname" onblur="checkMyname()" id="user-name" placeholder="账号，5-20位数字、字母或下划线"
+                        <input type="text" class="tpl-form-input" name="myname" onblur="checkMyname()" id="user-name" placeholder="账号，5-20位数字、字母或下划线"/>
 
                     </div>
 
                     <div class="am-form-group">
-                        <input type="password" name="mypassword" class="tpl-form-input" id="user-name" placeholder="密码，6-16位数字、字母或下划线">
+                        <input type="password" name="mypassword" onblur="checkMypassword()" class="tpl-form-input" id="user-name" placeholder="密码，6-16位数字、字母或下划线"/>
                     </div>
 
                     <div class="am-form-group">
-                        <input type="password" name="twopassword" class="tpl-form-input" id="user-name" placeholder="再次填写上面的密码">
+                        <input type="password" name="twopassword" onblur="checkTWopassword()" class="tpl-form-input" id="user-name" placeholder="再次填写上面的密码">
                     </div>					
 					<!--加载验证码-->
 					 <div class="am-form-group">
@@ -91,117 +92,56 @@
     <script src="{{asset('myadmin/assets/js/amazeui.min.js')}}"></script>
     <script src="{{asset('myadmin/assets/js/app.js')}}"></script>
     <!--执行注册验证-->
-   <script>
+    <script type="text/javascript">
     function doSubmit(){
-        return checkMyname() &&  checkPassword() && checkTWopassword();
+        return checkMyname() &&  checkMypassword() && checkTWopassword();
     }
     //判断用户名是否合法
     function checkMyname(){
         //获取用户输入的信息
         var uname = $("input[name='myname']").val();
-        //var myname = document.myform.myname.value;
         //删除信息
         $("input[name='myname']").nextAll("span").remove();
         //判断用户是否合法
-        if(uname.match(/^[0-9,a-z,A-Z]{5,20}$/)==null){
-            $("<span style='color:red;'>用户名不合法请重新输入</span>").insertAfter("input[name='myname']");
+        if(uname.match(/^[0-9a-zA-Z_]{5,20}$/)==null){
+            $("<span style='color:#ff0033;'>用户名不合法请重新输入</span>").insertAfter("input[name='myname']");
+            //alert("adssad");
             return false;
         }
-        //执行ajax判断
-        $.ajax({
-            headers: {
-                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-            },
-            url:"/shop/registered",
-            type:"post",
-            data:"myname="+uname,
-            datatype:"text",
-            success:function(data){
-                if(data==1){
-                   $("<span style='color:red;'>您输入的用户名"+uname+"已存在</span>").insertafter("input[name='myname']");
-                    //document.myform.myname.value = "";
-                    return false;
-                }
-                if(data==2){
-                    $("<span style='color:red;'>用户名不可用</span>").insertafter("input[name='myname']");
-                    return false;
-                }else{
-                    $("<span style='color:green;'>用户名可用</span>").insertafter("input[name='myname']");
-                }
-            }
-        });
-        return true;
+
     }
     //密码验证
-    function checkpassword(){
-        //获取用户的输入密码
-        var password = document.myform.password.value;
-        $("input[name='password']").nextall('span').remove();
-
-        if(password==""){
-            $("<span style='color:red'>密码不能为空</span>").insertafter("input[name='password']");
-            return false
-        }
-        if(password.match(/^[a-za-z0-9_]{6,20}$/)==null){
-            $("<span style='color:red'>密码不合法请重新输入</span>").insertafter("input[name='password']");
-            return false;
-        }
-        //执行ajax验证
-        $.ajax({
-            headers: {
-                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-            },
-            url:'/reg/dologin',
-            type:'post',
-            data:'password='+password,
-            datatype:'text',
-            success:function(data){
-                //密码不合法
-                if(data==4){
-                    $("<span style='color:red'>密码格式不合法</span>").insertafter("input[name='password']");
-                    return false;
-                }else{
-                    $("<span style='color:green'>密码可用</span>").insertafter("input[name='password']");
-                }
-            }
-        });
-        return true;
-    }
-    //确认密码验证
-    function checkpassword2()
+    function checkMypassword()
     {
-        //获取确认密码
-        var password2 = document.myform.password2.value;
-        var password = document.myform.password.value;
-        $("input[name='password2']").nextall("span").remove();
-        if(password2 != password){
-            $("<span style='color:red'>两次密码不一致请重新输入</span>").insertafter("input[name='password2']");
-            document.myform.password2.value ="";
+        //获取输入的密码
+        var upassword=$("input[name='mypassword']").val();
+        //删除获取的密码信息
+        $("input[name='mypassword']").nextAll("span").remove();
+        //alert("ad");
+        //验证密码
+        if(upassword==""){
+            $("<span style='color:#ff0033;'>密码不能为空!</span>").insertAfter("input[name='mypassword']");
             return false;
         }
-        if(password2==""){
-            $("<span style='color:red'>密码不能为空</span>").insertafter("input[name='password2']");
-            return false
+        $("input[name='mypassword']").nextAll("sapn").remove();
+        if(upassword.match(/^[0-9,a-z,A-Z]{6,16}$/)==null){
+            $("<span style='color:#ff0033;'>密码格式错误!</span>").insertAfter("input[name='mypassword']");
+            return false;
         }
-        $.ajax({
-            headers: {
-                'x-csrf-token': $('meta[name="csrf-token"]').attr('content')
-            },
-            url:'/reg/dologin',
-            type:'post',
-            data:'password2='+password2+"password"+password,
-            datatype:'text',
-            success:function(data){
-                if(data==6){
-                    $("<span style='color:red'>两次密码不一致请重新输入</span>").insertafter("input[name='password2']");
-                    document.myform.password2.value ="";
-                    return false;
-                }else{
-                    $("<span style='color:green'>密码一致</span>").insertafter("input[name='password2']");
-                }
-            }
-        });
-        return true;
+
+    }
+
+    //第二次验证密码
+    function checkTWopassword(){
+        //获取第2输入的密码
+        var twopassword=$("input[name='twopassword']").val();
+        var upassword=$("input[name='mypassword']").val();
+        //alert("ada");
+        $("input[name='twopassword']").nextAll("span").remove();
+        if(twopassword!=upassword){
+            $("<span style='color:#ff0033;'>两次密码不一样!<span>").insertAfter("input[name='twopassword']");
+            return false;
+        }
     }
 </script> 
 </body>

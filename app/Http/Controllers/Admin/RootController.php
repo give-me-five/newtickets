@@ -16,13 +16,15 @@ class RootController extends Controller
      */
     public function index(Request $request)
     {
-        $db = \DB::table('admin');
+        $db = \DB::table('admin')->orderBy("id","desc");
         $where = [];
+        //添加搜索条件
         if($request->has('name')){
             $name = $request->input('name');
             $db->where("account","like","%{$name}%");
             $where[] = $name;
         }
+        //每页显示6条数据
         $list = $db->paginate(6);
         return view('admin.root.child',['list'=>$list,'where'=>$where]);
     }
@@ -33,7 +35,13 @@ class RootController extends Controller
      */
     public function create()
     {
-        return view("admin.root.add");
+        //加载管理员添加模板
+        if(session("admin")->status != 2){
+            echo "<script>alert('抱歉，您没有操作权限!!!')</script>";
+            echo "<script>window.history.back()</script>";
+        }else{
+            return view("admin.root.add");
+        }
     }
 
     /**
@@ -47,21 +55,16 @@ class RootController extends Controller
 
         //获取用户数据
         $account = $request->account;
-        $password = \Hash::make($request->pass);
+        $password = encrypt($request->input('pass'));
         $name = $request->name;
+
         //判断账号是否存在
-        $info = Admin::where("account",$account)->first();
-        if($info) {
-            return back()->with('msg','账号已存在');
+        $info = Admin::where("account", $account)->first();
+        if ($info) {
+            return back()->with('msg', '账号已存在');
         }
-        //判断添加账号是否为超级管理员
-        if($account == "adminuser"){
-            //执行超级管理员添加
-            $id = \DB::table('admin')->insertGetId(["account"=>$account,"pass"=>$password,"name"=>$name,"role"=>1,"status"=>2,"addtime"=>time()]);
-        }else{
-            //执行普通管理员添加
-            $id = \DB::table('admin')->insertGetId(["account"=>$account,"pass"=>$password,"name"=>$name,"role"=>1,"status"=>3,"addtime"=>time()]);
-        }
+        //执行普通管理员添加
+        $id = \DB::table('admin')->insertGetId(["account" => $account, "pass" => $password, "name" => $name, "role" => 1, "status" => 3, "addtime" => time()]);
         if($id>0){
             return redirect("/admin/root");
         }else{
@@ -91,8 +94,15 @@ class RootController extends Controller
     //启用管理员
     public function edit($id)
     {
-        Admin::where('id',$id)->update(['status'=>3]);
-        return redirect('admin/root/');
+        //判断是否为超级管理员
+        if(session("admin")->status != 2){
+            echo "<script>alert('您没有操作权限')</script>";
+            echo "<script>window.history.back()</script>";
+            return ;
+        }else{
+            Admin::where('id',$id)->update(['status'=>3]);
+            return redirect('admin/root/');
+        }
     }
 
     /**
@@ -105,10 +115,24 @@ class RootController extends Controller
     //禁用管理员
     public function update(Request $request, $id)
     {
-        $admin = new Admin();
-        $admin->where('id',$id)->update(['status'=>4]);
-        return redirect('admin/root/');
+        //如果为1不能禁用
+        if($id == 1){
+            echo "<script>alert('超级管理员不能禁用')</script>";
+            echo "<script>window.history.back()</script>";
+            return ;
+        }
+        //判断是否为超级管理员
+        if(session("admin")->status != 2){
+            echo "<script>alert('您没有操作权限')</script>";
+            echo "<script>window.history.back()</script>";
+            return ;
+        }else{
+            $admin = new Admin();
+            $admin->where('id',$id)->update(['status'=>4]);
+            return redirect('admin/root/');
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -118,6 +142,6 @@ class RootController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

@@ -19,7 +19,7 @@ class UsersController extends Controller
     //模板继承
     public function child(Request $request)
     {
-        $db =\DB::table('users');
+        $db = \DB::table('users')->orderBy("id","desc");
         $where = [];
         //判断搜索账号是否存在
         if(!empty($request->has('name'))){

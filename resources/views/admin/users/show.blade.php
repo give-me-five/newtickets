@@ -1,6 +1,7 @@
-@extends('admin.users.index')
-
+@extends('admin.base')
 @section("contents")
+    <div class="widget-title am-fl"><a href="/admin/users/child"><<返回</a></div>
+    <hr/>
     <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
         <thead>
             <tr>
@@ -23,8 +24,8 @@
                 <td>{{ $list->address }}</td>
                 <td> @if($list->status == 1 ) 启用中 @else 禁用中 @endif </td>
                 <td>{{ $list->email }}</td>
-                <td>{{ $list->firsttime }}</td>
-                <td>{{ $list->lasttime }}</td>
+                <td>{{ date("Y-m-d H:i:s",$list->firsttime) }}</td>
+                <td>{{ date("Y-m-d H:i:s",$list->lasttime) }}</td>
                 <td>
 
                     @if($list->status == 1)
@@ -49,9 +50,7 @@
     }
     //启用
     function reset(){
-
         if(confirm('该用户违反相关规定也被禁用，你确定要重新启用吗？？')){
-
             return true;
         }else{
             return false;

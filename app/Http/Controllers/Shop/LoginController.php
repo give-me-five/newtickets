@@ -36,14 +36,7 @@ class LoginController extends Controller
 	public function Logout(Request $request)
 	{
 		$request->session()->pull('adminuser');
+		//$request->session()->forget('adminuser');
 		return redirect("/shop");
 	}
-	//注册
-	public function sigup()
-	{
-		
-		return view("shop.login.sigup");
-	}
-	
-
 }

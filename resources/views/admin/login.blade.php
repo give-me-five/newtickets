@@ -31,15 +31,14 @@
         @else
             <p class="login-box-msg">Sign in to start your session</p>
         @endif
-        <form action="{{url('admin/login/doLogin')}}" method="post">
+        <form action="{{url('admin/login/doLogin')}}" method="post" onsubmit="return doLogin()">
           <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="account" placeholder="用户名"/>
+            <input type="text" class="form-control" name="account" placeholder="用户名"  onblur="checkName()"/>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" name="pass" class="form-control" placeholder="密码"/>
-
+            <input type="password" name="pass" class="form-control" placeholder="密码" checkPass()/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -83,13 +82,13 @@
     <!-- iCheck -->
     <script src="{{asset('myadmin/plugins/iCheck/icheck.min.js')}}" type="text/javascript"></script>
     <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
+        $(function () {
+            $('input').iCheck({
+              checkboxClass: 'icheckbox_square-blue',
+              radioClass: 'iradio_square-blue',
+              increaseArea: '20%' // optional
+            });
         });
-      });
     </script>
   </body>
 </html>
