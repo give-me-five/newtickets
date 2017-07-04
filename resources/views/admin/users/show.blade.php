@@ -1,5 +1,4 @@
-@extends('admin.index')
-
+@extends('admin.base')
 @section("contents")
     <div class="widget-title am-fl"><a href="/admin/users/child"><<返回</a></div>
     <hr/>
