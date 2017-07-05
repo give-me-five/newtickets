@@ -7,7 +7,7 @@
   <meta name="description" content="猫眼电影致力于打造中国最大最全的电影信息资讯平台,在这里,海量影视资料应有尽有,热点影视讯息一网打尽,更有秒级实时票房,热门榜单,极致地满足您独特的观影口味">
   <meta http-equiv="cleartype" content="yes">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="shortcut icon" href="{{asset('home/images/favicon.ico')}}" type="image/x-icon" /> 
+  <link rel="shortcut icon" href="{{asset('home/images/favicon.ico')}}" type="image/x-icon" />
   <link rel="stylesheet" href="{{asset('home/css/common.dce64fb8.css')}}">
   <link rel="stylesheet" href="{{asset('home/css/home-index.ff98348e.css')}}">
   <link rel="stylesheet" href="{{asset('home/css/movie-list.ffb4de4a.css')}}">
@@ -33,9 +33,9 @@
         <div class="nav">
             <ul class="navbar">
                 <li><a href="http://www.movie.com/" data-act="home-click" class="active">首页</a></li>
-                
+
                 <li><a href="http://www.movie.com/films" data-act="movies-click">电影</a></li>
-                
+
                 <li><a href="http://www.movie.com/cinemas" data-act="board-click">影院</a></li>
                 <li><a href="http://www.movie.com/news" data-act="hotNews-click">热点</a></li>
             </ul>

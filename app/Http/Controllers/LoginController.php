@@ -8,6 +8,7 @@ use App\Models\Users;
 use App\Models\User;
 use Illuminate\Notifications\Notification;
 use Request as ip;
+use iscms\Alisms\SendsmsPusher as Sms;
 //会员登录/注册控制器
 class LoginController extends Controller
 {
