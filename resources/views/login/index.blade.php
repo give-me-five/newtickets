@@ -386,10 +386,6 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
         <div class="validate-info" style="visibility: hidden;"></div>
         {{ csrf_field() }}
         <span class="login-type" data-mtevent="login.mobile.switch">
-            <a id="J-mobile-link" href="/login/phone">
-                手机动态码登录
-                <i></i>
-            </a>
             账号登录
         </span>
         <div class="form-field form-field--icon">
@@ -403,9 +399,8 @@ body, html { background: rgb(255, 255, 255) none repeat scroll 0% 0%; }
 
         <div class="form-field form-field--icon">
             <i class="icon icon-password"></i>
-            <input type="text" name="code" class="f-text J-pwd2"  placeholder="验证码" type="code"/>
-        </div>
-        <div class="form-field form-field--icon">
+            <input type="text" name="code" class="f-text J-pwd2" style="width:80px;"  placeholder="验证码" type="code"/>
+
             <img src="{{ url('reg/code') }}" onclick="this.src='{{ url('reg/code') }}?id='+Math.random(); " width="100" height="34"/>
         </div>
         <div class="form-field J-form-field-captcha form-field--captcha" style="display: none;">

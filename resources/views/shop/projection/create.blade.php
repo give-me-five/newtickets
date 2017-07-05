@@ -4,11 +4,11 @@
         <section class="content-header">
           <h1>
             <i class="fa fa-calendar"></i>
-			添加影厅信息
+			添加放映信息信息
           </h1>
           <ol class="breadcrumb">
             <li><a href="{{url('shop')}}"><i class="fa fa-dashboard"></i> 首页</a></li>
-            <li class="active">添加影厅信息</li>
+            <li class="active">添加放映信息</li>
           </ol>
         </section>
 
@@ -20,7 +20,7 @@
               <!-- Horizontal Form -->
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-plus"></i> 添加影厅信息</h3>
+                  <h3 class="box-title"><i class="fa fa-plus"></i> 添加信息</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
                 <form action="{{url('shop/store')}}" method="post" class="form-horizontal">
@@ -30,27 +30,32 @@
                       <label for="inputEmail3" class="col-sm-2 control-label">影厅名称：</label>
                       <div class="col-sm-4">
                       <select name="title" class="form-control" id="inputEmail3">
-                          <option>1号厅</option>
-                          <option>2号厅</option>
-                          <option>3号厅</option>
-                          <option>4号厅</option>
-                          <option>5号厅</option>
-                          <option>6号厅</option>
-                          <option>7号厅</option>
-                          <option>8号厅</option>
+                         @foreach($hall as $vo)
+                          <option>{{$vo}}</option>
+                          @endforeach
                       </select>
                       </div>
                     </div>
 				      	<div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">座位布局：</label>
+                      <label for="inputPassword3" class="col-sm-2 control-label">影片信息</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="座位布局" name="layout">
+                       <select name="title" class="form-control" id="inputEmail3">
+                         @foreach($film as $vo)
+                          <option>{{$vo}}</option>
+                          @endforeach
+                      </select>
                       </div>
                     </div>
 					     <div class="form-group">
                       <label for="inputPassword3" class="col-sm-2 control-label">座位数量：</label>
                       <div class="col-sm-4">
                         <input type="text" class="form-control" id="inputPassword3" placeholder="座位数量" name="number">
+                      </div>
+                    </div>
+                     <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">放映时间：</label>
+                      <div class="col-sm-4">
+                        <input type="datetime-local" class="form-control" id="inputPassword3"  name="number">
                       </div>
                     </div>
                   </div><!-- /.box-body -->
