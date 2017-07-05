@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Redis as Redis;
 //引入阿里大鱼命名空间
 use iscms\Alisms\SendsmsPusher as Sms;
 use Request as ip;
-use iscms\Alisms\SendsmsPusher as Sms;
 //会员登录/注册控制器
 class LoginController extends Controller
 {

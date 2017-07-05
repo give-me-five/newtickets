@@ -185,6 +185,7 @@ Route::get('/business/logout','Business\LoginController@logout');//退出
 Route::group(['prefix' => 'business','middleware' => 'business'], function(){
     Route::get('/',"Business\IndexController@index"); 
     //后台首页路由
+    
     Route::get('/order',"Business\OrdersController@index"); //商家订单
     Route::resource('/hall',"Business\HallController"); //放映厅管理
     //放映信息管理Start
@@ -193,5 +194,9 @@ Route::group(['prefix' => 'business','middleware' => 'business'], function(){
     Route::get('/pro/edit/{id}',"Business\ProjectionController@edit"); //修改放映信息
     Route::get('/pro/update/{id}',"Business\ProjectionController@update"); //更新放映信息
     //放映信息路由END
+    Route::get('/change','Business\IndexController@changePass');//加载修改密码模板
+    Route::get('/change/shezhi/{id}','Business\IndexController@change');
+    //
+    // Route::get('/change/shezhis','Business\IndexController@change');
 });
 // end

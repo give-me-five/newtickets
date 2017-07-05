@@ -103,7 +103,7 @@
                         Hello, 
                     </div> -->
                     <ul>
-                        <li><a href="#">修改密码</a></li>
+                        <li><a href="{{url('business/change')}}">修改密码</a></li>
                         <li><a href="{{url('business/logout')}}">退出</a></li>
                     </ul>
                 </div>
