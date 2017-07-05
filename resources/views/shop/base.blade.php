@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>后台模板AdminLTE 2|Dashboard</title>
     <!-- 告诉浏览器响应屏幕宽度 -->
+
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="{{asset('myadmin/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />    
