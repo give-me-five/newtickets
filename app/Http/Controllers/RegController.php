@@ -54,7 +54,7 @@ class RegController extends Controller
     {
         if($request->has('num')){
             $input = $request->input("phone");
-            $exists = Redis::exists($input,300);
+            $exists = Redis::expire($input,300);
             if($exists === true){
                 return back()->with("msg","不能重复获取");
             }
@@ -97,6 +97,7 @@ class RegController extends Controller
             }
             //密码加密
             $password = encrypt($password);
+
             $id  = \DB::table('users')->insertGetId(['phone'=>$phone,'password'=>$password]);
             if($id>0){
                 $reg = new Reg();

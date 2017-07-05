@@ -26,7 +26,6 @@
                 @endif
                 <form action="/reg/regLogin" method="post" name="myform" onsubmit="return doSubmit();" >
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
-
                     <div class="form-field form-field--mobile">
                         <label>手机号</label>
                         <input name="phone" class="f-text J-mobile"  placeholder="由6到16位的数字，字母，下划线组成" type="text" onblur="checkPhone()">

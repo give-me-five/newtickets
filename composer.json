@@ -11,8 +11,9 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "mews/captcha": "^2.1",
-        "zgldh/qiniu-laravel-storage": "^0.6.8",
-        "predis/predis": "~1.1@dev"
+        "gregwar/captcha": "1.*",
+        "predis/predis": "~1.1@dev",
+        "zgldh/qiniu-laravel-storage": "^0.6.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
