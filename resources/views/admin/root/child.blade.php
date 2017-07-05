@@ -1,8 +1,6 @@
-@extends('admin.index')
-@section('sidebar')
-    <div class="widget-title am-fl">管理员列表</div>
-@endsection
-@section("contents")
+@extends('admin.base')
+
+@section("content")
     <div style="width:100px;float: right;" class="widget-title am-fl"><a href="/admin/root/create/">添加管理员</a></div>
     <form action="/admin/root/" method="get" class="form-inline">
         {{csrf_field()}}
@@ -49,8 +47,9 @@
                 </tr>
             </tbody>
             @endforeach
+            {{ $list->appends($where)->links() }}
         </table>
-        {{ $list->appends($where)->links() }}
+
 @endsection
 {{--伪造表单--}}
 <form action="" method="post" name="myform">

@@ -1,5 +1,5 @@
 @extends('admin.base')
-@section("contents")
+@section("content")
     <div class="widget-title am-fl"><a href="/admin/users/child"><<返回</a></div>
     <hr/>
     <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">

@@ -7,9 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\Reg;
 use Illuminate\Support\Facades\Hash;
 use Session;
-
+use Illuminate\Support\Facades\Redis as Redis;
+//引入阿里大鱼命名空间
+use iscms\Alisms\SendsmsPusher as Sms;
 class RegController extends Controller
 {
+    public $sms;
+    //构造方法
+    public function __construct(Sms $sms)
+    {
+        $this->sms = $sms;
+    }
     public function index()
     {
         return view("reg.index");
@@ -40,44 +48,68 @@ class RegController extends Controller
             //用户名存在
             return 1;
         }
-
     }
     //执行注册
     public function regLogin(Request $request)
     {
-        //获取用户名
-        $phone = $request->input("phone");
-        //获取验证码
-        $mycode = $request->input("code");
-        $code = Session("code");
-        //判断验证码是否合法
-        if($mycode != $code){
-            return back()->with("msg","验证码错误");
-        }
-        //判断用户名是否合法
-        $info = preg_match("/^1[34578]\d{9}&/",$phone);
-        if(!empty($info)){
-            return back()->with("msg","用户名不合法");
-        }
-        //判断密码是否合法
-        $password = $request->input('password');
-        $pass = preg_match("/^\w_{6,20}$/",$password);
-        if(!empty($pass)){
-            return back()->with("msg","密码不合法");
-        }
-        //密码加密
-        $password = encrypt($password);
-        $id  = \DB::table('users')->insertGetId(['phone'=>$phone,'password'=>$password]);
-        if($id>0){
-            $reg = new Reg();
-            //更新关联id
-            $reg->where("id",$id)->update(['uid'=>$id]);
-            //插入关联id
-            \DB::table('users_detail')->insert(['id'=>$id]);
-            return redirect("reg/success");
+        if($request->has('num')){
+            $input = $request->input("phone");
+            $exists = Redis::exists($input,300);
+            if($exists === true){
+                return back()->with("msg","不能重复获取");
+            }
+            $num = rand(100000,999999);
+            // 组装参数
+            $smsParams = [
+                'code'    => "{$num}",
+                'product' => $input
+            ];
+            // 需要参数
+            $phone = $input;
+            $name = '熊猫电影';
+            $content = json_encode($smsParams);
+
+            $code = 'SMS_10405984';
+            //  发送验证码方法
+            $data = $this->sms->send($phone, $name, $content, $code);
+            Redis::sEtex($phone,290,$num);
+            // 检查对象是否具有 result 属性
         }else{
-            return redirect("reg/lose");
+            //获取用户名
+            $phone = $request->input("phone");
+            //获取验证码
+            $mycode = $request->input("code");
+            $code = Redis::get($phone);
+            //判断验证码是否合法
+            if($mycode != $code){
+                return back()->with("msg","验证码错误");
+            }
+            //判断用户名是否合法
+            $info = preg_match("/^1[34578]\d{9}&/",$phone);
+            if(!empty($info)){
+                return back()->with("msg","用户名不合法");
+            }
+            //判断密码是否合法
+            $password = $request->input('password');
+            $pass = preg_match("/^\w_{6,20}$/",$password);
+            if(!empty($pass)){
+                return back()->with("msg","密码不合法");
+            }
+            //密码加密
+            $password = encrypt($password);
+            $id  = \DB::table('users')->insertGetId(['phone'=>$phone,'password'=>$password]);
+            if($id>0){
+                $reg = new Reg();
+                //更新关联id
+                $reg->where("id",$id)->update(['uid'=>$id]);
+                //插入关联id
+                \DB::table('users_detail')->insert(['id'=>$id]);
+                return redirect("reg/success");
+            }else{
+                return redirect("reg/lose");
+            }
         }
+
     }
     //注册成功
     public function success()
