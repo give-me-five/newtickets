@@ -1,5 +1,25 @@
 @extends('home.base')
   @section('content')
+
+
+<script>
+    //执行评论添加
+    function doSubmit(){
+      //获取要添加的内容
+      var comment = document.myform.comment.value;
+      $.ajax({
+        headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+        url:"{{url('/films/comment')}}/{{$first->id}}",
+        type:"post",
+        data:"comment"+comment,
+        datatype:"text",
+        
+      });
+      return true;
+    }
+</script>
 <div class="banner">
     <div class="wrapper clearfix">
       <div class="celeInfo-left">
@@ -125,6 +145,20 @@
                     </div>
                 </div>
               </div>
+                <div class="module">
+                  <div class="mod-title">
+                    <h3>写短评</h3>
+                  </div>
+                  <div class="mod-content">
+                      <form name="myform" action="{{url('/films/comment')}}/{{$first->id}}" method="post" onsubmit="return doSubmit(); ">
+                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                          
+                          <textarea name="comment" cols="50" rows="5" placeholder="说点你的看法吧"></textarea><br/><br/>
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <input type="submit" value="评论">
+                      </form>
+                  </div>
+              </div>
               <div class="module">
                   <div class="mod-title">
                     <h3>热门短评</h3>
@@ -158,13 +192,21 @@
                               </li>  
                           </ul>
                       </div>
-                      <a class="comment-entry" data-act="comment-no-content-click">写短评</a>
+                     
+                      
+                     
                   </div>
               </div>
           </div>
       </div>
     </div>
   </div>
+
+
+<!-- Button trigger modal -->
+
+
+
   <div class="related">
   <div class="module">
     <div class="mod-title">
@@ -335,38 +377,8 @@
   </div>
   </div>
 </div>
-<script id="comment-form-container" type="text/template">
-  <form id="comment-form" data-val="{movieid:248645}">
-    <div class="score-msg-container ">
-        <div class="score"><span class="num"></span>分</div>
-        <div class="score-message"></div>
-        <div class="no-score">
-          请点击星星评分
-        </div>
-    </div>
-    <div class="score-star-contaienr">
-      <ul class="score-star clearfix" data-score="">
-    <li>
-<i class="half-star left "></i><i class="half-star right "></i>    </li>
-    <li>
-<i class="half-star left "></i><i class="half-star right "></i>    </li>
-    <li>
-<i class="half-star left "></i><i class="half-star right "></i>    </li>
-    <li>
-<i class="half-star left "></i><i class="half-star right "></i>    </li>
-    <li>
-<i class="half-star left "></i><i class="half-star right "></i>    </li>
-</ul>
 
-    </div>
-    <div class="content-container">
-      <textarea placeholder="快来说说你的看法吧" name="content" id="" cols="30" rows="10"></textarea>
-      <span class="word-count-info"></span>
-    </div>
-    <input type="hidden" name="score" />
-    <input class="btn" type="submit" value="提交" data-act="comment-submit-click" />
-  </form>
-  <div class="close">×</div>
-</script>
-    </div>
+</div>
+
 @endsection
+

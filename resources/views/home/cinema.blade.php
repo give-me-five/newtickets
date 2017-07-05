@@ -23,6 +23,10 @@
 				当前条件下共有<span class="count">177</span>家影院 
 			</div>
 			<ul class="sortbar-detail J_cinemaList">
+<<<<<<< HEAD
+=======
+			
+>>>>>>> b916d1a6b94bbfdde8d39c1a3a9f15df24b227ce
 			    <li class="current">
 					<div class="detail-right">
 						
@@ -42,7 +46,12 @@
 							<div class="middle-p-list"><i>地址：</i><span class="limit-address">朝阳区东大桥路9号芳草地大厦LG2-26</span><a class="J_miniMap" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=9462&amp;n_s=new#detail" data-points="116.449826,39.919551">[地图]</a></div>    							<div class="middle-p-list"><i>电话：</i>010-56907679,0</div>    							<div class="middle-p-list"><i>更多：</i><a class="middle-more" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=9462&amp;n_s=new#detail">影院服务</a><a class="middle-more" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=9462&amp;n_s=new#detail">交通信息</a></div>
 						</div>
 					</div>
+<<<<<<< HEAD
 				</li> 
+=======
+				</li>
+			 
+>>>>>>> b916d1a6b94bbfdde8d39c1a3a9f15df24b227ce
 			</ul>
 					
 			<div class="sortbar-more J_cinemaMore" data-ajax="http://dianying.taobao.com/ajaxCinemaList.htm" data-param="page=1&amp;regionName=&amp;cinemaName=&amp;pageSize=10&amp;pageLength=18&amp;sortType=0&amp;n_s=new">
