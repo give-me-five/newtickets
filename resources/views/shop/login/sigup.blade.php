@@ -103,7 +103,7 @@
         //删除信息
         $("input[name='myname']").nextAll("span").remove();
         //判断用户是否合法
-        if(uname.match(/^[0-9a-zA-Z_]{5,20}$/)==null){
+        if(uname.match(/^\w{5,20}$/)==null){
             $("<span style='color:#ff0033;'>用户名不合法请重新输入</span>").insertAfter("input[name='myname']");
             //alert("adssad");
             return false;
@@ -124,7 +124,7 @@
             return false;
         }
         $("input[name='mypassword']").nextAll("sapn").remove();
-        if(upassword.match(/^[0-9,a-z,A-Z]{6,16}$/)==null){
+        if(upassword.match(/^\w{6,16}$/)==null){
             $("<span style='color:#ff0033;'>密码格式错误!</span>").insertAfter("input[name='mypassword']");
             return false;
         }

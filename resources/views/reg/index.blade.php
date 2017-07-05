@@ -41,8 +41,11 @@
                     </div>
                     <div class="form-field form-field--pwd2">
                         <label>验证码</label>
-                        <input type="text" name="code" size="30" class="f-text J-pwd2"/>
-                        <img src="{{ url('reg/code') }}" onclick="this.src='{{ url('reg/code') }}?id='+Math.random(); " width="100" height="34"/>
+                        <input type="text" name="code" style="width:80px;" class="f-text J-pwd2"/>
+                        <a  href="javascript:void(0)"  id="sendMobileCode">
+                            {{--<button type="button" name="sub" onclick="send2(this)" id="dyMobileButton" class="dyMobileButton" >获取验证码</button>--}}
+                            <input type="button" style="width:100px;height:35px" id="dyMobileButton" value="获取验证码" onclick="settime(this)" />
+                        </a>{{--<img src="{{ url('reg/code') }}" onclick="this.src='{{ url('reg/code') }}?id='+Math.random(); " width="100" height="34"/>--}}
                     </div>
                     <div class="form-field">
                         <input data-mtevent="signup.submit" name="commit" class="btn" value="注册" type="submit">
@@ -125,6 +128,10 @@
         var password2 = document.myform.password2.value;
         var password = document.myform.password.value;
         $("input[name='password2']").nextAll("span").remove();
+        if(password2==""){
+            $("<span style='color:red'>密码不能为空</span>").insertAfter("input[name='password2']");
+            return false
+        }
         if(password2 != password){
             $("<span style='color:red'>两次密码不一致请重新输入</span>").insertAfter("input[name='password2']");
             document.myform.password2.value ="";
@@ -133,12 +140,53 @@
             $("<span style='color:green'>密码一致</span>").insertAfter("input[name='password2']");
             return true;
         }
-        if(password2==""){
-            $("<span style='color:red'>密码不能为空</span>").insertAfter("input[name='password2']");
-            return false
+
+        return true;
+    }
+    //设置300秒有效时间
+    var countdown=300;
+    //定时器
+    function settime(obj) {
+        var phone = document.myform.phone.value;
+        if(phone.match(/^1[34578]\d{9}$/)==null){
+            $("<span style='color:red;'>用户名不合法请重新输入</span>").insertAfter("input[name='phone']");
+            return false;
         }
+        if(phone == ""){
+            $("<span style='color:red;'>用户名不能为空</span>").insertAfter("input[name='phone']");
+            return false;
+        }
+        if (countdown == 0) {
+            obj.removeAttribute("disabled");
+            obj.value="免费获取验证码";
+            countdown = 300;
+            return;
+        } else {
+            obj.setAttribute("disabled", true);
+            obj.value="重新发送(" + countdown + ")";
+            countdown--;
+            if(countdown == 299){
+                send2();
+            }
+        }
+        setTimeout(function() {settime(obj) },1000)
+    }
+    //ajax发送
+    function send2(){
+        //执行ajax判断
+        var phone = document.myform.phone.value;
+        //执行ajax发送
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url:"/reg/regLogin",
+            type:"post",
+            data:"phone="+phone+"&num="+1,
+        });
         return true;
     }
 </script>
+<script src="{{ asset('/js/register.js') }}" type="text/javascript"></script>
 </body>
 </html>

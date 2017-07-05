@@ -3,8 +3,8 @@
 	<!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-            信息输出表
-            <small>preview of simple tables</small>
+            影厅信息输出表
+            
           </h1>
           <ol class="breadcrumb">
             <li><a href="{{url('shop')}}"><i class="fa fa-dashboard"></i> 首页</a></li>
@@ -24,20 +24,20 @@
                 <div class="box-body">
                   <table class="table table-bordered">
                     <tr>
-                      <th style="width:60px">ID号</th>
+                      <th>ID</th>
                       <th>名称</th>
                       <th>座位数</th>
                       <th>布局</th>
-                      <th style="width: 100px">操作</th>
+                      
                     </tr>
 					@foreach ($hall as $vo)
 					 <tr>
-                      <td>{{ $vo->id }}</td>
+						<td>{{ $vo->id }}</td>
                       <td>{{ $vo->title }}</td>
                       <td>{{ $vo->number }}</td>
                       <td>{{ $vo->layout }}</td>
                       <td>
-                      <button onclick="window.location='{{url('shop/edit')}}/{{$vo->id}}'" class="btn btn-xs btn-primary">编辑</button> </td>
+                     
                     </tr>
 
 					@endforeach
@@ -45,6 +45,7 @@
                   </table>
                 </div><!-- /.box-body -->
                 {{ $hall->links() }}
+
               </div><!-- /.box -->
             </div><!-- /.col -->
             
