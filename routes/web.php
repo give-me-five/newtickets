@@ -83,6 +83,7 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     Route::get('/projection/{id}', 'Shop\ProjectionController@update');
     //添加放映信息
     Route::get('/projection/create', 'Shop\ProjectionController@create');
+    Route::post('/projection/store', 'Shop\ProjectionController@store');
     //添加影厅
     Route::get('/create','Shop\HallController@create');
     //执行添加

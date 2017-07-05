@@ -22,17 +22,22 @@ class HallController extends Controller
 	//添加影厅
 	public function create()
 	{
-		return view('shop.hall.create');
+		//获取所有的影厅信息
+		$hall=\DB::table("hall")->get();
+		return view('shop.hall.create',compact("hall"));
 	}
 	//执行添加
 	public function store(request $request)
 	{
+		$cid=session('adminuser')->id;
+		$this->validate($request, [
+            'title' => Rule::unique('hall')->where("cid",$cid),
+        ]);
 
 		//获取要添加的数据
 		$title=$request->input("title");
 		$number=$request->input("number");
 		$layout=$request->input("layout");
-		$cid=session('adminuser')->id;
 		//执行添加
 		$id=\DB::table("hall")->insertGetId(
 			["cid"=>$cid,"title"=>$title,"number"=>$number,"layout"=>$layout]

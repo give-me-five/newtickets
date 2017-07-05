@@ -32,7 +32,13 @@
                   <div class="box-body">
                     <div class="form-group">
                       <label for="inputEmail3"  class="col-sm-2 control-label">放映厅</label>
-                     
+                     <div class="col-sm-4">
+                      <select name="title" class="form-control"  id="inputEmail3">
+                         @foreach ($halist as $ho)
+                          <option @if ($prolist->hid == $ho->id) selected @endif>{{$ho->title}}</option>
+                         @endforeach
+                      </select>
+                    </div>
                     </div>
 					           <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">影片</label>
@@ -46,6 +52,12 @@
                     </div>
 					         <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">放映时间</label>
+                      <div class="col-sm-4">
+                        <input type="datetime-local" name="datetime" class="form-control" value="{{$prolist->datetime}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">结束时间</label>
                       <div class="col-sm-4">
                         <input type="datetime-local" name="datetime" class="form-control" value="{{$prolist->datetime}}">
                       </div>
