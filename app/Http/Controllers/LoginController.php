@@ -87,5 +87,6 @@ class LoginController extends Controller
         header("Cache-Control: no-cache, must-revalidate");
         header('Content-Type: image/jpeg');
         $builder->output();
+
     }
 }
