@@ -34,6 +34,11 @@
         <dd><input class="txt" name="shopname" id="Company_name" maxlength="111" value="" type="text"></dd>
         <dd class="error"></dd>
     </dl>
+    <dl class="clearfix">
+        <dt>企业图片<font>*</font></dt>
+        <dd><input class="txt" name="shopname" id="Company_name" maxlength="111" value="" type="text"></dd>
+        <dd class="error"></dd>
+    </dl>
 
     <dl class="clearfix">
         <dt>所在地 <font>*</font></dt>
