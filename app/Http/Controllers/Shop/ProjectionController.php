@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Projection;
+use Illuminate\Validation\Rule;
 
 class ProjectionController extends Controller
 {
@@ -50,9 +51,8 @@ class ProjectionController extends Controller
 		//获取用户拥有的所有影厅
 		$session=session("adminuser")->id;
 		$halist=\DB::table("hall")->where("cid",$session)->get();
-		
-		
-		return view("shop.projection.edit",compact("prolist","film"));
+	
+		return view("shop.projection.edit",compact("prolist","film","halist"));
 	}
 	public function update(Request $request,$id)
 	{
@@ -81,12 +81,46 @@ class ProjectionController extends Controller
 	{
 		$id=session('adminuser')->id;
 		//获取影厅信息
-		$hall=\DB::table("hall")->where("cid",$id)->pluck("title");
+		$hall=\DB::table("hall")->where("cid",$id)->get();
 		//获取影片信息
-		$film=\DB::table("film")->pluck("title");
-		print_r($film);
-		die();
+		$film=\DB::table("film")->where("status",1)->get();
 		
 		return view("shop.projection.create",compact("hall","film"));
+		
+	}
+
+	public function store(Request $request)
+	{
+		$cid=session('adminuser')->id;
+		// $this->validate($request, [
+  //           'endtime' => Rule::unique('hall')->where("cid",$cid),
+  //       ]);
+
+		//获取影厅信息
+		$hall=$request->input("hall");
+		$hid=\DB::table("hall")->where("title",$hall)->value("id");
+		//获取影片信息
+		$film=$request->input("film");
+		$fid=\DB::table("film")->where("title",$film)->value("id");
+		//获取放映时间
+		$datetime=$request->input("datetime");
+		//获取结束时间
+		$endtime=$request->input("endtime");
+		//获取座位数量
+		$seatinfo=$request->input("seatinfo");
+		//获取票价
+		$price=$request->input("price");
+
+		$list=\DB::table("projection")->insertGetId(
+			["fid"=>$fid,"cid"=>$cid,"hid"=>$hid,"datetime"=>$datetime,"endtime"=>$endtime,"seatinfo"=>$seatinfo,"price"=>$price]
+			);
+		 //添加判断
+		if($list>0){
+            $info = "影片信息添加成功";
+        }else{
+            $info = "影片信息添加失败";
+        }
+        return redirect("shop/projection")->with("err",$info);
+		
 	}
 }

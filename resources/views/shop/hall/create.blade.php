@@ -30,27 +30,26 @@
                       <label for="inputEmail3" class="col-sm-2 control-label">影厅名称：</label>
                       <div class="col-sm-4">
                       <select name="title" class="form-control" id="inputEmail3">
-                          <option>1号厅</option>
-                          <option>2号厅</option>
-                          <option>3号厅</option>
-                          <option>4号厅</option>
-                          <option>5号厅</option>
-                          <option>6号厅</option>
-                          <option>7号厅</option>
-                          <option>8号厅</option>
+                          @foreach($hall as $ho)
+                          <option>{{$ho->title}}</option>
+                          @endforeach
                       </select>
                       </div>
                     </div>
 				      	<div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">座位布局：</label>
+                      <label for="inputPassword3" class="col-sm-2 control-label">座位数量：</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="座位布局" name="layout">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="座位数量" name="number">
                       </div>
                     </div>
 					     <div class="form-group">
                       <label for="inputPassword3" class="col-sm-2 control-label">座位数量：</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="座位数量" name="number">
+                         <select name="layout" class="form-control" id="inputEmail3">
+                          @foreach($hall as $lo)
+                          <option>{{$lo->layout}}</option>
+                          @endforeach
+                      </select>
                       </div>
                     </div>
                   </div><!-- /.box-body -->
