@@ -162,7 +162,7 @@
 
                         <!-- 退出 -->
                         <li class="am-text-sm">
-                            <a href="javascript:;">
+                            <a href="/admin/login/loginout/">
                                 <span class="am-icon-sign-out"></span> 退出
                             </a>
                         </li>

@@ -37,6 +37,7 @@
                       <th>放映厅</th>
                       <th>影片</th>
                       <th>放映时间</th>
+                      <th>结束时间</th>
                       <th>价格</th>
                       <th>座位信息</th>
                       <th style="width: 100px">操作</th>
@@ -47,6 +48,7 @@
                      <td><?php echo $ho[$key]; ?></td>
                      <td><?php echo $fo[$key]; ?></td> 
                      <td>{{ $vo->datetime }}</td>
+                     <td>{{ $vo->endtime }}</td>
                      <td>{{ $vo->price }}</td>
                      <td>{{ $vo->seatinfo }}</td>
                       <td> 

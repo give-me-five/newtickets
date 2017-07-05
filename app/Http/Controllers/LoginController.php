@@ -53,8 +53,8 @@ class LoginController extends Controller
                     session()->put('users',$users);
                 }else{
                     //如果状态不是1,被禁用
-                    echo "<script>alert('您违反相关规定,账号已被禁用')</script>";
-                    return back()->with();
+                    //echo "<script>alert('您违反相关规定,账号已被禁用')</script>";
+                    return back()->with("msg","您违反相关规定,账号已被禁用");
                 }
                 //判断是否为首次登陆
                 if(empty($status->firsttime)){
@@ -88,5 +88,6 @@ class LoginController extends Controller
         header("Cache-Control: no-cache, must-revalidate");
         header('Content-Type: image/jpeg');
         $builder->output();
+
     }
 }

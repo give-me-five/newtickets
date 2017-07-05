@@ -164,6 +164,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
 		//验证码
+//		Mews\Captcha\CaptchaServiceProvider::class,
 		Mews\Captcha\CaptchaServiceProvider::class,
         //阿里短信接口
         iscms\Alisms\AlidayuServiceProvider::class,
@@ -235,6 +236,7 @@ return [
 
         'Image' => Intervention\Image\Facades\Image::class,
 
+//		'Captcha' => Mews\Captcha\Facades\Captcha::class,
 		'Captcha' => Mews\Captcha\Facades\Captcha::class,
     ],
 
