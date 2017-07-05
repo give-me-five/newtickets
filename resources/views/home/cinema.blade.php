@@ -23,16 +23,17 @@
 				当前条件下共有<span class="count">177</span>家影院 
 			</div>
 			<ul class="sortbar-detail J_cinemaList">
+			@foreach ($mlist as $ml)
 			    <li class="current">
 					<div class="detail-right">
-						<div class="right-score">评分：<strong>9.4</strong></div>
+						
 						<div class="right-fav "></div>
 						<div class="right-buy ">    							
 							<a href="/">选座</a>
 						</div>
 					</div>
 					<a href="/cinemas/id=1" class="detail-left pictures">
-						  <span><img src="T1yI5PFuhdXXXXXXXX_.jpg_120x120.jpg" alt="卢米埃北京芳草地影城"></span>								
+						  <span><img src="T1yI5PFuhdXXXXXXXX_.jpg_120x120.jpg" alt="{{$ml->shopname}}"></span>								
 					</a>
 					<div class="detail-middle">
 						<div class="middle-hd">
@@ -43,46 +44,7 @@
 						</div>
 					</div>
 				</li>
-			    <li class="even">
-					<div class="detail-right">
-						<div class="right-score">评分：<strong>9.1</strong></div>
-						<div class="right-fav "></div>
-						<div class="right-buy ">  										<a href="">选座</a>
-						</div>
-					</div>
-					<a href="" class="detail-left pictures">
-						  <span><img src="T1XfCPFqBkXXb1upjX_120x120.jpg" alt="橙天嘉禾影城北京凤凰汇店"></span>
-													
-					</a>
-					<div class="detail-middle">
-						<div class="middle-hd">
-							<h4><a href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=6364&amp;n_s=new">橙天嘉禾影城北京凤凰汇店</a></h4>
-						</div>
-						<div class="middle-p">
-							<div class="middle-p-list"><i>地址：</i><span class="limit-address">朝阳区三元桥曙光西里甲5号院凤凰汇购物中心3层</span><a class="J_miniMap" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=6364&amp;n_s=new#detail" data-points="116.457572,39.963406">[地图]</a></div>    							<div class="middle-p-list"><i>电话：</i>010-56383227,8001</div>    							<div class="middle-p-list"><i>更多：</i><a class="middle-more" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=6364&amp;n_s=new#detail">影院服务</a><a class="middle-more" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=6364&amp;n_s=new#detail">交通信息</a></div>
-						</div>
-					</div>
-				</li>
-				<li class="current">
-					<div class="detail-right">
-						<div class="right-score">评分：<strong>9.1</strong></div>
-						<div class="right-fav "></div>
-						<div class="right-buy ">  										<a href="">选座</a>
-						</div>
-					</div>
-					<a href="" class="detail-left pictures">
-						  <span><img src="T1XfCPFqBkXXb1upjX_120x120.jpg" alt="橙天嘉禾影城北京凤凰汇店"></span>
-													
-					</a>
-					<div class="detail-middle">
-						<div class="middle-hd">
-							<h4><a href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=6364&amp;n_s=new">橙天嘉禾影城北京凤凰汇店</a></h4>
-						</div>
-						<div class="middle-p">
-							<div class="middle-p-list"><i>地址：</i><span class="limit-address">朝阳区三元桥曙光西里甲5号院凤凰汇购物中心3层</span><a class="J_miniMap" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=6364&amp;n_s=new#detail" data-points="116.457572,39.963406">[地图]</a></div>    							<div class="middle-p-list"><i>电话：</i>010-56383227,8001</div>    							<div class="middle-p-list"><i>更多：</i><a class="middle-more" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=6364&amp;n_s=new#detail">影院服务</a><a class="middle-more" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=6364&amp;n_s=new#detail">交通信息</a></div>
-						</div>
-					</div>
-				</li>
+			@endforeach  
 			</ul>
 					
 			<div class="sortbar-more J_cinemaMore" data-ajax="http://dianying.taobao.com/ajaxCinemaList.htm" data-param="page=1&amp;regionName=&amp;cinemaName=&amp;pageSize=10&amp;pageLength=18&amp;sortType=0&amp;n_s=new">

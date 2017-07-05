@@ -175,4 +175,22 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
     Route::get("/merchant/forbidden/{id?}","Admin\MerchantController@forbidden");
 });
 
-
+//商家管理路由组
+//商家注册
+Route::resource('/business/register',"Business\RegisterController");
+Route::get('/business/login',"Business\LoginController@login");//登录页面路由
+Route::post('/business/dologin',"Business\LoginController@doLogin"); //执行后台登录
+Route::get('/business/logout','Business\LoginController@logout');//退出
+Route::group(['prefix' => 'business','middleware' => 'business'], function(){
+    Route::get('/',"Business\IndexController@index"); 
+    //后台首页路由
+    Route::get('/order',"Business\OrdersController@index"); //商家订单
+    Route::resource('/hall',"Business\HallController"); //放映厅管理
+    //放映信息管理Start
+    Route::resource('/pro',"Business\ProjectionController"); 
+    Route::get('/pro/del/{id}',"Business\ProjectionController@destroy"); //删除放映信息
+    Route::get('/pro/edit/{id}',"Business\ProjectionController@edit"); //修改放映信息
+    Route::get('/pro/update/{id}',"Business\ProjectionController@update"); //更新放映信息
+    //放映信息路由END
+});
+// end
