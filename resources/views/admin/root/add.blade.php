@@ -1,37 +1,54 @@
 @extends('admin.base')
 @section("content")
-    <form action="/admin/root" method="post" onsubmit=" return doSubmit()" name="myform">
-        {{ csrf_field() }}
-        <center>
-        @if(session('msg'))
-            <div style="color:red">{{ session('msg') }}</div>
-        @endif
-        </center>
-        <table style="width:600px;margin: 0px auto;" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
-                <tr>
-                    <td>账号：</td>
-                    <td><input size= "30" type="text" name="account" placeholder="由6到16位的数字，字母，下划线组成" onblur="checkAnt()"/></td>
-                </tr>
-                <tr>
-                    <td>密码：</td>
-                    <td><input size= "30" type="password" name="pass" placeholder="由6到16位的数字，字母，下划线组成" onblur="checkPass()"></td>
-                </tr>
-                <tr>
-                    <td>确认密码：</td>
-                    <td><input size= "30" type="password" name="pass2" onblur="checkPass2()"></td>
-                </tr>
-                <tr>
-                    <td>真实姓名：</td>
-                    <td><input size= "30" type="text" name="name" onblur="checkName()"></td>
-                </tr>
-                <tr >
-                    <td colspan="2" align="center">
-                        <input type="submit"/>
-                        <input type="reset"/>
-                    </td>
-                </tr>
-        </table>
-    </form>
+    <div class="row-content am-cf">
+        <div class="row">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                <div class="widget am-cf">
+                    <div class="widget-head am-cf">
+                        <div class="widget-title am-fl">当前位置：权限管理>>添加管理员</div>
+                        <div class="widget-function am-fr">
+
+                        </div>
+                    </div>
+                    <div class="widget-body am-fr">
+                        <form action="/admin/root" method="post" onsubmit=" return doSubmit()" name="myform">
+                            {{ csrf_field() }}
+                            <center>
+                            @if(session('msg'))
+                                <div style="color:red">{{ session('msg') }}</div>
+                            @endif
+                            </center>
+                            <table style="width:600px;margin: 0px auto;" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
+                                    <tr>
+                                        <td>账号：</td>
+                                        <td><input size= "30" type="text" name="account" placeholder="由6到16位的数字，字母，下划线组成" onblur="checkAnt()"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td>密码：</td>
+                                        <td><input size= "30" type="password" name="pass" placeholder="由6到16位的数字，字母，下划线组成" onblur="checkPass()"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>确认密码：</td>
+                                        <td><input size= "30" type="password" name="pass2" onblur="checkPass2()"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>真实姓名：</td>
+                                        <td><input size= "30" type="text" name="name" onblur="checkName()"></td>
+                                    </tr>
+                                    <tr >
+                                        <td colspan="2" align="center">
+                                            <input type="submit"/>
+                                            <input type="reset"/>
+                                        </td>
+                                    </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 <script>
     function doSubmit(){

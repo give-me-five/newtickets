@@ -147,7 +147,7 @@ Route::get("admin/login/loginout","Admin\LoginController@loginout");
 
 
 //后台路由组
-Route::group(['prefix'=>'admin','Middleware'=>'admin'],function(){
+Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
     Route::get("/index","Admin\indexController@index");
     //会员列表
     Route::get("/users/child","Admin\UsersController@child");
