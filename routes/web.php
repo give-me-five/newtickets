@@ -147,6 +147,7 @@ Route::get("admin/login/loginout","Admin\LoginController@loginout");
 
 //后台路由组
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
+    Route::get("/index","Admin\indexController@index");
     //会员列表
     Route::get("/users/child","Admin\UsersController@child");
     //执行用户禁用
@@ -166,7 +167,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     //商家禁用操作
     Route::get("/merchant/edit/{id?}","Admin\MerchantController@edit");
     //商家审核通过
-    Route::get("/merchant/msuccess/{id?}","Admin\MerchantController@success");
+    Route::get("/merchant/success/{id?}","Admin\MerchantController@success");
     //商家审核未通过
     Route::get("/merchant/lose/{id?}","Admin\MerchantController@lose");
     //商家禁用操作

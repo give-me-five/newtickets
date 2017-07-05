@@ -46,8 +46,8 @@ class LoginController extends Controller
                 if (decrypt($info->pass) == $pass) {
                     session(["admin"=>$info]);
                         //跳转后台主页
-                        //return redirect('admin/index');
-                    return redirect('admin/users/child');
+                        return redirect('/admin/index/');
+                   // return redirect('admin/users/child');
                 } else {
                     return back()->with('msg', "账号或密码错误");
                 }
