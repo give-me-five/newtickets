@@ -46,16 +46,12 @@ class ProjectionController extends Controller
 		
 		//获取影片所有的影片
 		$film=\DB::table("film")->where("status",1)->get();
-		// echo "<pre>";
-		// print_r($film);
-		// die();
 		
-		//获取对应的影片信息
-
-		//获取该影片对应的hid
-		//$hid=\DB::table("projection")->where("id",$id)->value('hid');
-		//获取影厅名称
-		//$hall=\DB::table("hall")->where("id",$hid)->value("title");
+		//获取用户拥有的所有影厅
+		$session=session("adminuser")->id;
+		$halist=\DB::table("hall")->where("cid",$session)->get();
+		
+		
 		return view("shop.projection.edit",compact("prolist","film"));
 	}
 	public function update(Request $request,$id)

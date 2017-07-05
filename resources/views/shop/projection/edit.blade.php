@@ -32,7 +32,13 @@
                   <div class="box-body">
                     <div class="form-group">
                       <label for="inputEmail3"  class="col-sm-2 control-label">放映厅</label>
-                     
+                     <div class="col-sm-4">
+                      <select name="title" class="form-control"  id="inputEmail3">
+                         @foreach ($halist as $ho)
+                          <option>{{$ho}}</option>
+                         @endforeach
+                      </select>
+                    </div>
                     </div>
 					           <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">影片</label>
