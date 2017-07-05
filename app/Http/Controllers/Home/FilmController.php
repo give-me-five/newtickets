@@ -50,4 +50,17 @@ class FilmController extends Controller
         return view("home.layout");
     }
 
+    //执行Ajax评论添加
+    public function Ajaxinsert(Request $request,$id)
+    {
+        $fid = explode('.',$id);
+        //$ffid['fid'] = $fid; 
+        $array = $request->only(['comment']);
+        //$fid = $id;
+        $comment = array_merge($fid,$array);
+        echo "<pre>";
+        print_r($comment);
+        //\DB::table("film_comment")->insert($comment);
+    }
+
 }

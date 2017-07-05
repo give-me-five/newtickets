@@ -1,7 +1,7 @@
 @extends('home.base')
   @section('content')
 
-
+<meta name="_token" content="{{ csrf_token() }}"/>
 <script>
     //执行评论添加
     function doSubmit(){
@@ -9,9 +9,9 @@
       var comment = document.myform.comment.value;
       $.ajax({
         headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-        url:"{{url('/films/comment')}}/{{$first->id}}",
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        },
+        url:"/films/comment/{{$first->id}}",
         type:"post",
         data:"comment"+comment,
         datatype:"text",

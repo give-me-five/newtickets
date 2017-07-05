@@ -18,6 +18,7 @@ Route::get('/films',"Home\FilmController@index");//正在热映
 Route::get('/films/Type/2',"Home\FilmController@soon");//即将上映
 
 Route::get('/films/{id}',"Home\FilmController@show");//影片详情
+Route::post('/films/comment/{id}',"Home\FilmController@Ajaxinsert");//影片评论
 Route::get('/films/{id}/seat',"Home\FilmController@content");//选座+购票
 Route::get('/layout/{fid}/seat/{hid}',"Home\FilmController@layout");//选座
 
