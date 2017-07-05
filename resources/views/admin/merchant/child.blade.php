@@ -1,8 +1,5 @@
 @extends("admin.index")
-@section('sidebar')
-    <div class="widget-title am-fl">商家列表</div>
-@endsection
-@section("contents")
+@section("content")
     <form action="/admin/root/" method="get" class="form-inline">
         {{csrf_field()}}
         <div class="form-group">

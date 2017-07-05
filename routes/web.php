@@ -110,8 +110,6 @@ Route::resource('/admin/setup',"Admin\SetupController");
 
 //加载注册页面
 Route::get("reg","RegController@index");
-//加载验证码
-Route::get("reg/code","RegController@code");
 //执行ajax验证
 Route::post("reg/doLogin","RegController@doLogin");
 //执行注册
@@ -127,12 +125,6 @@ Route::get("reg/lose","RegController@lose");
 Route::get("login","LoginController@index");
 //执行登录
 Route::post("login/doLogin","LoginController@doLogin");
-//加载手机登录页面
-Route::get("login/phone","LoginController@phone");
-//手机验证码登录
-Route::get("login/doPhone","LoginController@doPhone");
-//执行登录
-Route::post("login/doPhone","LoginController@doPhone");
 //加载验证码
 Route::get("login/code","LoginController@code");
 
@@ -169,7 +161,7 @@ Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     //商家禁用操作
     Route::get("/merchant/edit/{id?}","Admin\MerchantController@edit");
     //商家审核通过
-    Route::get("/merchant/success/{id?}","Admin\MerchantController@success");
+    Route::get("/merchant/msuccess/{id?}","Admin\MerchantController@success");
     //商家审核未通过
     Route::get("/merchant/lose/{id?}","Admin\MerchantController@lose");
     //商家禁用操作

@@ -1,5 +1,5 @@
-@extends('admin.index')
-@section("contents")
+@extends('admin.base')
+@section("content")
     <form action="/admin/root" method="post" onsubmit=" return doSubmit()" name="myform">
         {{ csrf_field() }}
         <center>
