@@ -15,7 +15,7 @@ class HallController extends Controller
 		//获取登录用户的id
 		$list=$request->session()->get('adminuser')->id;
 		//获取登录者对应的影厅sid
-		$hall=\DB::table('hall')->where("cid",$list)->simplePaginate(5);
+		$hall=\DB::table('hall')->where("cid",$list)->simplePaginate(6);
 		//判断并封装搜索条
 		return view("shop.hall.index",compact("hall"));
 	}
@@ -48,7 +48,31 @@ class HallController extends Controller
 
 	public function edit(request $request,$id)
 	{
-		
-		return view('shop.hall.edit');
+		$list=\DB::table("hall")->where('id',$id)->first();
+		return view('shop.hall.edit',["vo"=>$list]);
 	}
+
+	 public function update(Request $request, $id)
+    {
+        //获取影厅名称
+        $title=$request->input("title");
+       
+        //获取影厅座位数量
+        $number=$request->input("number");
+       
+        //获取影厅布局
+        $layout=$request->input("layout");
+        $hall = \DB::table("hall")->where("id",$id)->update(
+            ['title'=>$title,"number"=>$number,"layout"=>$layout]
+            );
+		
+       //添加判断
+		if($hall>0){
+            $info = "影厅修改成功！";
+        }else{
+            $info = "影厅修改失败！";
+        }
+        return redirect("shop/hall")->with("err",$info);
+    }
 }
+

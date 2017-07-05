@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="{{asset('myadmin/css/amazeui.min.css')}}" />
     <link rel="stylesheet" href="{{asset('myadmin/css/amazeui.datatables.min.css')}}" />
     <link rel="stylesheet" href="{{asset('myadmin/css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('myadmin/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('myadmin/bootstrap/css/bootstrap.min.css')}}">
     <script src="{{asset('myadmin/js/jquery.min.js')}}"></script>
 
 </head>
@@ -229,7 +231,7 @@
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="{{url('/admin/film')}}">
+                            <a href="{{url('/admin/merchant')}}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览商家
                             </a>
                         </li>
@@ -244,7 +246,7 @@
                     </a>
                     <ul class="sidebar-nav sidebar-nav-sub">
                         <li class="sidebar-nav-link">
-                            <a href="{{url('root')}}">
+                            <a href="{{url('admin/root/')}}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览管理员
                             </a>
                         </li>
