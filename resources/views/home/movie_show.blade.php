@@ -5,12 +5,19 @@
 <script>
     //执行评论添加
     function doSubmit(){
+      //获取要添加的内容
+      var comment = document.myform.comment.value;
       $.ajax({
+        headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
         url:"{{url('/films/comment')}}/{{$first->id}}",
         type:"post",
-        data:$("#add from"),
+        data:"comment"+comment,
+        datatype:"text",
         
-      })
+      });
+      return true;
     }
 </script>
 <div class="banner">
@@ -143,7 +150,7 @@
                     <h3>写短评</h3>
                   </div>
                   <div class="mod-content">
-                      <form id="add" action="{{url('/films/comment')}}/{{$first->id}}" method="post" onsubmit="return doSubmit(); ">
+                      <form name="myform" action="{{url('/films/comment')}}/{{$first->id}}" method="post" onsubmit="return doSubmit(); ">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           
                           <textarea name="comment" cols="50" rows="5" placeholder="说点你的看法吧"></textarea><br/><br/>

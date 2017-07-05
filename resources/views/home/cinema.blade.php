@@ -23,7 +23,7 @@
 				当前条件下共有<span class="count">177</span>家影院 
 			</div>
 			<ul class="sortbar-detail J_cinemaList">
-			@foreach ($mlist as $ml)
+			
 			    <li class="current">
 					<div class="detail-right">
 						
@@ -33,7 +33,7 @@
 						</div>
 					</div>
 					<a href="/cinemas/id=1" class="detail-left pictures">
-						  <span><img src="T1yI5PFuhdXXXXXXXX_.jpg_120x120.jpg" alt="{{$ml->shopname}}"></span>								
+						  <span><img src="T1yI5PFuhdXXXXXXXX_.jpg_120x120.jpg" alt=""></span>								
 					</a>
 					<div class="detail-middle">
 						<div class="middle-hd">
@@ -44,7 +44,7 @@
 						</div>
 					</div>
 				</li>
-			@endforeach  
+			 
 			</ul>
 					
 			<div class="sortbar-more J_cinemaMore" data-ajax="http://dianying.taobao.com/ajaxCinemaList.htm" data-param="page=1&amp;regionName=&amp;cinemaName=&amp;pageSize=10&amp;pageLength=18&amp;sortType=0&amp;n_s=new">
