@@ -26,26 +26,40 @@
                   <h3 class="box-title"><i class="fa fa-plus"></i> 编辑学员信息</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form class="form-horizontal" action="{{url('shop/hall')}}/{{$vo->id}}" method="post" enctype="multipart/form-data">
+                <form class="form-horizontal" action="{{url('shop/projection')}}/{{$prolist->id}}" method="post" enctype="multipart/form-data">
                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                   <input type="hidden" name="_method" value="put">
                   <div class="box-body">
                     <div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">放映厅名称</label>
+                      <label for="inputEmail3"  class="col-sm-2 control-label">放映厅</label>
+                     
+                    </div>
+					           <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">影片</label>
                       <div class="col-sm-4">
-                        <input type="text" name="title" class="form-control" value="{{ $vo->title }}">
+                        <select name="title" class="form-control"  id="inputEmail3">
+                         @foreach ($film as $fo)
+                          <option  @if ($prolist->fid == $fo->id) selected @endif>{{$fo->title}}</option>
+                         @endforeach
+                      </select>
                       </div>
                     </div>
-					<div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">座位数</label>
+					         <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">放映时间</label>
                       <div class="col-sm-4">
-                        <input type="text" name="number" class="form-control" value="{{ $vo->number }}">
+                        <input type="datetime-local" name="datetime" class="form-control" value="{{$prolist->datetime}}">
                       </div>
                     </div>
-					<div class="form-group">
-                      <label for="inputEmail3" class="col-sm-2 control-label">座位布局</label>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">价格</label>
                       <div class="col-sm-4">
-                        <input type="text" name="layout" class="form-control" value="{{ $vo->layout }}">
+                        <input type="text" name="price" class="form-control" value="{{$prolist->price}}">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">座位信息</label>
+                      <div class="col-sm-4">
+                        <input type="text" name="seatinfo" class="form-control" value="{{$prolist->seatinfo}}">
                       </div>
                     </div>
 					
@@ -54,9 +68,7 @@
 				    <div class="col-sm-offset-2 col-sm-1">
 						<button type="submit" class="btn btn-primary">保存</button>
                     </div>
-					<div class="col-sm-1">
-						<button type="submit" class="btn btn-primary">重置</button>
-					</div>
+					
                   </div><!-- /.box-footer -->
                 </form>
 				<div class="row"><div class="col-sm-12">&nbsp;</div></div>

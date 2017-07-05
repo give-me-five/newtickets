@@ -24,8 +24,6 @@ class InformationController extends Controller
     	$legal=$request->input("legal");
     	//获取身份证信息
     	$id_card=$request->input("id_card");
-    	//获取信息
-    	$list=\DB::table('shop_detail')->where("id",$shopid)->first();
         //判断是否是一个有效上传文件
         if($request->file('licence') && $request->file('licence')->isValid()) {
             //获取上传文件信息
@@ -37,8 +35,14 @@ class InformationController extends Controller
             $file->move("./upload/",$filename);
             
         }
-        $list=\DB::table("shop_detail_copy")->where('cid',$shopid)->update(
-        	['shopname'=>$shopname,'region'=>$region,"cid"=>$shopid,"phone"=>$phone,"address"=>$address,"legal"=>$legal,"id_card"=>$id_card,"city"=>$city1,"licence"=>$filename]
+        //获取session信息
+        $li=session('sigup')->id;
+
+        $list=\DB::table("shop_detail_copy")->where('cid',$li)->update(
+        	['shopname'=>$shopname,'region'=>$region,"cid"=>$li,"phone"=>$phone,"address"=>$address,"legal"=>$legal,"id_card"=>$id_card,"city"=>$city1,"licence"=>$filename]
         	);
+        if(!empty($list)){
+            return view('shop.login.index');
+        }
     }
 }
