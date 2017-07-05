@@ -26,7 +26,7 @@ class SigupController extends Controller
 			return back()->with("msg","账号已存在！");
 		}
 		//执行注册判断
-		$name=preg_match("/^[0-9a-zA-Z_]{5,20}$/",$myname);
+		$name=preg_match("/^\w{5,20}$/",$myname);
 		if(empty($name)){
 			//用户名格式不正确
 			return back()->with("msg","账号格式不正确！");
@@ -34,7 +34,7 @@ class SigupController extends Controller
     	//判断密码
         //获取用户输入密码
         $mypassword=$request->input('mypassword');
-        $password=preg_match("/^[0-9a-zA-Z_]{6,20}$/",$mypassword);
+        $password=preg_match("/^\w{6,20}$/",$mypassword);
         if(empty($password)){
             //密码格式不合法
           return back()->with("msg","密码格式不正确");
@@ -62,8 +62,13 @@ class SigupController extends Controller
             ['name'=>$myname,'password'=>$mypassword]
             );
         if($id>0){
-          $shopid=\DB::table('shop_detail')->where("id",$id)->first();
-          session()->put("sigup",$shopid);
+          $shopid=\DB::table('shop_detail')->where("id",$id)->value('id');
+          //把相对应的id添加到详情表cid中
+          $list=\DB::table("shop_detail_copy")->insertGetId(
+            ["cid"=>$shopid]
+            );
+          $shop=\DB::table("shop_detail")->where("id",$id)->first();
+          $shopsession=session()->put("sigup",$shop);
         }
         return view("shop.login.information");
     	
