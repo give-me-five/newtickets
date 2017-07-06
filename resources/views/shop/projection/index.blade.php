@@ -36,6 +36,8 @@
                       <th style="width:60px">ID号</th>
                       <th>放映厅</th>
                       <th>影片</th>
+                      <th>影片类型</th>
+                      <th>语言版本</th>
                       <th>放映时间</th>
                       <th>结束时间</th>
                       <th>价格</th>
@@ -47,6 +49,8 @@
                      <td>{{ $vo->id }}</td>
                      <td><?php echo $ho[$key]; ?></td>
                      <td><?php echo $fo[$key]; ?></td> 
+                     <td><?php echo $fid[$key]; ?></td> 
+                     <td><?php echo $language[$key]; ?></td> 
                      <td>{{ $vo->datetime }}</td>
                      <td>{{ $vo->endtime }}</td>
                      <td>{{ $vo->price }}</td>

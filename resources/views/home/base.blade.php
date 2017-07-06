@@ -32,12 +32,12 @@
         </div>
         <div class="nav">
             <ul class="navbar">
-                <li><a href="http://www.movie.com/" data-act="home-click" class="active">首页</a></li>
+                <li><a href="/" data-act="home-click" class="active">首页</a></li>
 
-                <li><a href="http://www.movie.com/films" data-act="movies-click">电影</a></li>
+                <li><a href="/films" data-act="movies-click">电影</a></li>
 
-                <li><a href="http://www.movie.com/cinemas" data-act="board-click">影院</a></li>
-                <li><a href="http://www.movie.com/news" data-act="hotNews-click">热点</a></li>
+                <li><a href="/cinemas" data-act="board-click">影院</a></li>
+                <li><a href="/news" data-act="hotNews-click">热点</a></li>
             </ul>
         </div>
 

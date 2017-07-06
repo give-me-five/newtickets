@@ -27,6 +27,21 @@ class ProjectionController extends Controller
 			$fo[]=\DB::table("film")->where("id",$film)->value("title");
 			
 		}
+		//获取影片类型
+		$fid=[];
+		foreach($filmid as $fidl){
+			$fid[]=\DB::table("film")->where("id",$fidl)->value("fid");
+			
+		}
+		//获取语言版本
+		$language=[];
+		foreach($filmid as $lang){
+			$language[]=\DB::table("film")->where("id",$lang)->value("language");
+			
+		}
+		// echo"<pre>";
+		// print_r($fid);
+		// die();
 		//获取放映影厅对应id
 		$hallid=\DB::table("projection")->where("cid",$id)->pluck('hid');
 
@@ -37,7 +52,7 @@ class ProjectionController extends Controller
 		}
 
 		//加载视图
-		return view("shop.projection.index",compact("list","fo","ho"));
+		return view("shop.projection.index",compact("list","fo","ho","fid","language"));
 	}
 
 	public function edit(Request $Request,$id)
@@ -46,7 +61,7 @@ class ProjectionController extends Controller
 		$prolist=\DB::table("projection")->where("id",$id)->first();
 		
 		//获取影片所有的影片
-		$film=\DB::table("film")->where("status",1)->get();
+		$film=\DB::table("film")->where("status",2)->get();
 		
 		//获取用户拥有的所有影厅
 		$session=session("adminuser")->id;
@@ -83,7 +98,7 @@ class ProjectionController extends Controller
 		//获取影厅信息
 		$hall=\DB::table("hall")->where("cid",$id)->get();
 		//获取影片信息
-		$film=\DB::table("film")->where("status",1)->get();
+		$film=\DB::table("film")->where("status",2)->get();
 		
 		return view("shop.projection.create",compact("hall","film"));
 		

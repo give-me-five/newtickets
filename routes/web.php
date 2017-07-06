@@ -74,8 +74,6 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     Route::resource('layout', 'LayoutController');
 	Route::resource('hall', 'Shop\HallController');
 	Route::resource('projection', 'Shop\ProjectionController');
-
-	Route::resource('projection', 'Shop\ProjectionController');
 	//加载放映信息
     Route::get('/projection', 'Shop\ProjectionController@index');
     //修改放映信息

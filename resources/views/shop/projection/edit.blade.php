@@ -43,7 +43,7 @@
 					           <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">影片</label>
                       <div class="col-sm-4">
-                        <select name="title" class="form-control"  id="inputEmail3">
+                        <select name="film" class="form-control"  id="inputEmail3">
                          @foreach ($film as $fo)
                           <option  @if ($prolist->fid == $fo->id) selected @endif>{{$fo->title}}</option>
                          @endforeach
