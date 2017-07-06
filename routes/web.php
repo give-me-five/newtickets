@@ -22,7 +22,8 @@ Route::get('/films/{id}/seat',"Home\FilmController@content");//选座+购票
 Route::get('/layout/{fid}/seat/{hid}',"Home\FilmController@layout");//选座
 
 Route::get('/cinemas',"Home\CinemaController@index");//影院列表
-Route::get('/cinemas/{id}',"Home\CinemaController@show");//影院详情页
+Route::get('/cinemas/show/{id}',"Home\CinemaController@show");//影院详情页
+Route::get('/cinemas/info/{id?}',"Home\CinemaController@info");//影院详情页
 Route::get('/news',"Home\NewsController@index");//热点列表
 
 //后台首页路由
@@ -94,10 +95,6 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     Route::get('/Logout',"Shop\LoginController@Logout");
 
 });
-
-Route::get('/admin',"Admin\IndexController@index");
-Route::resource('/admin/shopdetail', 'Admin\ShopdetailController');
-Route::resource('/admin/relshop', 'Admin\RelshopController');
 
 //加载注册页面
 Route::get("reg","RegController@index");
