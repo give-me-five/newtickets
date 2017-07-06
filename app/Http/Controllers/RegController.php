@@ -68,7 +68,6 @@ class RegController extends Controller
             $phone = $input;
             $name = '熊猫电影';
             $content = json_encode($smsParams);
-
             $code = 'SMS_10405984';
             //  发送验证码方法
             $data = $this->sms->send($phone, $name, $content, $code);

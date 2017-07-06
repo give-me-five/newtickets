@@ -22,7 +22,8 @@ Route::get('/films/{id}/seat',"Home\FilmController@content");//选座+购票
 Route::get('/layout/{fid}/seat/{hid}',"Home\FilmController@layout");//选座
 
 Route::get('/cinemas',"Home\CinemaController@index");//影院列表
-Route::get('/cinemas/{id}',"Home\CinemaController@show");//影院详情页
+Route::get('/cinemas/show/{id}',"Home\CinemaController@show");//影院详情页
+Route::get('/cinemas/info/{id?}',"Home\CinemaController@info");//影院详情页
 Route::get('/news',"Home\NewsController@index");//热点列表
 
 //后台首页路由
@@ -73,8 +74,6 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     Route::resource('layout', 'LayoutController');
 	Route::resource('hall', 'Shop\HallController');
 	Route::resource('projection', 'Shop\ProjectionController');
-
-	Route::resource('projection', 'Shop\ProjectionController');
 	//加载放映信息
     Route::get('/projection', 'Shop\ProjectionController@index');
     //修改放映信息
@@ -94,10 +93,6 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     Route::get('/Logout',"Shop\LoginController@Logout");
 
 });
-
-Route::get('/admin',"Admin\IndexController@index");
-Route::resource('/admin/shopdetail', 'Admin\ShopdetailController');
-Route::resource('/admin/relshop', 'Admin\RelshopController');
 
 //加载注册页面
 Route::get("reg","RegController@index");
@@ -147,7 +142,7 @@ Route::get("admin/login/loginout","Admin\LoginController@loginout");
 
 
 //后台路由组
-Route::group(['prefix'=>'admin','Middleware'=>'admin'],function(){
+Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
     Route::get("/index","Admin\indexController@index");
     //会员列表
     Route::get("/users/child","Admin\UsersController@child");

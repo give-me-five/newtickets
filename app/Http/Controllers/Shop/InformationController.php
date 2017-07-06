@@ -35,11 +35,23 @@ class InformationController extends Controller
             $file->move("./upload/",$filename);
             
         }
+
+        //判断是否是一个有效上传文件
+        if($request->file('picname') && $request->file('picname')->isValid()) {
+            //获取上传图片
+            $pic = $request->file('picname');
+            $ext = $pic->extension(); //获取图片的扩展名
+            //随机一个新的文件名
+            $picname = time().rand(1000,9999).".".$ext;
+            //移动上传文件
+            $pic->move("./upload/pic",$picname);
+            
+        }
         //获取session信息
         $li=session('sigup')->id;
 
         $list=\DB::table("shop_detail_copy")->where('cid',$li)->update(
-        	['shopname'=>$shopname,'region'=>$region,"cid"=>$li,"phone"=>$phone,"address"=>$address,"legal"=>$legal,"id_card"=>$id_card,"city"=>$city1,"licence"=>$filename]
+        	[ 'picname'=>$picname,'shopname'=>$shopname,'region'=>$region,"cid"=>$li,"phone"=>$phone,"address"=>$address,"legal"=>$legal,"id_card"=>$id_card,"city"=>$city1,"licence"=>$filename]
         	);
         if(!empty($list)){
             return view('shop.login.index');
