@@ -19,6 +19,26 @@ class IndexController extends Controller
         return view('seller.index',compact('seller'));//加载商户后台首页
     }
 
+    public function changePass()
+    {
+        $id = session('businessuser')->id;
+        $seller = \DB::table('rel_shop')->where('id',$id)->first();
+        //加载修改密码模板
+        return view("seller.pass_change",compact('seller'));
+    }
+
+    public function change(Request $request ,$id)
+    {
+        //执行验证密码，并跳转到设置密码页面
+        $pass = $request->only('password');
+        $res = \DB::table('rel_shop')->where('id',$id)->first();
+        if(md5($pass) == $res->password){
+            return redirect("business/change");
+        }else{
+            return back()->with("msg","原密码输入错误！");
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
