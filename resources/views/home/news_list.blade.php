@@ -1,22 +1,6 @@
 @extends('home.base')
   @section('content')
-
-  <div class="subnav">
-    <ul class="navbar">
-      <li>
-        <a data-act="subnav-click" data-val="{subnavClick:1}" data-state-val="{subnavId:1}" class="active" href="javascript:void(0);">热点首页</a>
-      </li>
-      <li>
-        <a data-act="subnav-click" data-val="{subnavClick:2}" href="http://maoyan.com/news?showTab=2">新闻资讯</a>
-      </li>
-      <li>
-        <a data-act="subnav-click" data-val="{subnavClick:3}" href="http://maoyan.com/news?showTab=3">预告片</a>
-      </li>
-      <li>
-        <a data-act="subnav-click" data-val="{subnavClick:4}" href="http://maoyan.com/news?showTab=4">精彩图集</a>
-      </li>
-    </ul>
-  </div>
+  <link rel="stylesheet" href="{{asset('home/css/news-hotNews.d8ee9843.css')}}">
     <div class="container" id="app">
       <div class="hotIndex-container">
     <div class="index-news-container clearfix">
@@ -122,218 +106,36 @@
       </ul>
   </div>
 
-        <div class="latest-container">
+  <div class="latest-container">
       <h4 class="latest-header red">
-    最新资讯
-    <a href="http://maoyan.com/news?showTab=2" class="all-latest" data-act="all-news-click">
-      全部
-      <span class="arrow red-arrow"></span>
-    </a>
-  </h4>
-
-
+        最新资讯
+        <a href="/news" class="all-latest" data-act="all-news-click">
+          全部
+        <span class="arrow red-arrow"></span>
+        </a>
+      </h4>
     <div class="latest-content clearfix">
+        <!-- 资讯 -->
+        @foreach ($newlist as $nlist)
           <div class="latest-news-box">
-            <a href="http://maoyan.com/films/news/21796" target="_blank" data-act="news-click" data-val="{newsid:21796}">
-              <img src="c09ed7020f29f9e1aab01715bb060253933888.jpg@230w_129h_1e_1c" alt="">
+            <a href="/news/{{$nlist->id}}.html" target="_blank" data-act="news-click">
+              <img src="{{ env('QINIU_DOMAIN') }}{{$nlist->thumb}}" alt="{{$nlist->title}}">
             </a>
             <p class="latest-news-title">
-              <a href="http://maoyan.com/films/news/21796" class="two-line" title="警匪片《缉枪》启用真实特警协助拍摄，片场玩起真枪实弹" target="_blank" data-act="news-click" data-val="{newsid:21796}">
-                警匪片《缉枪》启用真实特警协助拍摄，片场玩起真枪实弹
+              <a href="/news/{{$nlist->id}}.html" class="two-line" title="{{$nlist->title}}" target="_blank" data-act="news-click">
+                {{$nlist->title}}
               </a>
             </p>
             <div class="info-container">
               <span>猫眼电影</span>
-              <span class="images-view-count view-count">150</span>
+              <span class="images-view-count view-count">{{ $nlist->created_at }}</span>
             </div>
           </div>
-          <div class="latest-news-box">
-            <a href="http://maoyan.com/films/news/21795" target="_blank" data-act="news-click" data-val="{newsid:21795}">
-              <img src="992ceb14b3907a2929913c0c6e160a98214593.jpg@230w_129h_1e_1c" alt="">
-            </a>
-            <p class="latest-news-title">
-              <a href="http://maoyan.com/films/news/21795" class="two-line" title="冯小刚新作《芳华》力捧新人，新冯女郎大秀“芳华腿”" target="_blank" data-act="news-click" data-val="{newsid:21795}">
-                冯小刚新作《芳华》力捧新人，新冯女郎大秀“芳华腿”
-              </a>
-            </p>
-            <div class="info-container">
-              <span>猫眼电影</span>
-              <span class="images-view-count view-count">5808</span>
-            </div>
-          </div>
-          <div class="latest-news-box">
-            <a href="http://maoyan.com/films/news/21794" target="_blank" data-act="news-click" data-val="{newsid:21794}">
-              <img src="94d544d9fff4f83ecbe611f47f1e6a971218560.jpg@230w_129h_1e_1c" alt="">
-            </a>
-            <p class="latest-news-title">
-              <a href="http://maoyan.com/films/news/21794" class="two-line" title="《极盗车神》伦敦首映，“宝宝”车神领衔暑期档大片激爽今夏" target="_blank" data-act="news-click" data-val="{newsid:21794}">
-                《极盗车神》伦敦首映，“宝宝”车神领衔暑期档大片激爽今夏
-              </a>
-            </p>
-            <div class="info-container">
-              <span>猫眼电影</span>
-              <span class="images-view-count view-count">5720</span>
-            </div>
-          </div>
-          <div class="latest-news-box">
-            <a href="http://maoyan.com/films/news/21793" target="_blank" data-act="news-click" data-val="{newsid:21793}">
-              <img src="34c48e95bcbd5b0b65a4be5fb360617864225.jpg@230w_129h_1e_1c" alt="">
-            </a>
-            <p class="latest-news-title">
-              <a href="http://maoyan.com/films/news/21793" class="two-line" title="王俊凯高考438分超过二本线！粉丝：2个月考出三年的成绩！" target="_blank" data-act="news-click" data-val="{newsid:21793}">
-                王俊凯高考438分超过二本线！粉丝：2个月考出三年的成绩！
-              </a>
-            </p>
-            <div class="info-container">
-              <span>猫眼电影</span>
-              <span class="images-view-count view-count">35245</span>
-            </div>
-          </div>
-          <div class="latest-news-box">
-            <a href="http://maoyan.com/films/news/21791" target="_blank" data-act="news-click" data-val="{newsid:21791}">
-              <img src="5614a254d503b2e30ea82c0736db6f9c254815.jpg@230w_129h_1e_1c" alt="">
-            </a>
-            <p class="latest-news-title">
-              <a href="http://maoyan.com/films/news/21791" class="two-line" title="刘若英也要做导演：我从来就不是一个偶像" target="_blank" data-act="news-click" data-val="{newsid:21791}">
-                刘若英也要做导演：我从来就不是一个偶像
-              </a>
-            </p>
-            <div class="info-container">
-              <span>猫眼电影</span>
-              <span class="images-view-count view-count">6508</span>
-            </div>
-          </div>
-          <div class="latest-news-box">
-            <a href="http://maoyan.com/films/news/21790" target="_blank" data-act="news-click" data-val="{newsid:21790}">
-              <img src="4748721dc8010b33e0a283ab3e86a33f82328.jpg@230w_129h_1e_1c" alt="">
-            </a>
-            <p class="latest-news-title">
-              <a href="http://maoyan.com/films/news/21790" class="two-line" title="张静初坐卧铺赶工作，火车上敷面膜吃零食，网友：周黑鸭亮了！" target="_blank" data-act="news-click" data-val="{newsid:21790}">
-                张静初坐卧铺赶工作，火车上敷面膜吃零食，网友：周黑鸭亮了！
-              </a>
-            </p>
-            <div class="info-container">
-              <span>猫眼电影</span>
-              <span class="images-view-count view-count">8208</span>
-            </div>
-          </div>
+        @endforeach
     </div>
   </div>
 
     </div>
-    <div class="index-videos-container clearfix">
-        <div class="popular-container">
-            <h4 class="blue">热门预告片</h4>
-            <ul>
-                <li class="top-list">
-                  <div>
-                    <div class="top-info-thumb">
-                      <a href="http://imovie.ewang.com/films/248645/preview?videoId=86120" target="_blank" data-act="video-click" data-val="{videoId:86120}">
-                        <img src="1ef1ef629187cdeb4d2c57be2aaa90c833783.jpg@120w_68h_1e_1c" alt="">
-                        <i class="ranking top-info-icon orange-bg">1</i>
-                        <i class="play-icon"></i>
-                      </a>
-                    </div>
-                    <div class="top5-video-info">
-                      <p class="one-line">
-                        <a href="http://imovie.ewang.com/films/248645/preview?videoId=86120" target="_blank" data-act="video-click" data-val="{videoId:86120}">
-                          《变形金刚5：最后的骑士》汽车人VS霸天虎角色版预告片
-                        </a>
-                      </p>
-                      <div class="video-view">
-                        <span class="video-play-count">136.1万</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="top-list">
-                  <div>
-                    <div class="top-info-thumb">
-                      <a href="http://imovie.ewang.com/films/248645/preview?videoId=85955" target="_blank" data-act="video-click" data-val="{videoId:85955}">
-                        <img src="b16d92cc1adb35d1d6ce662ca7078cad35873.jpg@120w_68h_1e_1c" alt="">
-                        <i class="ranking top-info-icon orange-bg">2</i>
-                        <i class="play-icon"></i>
-                      </a>
-                    </div>
-                    <div class="top5-video-info">
-                      <p class="one-line">
-                        <a href="http://imovie.ewang.com/films/248645/preview?videoId=85955" target="_blank" data-act="video-click" data-val="{videoId:85955}">
-                          《变形金刚5：最后的骑士》中国独家预告片
-                        </a>
-                      </p>
-                      <div class="video-view">
-                        <span class="video-play-count">172万</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="top-list">
-                  <div>
-                    <div class="top-info-thumb">
-                      <a href="http://imovie.ewang.com/films/257722/preview?videoId=86136" target="_blank" data-act="video-click" data-val="{videoId:86136}">
-                        <img src="47beddf9da15ecd9c05a7a8311137cb327793.jpg@120w_68h_1e_1c" alt="">
-                        <i class="ranking top-info-icon orange-bg">3</i>
-                        <i class="play-icon"></i>
-                      </a>
-                    </div>
-                    <div class="top5-video-info">
-                      <p class="one-line">
-                        <a href="http://imovie.ewang.com/films/257722/preview?videoId=86136" target="_blank" data-act="video-click" data-val="{videoId:86136}">
-                          《雄狮》提档6月22日终极版预告片 海报双发提前开启感动之旅
-                        </a>
-                      </p>
-                      <div class="video-view">
-                        <span class="video-play-count">23.9万</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="top-list">
-                  <div>
-                    <div class="top-info-thumb">
-                      <a href="http://imovie.ewang.com/films/341565/preview?videoId=86037" target="_blank" data-act="video-click" data-val="{videoId:86037}">
-                        <img src="b3e634f402fc54fab1076c18d92805ea17086.jpg@120w_68h_1e_1c" alt="">
-                        <i class="ranking top-info-icon grey-bg">4</i>
-                        <i class="play-icon"></i>
-                      </a>
-                    </div>
-                    <div class="top5-video-info">
-                      <p class="one-line">
-                        <a href="http://imovie.ewang.com/films/341565/preview?videoId=86037" target="_blank" data-act="video-click" data-val="{videoId:86037}">
-                          《我不做大哥好多年》终极版预告片
-                        </a>
-                      </p>
-                      <div class="video-view">
-                        <span class="video-play-count">20.6万</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="top-list">
-                  <div>
-                    <div class="top-info-thumb">
-                      <a href="http://imovie.ewang.com/films/78888/preview?videoId=86079" target="_blank" data-act="video-click" data-val="{videoId:86079}">
-                        <img src="140265dbbf1d6de397551aaf724e32fc17692.jpg@120w_68h_1e_1c" alt="">
-                        <i class="ranking top-info-icon grey-bg">5</i>
-                        <i class="play-icon"></i>
-                      </a>
-                    </div>
-                    <div class="top5-video-info">
-                      <p class="one-line">
-                        <a href="http://imovie.ewang.com/films/78888/preview?videoId=86079" target="_blank" data-act="video-click" data-val="{videoId:86079}">
-                          《异形：契约》法鲨感谢国内影迷
-                        </a>
-                      </p>
-                      <div class="video-view">
-                        <span class="video-play-count">56.8万</span>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-   
   </div>
 
     </div>

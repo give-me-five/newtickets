@@ -20,6 +20,7 @@
       return true;
     }
 </script>
+  <link rel="stylesheet" href="{{asset('home/css/movie-detail.6b71afde.css')}}">
 <div class="banner">
     <div class="wrapper clearfix">
       <div class="celeInfo-left">
@@ -31,9 +32,8 @@
       <div class="celeInfo-right clearfix">
           <div class="movie-brief-container">
               <h3 class="name">{{$first->title}}</h3>
-              <!-- <div class="ename ellipsis">Transformers: The Last Knight</div> -->
+              <div class="ename ellipsis">{{$first->engname}}</div>
               <ul>
-                <li class="ellipsis">{{$first->fid}}</li>
                 <li class="ellipsis">
                 {{ $first->region }} / {{ $first->duration }}
                 </li>
@@ -57,7 +57,7 @@
                   </div>
                 </a>
               </div>
-              <a class="btn buy" href="http://www.meituan.com/dianying/248645?#content" target="_blank">立即购票</a>
+              <a class="btn buy" href="/films/{{$first->id}}/seat" target="_blank">立即购票</a>
           </div>
           <div class="movie-stats-container">
               <div class="movie-index">
