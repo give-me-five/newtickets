@@ -19,24 +19,12 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
-                <form action="{{url('/shop/projection')}}" method="post">
-                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                 <div class="row">
-                     <div class="col-lg-4">
-                      <div class="input-group">
-                        <input type="text" class="form-control" name="name" placeholder="影片电影">
-                        <span class="input-group-btn">
-                          <button class="btn btn-default" type="submit">搜索</button>
-                        </span>
-                      </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
-                  </div><!-- /.row -->
-                  </form>
+               
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table class="table table-bordered">
                     <tr>
-                      <th style="width:60px">ID号</th>
+                 
                       <th>放映厅</th>
                       <th>影片</th>
                       <th>影片类型</th>
@@ -49,7 +37,7 @@
                     </tr>
 					     @foreach($list as $key=> $vo)
 					           <tr>
-                     <td>{{ $vo->id }}</td>
+                    
                      <td><?php echo $ho[$key]; ?></td>
                      <td><?php echo $fo[$key]; ?></td> 
                      <td><?php echo $fid[$key]; ?></td> 

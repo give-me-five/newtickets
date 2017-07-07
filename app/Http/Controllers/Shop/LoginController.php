@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Gregwar\Captcha\CaptchaBuilder;
 
 class LoginController extends Controller
 {
@@ -16,6 +17,12 @@ class LoginController extends Controller
 	//执行登录
 	public function doLogin(Request $request)
 	{
+		//判断验证码
+        $mycode = $request->input("mycode");
+        $yanzhengma = $request->session()->get('mycode');
+        if($mycode != $yanzhengma){
+            return back()->with("msg","验证码错误");
+        }
 		//执行登陆判断
 		$name = $request->input("name");
 		$password = md5($request->input("password"));
@@ -39,4 +46,20 @@ class LoginController extends Controller
 		//$request->session()->forget('adminuser');
 		return redirect("/shop");
 	}
+	//加载验证码
+	 public function getCode()
+   {
+        $builder = new CaptchaBuilder;
+        //可以设置图片宽高及字体
+        $builder->build($width = 100, $height = 40, $font = null);
+        //获取验证码的内容
+        $phrase = $builder->getPhrase();
+        //把内容存入session
+        session()->put('mycode', $phrase);
+        //生成图片
+        header("Cache-Control: no-cache, must-revalidate");
+        header('Content-Type: image/jpeg');
+        $builder->output();
+
+   }
 }
