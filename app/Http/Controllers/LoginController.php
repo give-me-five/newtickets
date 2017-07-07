@@ -7,18 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\User;
 use Illuminate\Notifications\Notification;
-use Illuminate\Support\Facades\Redis as Redis;
-//引入阿里大鱼命名空间
-use iscms\Alisms\SendsmsPusher as Sms;
 use Request as ip;
 //会员登录/注册控制器
 class LoginController extends Controller
 {
 
-    public function __construct(Sms $sms)
-    {
-        $this->sms = $sms;
-    }
     //加载登录模板
     public function index()
     {
@@ -59,8 +52,8 @@ class LoginController extends Controller
                     session()->put('users',$users);
                 }else{
                     //如果状态不是1,被禁用
-                    echo "<script>alert('您违反相关规定,账号已被禁用')</script>";
-                    return back()->with();
+                    //echo "<script>alert('您违反相关规定,账号已被禁用')</script>";
+                    return back()->with("msg","您违反相关规定,账号已被禁用");
                 }
                 //判断是否为首次登陆
                 if(empty($status->firsttime)){
@@ -71,7 +64,7 @@ class LoginController extends Controller
                 //获取登陆者ip地址
                 $ip = ip::getClientIp();
                 \DB::table("users")->where("id",$users->id)->update(["login_ip"=>$ip]);
-                return redirect()->back();
+                //return redirect()->back();
                 return redirect("/admin/users/child");
             }else{
                 return back()->with('msg','账号或密码错误');
@@ -79,25 +72,6 @@ class LoginController extends Controller
         }else{
             return back()->with('msg','账号或密码错误');
         }
-    }
-    //加载手机登录模板
-    public function phone()
-    {
-        return view("login.phone");
-    }
-    //执行手机验证登录
-    public function doPhone(Sms $sms)
-    {
-        $phone = "18712753959";
-        $name = "学习用";
-        $num = rand(100000,999999);
-        $smsParams = [
-            'code'    => $num,
-            'product' => $phone
-        ];
-        $content = json_encode($smsParams);
-        $code = 'SMS_75835011';
-        $data = $sms->send($phone, $name, $content, $code);
     }
     //验证码
     public function code()
@@ -113,5 +87,6 @@ class LoginController extends Controller
         header("Cache-Control: no-cache, must-revalidate");
         header('Content-Type: image/jpeg');
         $builder->output();
+
     }
 }

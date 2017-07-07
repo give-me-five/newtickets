@@ -17,7 +17,10 @@ Route::get('/',"Home\IndexController@index");//站点首页
 Route::get('/films',"Home\FilmController@index");//正在热映
 Route::get('/films/Type/2',"Home\FilmController@soon");//即将上映
 
+
 Route::get('/films/{id}.html',"Home\FilmController@show");//影片详情
+Route::post('/films/comment/{id}',"Home\FilmController@Ajaxinsert");//影片评论
+
 Route::get('/films/{id}/seat',"Home\FilmController@content");//选座+购票
 Route::get('/layout/{fid}/seat/{hid}/{pid}',"Home\FilmController@layout");//选座
 
@@ -47,8 +50,6 @@ Route::get('/shop/Logout',"Shop\LoginController@Logout");
 Route::get('/shop/sigup',"Shop\SigupController@index");
 //执行商户注册
 
-Route::post('/shop/registered',"Shop\SigupController@registered");
-
 Route::post('/shop/sigup/registered',"Shop\SigupController@registered");
 //完善商户信息
 Route::post('/shop/information/upload',"Shop\InformationController@upload");
@@ -77,16 +78,24 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
 	Route::resource('hall', 'Shop\HallController');
 	Route::resource('projection', 'Shop\ProjectionController');
 
-	Route::get('/hall', 'Shop\HallController@index');
 	Route::resource('projection', 'Shop\ProjectionController');
 	//加载放映信息
     Route::get('/projection', 'Shop\ProjectionController@index');
+    //修改放映信息
+    Route::get('/projection/{id}/edit', 'Shop\ProjectionController@edit');
+    //执行修改信息
+    Route::get('/projection/{id}', 'Shop\ProjectionController@update');
+    //添加放映信息
+    Route::get('/projection/create', 'Shop\ProjectionController@create');
+    Route::post('/projection/store', 'Shop\ProjectionController@store');
     //添加影厅
     Route::get('/create','Shop\HallController@create');
     //执行添加
     Route::post('/store','Shop\HallController@store');
     //修改影厅信息
     Route::get('/edit/{id}','Shop\HallController@edit');
+    //商户退出登录
+    Route::get('/Logout',"Shop\LoginController@Logout");
 
 });
 
@@ -111,8 +120,6 @@ Route::resource('/admin/setup',"Admin\SetupController");
 
 //加载注册页面
 Route::get("reg","RegController@index");
-//加载验证码
-Route::get("reg/code","RegController@code");
 //执行ajax验证
 Route::post("reg/doLogin","RegController@doLogin");
 //执行注册
@@ -128,12 +135,6 @@ Route::get("reg/lose","RegController@lose");
 Route::get("login","LoginController@index");
 //执行登录
 Route::post("login/doLogin","LoginController@doLogin");
-//加载手机登录页面
-Route::get("login/phone","LoginController@phone");
-//手机验证码登录
-Route::get("login/doPhone","LoginController@doPhone");
-//执行登录
-Route::post("login/doPhone","LoginController@doPhone");
 //加载验证码
 Route::get("login/code","LoginController@code");
 
@@ -150,7 +151,8 @@ Route::get("admin/login/loginout","Admin\LoginController@loginout");
 
 
 //后台路由组
-Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
+Route::group(['prefix'=>'admin','Middleware'=>'admin'],function(){
+    Route::get("/index","Admin\indexController@index");
     //会员列表
     Route::get("/users/child","Admin\UsersController@child");
     //执行用户禁用

@@ -44,10 +44,10 @@ class LoginController extends Controller
             if ($info) {
                 //判断密码是否相等
                 if (decrypt($info->pass) == $pass) {
-                    session(["admin"=>$info]);
+                    session()->put("admin",$info);
                         //跳转后台主页
-                        //return redirect('admin/index');
-                    return redirect('admin/users/child');
+                        return redirect('/admin/index/');
+                   // return redirect('admin/users/child');
                 } else {
                     return back()->with('msg', "账号或密码错误");
                 }

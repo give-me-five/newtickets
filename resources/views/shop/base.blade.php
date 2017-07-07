@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>后台模板AdminLTE 2|Dashboard</title>
     <!-- 告诉浏览器响应屏幕宽度 -->
+
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.4 -->
     <link href="{{asset('myadmin/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />    
@@ -326,6 +327,7 @@
                 <li><a href="{{url('shop/hall')}}"><i class="fa fa-circle-o"></i>影厅信息</a></li>
 				<li><a href="{{url('shop/create')}}"><i class="fa fa-circle-o"></i>添加影厅</a></li>
                 <li><a href="{{url('shop/projection')}}"><i class="fa fa-circle-o"></i>放映信息</a></li>
+                <li><a href="{{url('shop/projection/create')}}"><i class="fa fa-circle-o"></i>添加放映信息</a></li>
                 <li><a href="{{url('shop/layout')}}"><i class="fa fa-circle-o"></i>添加布局</a></li>
               </ul>
             </li>

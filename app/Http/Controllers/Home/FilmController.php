@@ -65,4 +65,15 @@ class FilmController extends Controller
         return view("home.layout",compact('fmfirst','hfirst','ctit','ptime'));
     }
 
+    //执行Ajax评论添加
+    public function Ajaxinsert(Request $request,$id)
+    {
+        //判断是否登录
+        $phone = session('phone');
+        if(empty($phone)){
+            return redirect("login");
+        }
+        
+    }
+
 }

@@ -4,11 +4,11 @@
         <section class="content-header">
           <h1>
             <i class="fa fa-calendar"></i>
-			添加影厅信息
+			添加放映信息信息
           </h1>
           <ol class="breadcrumb">
             <li><a href="{{url('shop')}}"><i class="fa fa-dashboard"></i> 首页</a></li>
-            <li class="active">添加影厅信息</li>
+            <li class="active">添加放映信息</li>
           </ol>
         </section>
 
@@ -20,36 +20,54 @@
               <!-- Horizontal Form -->
               <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-plus"></i> 添加影厅信息</h3>
+                  <h3 class="box-title"><i class="fa fa-plus"></i> 添加信息</h3>
                 </div><!-- /.box-header -->
                 <!-- form start -->
-                <form action="{{url('shop/store')}}" method="post" class="form-horizontal">
+                <form action="{{url('shop/projection/store')}}" method="post" class="form-horizontal">
                   <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                   <div class="box-body">
                     <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">影厅名称：</label>
                       <div class="col-sm-4">
-                      <select name="title" class="form-control" id="inputEmail3">
-                          @foreach($hall as $ho)
+                      <select name="hall" class="form-control" id="inputEmail3">
+                         @foreach($hall as $ho)
                           <option>{{$ho->title}}</option>
                           @endforeach
                       </select>
                       </div>
                     </div>
 				      	<div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">座位数量：</label>
+                      <label for="inputPassword3" class="col-sm-2 control-label">影片信息</label>
                       <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="座位数量" name="number">
+                       <select name="film" class="form-control" id="inputEmail3">
+                         @foreach($film as $fo)
+                          <option>{{$fo->title}}</option>
+                          @endforeach
+                      </select>
                       </div>
                     </div>
 					     <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">座位数量：</label>
+                      <label for="inputPassword3" class="col-sm-2 control-label">座位信息：</label>
                       <div class="col-sm-4">
-                         <select name="layout" class="form-control" id="inputEmail3">
-                          @foreach($hall as $lo)
-                          <option>{{$lo->layout}}</option>
-                          @endforeach
-                      </select>
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="座位数量" name="seatinfo">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">价格：</label>
+                      <div class="col-sm-4">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="票价" name="price">
+                      </div>
+                    </div>
+                     <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">放映时间：</label>
+                      <div class="col-sm-4">
+                        <input type="datetime-local" class="form-control" id="inputPassword3"  name="datetime">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">结束时间：</label>
+                      <div class="col-sm-4">
+                        <input type="datetime-local" class="form-control" id="inputPassword3"  name="endtime">
                       </div>
                     </div>
                   </div><!-- /.box-body -->
