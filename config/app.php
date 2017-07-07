@@ -174,6 +174,7 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 
         /*
          * Application Service Providers...

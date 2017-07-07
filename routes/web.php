@@ -30,11 +30,20 @@ Route::get('/news',"Home\NewsController@index");//热点列表
 Route::get('/admin',"Admin\IndexController@index");
 //后台影片信息浏览路由
 Route::get('/admin/film',"Admin\FilmController@index");	
+
 //后台影片信息添加路由
 Route::get('/admin/film/create',"Admin\FilmController@create"); 
 Route::post('/admin/film/create', 'Admin\FilmController@store');
+//七牛测试路由
+Route::get('/admin/ceshi',"Admin\CeshiController@index");
+Route::get('/admin/ceshi/create',"Admin\CeshiController@create");
+
+Route::post('admin/ceshi/doUpload', 'Admin\CeshiController@doUpload');
+
+
 Route::get('/admin/film/{id}/edit', 'Admin\FilmController@edit');
 Route::post('/admin/film/update/{id}', 'Admin\FilmController@update');
+
 //后台影片评论路由
 Route::get('/admin/film_comment','Admin\film_commentController@index');
 //加载登录页面
@@ -148,7 +157,7 @@ Route::get("admin/login/loginout","Admin\LoginController@loginout");
 
 
 //后台路由组
-Route::group(['prefix'=>'admin','Middleware'=>'admin'],function(){
+Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get("/index","Admin\indexController@index");
     //会员列表
     Route::get("/users/child","Admin\UsersController@child");

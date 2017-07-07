@@ -30,8 +30,15 @@ class FilmController extends Controller
     //影片详情
     public function show($id)
     {   
-        $first = Film::find($id);  
-        return view("home.movie_show",compact('first'));
+        $comment = \DB::table('film_comment')->where('fid','=',$id)->get();
+        $uid = session('users')->id;
+        $users = \Db::table('users')->where('id','=',$uid)->first();
+        //echo "<pre>";
+        //print_r($users);
+        $film = Film::where('id','=',$id)->first();
+        //echo "<pre>";
+        //print_r($film);  
+        return view("home.movie_show",compact("film","comment","users"));
     }
 
     //选座购票
@@ -54,10 +61,25 @@ class FilmController extends Controller
     public function Ajaxinsert(Request $request,$id)
     {
         //判断是否登录
-        $phone = session('phone');
-        if(empty($phone)){
+        $usersid = session('users')->id;
+        //echo "<pre>";
+        //print_r($usersid);
+        if(session('users')->phone==""){
             return redirect("login");
         }
+        //获取数据
+        $data['fid'] = $id;
+        //echo "<pre>";
+        //print_r($data);
+        $data['uid'] = $usersid;
+        $str = $request->only(['comment']);
+        $str['support'] = 1;
+        $str['created_at'] = time();
+        $info = array_merge($data,$str);
+        //echo "<pre>";
+        //print_r($info); 
+        \DB::table('film_comment')->insertGetId($info);
+        return redirect("/films/{$info['fid']}");
         
     }
 

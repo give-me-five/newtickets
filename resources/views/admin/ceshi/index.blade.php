@@ -7,7 +7,7 @@
                     <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
-                                <div class="widget-title am-fl">当前位置：浏览影片</div>
+                                <div class="widget-title am-fl">当前位置：上传测试>浏览</div>
                                 <div class="widget-function am-fr">
                                     <a href="javascript:;" class="am-icon-cog"></a>
                                 </div>
@@ -17,24 +17,19 @@
                                 <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black " id="example-r">
                                     <thead>
                                         <tr>
-                                            <th width="150">ID</th>
-                                            <th width="150">影片</th>
-                                            <th width="160">会员账号</th>
-                                            <th width="150">评论内容</th>
-                                            <th width="150">评论时间</th>
-                                            <th width="150">点击数</th>
+                                            <th width="30">ID</th>
+                                            <th width="160">图片</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($comment as $list)
-                                        <td>{{$list->id}}</td>
-                                        <td>{{$list->fid}}</td>
-                                        <td>{{$list->uid}}</td>
-                                        <td>{{$list->comment}}</td>
-                                        <td>{{$list->created_at}}</td>
-                                        <td>{{$list->support}}</td>
+                                    @foreach($list as $v)
+                                        <tr class="gradeX">
+                                            <td>{{$v->id}}</td>
+                                            <td><img width="220" height="300"  src="{{$v->picname}}"></td>
+                                            </td>
+                                        </tr>
                                     @endforeach
-                                      
             
                                         <!-- more data -->
                                     </tbody>

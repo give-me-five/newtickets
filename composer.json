@@ -10,9 +10,10 @@
         "iscms/alisms-for-laravel": "^0.0.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
+        "gregwar/captcha": "1.*",
         "mews/captcha": "^2.1",
-        "zgldh/qiniu-laravel-storage": "^0.6.8",
-        "predis/predis": "~1.1@dev"
+        "predis/predis": "~1.1@dev",
+        "zgldh/qiniu-laravel-storage": "^0.6.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
