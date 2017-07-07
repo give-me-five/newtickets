@@ -20,6 +20,7 @@
       return true;
     }
 </script>
+  <link rel="stylesheet" href="{{asset('home/css/movie-detail.6b71afde.css')}}">
 <div class="banner">
     <div class="wrapper clearfix">
       <div class="celeInfo-left">
@@ -30,14 +31,15 @@
       </div>
       <div class="celeInfo-right clearfix">
           <div class="movie-brief-container">
-              <h3 class="name">{{$film->title}}</h3>
-              <!-- <div class="ename ellipsis">Transformers: The Last Knight</div> -->
+
+              <h3 class="name">{{$first->title}}</h3>
+             
+              <div class="ename ellipsis">{{$first->engname}}</div>
               <ul>
-                <li class="ellipsis">{{$film->fid}}</li>
                 <li class="ellipsis">
-                {{ $film->region }} / {{ $film->duration }}
+                {{ $first->region }} / {{ $first->duration }}
                 </li>
-                <li class="ellipsis">{{ $film->firsttime }} 大陆上映</li>
+                <li class="ellipsis">{{ $first->firsttime }} 大陆上映</li>
               </ul>
           </div>
           <div class="action-buyBtn">
@@ -57,14 +59,14 @@
                   </div>
                 </a>
               </div>
-              <a class="btn buy" href="http://www.meituan.com/dianying/248645?#content" target="_blank">立即购票</a>
+              <a class="btn buy" href="/films/{{$first->id}}/seat" target="_blank">立即购票</a>
           </div>
           <div class="movie-stats-container">
               <div class="movie-index">
                   <p class="movie-index-title">用户评分</p>
                   <div class="movie-index-content score normal-score">
                       <span class="index-left info-num ">
-                        <span class="stonefont">{{ $film->score }}</span>
+                        <span class="stonefont">{{ $first->score }}</span>
                       </span>
                       <div class="index-right">
                         <div class="star-wrapper">
@@ -100,7 +102,7 @@
                     <h3>剧情简介</h3>
                   </div>
                   <div class="mod-content">
-                      <span class="dra">{{$film->introduction}}</span>
+                      <span class="dra">{{$first->introduction}}</span>
                   </div>
               </div>
               <div class="module">
@@ -119,7 +121,7 @@
                                     
                                     <div class="info">
                                       <a href="" target="_blank" class="name">
-                                        {{$film->director}}
+                                        {{$first->director}}
                                       </a>
                                     </div>
                                 </li>
@@ -135,7 +137,7 @@
                                   
                                   <div class="info">
                                     <a href="" class="name">
-                                      {{$film->actor}}
+                                      {{$first->actor}}
                                     </a>
                                       <br>
                                   </div>

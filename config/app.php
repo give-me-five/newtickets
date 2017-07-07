@@ -170,6 +170,9 @@ return [
         iscms\Alisms\AlidayuServiceProvider::class,
         //图片裁剪
         Intervention\Image\ImageServiceProvider::class,
+        //百度富文本编辑器
+        Stevenyangecho\UEditor\UEditorServiceProvider::class,
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
         /*
          * Package Service Providers...
          */

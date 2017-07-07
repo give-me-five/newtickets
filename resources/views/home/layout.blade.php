@@ -6,7 +6,7 @@
 @media screen and (max-width: 360px) {.demo {width:340px}}
 
 .front{width: 300px;margin: 5px 32px 45px 32px;background-color: #f0f0f0;	color: #666;text-align: center;padding: 3px;border-radius: 5px;}
-.booking-details {float: right;position: relative;width:200px;height: 450px; }
+.booking-details {float: right;position: relative;width:220px;height: 450px; }
 .booking-details h3 {margin: 5px 5px 0 0;font-size: 16px;}
 .booking-details p{line-height:26px; font-size:16px; color:#999}
 .booking-details p span{color:#666}
@@ -43,16 +43,15 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <body>
 
 <div id="main">
-   <h2 class="top_title">jQuery在线选座订座（影院版</h2>
+   <h2 class="top_title">{{$ctit->shopname}}</h2>
    <div class="demo">
    		<div id="seat-map">
 			<div class="front">屏幕</div>					
 		</div>
 		<div class="booking-details">
-			<p>影片：<span>星际穿越</span></p>
-			<p>影院：<span>北京沃美影城回龙观店</span></p>
-			<p>影厅：<span>七号彩虹厅</span></p>
-			<p>场次：<span>11月14日 21:00</span></p>
+			<p>影片：<span>{{$fmfirst->title}}</span></p>
+			<p>影厅：<span>{{$hfirst->title}}</span></p>
+			<p>场次：<span>{{$ptime->starttime}}</span></p>
 			<p>座位：</p>
 			<ul id="selected-seats"></ul>
 			<p>票数：<span id="counter">0</span></p>
@@ -77,18 +76,7 @@ $(document).ready(function() {
 	$total = $('#total'); //总计金额
 	
 	var sc = $('#seat-map').seatCharts({
-		map: [  //座位图
-			'aaaaaaaaaa',
-            'aaaaaaaaaa',
-            '__________',
-            'aaaaaaaa__',
-            'aaaaaaaaaa',
-			'aaaaaaaaaa',
-			'aaaaaaaaaa',
-			'aaaaaaaaaa',
-			'aaaaaaaaaa',
-            'aa__aa__aa'
-		],
+		map: [<?php echo trim($hfirst->layout);?>],//座位图
 		naming : {
 			top : false,
 			getLabel : function (character, row, column) {
@@ -132,7 +120,7 @@ $(document).ready(function() {
 		}
 	});
 	//已售出的座位
-	sc.get(['1_2', '4_4','4_5','6_6','6_7']).status('unavailable');
+	sc.get([]).status('unavailable');
 		
 });
 //计算总金额
@@ -144,5 +132,11 @@ function recalculateTotal(sc) {
 			
 	return total;
 }
+
+
+
+
 </script>
 @endsection
+
+

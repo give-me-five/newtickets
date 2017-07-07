@@ -88,17 +88,17 @@
 			</thead>
 
 			<tbody>	
-				@foreach ($prolist as $pro)					
+				@foreach ($prolist as $key=>$pro)					
 				<tr>
 					<td class="hall-time">
-						<em class="bold">{{ $pro->datetime }}</em>
-						 预计{{ $pro->endtime }}散场 					
+						<em class="bold"><?php echo substr(($pro->starttime),10,9);?></em>
+						 预计<?php echo substr(($pro->endtime),10,9);?>散场 					
 					</td>
 					<td class="hall-type">
-						{{ $pro->language }}
+						{{$pro->language}}
 					</td>
 					<td class="hall-name">
-						{{ $pro->hid }}
+						<?php echo $ho[$key];?>
 					</td>
 										
 					<td class="hall-flow">
@@ -113,11 +113,12 @@
 						</div>
 					</td>
 					<td class="hall-price" data-partcode="vista">
-						<em class="now">{{ $pro->price }}</em>
+						<em class="now">{{ $pro->price }}.00</em>
 						<!-- <del class="old">39.00</del> -->
 					</td>
 					<td class="hall-seat">
-						<a class="seat-btn" href="http://dianying.taobao.com/seatOrder.htm?scheduleId=402465169&amp;n_s=new">选座购票</a>
+						<a class="seat-btn" href="/layout/{{$flists->id}}/seat/{{$haid[$key]}}/{{$pro->id}}">选座购票</a>
+						
 					</td>
 				</tr>
 				@endforeach

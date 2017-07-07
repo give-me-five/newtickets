@@ -17,14 +17,17 @@ Route::get('/',"Home\IndexController@index");//站点首页
 Route::get('/films',"Home\FilmController@index");//正在热映
 Route::get('/films/Type/2',"Home\FilmController@soon");//即将上映
 
-Route::get('/films/{id}',"Home\FilmController@show");//影片详情
+
+Route::get('/films/{id}.html',"Home\FilmController@show");//影片详情
 Route::post('/films/comment/{id}',"Home\FilmController@Ajaxinsert");//影片评论
+
 Route::get('/films/{id}/seat',"Home\FilmController@content");//选座+购票
-Route::get('/layout/{fid}/seat/{hid}',"Home\FilmController@layout");//选座
+Route::get('/layout/{fid}/seat/{hid}/{pid}',"Home\FilmController@layout");//选座
 
 Route::get('/cinemas',"Home\CinemaController@index");//影院列表
 Route::get('/cinemas/{id}',"Home\CinemaController@show");//影院详情页
 Route::get('/news',"Home\NewsController@index");//热点列表
+Route::get('/news/{id}.html',"Home\NewsController@show");//热点详情
 
 //后台首页路由
 Route::get('/admin',"Admin\IndexController@index");
@@ -209,3 +212,9 @@ Route::group(['prefix' => 'business','middleware' => 'business'], function(){
     // Route::get('/change/shezhis','Business\IndexController@change');
 });
 // end
+
+
+//富文本编辑器测试
+Route::get('/upload', 'UploadController@index');
+
+Route::post('/upload/put', 'UploadController@uploads');
