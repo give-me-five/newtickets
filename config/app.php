@@ -183,7 +183,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
     ],
 
     /*
@@ -238,6 +239,7 @@ return [
 
 //		'Captcha' => Mews\Captcha\Facades\Captcha::class,
 		'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        //'Storage'=> zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
     ],
 
 ];

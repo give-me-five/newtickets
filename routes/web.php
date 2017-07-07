@@ -86,7 +86,7 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     //添加影厅
     Route::get('/create','Shop\HallController@create');
     //执行添加
-    Route::post('/store','Shop\HallController@store');
+    Route::post('shop/store','Shop\HallController@store');
     //修改影厅信息
     Route::get('/edit/{id}','Shop\HallController@edit');
     //商户退出登录
