@@ -11,8 +11,7 @@ class MerchantController extends Controller
     public function index(Request $request)
     {
         $db = \DB::table("shop_detail_copy");
-        //每页6条数据
-        $list = $db->paginate(6);
+
         $where = [];
         //封装搜索条件
         if($request->has('name')){
@@ -20,6 +19,8 @@ class MerchantController extends Controller
             $db->where("shopname","like","%{$name}%");
             $where["name"] = $name;
         }
+        //每页6条数据
+        $list = $db->paginate(6);
         //赋值模板变量
         return view("admin.merchant.child",["list"=>$list,"where"=>$where]);
     }
