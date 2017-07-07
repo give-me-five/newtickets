@@ -11,9 +11,6 @@
   <link rel="stylesheet" href="{{asset('home/css/common.dce64fb8.css')}}">
   <link rel="stylesheet" href="{{asset('home/css/home-index.ff98348e.css')}}">
   <link rel="stylesheet" href="{{asset('home/css/movie-list.ffb4de4a.css')}}">
-  <link rel="stylesheet" href="{{asset('home/css/movie-detail.6b71afde.css')}}">
-  <link rel="stylesheet" href="{{asset('home/css/news-hotNews.d8ee9843.css')}}">
-
 </head>
 <body>
 <div class="header">
@@ -50,8 +47,13 @@
               <img src="{{asset('home/images/panda.png')}}">
               <span class="caret"></span>
               <ul class="user-menu">
-                <li><a href="/login/">登录</a></li>
-                <li><a href="/reg/">注册</a></li>
+                  @if(session("users"))
+                      <li>欢迎：{{session("users")->phone}}</li>
+                      <li><a href="/login/loginout">退出</a></li>
+                  @else
+                      <li><a href="/login/">登录</a></li>
+                      <li><a href="/reg/">注册</a></li>
+                  @endif
               </ul>
             </div>
         </div>
@@ -64,7 +66,7 @@
 </div>
 <div class="header-placeholder"></div>
 @section('content')
-  这是页面主内容区。
+  
 @show
 <div class="footer" style="visibility: visible;">
     <p>

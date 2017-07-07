@@ -28,7 +28,7 @@
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="form-field form-field--mobile">
                         <label>手机号</label>
-                        <input name="phone" class="f-text J-mobile"  placeholder="由6到16位的数字，字母，下划线组成" type="text" onblur="checkPhone()">
+                        <input name="phone" class="f-text J-mobile"  placeholder="11位数字组成" type="text" onblur="checkPhone()">
                     </div>
                     <div class="form-field form-field--pwd">
 
@@ -128,7 +128,7 @@
         var password2 = document.myform.password2.value;
         var password = document.myform.password.value;
         $("input[name='password2']").nextAll("span").remove();
-        if(password2==""){
+        if(password2.length == 0){
             $("<span style='color:red'>密码不能为空</span>").insertAfter("input[name='password2']");
             return false
         }
@@ -158,7 +158,7 @@
         }
         if (countdown == 0) {
             obj.removeAttribute("disabled");
-            obj.value="免费获取验证码";
+            obj.value="获取验证码";
             countdown = 300;
             return;
         } else {
@@ -171,7 +171,7 @@
         }
         setTimeout(function() {settime(obj) },1000)
     }
-    //ajax发送
+    //ajax发送手机验证码
     function send2(){
         //执行ajax判断
         var phone = document.myform.phone.value;
@@ -187,6 +187,5 @@
         return true;
     }
 </script>
-<script src="{{ asset('/js/register.js') }}" type="text/javascript"></script>
 </body>
 </html>

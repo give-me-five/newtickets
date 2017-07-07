@@ -1,8 +1,10 @@
 @extends('home.base')
   @section('content')
+
 <link rel="stylesheet" href="{{asset('home/css/cinemashow.css')}}" clam-moveto="none">
 <link rel="stylesheet" type="text/css" href="{{asset('home/css/cinemashow_001.css')}}">
 <!-- header -->
+@section("show")
    <div class="infomation-wrapper" data-spm="w1">
    		<div class="center-wrap">
    			<h4 class="title">{{$single->shopname}}<!--small class='mark'>关注：22093</small--><small class="score">9.4 </small><small class="others"><!--a class="J_gocomment" href="#comment">[评价]</a--><!--a href="#">[纠错信息]</a--></small></h4>
@@ -15,7 +17,7 @@
 				</div>
    				<a data-type="image" class="float-layer-hook float-layer-wrapper">
 					<img data-src="" src="/upload/pic/{{$single->picname}}">
-				</a
+				</a>
    				<ul class="info-list">
 					<li>详细地址：{{$single->address}}<a class="pos-hook" data-href="#J-map"></a></li>					<li>联系电话：{{$single->phone}}</li>
 					</li>
@@ -55,7 +57,7 @@
 					<label>选择影片</label>
 					<div class="select-tags">
                         @foreach($title as $info)
-						    <a class="current" href="/cinemas/info/{{$info->id}}" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new">{{$info->title}}</a>
+						    <a class="current" href="/cinemas/info/{{$single->shopname}}/{{$info->title}}/{{$single->id}}" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new">{{$info->title}}</a>
                         @endforeach
 					</div>
 				</li>
@@ -68,7 +70,7 @@
 				</li>
 			</ul>
 		</div>
-        @section("info")
+
 	<!-- movie bar -->
 		 	<div class="movie-wrapper M-movie">
 			<img class="movie-post" src="/uploads/{{$title2->picname}}" width="120" height="160">
@@ -80,7 +82,11 @@
 					</div>
 				<div class="movie-info">
 					<ul>
-						<li>看点：{{$title2->introduction}}</li>						<li>导演：{{$title2->director}}</li>						<li>主演：{{$title2->actor}}</li>						<li>类型：{{$title2->fid}}</li>						<li>制片国家/地区：{{$title2->region}}</li>						<li>语言：{{$title2->language}}</li>					</ul>
+
+						<li>看点：{{str_limit($title2->introduction)}}</li><li>导演：{{$title2->director}}</li><li>主演：{{$title2->actor}}</li><li>类型：{{$title2->fid}}</li><li>制片国家/地区：{{$title2->region}}</li>	<li>语言：{{$title2->language}}</li>	</ul>
+
+
+
 				</div>
 			</div>
 		</div>
@@ -139,5 +145,5 @@
         </div>
     </div>
 </div>
-      @show
+@show
 @endsection

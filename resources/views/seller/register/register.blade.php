@@ -17,6 +17,7 @@
 	<div class="content2">
 		<form action="{{url('business/register')}}">
 			<input type="tel" name="phone" value="手机号" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '手机号';}">
+			<input type="text" name="code" value="验证码" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '验证码';}">
 			<input type="password" name="password" value="PASSWORD" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PASSWORD';}">
 			<input type="submit" class="register" value="注册">
 		</form>

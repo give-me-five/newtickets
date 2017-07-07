@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Hall;
 use Illuminate\Validation\Rule;
+use  zgldh\QiniuStorage\QiniuFilesystemServiceProvider;
+
+
 
 class HallController extends Controller
 {
@@ -28,6 +31,29 @@ class HallController extends Controller
 	//执行添加
 	public function store(request $request)
 	{
+
+	//`	$file = $request->file('ufile');
+		//var_dump($file);
+
+
+//		//$file = $request->file('picname');
+//		$filename = $file->getClientOriginalName().time().rand().$file->getClientOriginalExtension();
+//		$disk = \Storage::disk('qiniu');
+//
+//		$bool = $disk->put('img/'.$filename,file_get_contents($file->getRealPath()));
+//			//上传到七牛
+//			//$bool = $disk->put('iwanli/image_'.$filename,file_get_contents($file->getRealPath()));
+//		//$disk->getDriver()->downloadUrl($filename);            //获取下载地址
+//		if($bool){
+//			echo '上传成功';
+//			echo '<br>'.env('QINIU_URL').'/img/'.$filename;
+//
+//			$realpath = env('QINIU_URL').'/img/'.$filename;
+//		}else{
+//			echo  '上传失败';
+//		}
+
+
 		$cid=session('adminuser')->id;
 		$this->validate($request, [
             'title' => Rule::unique('hall')->where("cid",$cid),
@@ -40,14 +66,15 @@ class HallController extends Controller
 		//执行添加
 		$id=Hall::insertGetId(
 			["cid"=>$cid,"title"=>$title,"number"=>$number,"layout"=>$layout]
-			);
+		);
 		//添加判断
 		if($id>0){
-            $info = "影厅添加成功！";
-        }else{
-            $info = "影厅添加失败！";
-        }
-        return redirect("shop/hall")->with("err",$info);
+			$info = "影厅添加成功！";
+		}else{
+			$info = "影厅添加失败！";
+		}
+		return redirect("shop/hall")->with("err",$info);
+
 	}
 
 	public function edit(request $request,$id)
