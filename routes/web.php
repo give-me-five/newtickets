@@ -23,7 +23,7 @@ Route::get('/layout/{fid}/seat/{hid}',"Home\FilmController@layout");//选座
 
 Route::get('/cinemas',"Home\CinemaController@index");//影院列表
 Route::get('/cinemas/show/{id}',"Home\CinemaController@show");//影院详情页
-Route::get('/cinemas/info/{id?}',"Home\CinemaController@info");//影院详情页
+Route::get('/cinemas/info/{shopname?}/{title?}/{id?}',"Home\CinemaController@info");//影院详情页
 Route::get('/news',"Home\NewsController@index");//热点列表
 
 //后台首页路由
@@ -128,6 +128,8 @@ Route::get("login","LoginController@index");
 Route::post("login/doLogin","LoginController@doLogin");
 //加载验证码
 Route::get("login/code","LoginController@code");
+//退出登录
+Route::get("login/loginout","LoginController@loginout");
 
 
 //后台登录页面

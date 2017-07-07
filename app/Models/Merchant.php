@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Merchant extends Model
 {
     //设置表
-    protected  $table = 'shop_detail';
+    protected  $table = 'shop_detail_copy';
 
     //设置主键
     protected  $primaryKey = 'id';

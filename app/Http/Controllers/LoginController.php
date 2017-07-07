@@ -65,8 +65,8 @@ class LoginController extends Controller
                 //获取登陆者ip地址
                 $ip = ip::getClientIp();
                 \DB::table("users")->where("id",$users->id)->update(["login_ip"=>$ip]);
-                //return redirect()->back();
-                return redirect("/admin/users/child");
+                return redirect("/");
+                //return redirect("/admin/users/child");
             }else{
                 return back()->with('msg','账号或密码错误');
             }
@@ -89,5 +89,9 @@ class LoginController extends Controller
         header('Content-Type: image/jpeg');
         $builder->output();
 
+    }
+    public function loginout(Request $request){
+        $request->session()->forget('users');
+        return redirect("/");
     }
 }

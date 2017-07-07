@@ -46,8 +46,13 @@
               <img src="{{asset('home/images/panda.png')}}">
               <span class="caret"></span>
               <ul class="user-menu">
-                <li><a href="/login/">登录</a></li>
-                <li><a href="/reg/">注册</a></li>
+                  @if(session("users"))
+                      <li>欢迎：{{session("users")->phone}}</li>
+                      <li><a href="/login/loginout">退出</a></li>
+                  @else
+                      <li><a href="/login/">登录</a></li>
+                      <li><a href="/reg/">注册</a></li>
+                  @endif
               </ul>
             </div>
         </div>

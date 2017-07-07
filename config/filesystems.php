@@ -62,6 +62,19 @@ return [
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'https://osnbowogj.bkt.clouddn.com', //你的七牛域名
+                'https'     => '',         //你的HTTPS域名
+                'custom'    => '',     //你的自定义域名
+            ],
+            'access_key'=> 'JOCbquepaGbkVH9mXgfCUEnJlrXSYgTmuCZ004vq',  //AccessKey
+            'secret_key'=> 'SBMMX0KQpvW-SwF18a44FWYFtkckKmQFLPJEkGRi',  //SecretKey
+            'bucket'    => ' movie',  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+            'access'    => ''  //空间访问控制 public 或 private*/
+        ],
 
     ],
 

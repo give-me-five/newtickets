@@ -170,6 +170,8 @@ return [
         iscms\Alisms\AlidayuServiceProvider::class,
         //图片裁剪
         Intervention\Image\ImageServiceProvider::class,
+		//七牛
+		zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
         /*
          * Package Service Providers...
          */
