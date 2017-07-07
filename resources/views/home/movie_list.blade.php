@@ -64,37 +64,13 @@
           </ul>
         </div>
         <div class="movies-panel">
-            <div class="movies-sorter">
-              <div class="cat-sorter">
-                  <ul>
-                      <li>
-                        <span class="sort-control-group" data-act="sort-click" data-val="{tagId: 1 }" style="cursor: default;">
-                          <span class="sort-control sort-radio sort-radio-checked"></span>
-                          <span class="sort-control-label">按热门排序</span>
-                        </span>
-                      </li>
-                      <li>
-                        <span class="sort-control-group" data-act="sort-click" data-val="{tagId: 2 }" data-href="?showType=1&amp;sortId=2" onclick="location.href=this.getAttribute('data-href')">
-                          <span class="sort-control sort-radio"></span>
-                          <span class="sort-control-label">按时间排序</span>
-                        </span>
-                      </li>
-                      <li>
-                        <span class="sort-control-group" data-act="sort-click" data-val="{tagId: 3 }" data-href="?showType=1&amp;sortId=3" onclick="location.href=this.getAttribute('data-href')">
-                          <span class="sort-control sort-radio"></span>
-                          <span class="sort-control-label">按评价排序</span>
-                        </span>
-                      </li>
-                  </ul>
-              </div>
-              
-            </div>
+
             <div class="movies-list">
               <dl class="movie-list">
               @foreach ($flist as $films)
                 <dd>
                   <div class="movie-item">
-                    <a href="/films/{{ $films->id }}" target="_blank" data-act="movie-click">
+                    <a href="/films/{{ $films->id }}.html" target="_blank" data-act="movie-click">
                       <div class="movie-poster">
                         <!-- <img class="poster-default" src="loading_2.e3d934bf.png"> -->
                         <img src="/uploads/{{$films->picname}}">
@@ -106,7 +82,7 @@
                     <div class="movie-ver"><i class="imax3d"></i></div>
                   </div>
                   <div class="channel-detail movie-item-title" title="{{ $films->title }}">
-                      <a href="/film/{{ $films->id }}" target="_blank" data-act="movies-click">{{ $films->title }}</a>
+                      <a href="/film/{{ $films->id }}.html" target="_blank" data-act="movies-click">{{ $films->title }}</a>
                   </div>
                   <div class="channel-detail channel-detail-orange"><i class="integer">{{ $films->score }}</i></div>
                 </dd>

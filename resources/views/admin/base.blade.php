@@ -313,6 +313,22 @@
                         </li>
                     </ul>
                 </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 上传测试
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('/admin/ceshi')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览
+                            </a>
+                            <a href="{{url('/admin/ceshi/create')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 上传
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
 

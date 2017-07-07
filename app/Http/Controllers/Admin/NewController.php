@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\News;
-
+use zgldh\QiniuStorage\QiniuStorage;
 
 class NewController extends Controller
 {
@@ -39,30 +39,21 @@ class NewController extends Controller
     public function store(Request $request)
     {
         $data = $request->only('title','description','content');
-        $data['inputtime'] = time();
-        $data['updatetime'] = time();
-        $data['status'] = 0;
+        $data['created_at'] = time();
+        $data['updated_at'] = time();
+        $data['status'] = 0;    
+        // 图片上传
+        if($request->hasFile('thumb')){
+            $file = $request->file('thumb');
 
-       
-        $file = $request->file('thumb');
-        
-        $filename = $file->extension();  
-        //print_r($filename);    
-        // 最后创建 image 实例
-        $manager = new ImageManager(array('driver' => 'imagick'));
-        $image = $manager->make('./uploads/'.time().$filename)->resize(300, 200);
+            $disk = QiniuStorage::disk('qiniu');
 
-        $data['thumb']=$images;
-        //print_r($data);
+            $filename = md5($file->getClientOriginalName().time().rand()).'.'.$file->getClientOriginalExtension();
 
-        $file = $request->file('thumb');
-        $filename = $file->extension();
-        // print_r($file);die();
-        $image = time().".".$filename;
-        $file->move('/uploads/',$image);
-        $data['thumb']=$image;
-
-
+            $bool = $disk->put('uploads/'.$filename,file_get_contents($file->getRealPath()));
+        }
+        $data['thumb'] = $filename;
+        // 结束
         $res = \DB::table('news')->insertGetId($data);
         //print_r($res);
         if($res>0){
@@ -80,7 +71,7 @@ class NewController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**

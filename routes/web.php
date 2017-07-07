@@ -17,25 +17,38 @@ Route::get('/',"Home\IndexController@index");//站点首页
 Route::get('/films',"Home\FilmController@index");//正在热映
 Route::get('/films/Type/2',"Home\FilmController@soon");//即将上映
 
-Route::get('/films/{id}',"Home\FilmController@show");//影片详情
+
+Route::get('/films/{id}.html',"Home\FilmController@show");//影片详情
+Route::post('/films/comment/{id}',"Home\FilmController@Ajaxinsert");//影片评论
+
 Route::get('/films/{id}/seat',"Home\FilmController@content");//选座+购票
-Route::get('/layout/{fid}/seat/{hid}',"Home\FilmController@layout");//选座
+Route::get('/layout/{fid}/seat/{hid}/{pid}',"Home\FilmController@layout");//选座
 
 Route::get('/cinemas',"Home\CinemaController@index");//影院列表
 Route::get('/cinemas1',"Home\CinemafsfController@index");//影院列表
 Route::get('/cinemas/show/{id}',"Home\CinemaController@show");//影院详情页
 Route::get('/cinemas/info/{shopname?}/{title?}/{id?}',"Home\CinemaController@info");//影院详情页
 Route::get('/news',"Home\NewsController@index");//热点列表
+Route::get('/news/{id}.html',"Home\NewsController@show");//热点详情
 
 //后台首页路由
 Route::get('/admin',"Admin\IndexController@index");
 //后台影片信息浏览路由
 Route::get('/admin/film',"Admin\FilmController@index");	
+
 //后台影片信息添加路由
 Route::get('/admin/film/create',"Admin\FilmController@create"); 
 Route::post('/admin/film/create', 'Admin\FilmController@store');
+//七牛测试路由
+Route::get('/admin/ceshi',"Admin\CeshiController@index");
+Route::get('/admin/ceshi/create',"Admin\CeshiController@create");
+
+Route::post('admin/ceshi/doUpload', 'Admin\CeshiController@doUpload');
+
+
 Route::get('/admin/film/{id}/edit', 'Admin\FilmController@edit');
 Route::post('/admin/film/update/{id}', 'Admin\FilmController@update');
+
 //后台影片评论路由
 Route::get('/admin/film_comment','Admin\film_commentController@index');
 //加载登录页面
@@ -152,7 +165,7 @@ Route::get("admin/login/loginout","Admin\LoginController@loginout");
 
 
 //后台路由组
-Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
+Route::group(['prefix'=>'admin','middleware'=>'admin'],function(){
     Route::get("/index","Admin\indexController@index");
     //会员列表
     Route::get("/users/child","Admin\UsersController@child");
@@ -189,6 +202,7 @@ Route::get('/business/logout','Business\LoginController@logout');//退出
 Route::group(['prefix' => 'business','middleware' => 'business'], function(){
     Route::get('/',"Business\IndexController@index"); 
     //后台首页路由
+    
     Route::get('/order',"Business\OrdersController@index"); //商家订单
     Route::resource('/hall',"Business\HallController"); //放映厅管理
     //放映信息管理Start
@@ -197,5 +211,15 @@ Route::group(['prefix' => 'business','middleware' => 'business'], function(){
     Route::get('/pro/edit/{id}',"Business\ProjectionController@edit"); //修改放映信息
     Route::get('/pro/update/{id}',"Business\ProjectionController@update"); //更新放映信息
     //放映信息路由END
+    Route::get('/change','Business\IndexController@changePass');//加载修改密码模板
+    Route::get('/change/shezhi/{id}','Business\IndexController@change');
+    //
+    // Route::get('/change/shezhis','Business\IndexController@change');
 });
 // end
+
+
+//富文本编辑器测试
+Route::get('/upload', 'UploadController@index');
+
+Route::post('/upload/put', 'UploadController@uploads');

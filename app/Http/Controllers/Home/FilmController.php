@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Home;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Film;
+use App\Models\Hall;
 use App\Models\Projection;
+use App\Models\Shopdetail;
 class FilmController extends Controller
 {
     /**
@@ -30,8 +32,15 @@ class FilmController extends Controller
     //影片详情
     public function show($id)
     {   
-        $first = Film::find($id);  
-        return view("home.movie_show",compact('first'));
+        $comment = \DB::table('film_comment')->where('fid','=',$id)->get();
+        $uid = session('users')->id;
+        $users = \Db::table('users')->where('id','=',$uid)->first();
+        //echo "<pre>";
+        //print_r($users);
+        $first = Film::where('id','=',$id)->first();
+        //echo "<pre>";
+        //print_r($film);  
+        return view("home.movie_show",compact("first","comment","users"));
     }
 
     //选座购票
@@ -40,14 +49,53 @@ class FilmController extends Controller
         //查询电影信息
         $flists = Film::find($id);
         $prolist = Projection::where("fid",'=',$id)->get();//查询所有放映信息
-        //print_r($prolist);
-        return view("home.cinema_seat",compact('prolist','flists'));
+        $ho=[];$haid=[];
+        //遍历影厅
+        foreach($prolist as $pro){
+            $ho[] = Hall::where('id',$pro['hid'])->value('title');
+        }
+        foreach($prolist as $pro){
+            $haid[] = Hall::where('id',$pro['hid'])->value('id');
+        }
+        //dd($ho);
+        return view("home.cinema_seat",compact('prolist','flists','ho','haid'));
     }
 
     //选座
-    public function layout()
+    public function layout($fid,$hid,$pid)
     {
-        return view("home.layout");
+        $fmfirst = Film::where('id',$fid)->first();//影片
+        $hfirst = Hall::where('id',$hid)->first();//查询影厅
+        $ctit = Shopdetail::where('id',$hfirst->cid)->first();//查询影厅对应的影院
+        $ptime = Projection::where('id',$pid)->first();
+        //print_r($ctit);
+        return view("home.layout",compact('fmfirst','hfirst','ctit','ptime'));
+    }
+
+    //执行Ajax评论添加
+    public function Ajaxinsert(Request $request,$id)
+    {
+        //判断是否登录
+        $usersid = session('users')->id;
+        //echo "<pre>";
+        //print_r($usersid);
+        if(session('users')->phone==""){
+            return redirect("login");
+        }
+        //获取数据
+        $data['fid'] = $id;
+        //echo "<pre>";
+        //print_r($data);
+        $data['uid'] = $usersid;
+        $str = $request->only(['comment']);
+        $str['support'] = 1;
+        $str['created_at'] = time();
+        $info = array_merge($data,$str);
+        //echo "<pre>";
+        //print_r($info); 
+        \DB::table('film_comment')->insertGetId($info);
+        return redirect("/films/{$info['fid']}");
+        
     }
 
 }

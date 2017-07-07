@@ -173,10 +173,13 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 		//七牛
 		zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        //百度富文本编辑器
+        Stevenyangecho\UEditor\UEditorServiceProvider::class,
         /*
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -237,12 +240,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
-
         'Image' => Intervention\Image\Facades\Image::class,
-
-//		'Captcha' => Mews\Captcha\Facades\Captcha::class,
 		'Captcha' => Mews\Captcha\Facades\Captcha::class,
-        //'Storage'=> zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
     ],
 
 ];

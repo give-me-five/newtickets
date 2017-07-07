@@ -11,9 +11,6 @@
   <link rel="stylesheet" href="{{asset('home/css/common.dce64fb8.css')}}">
   <link rel="stylesheet" href="{{asset('home/css/home-index.ff98348e.css')}}">
   <link rel="stylesheet" href="{{asset('home/css/movie-list.ffb4de4a.css')}}">
-  <link rel="stylesheet" href="{{asset('home/css/movie-detail.6b71afde.css')}}">
-  <link rel="stylesheet" href="{{asset('home/css/news-hotNews.d8ee9843.css')}}">
-
 </head>
 <body>
 <div class="header">
@@ -69,7 +66,7 @@
 </div>
 <div class="header-placeholder"></div>
 @section('content')
-  这是页面主内容区。
+  
 @show
 <div class="footer" style="visibility: visible;">
     <p>

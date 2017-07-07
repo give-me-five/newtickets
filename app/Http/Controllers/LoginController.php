@@ -8,7 +8,6 @@ use App\Models\Users;
 use App\Models\User;
 use Illuminate\Notifications\Notification;
 use Request as ip;
-use iscms\Alisms\SendsmsPusher as Sms;
 //会员登录/注册控制器
 class LoginController extends Controller
 {
@@ -65,8 +64,9 @@ class LoginController extends Controller
                 //获取登陆者ip地址
                 $ip = ip::getClientIp();
                 \DB::table("users")->where("id",$users->id)->update(["login_ip"=>$ip]);
+                //return redirect()->back();
                 return redirect("/");
-                //return redirect("/admin/users/child");
+
             }else{
                 return back()->with('msg','账号或密码错误');
             }

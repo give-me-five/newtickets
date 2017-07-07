@@ -19,7 +19,10 @@
                     <div class="mws-form-row">
                         <label class="mws-form-label">座位布局</label>
                         <div class="mws-form-item">
-                            <input type="text" class="large" style="width:50%;" name="layout">
+                               <input type="radio" name="layout" value="'aaaaaaaaaa','aaaaaaaaaa','__________','aaaaaaaa__','aaaaaaaaaa', 'aaaaaaaaaa','aaaaaaaaaa','aaaaaaaaaa','aaaaaaaaaa','aa__aa__aa'">
+                                <img src="{{asset('seller/images/seat.png')}}" alt="">
+                                 <input type="radio" name="layout" value="'aaaa_aaaaa','aaaaaaaaaa','aaaaaaaaaa','aaaaaaaaaa','aaaa_aaaaa',">
+                                <img src="{{asset('seller/images/seat2.png')}}" alt="">
                         </div>
                     </div>
                 </div>
