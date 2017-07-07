@@ -52,7 +52,7 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
-                            <a href="javascript:;">欢迎你, <span>Amaze UI</span> </a>
+                            <a href="javascript:;">欢迎你, <span>{{ session("admin")->account }}</span> </a>
                         </li>
 
                         <!-- 新邮件 -->
@@ -309,6 +309,22 @@
                         <li class="sidebar-nav-link">
                             <a href="{{url('/admin/news')}}">
                                 <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览资讯
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 上传测试
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="{{url('/admin/ceshi')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 浏览
+                            </a>
+                            <a href="{{url('/admin/ceshi/create')}}">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 上传
                             </a>
                         </li>
                     </ul>

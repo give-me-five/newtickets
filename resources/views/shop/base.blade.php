@@ -30,7 +30,19 @@
     <!-- Daterange picker -->
     <link href="{{asset('myadmin/plugins/daterangepicker/daterangepicker-bs3.css')}}" rel="stylesheet" type="text/css" />
     <!-- bootstrap wysihtml5 - text editor -->
-    <link href="{{asset('myadmin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css')}}" />
+    <link href="{{asset('myadmin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css" />
+	<script src="{{asset('myadmin/assets/js/amazeui.min.js')}}"></script>
+    <script src="{{asset('myadmin/assets/js/amazeui.datatables.min.js')}}"></script>
+    <script src="{{asset('myadmin/assets/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('myadmin/assets/js/app.js')}}"></script>
+	 <link rel="icon" type="image/png" href="{{asset('myadmin/assets/i/favicon.png')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{asset('myadmin/assets/i/app-icon72x72@2x.png')}}">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <script src="{{asset('myadmin/assets/js/echarts.min.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('myadmin/assets/css/amazeui.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('myadmin/assets/css/amazeui.datatables.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('myadmin/assets/css/app.css')}}">
+    <script src="{{asset('myadmin/assets/js/jquery.min.js')}}"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -250,36 +262,26 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src="{{asset('myadmin/dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">亚力山大-皮尔斯</span>
+                  <span class="hidden-xs">{{session('adminuser')->name}}</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src="{{asset('myadmin/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" />
                     <p>
-                     亚力山大-皮尔斯-网站开发
-                      <small>会员于2012-11</small>
+                     {{session('adminuser')->name}}-网站后台
+            
                     </p>
                   </li>
                   <!-- Menu Body -->
-                  <li class="user-body">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">追随者</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">销售</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">朋友</a>
-                    </div>
-                  </li>
+                  
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">简介</a>
+                      <a href="/shop/information/{{session('adminuser')->id}}" class="btn btn-default btn-flat">完善信息</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">签出</a>
+                      <a href="{{url('shop/Logout')}}" class="btn btn-default btn-flat">签出</a>
                     </div>
                   </li>
                 </ul>
@@ -323,7 +325,7 @@
                 <i class="fa fa-dashboard"></i> <span>商户信息</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{url('shop/shopdetail')}}"><i class="fa fa-circle-o"></i> 商家详情表</a></li>
+                
                 <li><a href="{{url('shop/hall')}}"><i class="fa fa-circle-o"></i>影厅信息</a></li>
 				<li><a href="{{url('shop/create')}}"><i class="fa fa-circle-o"></i>添加影厅</a></li>
                 <li><a href="{{url('shop/projection')}}"><i class="fa fa-circle-o"></i>放映信息</a></li>

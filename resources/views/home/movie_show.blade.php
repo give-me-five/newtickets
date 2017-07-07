@@ -11,7 +11,7 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         },
-        url:"/films/comment/{{$first->id}}",
+        url:"/films/comment/{{$film->id}}",
         type:"post",
         data:"comment"+comment,
         datatype:"text",
@@ -25,13 +25,15 @@
     <div class="wrapper clearfix">
       <div class="celeInfo-left">
         <div class="avater-shadow">
-          <img class="avater" src="/uploads/{{$first->picname}}" alt="">
+          <img class="avater" src="/uploads/{{$film->picname}}" alt="">
             <div class="movie-ver"><i class="imax3d"></i></div>
         </div>
       </div>
       <div class="celeInfo-right clearfix">
           <div class="movie-brief-container">
+
               <h3 class="name">{{$first->title}}</h3>
+             
               <div class="ename ellipsis">{{$first->engname}}</div>
               <ul>
                 <li class="ellipsis">
@@ -150,7 +152,7 @@
                     <h3>写短评</h3>
                   </div>
                   <div class="mod-content">
-                      <form name="myform" action="{{url('/films/comment')}}/{{$first->id}}" method="post" onsubmit="return doSubmit(); ">
+                      <form name="myform" action="{{url('/films/comment')}}/{{$film->id}}" method="post" onsubmit="return doSubmit(); ">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           
                           <textarea name="comment" cols="50" rows="5" placeholder="说点你的看法吧"></textarea><br/><br/>
@@ -163,6 +165,8 @@
                   <div class="mod-title">
                     <h3>热门短评</h3>
                   </div>
+
+                @foreach($comment as $list)
                   <div class="mod-content">
                       <div class="comment-list-container" data-hot="10">
                           <ul>
@@ -176,26 +180,26 @@
                                 <div class="main">
                                   <div class="main-header clearfix">
                                     <div class="user">
-                                      <span class="name">韩宗辑之父</span>
+                                      <span class="name">{{$users->phone}}</span>
                                       
                                         <span class="tag">购</span>
                                     </div>
-                                    <div class="time" title="2017-06-23 02:23:29">
-                                        <span title="2017-06-23 02:23:29">13小时前</span>
+                                    <div class="time">
+                                        <span >{{$list->created_at}}</span>
                                     </div>
                                     <div class="approve " data-id="110366644">
-                                      <i data-act="comment-approve-click" class="approve-icon"></i><span class="num">499</span>
+                                      <i data-act="comment-approve-click" class="approve-icon"></i><span class="num">{{$list->support}}</span>
                                     </div>
                                   </div>
-                                  <div class="comment-content">不太明白为什么有人会觉得不好 陪我从小学到大学 不止情怀和感情 最后主角走到一起 结局圆满的一幕 真的温馨</div>
+                                  <div class="comment-content">{{$list->comment}}</div>
                                 </div>
                               </li>  
                           </ul>
                       </div>
-                     
-                      
-                     
                   </div>
+                @endforeach
+
+
               </div>
           </div>
       </div>

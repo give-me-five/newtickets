@@ -29,11 +29,7 @@
                     <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">影厅名称：</label>
                       <div class="col-sm-4">
-                      <select name="title" class="form-control" id="inputEmail3">
-                          @foreach($hall as $ho)
-                          <option>{{$ho->title}}</option>
-                          @endforeach
-                      </select>
+                      <input type="text" class="form-control" id="inputPassword3" placeholder="影厅名称" name="title">
                       </div>
                     </div>
 				      	<div class="form-group">
@@ -43,13 +39,9 @@
                       </div>
                     </div>
 					     <div class="form-group">
-                      <label for="inputPassword3" class="col-sm-2 control-label">座位数量：</label>
+                      <label for="inputPassword3" class="col-sm-2 control-label">座位布局：</label>
                       <div class="col-sm-4">
-                         <select name="layout" class="form-control" id="inputEmail3">
-                          @foreach($hall as $lo)
-                          <option>{{$lo->layout}}</option>
-                          @endforeach
-                      </select>
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="座位布局" name="layout">
                       </div>
                     </div>
                   </div><!-- /.box-body -->

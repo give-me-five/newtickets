@@ -19,8 +19,12 @@
         <div class="city-container" data-val="{currentcityid:1 }">
             <div class="city-selected">
                 <div class="city-name">
-                  北京
-                  <span class="caret"></span>
+                  <select class="btn btn-default dropdown-toggle">
+                    <option value="1">北京</option>  
+                    <option value="2">河北</option>  
+                    <option value="3">天津</option>  
+                  </select>
+                 
                 </div>
             </div>
             <div class="city-list" data-val="{ localcityid: 1 }">
@@ -29,12 +33,12 @@
         </div>
         <div class="nav">
             <ul class="navbar">
-                <li><a href="http://www.movie.com/" data-act="home-click" class="active">首页</a></li>
+                <li><a href="/" data-act="home-click" class="active">首页</a></li>
 
-                <li><a href="http://www.movie.com/films" data-act="movies-click">电影</a></li>
+                <li><a href="/films" data-act="movies-click">电影</a></li>
 
-                <li><a href="http://www.movie.com/cinemas" data-act="board-click">影院</a></li>
-                <li><a href="http://www.movie.com/news" data-act="hotNews-click">热点</a></li>
+                <li><a href="/cinemas" data-act="board-click">影院</a></li>
+                <li><a href="/news" data-act="hotNews-click">热点</a></li>
             </ul>
         </div>
 
@@ -43,8 +47,13 @@
               <img src="{{asset('home/images/panda.png')}}">
               <span class="caret"></span>
               <ul class="user-menu">
-                <li><a href="/login/">登录</a></li>
-                <li><a href="/reg/">注册</a></li>
+                  @if(session("users"))
+                      <li>欢迎：{{session("users")->phone}}</li>
+                      <li><a href="/login/loginout">退出</a></li>
+                  @else
+                      <li><a href="/login/">登录</a></li>
+                      <li><a href="/reg/">注册</a></li>
+                  @endif
               </ul>
             </div>
         </div>
