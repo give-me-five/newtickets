@@ -10,7 +10,7 @@ class MerchantController extends Controller
 {
     public function index(Request $request)
     {
-        $db = \DB::table("shop_detail");
+        $db = \DB::table("shop_detail_copy");
         //每页6条数据
         $list = $db->paginate(6);
         $where = [];

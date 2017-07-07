@@ -5,8 +5,6 @@
         "This file is @generated automatically"
     ],
     "content-hash": "b8f8b8c40d8ed1c7b12622de639416d0",
-
-
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -442,6 +440,64 @@
                 "阿里大鱼"
             ],
             "time": "2017-01-22T09:00:40+00:00"
+        },
+        {
+            "name": "itbdw/laravel-storage-qiniu",
+            "version": "v1.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/itbdw/laravel-storage-qiniu.git",
+                "reference": "4fedd3aea4b693358fa0a392d3ee031d03b3a92e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/itbdw/laravel-storage-qiniu/4fedd3aea4b693358fa0a392d3ee031d03b3a92e.zip",
+                "reference": "4fedd3aea4b693358fa0a392d3ee031d03b3a92e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "qiniu/php-sdk": "~7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "itbdw\\QiniuStorage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zgldh",
+                    "email": "zgldh@hotmail.com",
+                    "role": "Original Developer"
+                },
+                {
+                    "name": "itbdw",
+                    "email": "itbudaoweng@gmail.com",
+                    "homepage": "http://github.com/itbdw",
+                    "role": "Developer"
+                },
+                {
+                    "name": "popfeng",
+                    "email": "popfeng@yeah.net",
+                    "homepage": "http://github.com/popfeng",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A storage library for laravel5 and qiniu sdk",
+            "keywords": [
+                "cloud",
+                "laravel",
+                "laravel5",
+                "qiniu",
+                "sdk",
+                "storage"
+            ],
+            "time": "2017-04-26T04:33:45+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

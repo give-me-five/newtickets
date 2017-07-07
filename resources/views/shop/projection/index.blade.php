@@ -19,16 +19,19 @@
             <div class="col-md-12">
               <div class="box">
                 <div class="box-header with-border">
+                <form action="{{url('/shop/projection')}}" method="post">
+                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
                  <div class="row">
                      <div class="col-lg-4">
                       <div class="input-group">
-                        <input type="text" class="form-control" placeholder="影片电影">
+                        <input type="text" class="form-control" name="name" placeholder="影片电影">
                         <span class="input-group-btn">
-                          <button class="btn btn-default" type="button">搜索</button>
+                          <button class="btn btn-default" type="submit">搜索</button>
                         </span>
                       </div><!-- /input-group -->
                     </div><!-- /.col-lg-6 -->
                   </div><!-- /.row -->
+                  </form>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table class="table table-bordered">
@@ -36,6 +39,8 @@
                       <th style="width:60px">ID号</th>
                       <th>放映厅</th>
                       <th>影片</th>
+                      <th>影片类型</th>
+                      <th>语言版本</th>
                       <th>放映时间</th>
                       <th>结束时间</th>
                       <th>价格</th>
@@ -47,6 +52,8 @@
                      <td>{{ $vo->id }}</td>
                      <td><?php echo $ho[$key]; ?></td>
                      <td><?php echo $fo[$key]; ?></td> 
+                     <td><?php echo $fid[$key]; ?></td> 
+                     <td><?php echo $language[$key]; ?></td> 
                      <td>{{ $vo->datetime }}</td>
                      <td>{{ $vo->endtime }}</td>
                      <td>{{ $vo->price }}</td>
@@ -59,7 +66,7 @@
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col -->
-            
+            {{ $list->links() }}
           </div><!-- /.row -->
          
         </section><!-- /.content -->

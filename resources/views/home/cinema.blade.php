@@ -11,7 +11,7 @@
 					<label>选择区域</label>
 					<div class="select-tags">
 						<a class="current" href="http://dianying.taobao.com/cinemaList.htm?regionName=&amp;n_s=new" data-param="city=110100">全部区域</a>
-						<a href="http://dianying.taobao.com/cinemaList.htm?regionName=%E6%98%8C%E5%B9%B3%E5%8C%BA&amp;n_s=new">昌平区</a>
+						<a href="#">昌平区</a>
 						<a href="http://dianying.taobao.com/cinemaList.htm?regionName=%E6%9C%9D%E9%98%B3%E5%8C%BA&amp;n_s=new">朝阳区</a>
 					</div>					
 					<a class="J_show select-show" href="javascript:;">更多&gt;</a></li>
@@ -23,10 +23,7 @@
 				当前条件下共有<span class="count">177</span>家影院 
 			</div>
 			<ul class="sortbar-detail J_cinemaList">
-<<<<<<< HEAD
-=======
-			
->>>>>>> b916d1a6b94bbfdde8d39c1a3a9f15df24b227ce
+			@foreach ($list as $ml)
 			    <li class="current">
 					<div class="detail-right">
 						
@@ -35,23 +32,23 @@
 							<a href="/">选座</a>
 						</div>
 					</div>
-					<a href="/cinemas/id=1" class="detail-left pictures">
-						  <span><img src="T1yI5PFuhdXXXXXXXX_.jpg_120x120.jpg" alt=""></span>								
+					<a href="/cinemas/show/{{$ml->id}}" class="detail-left pictures">
+						  <span><img src="./upload/pic/{{$ml->picname}}" alt="{{$ml->shopname}}"></span>
+
 					</a>
 					<div class="detail-middle">
 						<div class="middle-hd">
-							<h4><a href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=9462&amp;n_s=new">卢米埃北京芳草地影城</a></h4>
+							<h4><a href="">{{ $ml->shopname }}</a></h4>
 						</div>
 						<div class="middle-p">
-							<div class="middle-p-list"><i>地址：</i><span class="limit-address">朝阳区东大桥路9号芳草地大厦LG2-26</span><a class="J_miniMap" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=9462&amp;n_s=new#detail" data-points="116.449826,39.919551">[地图]</a></div>    							<div class="middle-p-list"><i>电话：</i>010-56907679,0</div>    							<div class="middle-p-list"><i>更多：</i><a class="middle-more" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=9462&amp;n_s=new#detail">影院服务</a><a class="middle-more" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=9462&amp;n_s=new#detail">交通信息</a></div>
+							<div class="middle-p-list"><i>地址：</i><span class="limit-address">{{$ml->address}}</span><a class="J_miniMap" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=9462&amp;n_s=new#detail" data-points="116.449826,39.919551"></a></div>    							<div class="middle-p-list"><i>电话：</i>{{$ml->phone}}</div>    							<div class="middle-p-list"><i>更多：</i><a class="middle-more" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=9462&amp;n_s=new#detail">影院服务</a><a class="middle-more" href="http://dianying.taobao.com/cinemaDetail.htm?cinemaId=9462&amp;n_s=new#detail">交通信息</a></div>
 						</div>
 					</div>
-<<<<<<< HEAD
-				</li> 
-=======
 				</li>
-			 
->>>>>>> b916d1a6b94bbfdde8d39c1a3a9f15df24b227ce
+				</li>
+
+			@endforeach
+
 			</ul>
 					
 			<div class="sortbar-more J_cinemaMore" data-ajax="http://dianying.taobao.com/ajaxCinemaList.htm" data-param="page=1&amp;regionName=&amp;cinemaName=&amp;pageSize=10&amp;pageLength=18&amp;sortType=0&amp;n_s=new">

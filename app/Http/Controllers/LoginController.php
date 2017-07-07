@@ -66,6 +66,7 @@ class LoginController extends Controller
                 \DB::table("users")->where("id",$users->id)->update(["login_ip"=>$ip]);
                 //return redirect()->back();
                 return redirect("/");
+
             }else{
                 return back()->with('msg','账号或密码错误');
             }
@@ -88,5 +89,9 @@ class LoginController extends Controller
         header('Content-Type: image/jpeg');
         $builder->output();
 
+    }
+    public function loginout(Request $request){
+        $request->session()->forget('users');
+        return redirect("/");
     }
 }
