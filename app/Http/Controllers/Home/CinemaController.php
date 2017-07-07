@@ -30,6 +30,8 @@ class CinemaController extends Controller
         $title = Film::whereIn("id",$fid)->get();
         //获取影片名
         $title2 = Film::whereIn("id",$fid)->first();
+        //获取影片id
+        $filmid = Film::whereIn("id",$fid)->value("id");
         //获取语言版本
         $language = Film::whereIn("id",$fid)->pluck("language");
 
@@ -40,17 +42,35 @@ class CinemaController extends Controller
         $hall = Hall::whereIn("id",$hid)->pluck("title");
 
         //获取影片价格
-        $price = Projection::where("cid",$id)->get();
+        $price = Projection::where("fid",$filmid)->get();
         //print_r($price);die();
 
-    	return view("home.cinema_Show",compact("title","title2","single","hall","price","language"));
+    	return view("home.cinema_Show",compact("title","title2","single","hall","price","language","shopid"));
 
     }
-    public function info($id=1)
+
+    public function info($shopname=0,$title=0,$id=0)
     {
-        $info = Film::where("id",1)->first();
-
-        return view("home.cinema_show",compact("info"));
-
+        //获取影院
+        $sname = Cinema::where("shopname",$shopname)->first();
+        //获取影片
+        $filmtitle = Film::where("title",$title)->first();
+        //获取影片语言版本
+        $language = Film::where("title",$title)->value("language");
+        //查询影片id
+        $filmid = Film::where("title",$title)->value("id");
+        //获取影片价格
+        $price = Projection::where("fid",$filmid)->get();
+        //获取放映关联id
+        $cid = Cinema::where("id",$id)->value("cid");
+        //获取影片管理id
+        $fid = Projection::where("cid",$cid)->pluck("fid");
+        //影院对应影片
+        $titles = Film::whereIn("id",$fid)->get();
+        //查询影厅关联id
+        $hid = Projection::where("fid",$filmid)->value("hid");
+        //查询影厅
+        $halltitle = Hall::where("id",$hid)->value("title");
+        return view("home.info",compact("filmtitle","titles","sname","price","language","halltitle"));
     }
 }

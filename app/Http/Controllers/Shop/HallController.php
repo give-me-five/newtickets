@@ -16,70 +16,70 @@ class HallController extends Controller
     public function index(request $request)
 	{
 		//获取登录用户的id
-		$list=$request->session()->get('adminuser')->id;
+		$id=session('adminuser')->id;
 		//获取登录者对应的影厅sid
-		$hall=\DB::table('hall')->where("cid",$list)->simplePaginate(6);
+		$hall=Hall::where("cid",$id)->paginate(6);
 		//判断并封装搜索条
 		return view("shop.hall.index",compact("hall"));
 	}
 	//添加影厅
 	public function create()
 	{
-		//获取所有的影厅信息
-		$hall=\DB::table("hall")->get();
-		return view('shop.hall.create',compact("hall"));
+		//加载添加影厅视图页面
+		return view('shop.hall.create');
 	}
 	//执行添加
 	public function store(request $request)
 	{
-		echo '<pre>';
-		$file = $request->file('ufile');
+
+	//`	$file = $request->file('ufile');
 		//var_dump($file);
 
 
-		//$file = $request->file('picname');
-		$filename = $file->getClientOriginalName().time().rand().$file->getClientOriginalExtension();
-		$disk = \Storage::disk('qiniu');
-
-		$bool = $disk->put('img/'.$filename,file_get_contents($file->getRealPath()));
-			//上传到七牛
-			//$bool = $disk->put('iwanli/image_'.$filename,file_get_contents($file->getRealPath()));
-		//$disk->getDriver()->downloadUrl($filename);            //获取下载地址
-		if($bool){
-			echo '上传成功';
-			echo '<br>'.env('QINIU_URL').'/img/'.$filename;
-
-			$realpath = env('QINIU_URL').'/img/'.$filename;
-		}else{
-			echo  '上传失败';
-		}
-
-
-//		$cid=session('adminuser')->id;
-//		$this->validate($request, [
-//            'title' => Rule::unique('hall')->where("cid",$cid),
-//        ]);
+//		//$file = $request->file('picname');
+//		$filename = $file->getClientOriginalName().time().rand().$file->getClientOriginalExtension();
+//		$disk = \Storage::disk('qiniu');
 //
-//		//获取要添加的数据
-//		$title=$request->input("title");
-//		$number=$request->input("number");
-//		$layout=$request->input("layout");
-//		//执行添加
-//		$id=\DB::table("hall")->insertGetId(
-//			["cid"=>$cid,"title"=>$title,"number"=>$number,"layout"=>$layout]
-//			);
-//		//添加判断
-//		if($id>0){
-//            $info = "影厅添加成功！";
-//        }else{
-//            $info = "影厅添加失败！";
-//        }
-//        return redirect("shop/hall")->with("err",$info);
+//		$bool = $disk->put('img/'.$filename,file_get_contents($file->getRealPath()));
+//			//上传到七牛
+//			//$bool = $disk->put('iwanli/image_'.$filename,file_get_contents($file->getRealPath()));
+//		//$disk->getDriver()->downloadUrl($filename);            //获取下载地址
+//		if($bool){
+//			echo '上传成功';
+//			echo '<br>'.env('QINIU_URL').'/img/'.$filename;
+//
+//			$realpath = env('QINIU_URL').'/img/'.$filename;
+//		}else{
+//			echo  '上传失败';
+//		}
+
+
+		$cid=session('adminuser')->id;
+		$this->validate($request, [
+            'title' => Rule::unique('hall')->where("cid",$cid),
+        ]);
+
+		//获取要添加的数据
+		$title=$request->input("title");
+		$number=$request->input("number");
+		$layout=$request->input("layout");
+		//执行添加
+		$id=Hall::insertGetId(
+			["cid"=>$cid,"title"=>$title,"number"=>$number,"layout"=>$layout]
+		);
+		//添加判断
+		if($id>0){
+			$info = "影厅添加成功！";
+		}else{
+			$info = "影厅添加失败！";
+		}
+		return redirect("shop/hall")->with("err",$info);
+
 	}
 
 	public function edit(request $request,$id)
 	{
-		$list=\DB::table("hall")->where('id',$id)->first();
+		$list=Hall::where('id',$id)->first();
 		return view('shop.hall.edit',["vo"=>$list]);
 	}
 
@@ -93,7 +93,7 @@ class HallController extends Controller
        
         //获取影厅布局
         $layout=$request->input("layout");
-        $hall = \DB::table("hall")->where("id",$id)->update(
+        $hall = Hall::where("id",$id)->update(
             ['title'=>$title,"number"=>$number,"layout"=>$layout]
             );
 		

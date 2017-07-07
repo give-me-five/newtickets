@@ -22,8 +22,9 @@ Route::get('/films/{id}/seat',"Home\FilmController@content");//选座+购票
 Route::get('/layout/{fid}/seat/{hid}',"Home\FilmController@layout");//选座
 
 Route::get('/cinemas',"Home\CinemaController@index");//影院列表
+Route::get('/cinemas1',"Home\CinemafsfController@index");//影院列表
 Route::get('/cinemas/show/{id}',"Home\CinemaController@show");//影院详情页
-Route::get('/cinemas/info/{id?}',"Home\CinemaController@info");//影院详情页
+Route::get('/cinemas/info/{shopname?}/{title?}/{id?}',"Home\CinemaController@info");//影院详情页
 Route::get('/news',"Home\NewsController@index");//热点列表
 
 //后台首页路由
@@ -52,6 +53,9 @@ Route::post('/shop/sigup/registered',"Shop\SigupController@registered");
 Route::post('/shop/information/upload',"Shop\InformationController@upload");
 
 
+//七牛上传
+Route::get('/a',"AController@index");
+Route::post('/a/upload',"AController@upload");
 
 //加载选择区域
 Route::get('/shop/sigup/{upid}',"Shop\SigupController@region");
@@ -63,6 +67,7 @@ Route::get('/shop/getcode',"shop\SigupController@getCode");
 Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
 	//加载商家后台首页
     Route::get('/',"Shop\IndexController@index");
+    Route::get('/{id}/edit',"Shop\IndexController@edit");
 	//加载商家后台详情页
     Route::resource('shopdetail', 'Shop\ShopdetailController');
 	//加载商家后台影厅页
@@ -76,6 +81,8 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
 	Route::resource('projection', 'Shop\ProjectionController');
 	//加载放映信息
     Route::get('/projection', 'Shop\ProjectionController@index');
+    //查询放映信息
+    Route::post('/projection', 'Shop\ProjectionController@index');
     //修改放映信息
     Route::get('/projection/{id}/edit', 'Shop\ProjectionController@edit');
     //执行修改信息
@@ -91,6 +98,7 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     Route::get('/edit/{id}','Shop\HallController@edit');
     //商户退出登录
     Route::get('/Logout',"Shop\LoginController@Logout");
+    Route::get('/information/{id}',"Shop\InformationController@index");
 
 });
 
@@ -128,6 +136,8 @@ Route::get("login","LoginController@index");
 Route::post("login/doLogin","LoginController@doLogin");
 //加载验证码
 Route::get("login/code","LoginController@code");
+//退出登录
+Route::get("login/loginout","LoginController@loginout");
 
 
 //后台登录页面
