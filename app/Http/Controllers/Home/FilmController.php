@@ -37,10 +37,10 @@ class FilmController extends Controller
         $users = \Db::table('users')->where('id','=',$uid)->first();
         //echo "<pre>";
         //print_r($users);
-        $film = Film::where('id','=',$id)->first();
+        $first = Film::where('id','=',$id)->first();
         //echo "<pre>";
         //print_r($film);  
-        return view("home.movie_show",compact("film","comment","users"));
+        return view("home.movie_show",compact("first","comment","users"));
     }
 
     //选座购票
