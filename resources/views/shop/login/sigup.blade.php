@@ -50,9 +50,6 @@
                 <form action="{{url('shop/sigup/registered')}}" method="post" class="am-form tpl-form-line-form" name="myform" onsubmit="return doSubmit">
 					<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                     
-                    <div class="am-form-group">
-                        <input type="text" name="shopname" class="tpl-form-input" id="user-name" placeholder="商家名称"/>
-                    </div>
 
                     <div class="am-form-group">
                         <input type="text" class="tpl-form-input" name="myname" onblur="checkMyname()" id="user-name" placeholder="账号，5-20位数字、字母或下划线"/>

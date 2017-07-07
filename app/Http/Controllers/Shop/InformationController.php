@@ -57,4 +57,8 @@ class InformationController extends Controller
             return view('shop.login.index');
         }
     }
+    public function index()
+    {
+        return view("shop.login.information");
+    }
 }

@@ -63,6 +63,21 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+         'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'http://oslfuck50.bkt.clouddn.com', //你的七牛域名
+                'https'     => '',         //你的HTTPS域名
+                'custom'    => '',                //你的自定义域名
+             
+             ],
+            'access_key'=> 'sYO0kxP_sCsNFdov_Jr8YNp-Fo1Z3qJnUfPYW4fC',  //AccessKey
+            'secret_key'=> 'SitR4D6j233L_Ycw6jzcrtzqhfzAzVVD6GthLnUL',  //SecretKey
+            'bucket'    => 'tiantian20115354',  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+            'access'    => ''  //空间访问控制 public 或 private
+           
+        ],
     ],
 
 ];

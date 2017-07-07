@@ -22,8 +22,12 @@
         <div class="city-container" data-val="{currentcityid:1 }">
             <div class="city-selected">
                 <div class="city-name">
-                  北京
-                  <span class="caret"></span>
+                  <select class="btn btn-default dropdown-toggle">
+                    <option value="1">北京</option>  
+                    <option value="2">河北</option>  
+                    <option value="3">天津</option>  
+                  </select>
+                 
                 </div>
             </div>
             <div class="city-list" data-val="{ localcityid: 1 }">

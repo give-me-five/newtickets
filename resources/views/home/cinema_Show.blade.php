@@ -80,7 +80,7 @@
 					</div>
 				<div class="movie-info">
 					<ul>
-						<li>看点：杰克船长回归，延续海盗生涯</li>						<li>导演：{{$title2->director}}</li>						<li>主演：{{$title2->actor}}</li>						<li>类型：{{$title2->fid}}</li>						<li>制片国家/地区：{{$title2->region}}</li>						<li>语言：{{$title2->language}}</li>					</ul>
+						<li>看点：{{$title2->introduction}}</li>						<li>导演：{{$title2->director}}</li>						<li>主演：{{$title2->actor}}</li>						<li>类型：{{$title2->fid}}</li>						<li>制片国家/地区：{{$title2->region}}</li>						<li>语言：{{$title2->language}}</li>					</ul>
 				</div>
 			</div>
 		</div>

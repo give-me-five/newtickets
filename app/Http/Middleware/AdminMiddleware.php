@@ -18,6 +18,6 @@ class AdminMiddleware
         if(!$request->session()->has('admin')) {
             return redirect('admin/login');
         }
-        return $next($request);
+         return $next($request);
     }
 }
