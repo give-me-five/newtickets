@@ -11,7 +11,7 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         },
-        url:"/films/comment/{{$film->id}}",
+        url:"/films/comment/{{$first->id}}",
         type:"post",
         data:"comment"+comment,
         datatype:"text",
@@ -25,7 +25,7 @@
     <div class="wrapper clearfix">
       <div class="celeInfo-left">
         <div class="avater-shadow">
-          <img class="avater" src="/uploads/{{$film->picname}}" alt="">
+          <img class="avater" src="/uploads/{{$first->picname}}" alt="">
             <div class="movie-ver"><i class="imax3d"></i></div>
         </div>
       </div>
