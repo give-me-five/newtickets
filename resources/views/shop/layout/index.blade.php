@@ -85,29 +85,9 @@
                         </div>
                         <center>
                         <div class="modal-body" >
-                               {{--<ol>--}}
-                    <p>
-                        feafwe
-                    </p>
-                                   {{--<button type="button" class="btn btn-default">1</button>--}}
-                                   {{--<button type="button" class="btn btn-default">2</button>--}}
-                                   {{--<button type="button" class="btn btn-default">11</button>--}}
-                                   {{--<button type="button" class="btn btn-default">1</button>--}}
-                                   {{--<button type="button" class="btn btn-default">1</button>--}}
-                                   {{--<button type="button" class="btn btn-default">-</button>--}}
+                            {{-- 现在最多18个--}}
+                            <button>99</button>
 
-                               {{--</ol>--}}
-                                {{--<ul>--}}
-                                    {{--<button type="button" class="btn btn-default">1</button>--}}
-                                    {{--<button type="button" class="btn btn-default">1</button>--}}
-                                    {{--<button type="button" class="btn btn-default">12</button>--}}
-
-
-                                    {{--<button type="button" class="btn btn-default">1</button>--}}
-                                    {{--<button type="button" class="btn btn-default">1</button>--}}
-                                    {{--<button type="button" class="btn btn-default">-</button>--}}
-
-                                {{--</ul>--}}
                         </div>
                         </center>
                         <div class="modal-footer">
@@ -138,35 +118,38 @@
 
 </section><!-- /.content -->
      <script>
+         //座位列数
          var cowsnumber  = $('input[name=cowsnumber]').val();
+         //座位数量
          var seatnumber  = $('input[name=seatnumber]').val();
-         console.log(cowsnumber,seatnumber);
+         //console.log(cowsnumber,seatnumber);
          //当点击时获取座位数量和行数进行遍历
-         function  editlayout() {
-             var cowsnumber = $('input[name=cowsnumber]').val();
+         function  editlayout( ){
+             var cowsnumber = parseInt($('input[name=cowsnumber]').val());
              //座位数量
-             var seatnumber = $('input[name=seatnumber]').val();
+             var seatnumber = parseInt($('input[name=seatnumber]').val());
              //循环列数进行添加
-             for (var i = 0; i < cowsnumber; i++) {
+             var seatarr = new Array(cowsnumber);
+             console.log('--length----', seatarr.length);
 
+             for (var i = 1; i <= seatarr.length; i++) {
+                    seatarr[i-1] = i ;
 
-                  $('.modal-body').eq(0).append('<ul>--a--</ul>');
+                 console.log(seatarr.index);
 
-
-//                 $('[data-toggle="popover"]').popover();
-
-//             }
+                  $('.modal-body').eq(0).append('<ul id=cows'+(i+1)+'>'+(i+1)+'</ul>');
 
 //             正确格式： $("outerSelector").on('eventType','selector',function(){})；
 //          outerSelector 是一个一直存在的DOM， selector是你要监听点击的节点；
 //          所以正确的写法是（楼主代码）：$("tbody").on('click',"[name='submitbutton']",function(){....});
 
-
 //                 for (let j = 0; j <= seatnumber; j++) {
-//                     newol.append('<button type="button" class="btn btn-default">1</button>');
+//                        //seatarr.i.push(j);
+//
+//                     // newol.append('<button type="button" class="btn btn-default">1</button>');
 //
 //                 }
-
+//                 //console.log(seatarr);
 
              }
          }

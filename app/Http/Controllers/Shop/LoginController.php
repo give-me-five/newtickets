@@ -18,7 +18,7 @@ class LoginController extends Controller
 	{
 		//执行登陆判断
 		$name = $request->input("name");
-		$password = $request->input("password");
+		$password = md5($request->input("password"));
 		$shop = \DB::table("shop_detail")->where("name",$name)->first();
 		if(!empty($shop)){
 			//判断密码

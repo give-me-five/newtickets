@@ -11,7 +11,7 @@
 					<label>选择区域</label>
 					<div class="select-tags">
 						<a class="current" href="http://dianying.taobao.com/cinemaList.htm?regionName=&amp;n_s=new" data-param="city=110100">全部区域</a>
-						<a href="http://dianying.taobao.com/cinemaList.htm?regionName=%E6%98%8C%E5%B9%B3%E5%8C%BA&amp;n_s=new">昌平区</a>
+						<a href="#">昌平区</a>
 						<a href="http://dianying.taobao.com/cinemaList.htm?regionName=%E6%9C%9D%E9%98%B3%E5%8C%BA&amp;n_s=new">朝阳区</a>
 					</div>					
 					<a class="J_show select-show" href="javascript:;">更多&gt;</a></li>
