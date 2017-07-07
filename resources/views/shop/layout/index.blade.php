@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">座位数量：</label>
                             <div class="col-sm-4">
-                                <input type="number" min="1" name="seatnumber" value="5" class="form-control" placeholder="每排座位数量">
+                                <input type="number" min="1"  max="18" name="seatnumber" value="18" class="form-control" placeholder="每排座位数量">
                             </div>
                         </div>
                         <div class="form-group">
@@ -81,12 +81,10 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">布局编辑</h4>
+                            <h4 class="modal-title" id="myModalLabel">编辑走廊</h4>
                         </div>
                         <center>
                         <div class="modal-body" >
-                            {{-- 现在最多18个--}}
-                            <button>99</button>
 
                         </div>
                         </center>
@@ -97,11 +95,7 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
+    <button class="aaaa" style="display: none"></button>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
@@ -124,35 +118,51 @@
          var seatnumber  = $('input[name=seatnumber]').val();
          //console.log(cowsnumber,seatnumber);
          //当点击时获取座位数量和行数进行遍历
-         function  editlayout( ){
+
+         var reapt = false
+         var seatarr = {};//new Array(cowsnumber);
+
+         function  editlayout( ) {
              var cowsnumber = parseInt($('input[name=cowsnumber]').val());
              //座位数量
              var seatnumber = parseInt($('input[name=seatnumber]').val());
              //循环列数进行添加
-             var seatarr = new Array(cowsnumber);
-             console.log('--length----', seatarr.length);
+             console.log('--length----', seatarr);
 
-             for (var i = 1; i <= seatarr.length; i++) {
-                    seatarr[i-1] = i ;
+             for (var i = 0; i < cowsnumber; i++) {
+                 if (!reapt) {
+                 seatarr[i] = [];
+                     var aa = $('.modal-body').eq(0).append('<ol value='+(i+1)+' class="bb"></ol>');
+                 for (let j = 0; j < seatnumber; j++) {
+                     seatarr[i].push('a');
+                    // $('.bb').eq(j).append('<button>'+j+'</button>');
+                     //aa.append('<button>'+(j+1)+'</button>');
+                 }
 
-                 console.log(seatarr.index);
-
-                  $('.modal-body').eq(0).append('<ul id=cows'+(i+1)+'>'+(i+1)+'</ul>');
-
-//             正确格式： $("outerSelector").on('eventType','selector',function(){})；
-//          outerSelector 是一个一直存在的DOM， selector是你要监听点击的节点；
-//          所以正确的写法是（楼主代码）：$("tbody").on('click',"[name='submitbutton']",function(){....});
-
-//                 for (let j = 0; j <= seatnumber; j++) {
-//                        //seatarr.i.push(j);
-//
-//                     // newol.append('<button type="button" class="btn btn-default">1</button>');
-//
-//                 }
-//                 //console.log(seatarr);
-
-             }
+                 }
          }
+             if(!reapt){
+                 for(let g=0;g<seatnumber;g++){
+                     $('.bb').append('<button class="seatbutton">'+(g+1)+'</button>');
+                 }
+             }
+                 reapt = true
+         }
+         $('.modal-body').on('click','.seatbutton', function() {
+            //处理代码
+             $(this).css('visibility','hidden');//('display','null');
+
+              console.log($(this).html());
+//              seatarr.foreach(function(value,index,arr){
+//                //console.log(value);
+//              });
+             $.each(seatarr, function(index, value, array) {
+                 // ...
+                 console.log('遍历',value)
+             });
+           //alert('aaa');
+         });
+
      </script>
 
 @endsection

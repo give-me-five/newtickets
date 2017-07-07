@@ -23,12 +23,17 @@
                                             <th width="150">评论内容</th>
                                             <th width="150">评论时间</th>
                                             <th width="150">点击数</th>
-                                            <th width="180">状态</th>
-                                            <th width="150">操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    
+                                    @foreach($comment as $list)
+                                        <td>{{$list->id}}</td>
+                                        <td>{{$list->fid}}</td>
+                                        <td>{{$list->uid}}</td>
+                                        <td>{{$list->comment}}</td>
+                                        <td>{{$list->created_at}}</td>
+                                        <td>{{$list->support}}</td>
+                                    @endforeach
                                       
             
                                         <!-- more data -->

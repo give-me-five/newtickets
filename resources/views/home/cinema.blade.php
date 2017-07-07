@@ -34,6 +34,7 @@
 					</div>
 					<a href="/cinemas/show/{{$ml->id}}" class="detail-left pictures">
 						  <span><img src="./upload/pic/{{$ml->picname}}" alt="{{$ml->shopname}}"></span>
+
 					</a>
 					<div class="detail-middle">
 						<div class="middle-hd">
@@ -44,7 +45,10 @@
 						</div>
 					</div>
 				</li>
+				</li>
+
 			@endforeach
+
 			</ul>
 					
 			<div class="sortbar-more J_cinemaMore" data-ajax="http://dianying.taobao.com/ajaxCinemaList.htm" data-param="page=1&amp;regionName=&amp;cinemaName=&amp;pageSize=10&amp;pageLength=18&amp;sortType=0&amp;n_s=new">
