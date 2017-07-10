@@ -165,7 +165,6 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 		//验证码
-//		Mews\Captcha\CaptchaServiceProvider::class,
 		Mews\Captcha\CaptchaServiceProvider::class,
         //阿里短信接口
         iscms\Alisms\AlidayuServiceProvider::class,
@@ -175,6 +174,8 @@ return [
 		zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
         //百度富文本编辑器
         Stevenyangecho\UEditor\UEditorServiceProvider::class,
+		//二维码
+		SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -242,6 +243,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
 		'Captcha' => Mews\Captcha\Facades\Captcha::class,
+		'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ],
 
 ];

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 
+use App\Models\Cinema;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Film;

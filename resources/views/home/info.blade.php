@@ -132,7 +132,7 @@
                                     <em class="now">{{$info->price}}</em>
                                 </td>
                                 <td class="hall-seat">
-                                    <a class="seat-btn" href="http://dianying.taobao.com/seatOrder.htm?scheduleId=403772016&amp;n_s=new">选座购票</a>
+                                    <a class="seat-btn" href="/order/choose/{{$sname->shopname}}/{{$halltitle}}/{{$filmtitle->title}}">选座购票</a>
                                 </td>
                             </tr>
                         @endforeach
