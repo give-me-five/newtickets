@@ -33,10 +33,15 @@ class FilmController extends Controller
     public function show($id)
     {   
         $comment = \DB::table('film_comment')->where('fid','=',$id)->get();
+
         $phone = [];
         foreach ($comment as $uid){
             $phone[] = \DB::table('users')->where('id',$uid->uid)->value('phone');
         }
+        // $uid = session('users')->id;
+        // $users = \Db::table('users')->where('id','=',$uid)->first();
+        //echo "<pre>";
+        //print_r($users);
         $first = Film::where('id','=',$id)->first();
         //echo "<pre>";
         //print_r($film);  

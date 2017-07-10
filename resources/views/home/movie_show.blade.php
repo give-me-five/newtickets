@@ -180,7 +180,9 @@
                                 <div class="main">
                                   <div class="main-header clearfix">
                                     <div class="user">
+
                                       <span class="name">{{$phone[$k]}}</span>
+
                                       
                                         <span class="tag">购</span>
                                     </div>

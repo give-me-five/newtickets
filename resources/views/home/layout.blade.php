@@ -69,7 +69,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <script src="{{asset('home/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('home/js/jquery.seat-charts.min.js')}}"></script>
 <script type="text/javascript">
-var price = 80; //票价
+var price = {{$ptime->price}}; //票价
 $(document).ready(function() {
 	var $cart = $('#selected-seats'), //座位区
 	$counter = $('#counter'), //票数
