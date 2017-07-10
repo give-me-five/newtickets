@@ -24,7 +24,7 @@ class LoginController extends Controller
             return back()->with("msg","账号不能为空");
         }
         //获取密码
-        $pass = $request->input('pass');
+        $pass = md5(md5($request->input('pass')."lixuwen"));
         //判断密码是否为空
         if(empty($pass)){
             return back()->with("msg","密码不能为空");
@@ -43,7 +43,7 @@ class LoginController extends Controller
             $info = Login::where('account', $account)->first();
             if ($info) {
                 //判断密码是否相等
-                if (decrypt($info->pass) == $pass) {
+                if ($info->pass == $pass) {
                     session()->put("admin",$info);
                     //跳转后台主页
                     return redirect('/admin/index/');
