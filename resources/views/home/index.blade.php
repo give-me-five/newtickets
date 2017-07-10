@@ -280,7 +280,7 @@
                 </div>
               </div>
               </a>
-              <div class="movie-detail movie-wish"><span class="stonefont"></span>人想看</div>
+              <div class="movie-detail movie-wish"><span class="stonefont"></span>145673人想看</div>
               <div class="movie-detail movie-detail-strong movie-presale">
                 <a class="movie-presale-sep">预告片
                 </a><a href="http://www.meituan.com/dianying/367991?#content" class="active" target="_blank" data-act="presaleUpcomingMovie-click" data-val="{movieid:367991}">预 售</a>

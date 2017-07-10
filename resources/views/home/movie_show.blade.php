@@ -152,7 +152,7 @@
                     <h3>写短评</h3>
                   </div>
                   <div class="mod-content">
-                      <form name="myform" action="{{url('/films/comment')}}/{{$film->id}}" method="post" onsubmit="return doSubmit(); ">
+                      <form name="myform" action="{{url('/films/comment')}}/{{$first->id}}" method="post" onsubmit="return doSubmit(); ">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           
                           <textarea name="comment" cols="50" rows="5" placeholder="说点你的看法吧"></textarea><br/><br/>
@@ -166,7 +166,7 @@
                     <h3>热门短评</h3>
                   </div>
 
-                @foreach($comment as $list)
+                @foreach($comment as $k => $list)
                   <div class="mod-content">
                       <div class="comment-list-container" data-hot="10">
                           <ul>
@@ -180,7 +180,7 @@
                                 <div class="main">
                                   <div class="main-header clearfix">
                                     <div class="user">
-                                      <span class="name">{{$users->phone}}</span>
+                                      <span class="name">{{$phone[$k]}}</span>
                                       
                                         <span class="tag">购</span>
                                     </div>
