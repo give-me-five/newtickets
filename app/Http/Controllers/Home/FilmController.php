@@ -34,14 +34,19 @@ class FilmController extends Controller
     public function show($id)
     {   
         $comment = \DB::table('film_comment')->where('fid','=',$id)->get();
-        $uid = session('users')->id;
-        $users = \Db::table('users')->where('id','=',$uid)->first();
+
+        $phone = [];
+        foreach ($comment as $uid){
+            $phone[] = \DB::table('users')->where('id',$uid->uid)->value('phone');
+        }
+        // $uid = session('users')->id;
+        // $users = \Db::table('users')->where('id','=',$uid)->first();
         //echo "<pre>";
         //print_r($users);
         $first = Film::where('id','=',$id)->first();
         //echo "<pre>";
         //print_r($film);  
-        return view("home.movie_show",compact("first","comment","users"));
+        return view("home.movie_show",compact("first","comment","phone"));
     }
 
     //选座购票
@@ -80,9 +85,9 @@ class FilmController extends Controller
         $usersid = session('users')->id;
         //echo "<pre>";
         //print_r($usersid);
-        if(session('users')->phone==""){
+        /*if(session('users')->phone==""){
             return redirect("login");
-        }
+        }*/
         //获取数据
         $data['fid'] = $id;
         //echo "<pre>";
@@ -95,7 +100,7 @@ class FilmController extends Controller
         //echo "<pre>";
         //print_r($info); 
         \DB::table('film_comment')->insertGetId($info);
-        return redirect("/films/{$info['fid']}");
+        return redirect("/films/{$info['fid']}.html");
         
     }
 

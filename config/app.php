@@ -163,7 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        //zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 		//验证码
 		Mews\Captcha\CaptchaServiceProvider::class,
         //阿里短信接口
@@ -172,7 +172,6 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 		//七牛
 		zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
-        //百度富文本编辑器
         Stevenyangecho\UEditor\UEditorServiceProvider::class,
 		//二维码
 		SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
@@ -180,8 +179,8 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 
+       
         /*
          * Application Service Providers...
          */
@@ -190,8 +189,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
-        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+
+
+        //itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
     ],
 
     /*
