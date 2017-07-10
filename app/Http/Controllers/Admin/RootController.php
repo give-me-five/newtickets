@@ -116,7 +116,7 @@ class RootController extends Controller
     public function update(Request $request, $id)
     {
         //如果为1不能禁用
-        if($id == 1){
+        if(session("admin")->status == 2){
             echo "<script>alert('超级管理员不能禁用')</script>";
             echo "<script>window.history.back()</script>";
             return ;

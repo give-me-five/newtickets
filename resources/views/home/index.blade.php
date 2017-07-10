@@ -229,7 +229,7 @@
         @foreach ($fmlist as $fm)
           <dd>
             <div class="movie-item">
-              <a href="/films/{{ $fm->id }}" target="_blank" data-act="playingMovie-click">
+              <a href="/films/{{ $fm->id }}.html" target="_blank" data-act="playingMovie-click">
               <div class="movie-poster">
                 <!-- <img class="poster-default" src=""> -->
                 <img src="/uploads/{{ $fm->picname }}">
@@ -242,7 +242,7 @@
               </div>
               </a>
               <div class="movie-detail movie-detail-strong movie-sale">
-                <a href="http://www.meituan.com/dianying/248645?#content" class="active" target="_blank" data-act="salePlayingMovie-click" data-val="{movieid:248645}">购 票</a>
+                <a href="" class="active" target="_blank" data-act="salePlayingMovie-click" data-val="{movieid:248645}">购 票</a>
               </div>
               <div class="movie-ver"><i class="imax3d"></i></div>
             </div>
@@ -269,7 +269,7 @@
         @foreach ($flist as $fl)
           <dd>
             <div class="movie-item">
-              <a href="/films/{{ $fl->id }}" target="_blank" data-act="upcomingMovie-click">
+              <a href="/films/{{ $fl->id }}.html" target="_blank" data-act="upcomingMovie-click">
               <div class="movie-poster">
                 <!-- <img class="poster-default" src="loading_2.e3d934bf.png"> -->
                 <img src="/uploads/{{ $fl->picname }}">
@@ -280,14 +280,14 @@
                 </div>
               </div>
               </a>
-              <div class="movie-detail movie-wish"><span class="stonefont"></span>人想看</div>
+              <div class="movie-detail movie-wish"><span class="stonefont"></span>145673人想看</div>
               <div class="movie-detail movie-detail-strong movie-presale">
                 <a class="movie-presale-sep">预告片
                 </a><a href="http://www.meituan.com/dianying/367991?#content" class="active" target="_blank" data-act="presaleUpcomingMovie-click" data-val="{movieid:367991}">预 售</a>
               </div>
               <div class="movie-ver"></div>
             </div>
-            <div class="movie-detail movie-rt">{{$fl->firsttime}}上映</div>
+            <div class="movie-detail movie-rt">{{date("H:i",strtotime("{$fl->firsttime}"))}}上映</div>
           </dd>
         @endforeach
         </dl>

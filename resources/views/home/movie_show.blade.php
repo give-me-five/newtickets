@@ -166,7 +166,7 @@
                     <h3>热门短评</h3>
                   </div>
 
-                @foreach($comment as $list)
+                @foreach($comment as $k => $list)
                   <div class="mod-content">
                       <div class="comment-list-container" data-hot="10">
                           <ul>
@@ -180,7 +180,9 @@
                                 <div class="main">
                                   <div class="main-header clearfix">
                                     <div class="user">
-                                      <span class="name">{{$users->phone}}</span>
+
+                                      <span class="name">{{$phone[$k]}}</span>
+
                                       
                                         <span class="tag">购</span>
                                     </div>

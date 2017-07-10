@@ -15,7 +15,7 @@ class CinemaController extends Controller
     public function index()//影院列表
     {
         //获取前5条影院
-        $list = Cinema::where("status",1)->limit(5)->get();
+        $list = Cinema::where("status",4)->limit(5)->get();
     	return view("home.cinema",["list"=>$list]);
     }
 

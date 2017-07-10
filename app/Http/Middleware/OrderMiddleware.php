@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class ShopMiddleware
+class OrderMiddleware
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,9 @@ class ShopMiddleware
      */
     public function handle($request, Closure $next)
     {
-            if(!$request->session()->has("adminuser")){
-                return redirect('shop/login');
-            }
+        if(!$request->session()->has("users")){
+            return redirect("login/");
+        }
         return $next($request);
     }
 }

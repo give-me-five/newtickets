@@ -18,11 +18,23 @@ Route::get('/films',"Home\FilmController@index");//正在热映
 Route::get('/films/Type/2',"Home\FilmController@soon");//即将上映
 
 
-Route::get('/films/{id}.html',"Home\FilmController@show");//影片详情
+Route::get('/films/{id}',"Home\FilmController@show");//影片详情
 Route::post('/films/comment/{id}',"Home\FilmController@Ajaxinsert");//影片评论
 
 Route::get('/films/{id}/seat',"Home\FilmController@content");//选座+购票
 Route::get('/layout/{fid}/seat/{hid}/{pid}',"Home\FilmController@layout");//选座
+
+
+//购片路由组
+Route::group(['prefix' =>'order','middleware'=>'order'],function(){
+    //选座
+    Route::get('/choose/{shopname?}/{key?}/{title?}',"OrderController@choose");
+    //确认订单
+    Route::get('/orderAdd/{shopname?}/{filmtitle?}/{halltitle?}/{time?}/{counter?}/{total?}/{seat?}',"OrderController@orderAdd");
+    //生成二维码
+    Route::get('/qrcode/',"OrderController@qrcode");
+});
+
 
 Route::get('/cinemas',"Home\CinemaController@index");//影院列表
 Route::get('/cinemas1',"Home\CinemafsfController@index");//影院列表
@@ -108,7 +120,7 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     //添加影厅
     Route::get('/create','Shop\HallController@create');
     //执行添加
-    Route::post('shop/store','Shop\HallController@store');
+    Route::post('/store','Shop\HallController@store');
     //修改影厅信息
     Route::get('/edit/{id}','Shop\HallController@edit');
     //商户退出登录
