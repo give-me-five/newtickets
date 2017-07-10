@@ -48,17 +48,21 @@ class InformationController extends Controller
             
         }
         //获取session信息
-        $li=session('sigup')->id;
+        $li=session('adminuser')->id;
 
         $list=\DB::table("shop_detail_copy")->where('cid',$li)->update(
         	[ 'picname'=>$picname,'shopname'=>$shopname,'region'=>$region,"cid"=>$li,"phone"=>$phone,"address"=>$address,"legal"=>$legal,"id_card"=>$id_card,"city"=>$city1,"licence"=>$filename]
         	);
         if(!empty($list)){
-            return view('shop.login.index');
+            return redirect('/shop/information/success');
         }
     }
     public function index()
     {
         return view("shop.login.information");
+    }
+    public function success()
+    {
+       return view('shop.login.success');
     }
 }

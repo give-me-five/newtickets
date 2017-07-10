@@ -58,8 +58,10 @@ class SigupController extends Controller
         }
         //$password = md5($password);
          //执行添加
+        $time=time();
+        $date=date("Y.m.d H:i:s",$time);
         $id  = \DB::table('shop_detail')->insertGetId(
-            ['name'=>$myname,'password'=>md5($mypassword)]
+            ['name'=>$myname,'password'=>md5($mypassword),'addtime'=>$date]
             );
         if($id>0){
           $shopid=\DB::table('shop_detail')->where("id",$id)->value('id');

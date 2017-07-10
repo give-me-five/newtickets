@@ -19,6 +19,8 @@ class ProjectionController extends Controller
 
 		//获取放映信息
 		$list=Projection::where("cid",$id)->paginate(5);
+
+		
 		//获取放映影片对应id
 		$filmid=Projection::where("cid",$id)->pluck('fid');
 		
@@ -52,8 +54,10 @@ class ProjectionController extends Controller
 			$ho[]=Hall::where("id",$hall)->value("title");
 		}
 
+
+
 		//加载视图
-		return view("shop.projection.index",compact("list","fo","ho","fid","language"));
+		return view("shop.projection.index",compact("list","fo","ho","fid","language","seek"));
 	}
 
 	public function edit(Request $Request,$id)

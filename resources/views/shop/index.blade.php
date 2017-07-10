@@ -46,6 +46,7 @@
                                 <div class="am-progress-title">所在城市：{{$shopdetail->city}}</div><br/>
                                 <div class="am-progress-title">所在区域：{{$shopdetail->region}}</div><br/>
                                 <div class="am-progress-title">详细地址：{{$shopdetail->address}}</div><br/>
+                              
                                 
                                
                             </div>

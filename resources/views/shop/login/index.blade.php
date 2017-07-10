@@ -44,7 +44,9 @@
                 </div>
 
 					@if(session("msg"))
-						<p class="login-box-msg" style="color:red;">{{session("msg")}}</p>
+                        <p class="login-box-msg" style="color:red;">{{session("msg")}}</p>
+					@elseif	
+                        <p class="login-box-msg" style="color:red;">{{session("msg")}}</p>
 					@endif
 
 
@@ -59,6 +61,19 @@
                         <input type="password" name="password" class="tpl-form-input" id="user-name" placeholder="请输入密码">
 
                     </div>
+					<!--加载验证码-->
+					 <div class="am-form-group">
+					 
+						<div class="col-xs-6"> 
+							  <div class="form-group has-feedback" style="width:140px;">
+								<input type="text" name="mycode" class="form-control" placeholder="验证码"/>
+							  </div>
+
+						  </div>
+						  <div style="float:right" class="col-xs-6">
+							  <img src="{{url('shop/getcode')}}" onclick="this.src='{{url('shop/getcode')}}?id='+Math.random(); " width="100" height="34"/>
+						  </div>
+					  </div>
                   
 
 					<div class="am-form-group">

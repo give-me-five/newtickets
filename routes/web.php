@@ -76,6 +76,8 @@ Route::get('/shop/sigup',"Shop\SigupController@index");
 Route::post('/shop/sigup/registered',"Shop\SigupController@registered");
 //完善商户信息
 Route::post('/shop/information/upload',"Shop\InformationController@upload");
+//注册成功跳转页面
+Route::get('/shop/information/success',"Shop\InformationController@success");
 
 
 //七牛上传
@@ -85,7 +87,8 @@ Route::post('/a/upload',"AController@upload");
 //加载选择区域
 Route::get('/shop/sigup/{upid}',"Shop\SigupController@region");
 //加载验证码
-Route::get('/shop/getcode',"shop\SigupController@getCode"); 
+//Route::get('/shop/getcode',"shop\SigupController@getCode"); 
+Route::get('/shop/getcode',"shop\LoginController@getCode"); 
 
 
 //shop路由组
@@ -106,8 +109,7 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
 	Route::resource('projection', 'Shop\ProjectionController');
 	//加载放映信息
     Route::get('/projection', 'Shop\ProjectionController@index');
-    //查询放映信息
-    Route::post('/projection', 'Shop\ProjectionController@index');
+  
     //修改放映信息
     Route::get('/projection/{id}/edit', 'Shop\ProjectionController@edit');
     //执行修改信息
