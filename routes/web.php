@@ -64,6 +64,8 @@ Route::get('/shop/sigup',"Shop\SigupController@index");
 Route::post('/shop/sigup/registered',"Shop\SigupController@registered");
 //完善商户信息
 Route::post('/shop/information/upload',"Shop\InformationController@upload");
+//注册成功跳转页面
+Route::get('/shop/information/success',"Shop\InformationController@success");
 
 
 //七牛上传

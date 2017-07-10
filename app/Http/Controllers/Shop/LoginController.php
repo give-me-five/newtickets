@@ -26,8 +26,20 @@ class LoginController extends Controller
 		//执行登陆判断
 		$name = $request->input("name");
 		$password = md5($request->input("password"));
+		//判断登录账号的状态
 		$shop = \DB::table("shop_detail")->where("name",$name)->first();
-		if(!empty($shop)){
+		$shop_detail=$shop->id;
+		$shop_detail_copy= \DB::table("shop_detail_copy")->where("cid",$shop_detail)->first()->status;
+		if($shop_detail_copy==3){
+			return back()->with("msg","账号已被禁用");
+		}
+		if($shop_detail_copy==2){
+			return back()->with("msg","账号审核未通过");
+		}
+		if($shop_detail_copy==1){
+			return back()->with("msg","账号审核中");
+		}
+		if(!empty($shop) && $shop_detail_copy==4){
 			//判断密码
 			if($password==$shop->password){
 				//存储session跳转页面
@@ -37,6 +49,7 @@ class LoginController extends Controller
 				//echo "测试成功!";
 			}
 		}
+		
 		return back()->with("msg","账号或密码错误！");
 	}
 

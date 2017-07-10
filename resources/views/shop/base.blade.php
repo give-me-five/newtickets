@@ -390,6 +390,8 @@
     <script src="{{asset('myadmin/plugins/fastclick/fastclick.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('myadmin/dist/js/app.min.js')}}" type="text/javascript"></script>    
+    <!-- XDL-model-提示框 -->
+    <script src="{{asset('myadmin/bootstrap/js/xdl-modal-alert-confirm.js')}}" type="text/javascript"></script> 
     
     <!-- AdminLTE 仪表板演示（这只是用于演示目的） -->
     <script src="{{asset('myadmin/dist/js/pages/dashboard.js')}}" type="text/javascript"></script>    
