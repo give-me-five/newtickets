@@ -45,7 +45,7 @@
 
 					@if(session("msg"))
                         <p class="login-box-msg" style="color:red;">{{session("msg")}}</p>
-					@elseif	
+					@else	
                         <p class="login-box-msg" style="color:red;">{{session("msg")}}</p>
 					@endif
 
