@@ -229,7 +229,7 @@
         @foreach ($fmlist as $fm)
           <dd>
             <div class="movie-item">
-              <a href="/films/{{ $fm->id }}" target="_blank" data-act="playingMovie-click">
+              <a href="/films/{{ $fm->id }}.html" target="_blank" data-act="playingMovie-click">
               <div class="movie-poster">
                 <!-- <img class="poster-default" src=""> -->
                 <img src="/uploads/{{ $fm->picname }}">
@@ -269,7 +269,7 @@
         @foreach ($flist as $fl)
           <dd>
             <div class="movie-item">
-              <a href="/films/{{ $fl->id }}" target="_blank" data-act="upcomingMovie-click">
+              <a href="/films/{{ $fl->id }}.html" target="_blank" data-act="upcomingMovie-click">
               <div class="movie-poster">
                 <!-- <img class="poster-default" src="loading_2.e3d934bf.png"> -->
                 <img src="/uploads/{{ $fl->picname }}">

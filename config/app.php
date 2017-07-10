@@ -163,7 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
-        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        //zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 		//验证码
 //		Mews\Captcha\CaptchaServiceProvider::class,
 		Mews\Captcha\CaptchaServiceProvider::class,
@@ -179,7 +179,6 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
-        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -189,8 +188,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
-        zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        //itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
     ],
 
     /*

@@ -11,7 +11,7 @@
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         },
-        url:"/films/comment/{{$film->id}}",
+        url:"/films/comment/{{$first->id}}",
         type:"post",
         data:"comment"+comment,
         datatype:"text",
@@ -25,7 +25,7 @@
     <div class="wrapper clearfix">
       <div class="celeInfo-left">
         <div class="avater-shadow">
-          <img class="avater" src="/uploads/{{$film->picname}}" alt="">
+          <img class="avater" src="/uploads/{{$first->picname}}" alt="">
             <div class="movie-ver"><i class="imax3d"></i></div>
         </div>
       </div>
@@ -152,7 +152,7 @@
                     <h3>写短评</h3>
                   </div>
                   <div class="mod-content">
-                      <form name="myform" action="{{url('/films/comment')}}/{{$film->id}}" method="post" onsubmit="return doSubmit(); ">
+                      <form name="myform" action="{{url('/films/comment')}}/{{$first->id}}" method="post" onsubmit="return doSubmit(); ">
                           <input type="hidden" name="_token" value="{{ csrf_token() }}">
                           
                           <textarea name="comment" cols="50" rows="5" placeholder="说点你的看法吧"></textarea><br/><br/>
@@ -180,7 +180,7 @@
                                 <div class="main">
                                   <div class="main-header clearfix">
                                     <div class="user">
-                                      <span class="name">{{$users->phone}}</span>
+                                      <span class="name">2334</span>
                                       
                                         <span class="tag">购</span>
                                     </div>

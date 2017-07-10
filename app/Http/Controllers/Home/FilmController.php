@@ -33,8 +33,8 @@ class FilmController extends Controller
     public function show($id)
     {   
         $comment = \DB::table('film_comment')->where('fid','=',$id)->get();
-        $uid = session('users')->id;
-        $users = \Db::table('users')->where('id','=',$uid)->first();
+        // $uid = session('users')->id;
+        // $users = \Db::table('users')->where('id','=',$uid)->first();
         //echo "<pre>";
         //print_r($users);
         $first = Film::where('id','=',$id)->first();
