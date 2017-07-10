@@ -4,11 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Amaze UI Admin index Examples</title>
+    <title>熊猫电影售票后台管理</title>
     <meta name="description" content="这是一个 index 页面">
     <meta name="keywords" content="index">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" href="{{asset('myadmin/i/favicon.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{asset('myadmin/i/app-icon72x72@2x.png')}}">
@@ -52,7 +53,7 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
-                            <a href="javascript:;">欢迎你, <span>{{ session("admin")->account }}</span> </a>
+                            {{--<a href="javascript:;">欢迎你, <span>{{ session("admin")->account }}</span> </a>--}}
                         </li>
 
                         <!-- 新邮件 -->

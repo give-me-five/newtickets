@@ -36,12 +36,12 @@ class RootController extends Controller
     public function create()
     {
         //加载管理员添加模板
-        if(session("admin")->status != 2){
-            echo "<script>alert('抱歉，您没有操作权限!!!')</script>";
-            echo "<script>window.history.back()</script>";
-        }else{
+//        if(session("admin")->status != 2){
+//            echo "<script>alert('抱歉，您没有操作权限!!!')</script>";
+//            echo "<script>window.history.back()</script>";
+//        }else{
             return view("admin.root.add");
-        }
+//        }
     }
 
     /**
@@ -55,14 +55,14 @@ class RootController extends Controller
 
         //获取用户数据
         $account = $request->account;
-        $password = encrypt($request->input('pass'));
+        $password = md5(md5($request->input('pass')."lixuwen"));
         $name = $request->name;
 
         //判断账号是否存在
-        $info = Admin::where("account", $account)->first();
-        if ($info) {
-            return back()->with('msg', '账号已存在');
-        }
+//        $info = Admin::where("account", $account)->first();
+//        if ($info) {
+//            return back()->with('msg', '账号已存在');
+//        }
         //执行普通管理员添加
         $id = \DB::table('admin')->insertGetId(["account" => $account, "pass" => $password, "name" => $name, "role" => 1, "status" => 3, "addtime" => time()]);
         if($id>0){
