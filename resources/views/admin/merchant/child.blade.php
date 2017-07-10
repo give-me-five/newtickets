@@ -11,8 +11,8 @@
                         </div>
                     </div>
                     <div class="widget-body am-fr">
-                        <div style="width:100px;float: right;" class="widget-title am-fl"><a href="/admin/root/create/">添加管理员</a></div>
-                        <form action="/admin/root/" method="get" class="form-inline">
+                        {{--<div style="width:100px;float: right;" class="widget-title am-fl"><a href="/admin/root/create/">添加管理员</a></div>--}}
+                        <form action="/admin/merchant/" method="get" class="form-inline">
                             {{csrf_field()}}
                             <div class="form-group">
                                 <label for="exampleInputName2">关键字:</label>

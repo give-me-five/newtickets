@@ -48,22 +48,24 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
    		<div id="seat-map">
 			<div class="front">屏幕</div>					
 		</div>
-		<div class="booking-details">
-			<p>影片：<span>{{$fmfirst->title}}</span></p>
-			<p>影厅：<span>{{$hfirst->title}}</span></p>
-			<p>场次：<span>{{$ptime->starttime}}</span></p>
-			<p>座位：</p>
-			<ul id="selected-seats"></ul>
-			<p>票数：<span id="counter">0</span></p>
-			<p>总计：<b>￥<span id="total">0</span></b></p>
-					
-			<button class="checkout-button">确认信息,下单</button>
-					
-			<div id="legend"></div>
-		</div>
+
+           {{--{{ csrf_field() }}--}}
+            <div class="booking-details">
+                <p>影院：<span id="shopname">{{$ctit->shopname}}</span></p>
+                <p>影片：<span id="filmtitle">{{$fmfirst->title}}</span></p>
+                <p>影厅：<span id="halltitle">{{$hfirst->title}}</span></p>
+                <p>放映时间：<span id="time">{{date("H:i",strtotime("{$ptime->datetime}"))}}</span></p>
+                <p id="seat">座位：1</p>
+                <ul id="selected-seats"></ul>
+                <p>票数：<span id="counter" >0</span></p>
+                <p>总计：<b>￥<span id="total" >0</span></b></p>
+                <button onclick="dosubmit()" class="checkout-button" />确认信息,下单</button>
+                <div id="legend"></div>
+            </div>
+
 		<div style="clear:both"></div>
    </div>
-	
+
   <br/>
 </div>
 <script src="{{asset('home/js/jquery.min.js')}}"></script>
@@ -136,6 +138,19 @@ function recalculateTotal(sc) {
 
 
 
+</script>
+<script>
+    function dosubmit(){
+//        var shopname = document.getElementById("shopname").innerHTML;
+//        var filmtitle = document.getElementById("filmtitle").innerHTML;
+//        var halltitle = document.getElementById("halltitle").innerHTML;
+//        var time = document.getElementById("time").innerHTML;
+//        var counter = document.getElementById("counter").innerHTML;
+//        var total = document.getElementById("total").innerHTML;
+//        var seat = document.getElementById("seat").innerHTML;
+//        window.location.href="/order/orderAdd/"+shopname+"/"+filmtitle+"/"+halltitle+"/"+time+"/"+counter+"/"+total+"/"+seat;
+      window.location.href="/order/qrcode/";
+    }
 </script>
 @endsection
 
