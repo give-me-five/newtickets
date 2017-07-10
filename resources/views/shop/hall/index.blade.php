@@ -34,7 +34,7 @@
 					 <tr>
 						<td>{{ $vo->id }}</td>
                       <td>{{ $vo->title }}</td>
-                      <td>{{ $vo->number }}</td>
+                      <td>{{ $vo->sumnumber }}</td>
                       <td>{{ $vo->layout }}</td>
                       <td>
                      
