@@ -65,12 +65,14 @@ class CinemaController extends Controller
         $cid = Cinema::where("id",$id)->value("cid");
         //获取影片管理id
         $fid = Projection::where("cid",$cid)->pluck("fid");
+        //放映时长
+        $datetime = Projection::where("id",$id)->value("datetime");
         //影院对应影片
         $titles = Film::whereIn("id",$fid)->get();
         //查询影厅关联id
         $hid = Projection::where("fid",$filmid)->value("hid");
         //查询影厅
         $halltitle = Hall::where("id",$hid)->value("title");
-        return view("home.info",compact("filmtitle","titles","sname","price","language","halltitle"));
+        return view("home.info",compact("filmtitle","titles","sname","price","language","halltitle","datetime"));
     }
 }

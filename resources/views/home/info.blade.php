@@ -104,8 +104,9 @@
                         @foreach($price as $key=>$info)
                             <tr>
                                 <td class="hall-time">
-                                    <em class="bold">18:40</em>
-                                    预计20:49散场
+                                    <em class="bold">{{date("H:i",strtotime($info->datetime))}}</em>
+
+                                    预计3小时后散场
                                 </td>
                                 <td class="hall-type">
                                     3D{{$language}}
