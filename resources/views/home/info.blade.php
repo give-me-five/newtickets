@@ -64,8 +64,8 @@
                         <li>
                             <label>选择时间</label>
                             <div class="select-tags">
-                                <a class="current" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">5月30日（今天）</a>
-                                <a data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-31&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">5月31日（周三）</a>
+                                <a class="current" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date1}}（今天）</a>
+                                <a data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-31&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date2}}（星期{{$date3}}）</a>
                             </div>
                         </li>
                     </ul>
@@ -101,11 +101,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($price as $key=>$info)
+                        @foreach($date7 as $key=>$info)
                             <tr>
                                 <td class="hall-time">
-                                    <em class="bold">18:40</em>
-                                    预计20:49散场
+                                    <em class="bold">{{date('H:i',strtotime($info->datetime))}}</em>
+                                    预计3小时后散场
                                 </td>
                                 <td class="hall-type">
                                     3D{{$language}}
@@ -116,7 +116,7 @@
 
                                 <td class="hall-flow">
                                     <div class="flowing-wrap flowing-loose">
-                                        <label> 宽松  </label>
+                                        <label> {{$info->seatinfo}}  </label>
                                         <span class="flowing-vol"><i style="width: 0%;"></i></span>
 							<span class="flowing-view J_flowingView" data-scheduleid="403772016">
 								<i class="icon-zoom"></i>
@@ -127,9 +127,9 @@
                                     </div>
                                 </td>
                                 <td class="hall-price" data-partcode="lumiaivista">
-
+                                     <em class="now">{{$info->price}}</em>
                                     <del class="old">89.00</del>
-                                    <em class="now">{{$info->price}}</em>
+                                   
                                 </td>
                                 <td class="hall-seat">
                                     <a class="seat-btn" href="/order/choose/{{$sname->shopname}}/{{$halltitle}}/{{$filmtitle->title}}">选座购票</a>

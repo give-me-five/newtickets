@@ -327,10 +327,10 @@
               <ul class="treeview-menu">
                 
                 <li><a href="{{url('shop/hall')}}"><i class="fa fa-circle-o"></i>影厅信息</a></li>
-				<li><a href="{{url('shop/create')}}"><i class="fa fa-circle-o"></i>添加影厅</a></li>
+				
                 <li><a href="{{url('shop/projection')}}"><i class="fa fa-circle-o"></i>放映信息</a></li>
                 <li><a href="{{url('shop/projection/create')}}"><i class="fa fa-circle-o"></i>添加放映信息</a></li>
-                <li><a href="{{url('shop/layout')}}"><i class="fa fa-circle-o"></i>添加布局</a></li>
+                <li><a href="{{url('shop/layout')}}"><i class="fa fa-circle-o"></i>添加影厅</a></li>
               </ul>
             </li>
           </ul>
