@@ -75,7 +75,7 @@ class FilmController extends Controller
         $ctit = Shopdetail::where('id',$hfirst->cid)->first();//查询影厅对应的影院
         $ptime = Projection::where('id',$pid)->first();
         //print_r($ctit);
-        return view("home.layout",compact('fmfirst','hfirst','ctit','ptime'));
+        return view("order.layout",compact('fmfirst','hfirst','ctit','ptime'));
     }
 
     //执行Ajax评论添加

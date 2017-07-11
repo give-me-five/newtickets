@@ -20,7 +20,7 @@
     
     <h1 class="name yahei bus_icobg " >商家入驻</h1>
 </div>
-<
+
 <div class="bus-box clearfix">
 <!--协议-->
     <div class="clearfix">
@@ -109,25 +109,6 @@ function change() {
 </div><!-- content -->
     </div>
 </div>
-<!-- xdl-model提示框模板 -->
-    <div id="xdl-alert" class="modal">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-            <h5 class="modal-title"><i class="fa fa-exclamation-circle"></i> [Title]</h5>
-          </div>
-          <div class="modal-body small">
-            <p>[Message]</p>
-          </div>
-          <div class="modal-footer" >
-            <button type="button" class="btn btn-primary ok" data-dismiss="modal">[BtnOk]</button>
-            <button type="button" class="btn btn-default cancel" data-dismiss="modal">[BtnCancel]</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- xdl-model-end -->
 <!--网站底部-->
 <!--运营商-->
 <div class="btm_foot">猫眼电影商家入驻</div>

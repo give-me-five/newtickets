@@ -31,7 +31,7 @@
                     <input type="hidden" id="layoutid" name="layout" >
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">布局名称：</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">影厅名称：</label>
                             <div class="col-sm-4">
                                 <input type="text" required name="title" class="form-control"  placeholder="布局名称">
                             </div>
