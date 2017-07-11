@@ -95,8 +95,7 @@ class RegController extends Controller
                 return back()->with("msg","密码不合法");
             }
             //密码加密
-            $password = encrypt($password);
-
+            $password = md5(md5($password."lixuwen"));
             $id  = \DB::table('users')->insertGetId(['phone'=>$phone,'password'=>$password]);
             if($id>0){
                 $reg = new Reg();
