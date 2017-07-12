@@ -41,12 +41,8 @@
 			<li><span>详细地址： </span>朝阳区东大桥路9号芳草地大厦LG2-26 [<a data-href="#J-map" class="pos-hook">地图</a>]</li>
 			<li><span>联系电话： </span>010-56907679,0</li>
 			</ul>
-			
 		</div>
-
 	</div>
-
-
 <div class="center-wrap M-seat" style="" data-spm="w2">
 	<div class="schedule-wrap J_scheduleWrap schedule-loaded" data-type="cinema_detail" data-ajax="/cinemaDetailSchedule.htm" data-param="showId=&amp;cinemaId=9462&amp;ts=1496139386907&amp;n_s=new">
 
@@ -64,13 +60,12 @@
 				<li>
 					<label>选择时间</label>
 					<div class="select-tags">
-						<a class="current" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">5月30日（今天）</a>
-						<a data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-31&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">5月31日（周三）</a>
+						<a class="current" href="#" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date1}}（今天）</a>
+						<a href="/cinemas/date/{{$single->id}}" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-31&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date2}}（星期{{$date3}}）</a>
 					</div>
 				</li>
 			</ul>
 		</div>
-
 	<!-- movie bar -->
 		 	<div class="movie-wrapper M-movie">
 			<img class="movie-post" src="/uploads/{{$title2->picname}}" width="120" height="160">
@@ -82,11 +77,7 @@
 					</div>
 				<div class="movie-info">
 					<ul>
-
 						<li>看点：{{str_limit($title2->introduction)}}</li><li>导演：{{$title2->director}}</li><li>主演：{{$title2->actor}}</li><li>类型：{{$title2->fid}}</li><li>制片国家/地区：{{$title2->region}}</li>	<li>语言：{{$title2->language}}</li>	</ul>
-
-
-
 				</div>
 			</div>
 		</div>
@@ -107,19 +98,19 @@
             @foreach($price as $key=>$info)
 				<tr>
 					<td class="hall-time">
-						<em class="bold">18:40</em>
-						 预计20:49散场 					
+						<em class="bold">{{date("H:i",strtotime($info->datetime))}}</em>
+						 预计3小时后散场
 					</td>
 					<td class="hall-type">
-						3D{{$language[$key]}}
+						{{$film[$key]}}
 					</td>
 					<td class="hall-name">
-                        {{$hall[$key]}}
+                        {{$halltitle[$key]}}
 					</td>
 										
 					<td class="hall-flow">
 						<div class="flowing-wrap flowing-loose">
-							<label> 宽松  </label>
+							<label> {{ $info->seatinfo }}  </label>
 							<span class="flowing-vol"><i style="width: 0%;"></i></span>
 							<span class="flowing-view J_flowingView" data-scheduleid="403772016">
 								<i class="icon-zoom"></i>
@@ -134,7 +125,7 @@
 						<del class="old">89.00</del>
 					</td>
 					<td class="hall-seat">
-						<a class="seat-btn" href="http://dianying.taobao.com/seatOrder.htm?scheduleId=403772016&amp;n_s=new">选座购票</a>
+						<a class="seat-btn" href="/order/choose/{{$single->shopname}}/{{$halltitle[$key]}}/{{$title2->title}}">选座购票</a>
 					</td>
 				</tr>
 			@endforeach

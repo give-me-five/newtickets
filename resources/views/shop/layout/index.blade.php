@@ -28,23 +28,24 @@
                 <!-- form start -->
                 <form action="{{url('shop/store')}}" method="post" class="form-horizontal">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+                    <input type="hidden" id="layoutid" name="layout" >
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">布局名称：</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">影厅名称：</label>
                             <div class="col-sm-4">
-                                <input type="text" name="title" class="form-control"  placeholder="布局名称">
+                                <input type="text" required name="title" class="form-control"  placeholder="布局名称">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">座位排数：</label>
                             <div class="col-sm-4">
-                                <input type="number" min="1" value="7" name="cowsnumber" class="form-control"  placeholder="座位排数">
+                                <input type="number" required min="1" value="" name="cowsnumber" class="form-control"  placeholder="座位排数">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">座位数量：</label>
                             <div class="col-sm-4">
-                                <input type="number" min="1"  max="18" name="seatnumber" value="18" class="form-control" placeholder="每排座位数量">
+                                <input type="number" min="1" required max="18" name="seatnumber" value="" class="form-control" placeholder="每排座位数量">
                             </div>
                         </div>
                         <div class="form-group">
@@ -56,16 +57,16 @@
                         <div class="form-group">
                             <label for="inputPassword3" class="col-sm-2 control-label">座位数量：</label>
                             <div class="col-sm-4">
-                                <input type="text" disabled class="form-control" id="inputPassword3" placeholder="座位数量" name="number">
+                                <input type="text"  readonly name="allnumber"  class="form-control" id="sumseat" placeholder="座位数量">
                             </div>
                         </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
                         <div class="col-sm-offset-2 col-sm-1">
-                            <button type="submit" class="btn btn-primary">添加</button>
+                            <button onclick="sendAjax()" class="btn btn-primary">添加</button>
                         </div>
                         <div class="col-sm-1">
-                            <button type="submit" class="btn btn-primary">重置</button>
+                            <button type="reset" class="btn btn-primary">重置</button>
                         </div>
                     </div><!-- /.box-footer -->
                 </form>
@@ -90,7 +91,7 @@
                         </center>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
                         </div>
                     </div>
                 </div>
@@ -118,7 +119,7 @@
          var seatnumber  = $('input[name=seatnumber]').val();
          //console.log(cowsnumber,seatnumber);
          //当点击时获取座位数量和行数进行遍历
-
+         sumnumber = null
          var reapt = false
          var seatarr = {};//new Array(cowsnumber);
 
@@ -127,7 +128,9 @@
              //座位数量
              var seatnumber = parseInt($('input[name=seatnumber]').val());
              //循环列数进行添加
-             console.log('--length----', seatarr);
+             sumnumber = parseInt(cowsnumber*seatnumber);
+
+//             console.log('--length----', seatarr);
 
              for (var i = 0; i < cowsnumber; i++) {
                  if (!reapt) {
@@ -135,10 +138,7 @@
                      var aa = $('.modal-body').eq(0).append('<ol value='+(i+1)+' class="bb"></ol>');
                  for (let j = 0; j < seatnumber; j++) {
                      seatarr[i].push('a');
-                    // $('.bb').eq(j).append('<button>'+j+'</button>');
-                     //aa.append('<button>'+(j+1)+'</button>');
                  }
-
                  }
          }
              if(!reapt){
@@ -149,20 +149,30 @@
                  reapt = true
          }
          $('.modal-body').on('click','.seatbutton', function() {
-            //处理代码
-             $(this).css('visibility','hidden');//('display','null');
 
-              console.log($(this).html());
-//              seatarr.foreach(function(value,index,arr){
-//                //console.log(value);
-//              });
-             $.each(seatarr, function(index, value, array) {
-                 // ...
-                 console.log('遍历',value)
+             $(this).css('visibility','hidden');//('display','null');
+             _this = $(this);
+             // console.log($(this).html());
+
+             $.each(seatarr, function(index, value) {
+
+                 var number =  _this.parent('ol').attr('value')
+                 console.log(' $(this).parent().val()', _this.parent('ol').attr('value'))
+                 if((number-1)==index){
+                     value[(_this.html()-1)] = '_';
+                     sumnumber --;
+                     //console.log('aaaaa',sumnumber);
+                     //console.log('-----',seatarr);
+                     $('#sumseat').val(sumnumber);
+                     $('#layoutid').val(JSON.stringify(seatarr));// = seatarr;
+                     return seatarr;
+
+                 }
              });
-           //alert('aaa');
          });
 
+
+         //console.log('seatarr',seatarr);
      </script>
 
 @endsection

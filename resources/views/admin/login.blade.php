@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>会员登陆</title>
+    <title>后台登录</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
      <!-- Bootstrap 3.3.4 -->
@@ -23,7 +23,7 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="#"><b>管理员登陆页</b></a>
+        <a href="#"><b>管理员登陆</b></a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         @if(session("msg"))
@@ -56,7 +56,7 @@
             <div class="col-xs-8">    
               <div class="checkbox icheck">
                 <label>
-                  <input type="checkbox"> Remember Me
+                  {{--<input type="checkbox"> Remember Me--}}
                 </label>
               </div>                        
             </div><!-- /.col -->
@@ -67,11 +67,6 @@
         </form>
 
         <a href="#" style="font-size:12px;">忘记密码</a>&nbsp;&nbsp;&nbsp;&nbsp;
-
-
-        <a href="#" style="font-size:12px;">忘记密码</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="register.html" class="text-center" style="font-size:12px;">注册会员</a>
-
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->
 

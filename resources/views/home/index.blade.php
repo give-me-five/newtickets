@@ -287,7 +287,7 @@
               </div>
               <div class="movie-ver"></div>
             </div>
-            <div class="movie-detail movie-rt">{{$fl->firsttime}}上映</div>
+            <div class="movie-detail movie-rt">{{date("H:i",strtotime("{$fl->firsttime}"))}}上映</div>
           </dd>
         @endforeach
         </dl>

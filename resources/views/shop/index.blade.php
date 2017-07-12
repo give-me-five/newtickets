@@ -7,9 +7,7 @@
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
                                 <div class="widget-title am-fl">商户图片</div>
-                                <div class="widget-function am-fr">
-                                    <a href="javascript:;" class="am-icon-cog"></a>
-                                </div>
+                               
                             </div>
                             <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echarts">
 								 <p class="text-center list-group-item"><img width="500" height="200" src="/upload/pic/{{$shopdetail->picname}}"/></p>
@@ -18,9 +16,7 @@
                         <div class="widget am-cf">
                             <div class="widget-head am-cf">
                                 <div class="widget-title am-fl">营业执照</div>
-                                <div class="widget-function am-fr">
-                                    <a href="javascript:;" class="am-icon-cog"></a>
-                                </div>
+                                
                             </div>
                             <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echarts">
 								  <p class="text-center list-group-item"><img width="500" height="200" src="/upload/{{$shopdetail->licence}}"/></p>
@@ -46,6 +42,7 @@
                                 <div class="am-progress-title">所在城市：{{$shopdetail->city}}</div><br/>
                                 <div class="am-progress-title">所在区域：{{$shopdetail->region}}</div><br/>
                                 <div class="am-progress-title">详细地址：{{$shopdetail->address}}</div><br/>
+                              
                                 
                                
                             </div>

@@ -24,18 +24,18 @@
                 <div class="box-body">
                   <table class="table table-bordered">
                     <tr>
-                      <th>ID</th>
-                      <th>名称</th>
+                     
+                      <th>影厅名称</th>
                       <th>座位数</th>
-                      <th>布局</th>
+                      <th>座位布局</th>
                       
                     </tr>
 					@foreach ($hall as $vo)
 					 <tr>
-						<td>{{ $vo->id }}</td>
+					
                       <td>{{ $vo->title }}</td>
-                      <td>{{ $vo->number }}</td>
-                      <td>{{ $vo->layout }}</td>
+                      <td>{{ $vo->sumnumber }}</td>
+                      <td>{{ $vo->cowsnumber }}排{{ $vo->seatnumber }}列</td>
                       <td>
                      
                     </tr>

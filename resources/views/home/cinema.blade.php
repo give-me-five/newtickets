@@ -29,7 +29,7 @@
 						
 						<div class="right-fav "></div>
 						<div class="right-buy ">    							
-							<a href="/">选座</a>
+							<a href="/cinemas/show/{{$ml->id}}">选座</a>
 						</div>
 					</div>
 					<a href="/cinemas/show/{{$ml->id}}" class="detail-left pictures">

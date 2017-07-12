@@ -11,6 +11,7 @@
         <title>企业经营信息</title>
 <script src="{{asset('public/js/jquery.min.js')}}"></script>
 
+
 <link media="all" href="{{asset('myadmin/css/index.css')}}" type="text/css" rel="stylesheet">
 </head>
 <body>
@@ -19,7 +20,7 @@
     
     <h1 class="name yahei bus_icobg " >商家入驻</h1>
 </div>
-<
+
 <div class="bus-box clearfix">
 <!--协议-->
     <div class="clearfix">
@@ -27,7 +28,7 @@
         <div id="content">
 	<div class="manage clearfix">
 <div class="box">
-<form id="company-form" action="/shop/information/upload" method="post" enctype="multipart/form-data">        
+<form id="company-form" action="/shop/information/upload" method="post" name="myform" enctype="multipart/form-data">        
 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
     <dl class="clearfix">
         <dt>企业名称<font>*</font></dt>
@@ -112,5 +113,6 @@ function change() {
 <!--运营商-->
 <div class="btm_foot">猫眼电影商家入驻</div>
 <!--底部连接-->
+
 </body>
 </html>

@@ -19,6 +19,8 @@ class HallController extends Controller
 		$id=session('adminuser')->id;
 		//获取登录者对应的影厅sid
 		$hall=Hall::where("cid",$id)->paginate(6);
+		//echo '<pre>';
+		//var_dump($hall);
 		//判断并封装搜索条
 		return view("shop.hall.index",compact("hall"));
 	}
@@ -32,27 +34,7 @@ class HallController extends Controller
 	public function store(request $request)
 	{
 
-	//`	$file = $request->file('ufile');
-		//var_dump($file);
-
-
-//		//$file = $request->file('picname');
-//		$filename = $file->getClientOriginalName().time().rand().$file->getClientOriginalExtension();
-//		$disk = \Storage::disk('qiniu');
-//
-//		$bool = $disk->put('img/'.$filename,file_get_contents($file->getRealPath()));
-//			//上传到七牛
-//			//$bool = $disk->put('iwanli/image_'.$filename,file_get_contents($file->getRealPath()));
-//		//$disk->getDriver()->downloadUrl($filename);            //获取下载地址
-//		if($bool){
-//			echo '上传成功';
-//			echo '<br>'.env('QINIU_URL').'/img/'.$filename;
-//
-//			$realpath = env('QINIU_URL').'/img/'.$filename;
-//		}else{
-//			echo  '上传失败';
-//		}
-
+		//var_dump($_REQUEST);
 
 		$cid=session('adminuser')->id;
 		$this->validate($request, [
@@ -61,17 +43,19 @@ class HallController extends Controller
 
 		//获取要添加的数据
 		$title=$request->input("title");
-		$number=$request->input("number");
-		$layout=$request->input("layout");
+		$cowsnumber=$request->input("cowsnumber");
+		$seatnumber=$request->input("seatnumber");
+		$allnumber=intval($request->input("allnumber"));
+		$layout=json_encode($request->input("layout"));
 		//执行添加
 		$id=Hall::insertGetId(
-			["cid"=>$cid,"title"=>$title,"number"=>$number,"layout"=>$layout]
+			["cid"=>$cid,"title"=>$title,"cowsnumber"=>$cowsnumber,"seatnumber"=>$seatnumber,"sumnumber"=>$allnumber,"layout"=>$layout]
 		);
 		//添加判断
 		if($id>0){
-			$info = "影厅添加成功！";
+			$info = "布局添加成功！";
 		}else{
-			$info = "影厅添加失败！";
+			$info = "布局添加失败！";
 		}
 		return redirect("shop/hall")->with("err",$info);
 
