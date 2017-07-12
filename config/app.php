@@ -188,10 +188,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        YuanChao\Editor\EndaEditorServiceProvider::class,
         Douyasi\WangEditor\EditorServiceProvider::class,
-        //itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        Overtrue\LaravelUEditor\UEditorServiceProvider::class,
+        
     ],
 
     /*

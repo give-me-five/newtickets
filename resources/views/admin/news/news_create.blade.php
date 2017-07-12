@@ -1,8 +1,7 @@
 @extends('admin.base')
     @section('content')
         <!-- 内容区域 -->
- {!! we_css() !!}
-
+@include('vendor.ueditor.assets')
 <div class="row-content am-cf">
     <div class="row">
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
@@ -50,7 +49,16 @@
                         <div class="am-form-group">
                             <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容</label>
                             <div class="am-u-sm-9">
-                             <textarea class="form-control we-container" name="content" id="wangeditor" style="display:none;" cols="8" rows="15"></textarea>
+                                <!-- 实例化编辑器 -->
+                                <script type="text/javascript">
+                                    var ue = UE.getEditor('container');
+                                    ue.ready(function() {
+                                        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+                                    });
+                                </script>
+
+                                <!-- 编辑器容器 -->
+                                <script id="container" name="content" type="text/plain"></script>
                             </div>
                         </div>
                         
