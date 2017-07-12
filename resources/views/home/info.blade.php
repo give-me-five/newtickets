@@ -131,9 +131,7 @@
                                     <del class="old">89.00</del>
                                    
                                 </td>
-                                <td class="hall-seat">
-                                    <a class="seat-btn" href="/order/choose/{{$sname->shopname}}/{{$halltitle}}/{{$filmtitle->title}}">选座购票</a>
-                                </td>
+                                
                             </tr>
                         @endforeach
 
