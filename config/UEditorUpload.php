@@ -24,11 +24,11 @@ return [
         'mode'=>'qiniu',//上传方式,local 为本地   qiniu 为七牛
 
         //七牛配置,若mode='qiniu',以下为必填.
-        'qiniu'=>[
+       'qiniu'=>[
             'accessKey'=>'p1Bli-5Z_zb95lkzuIa-jBa0WxQuFVlGiu7AoFBL',
             'secretKey'=>'wPQW9UWq6qNqJMIrGyVwPG8NansFt5M_9tPORJWk',
             'bucket'=>'qianduan',
-            'url'=>'oslfdesgv.bkt.clouddn.com',//
+            'url'=>'http://oslfdesgv.bkt.clouddn.com',//七牛分配的CDN域名,注意带上http://
 
         ]
     ],

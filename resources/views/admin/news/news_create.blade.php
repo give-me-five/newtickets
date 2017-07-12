@@ -1,7 +1,8 @@
 @extends('admin.base')
     @section('content')
         <!-- 内容区域 -->
-@include('UEditor::head');
+ {!! we_css() !!}
+
 <div class="row-content am-cf">
     <div class="row">
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
@@ -49,18 +50,12 @@
                         <div class="am-form-group">
                             <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容</label>
                             <div class="am-u-sm-9">
-                                <script id="container" name="content" type="text/plain">
-       
-                                </script>
-                                <!-- 实例化编辑器 -->
-                                <script type="text/javascript">
-                                    var ue = UE.getEditor('container');
-                                </script>
+                             <textarea class="form-control we-container" name="content" id="wangeditor" style="display:none;" cols="8" rows="15"></textarea>
                             </div>
                         </div>
                         
                         <div class="am-form-group">
-                            <div class="am-u-sm-9 am-u-sm-push-3">
+                            <div class="am-u-sm-9 am-u-sm-push-3 ">
                                 <button type="submit" class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
                             </div>
                         </div>
@@ -70,4 +65,6 @@
         </div>
     </div>
 </div>
+{!! we_js() !!}
+{!! we_config('wangeditor') !!}
     @endsection

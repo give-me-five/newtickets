@@ -13,6 +13,7 @@
 div.seatCharts-cell {color: #182C4E;height: 25px;width: 26px;line-height: 25px;margin: 3px;float: left;text-align: center;outline: none;font-size: 13px;}
 div.seatCharts-seat {cursor: pointer;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
 div.seatCharts-row {height: 35px;}
+
 div.seatCharts-seat.available {background:{{url(asset('home/images/26-25.png'))}};}
 div.seatCharts-seat.available1{background:{{url(asset('home/images/hong26-25.png'))}};}
 div.seatCharts-seat.focused {background-color: #76B474;border: none;}
@@ -45,6 +46,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <div id="main">
    <h2 class="top_title">{{$ctit->shopname}}</h2>
    <div class="demo">
+
    		<center>
 	   <div id="seat-map">
 			<div class="front">屏幕中央</div>
@@ -81,6 +83,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 			<p>影片：<span>{{$fmfirst->title}}</span></p>
 			<p>影厅：<span>{{$hfirst->title}}</span></p>
 			<p>场次：<span>{{$ptime->datetime}}</span></p>
+
 			<p>座位：</p>
 			<ul id="selected-seats"></ul>
 			<p>票数：<span id="counter">0</span></p>
@@ -102,6 +105,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <script src="{{asset('home/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('home/js/jquery.seat-charts.min.js')}}"></script>
 <script type="text/javascript">
+
 	var arr =[];
 	$('.seatbutton').toggle(function(){
 		if(arr.length<=3){
@@ -153,6 +157,4 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 </script>
 
 @endsection
-
-
 
