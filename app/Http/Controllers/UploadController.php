@@ -4,31 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use zgldh\QiniuStorage\QiniuStorage;
+use EndaEditor;
 class UploadController extends Controller
 {
 
 	public function index()
 	{
-		return view('home.upload');
+		return view('seller.up');
 	}
 
-    public function uploads(Request $request)
-    {
-    	if($request->hasFile('pic')){
-    		$file = $request->file('pic');
+    public function upload(){
 
-    		$disk = QiniuStorage::disk('qiniu');
+        // path 为 public 下面目录，比如我的图片上传到 public/uploads 那么这个参数你传uploads 就行了
 
-    		$filename = md5($file->getClientOriginalName().time().rand()).'.'.$file->getClientOriginalExtension();
+        $data = EndaEditor::uploadImgFile('uploads');
 
-    		$bool = $disk->put('uploads/img_'.$filename,file_get_contents($file->getRealPath()));
+        return json_encode($data);
 
-    		if($bool){
-    			$path = $disk->downloadUrl('uploads/img_'.$filename);
-    			return '上传成功,图片地址：'.$path;
-    		}
-    		return '上传失败！';
-    	}
-    	return '没有文件';
     }
 }

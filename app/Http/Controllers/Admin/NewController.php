@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use zgldh\QiniuStorage\QiniuStorage;
-
+use EndaEditor;
 class NewController extends Controller
 {
     /**
@@ -63,15 +63,24 @@ class NewController extends Controller
         }
     }
 
+    public function upload(){
+
+        // path 为 public 下面目录，比如我的图片上传到 public/uploads 那么这个参数你传uploads 就行了
+
+        $data = EndaEditor::uploadImgFile('uploads');
+
+        return json_encode($data);
+
+    }
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-       
+        return view('admin.news.newinsert');
     }
 
     /**
@@ -82,7 +91,8 @@ class NewController extends Controller
      */
     public function edit($id)
     {
-        //
+        $newfir = News::where('id',$id)->first();
+        return view('admin.news.news_edit',compact('newfir'));
     }
 
     /**
@@ -94,7 +104,29 @@ class NewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->only('title','description','content');
+       
+        
+        $data['updated_at'] = time();
+        //图片上传
+        if($request->hasFile('thumb')){
+            $file = $request->file('thumb');
+            $disk = QiniuStorage::disk('qiniu');
+            $filename = md5($file->getClientOriginalName().time().rand()).'.'.$file->getClientOriginalExtension();
+            $bool = $disk->put('uploads/'.$filename,file_get_contents($file->getRealPath()));
+            $data['thumb'] = $filename;
+        }else{
+            $data['thumb'] =  News::where('id',$id)->value('thumb');
+        }
+
+
+        $res = News::where('id',$id)->update($data);
+        if($res>0){
+            return redirect('admin/news');
+        }else{
+            return back()->with("err","修改失败！");
+        }
+
     }
 
     /**
@@ -105,6 +137,7 @@ class NewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        \DB::table('news')->delete($id);
+        return redirect('/admin/news');
     }
 }

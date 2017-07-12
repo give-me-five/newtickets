@@ -4,7 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7153804a55c4e91233c8217255f434d9",
+
+    "content-hash": "89544f32e88cc57806589bd7a57d4b0f",
+ 83dde7d7322c78529481b2dcba0f98ff121c1c9e
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -209,6 +211,52 @@
                 "string"
             ],
             "time": "2015-11-06T14:35:42+00:00"
+        },
+        {
+            "name": "douyasi/laravel-wang-editor",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/douyasi/laravel-wang-editor.git",
+                "reference": "db73ffb52f58fa4ed2f26de8a0853b506751a068"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/douyasi/laravel-wang-editor/db73ffb52f58fa4ed2f26de8a0853b506751a068.zip",
+                "reference": "db73ffb52f58fa4ed2f26de8a0853b506751a068",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Douyasi\\WangEditor\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "raoyc",
+                    "email": "raoyc2009@gmail.com"
+                }
+            ],
+            "description": "wangEditor for laravel",
+            "keywords": [
+                "douyasi",
+                "laravel",
+                "wangEditor",
+                "web editor",
+                "wysiwyg"
+            ],
+            "time": "2016-11-15T08:50:07+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -2646,6 +2694,39 @@
             "time": "2016-09-01T10:05:43+00:00"
         },
         {
+            "name": "yuanchao/laravel-5-markdown-editor",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yccphp/laravel-5-markdown-editor.git",
+                "reference": "420f93671d19b6edff7bd045ed728704c4e083c2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/yccphp/laravel-5-markdown-editor/420f93671d19b6edff7bd045ed728704c4e083c2.zip",
+                "reference": "420f93671d19b6edff7bd045ed728704c4e083c2",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "YuanChao\\Editor\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "yuanchao",
+                    "email": "653069653@qq.com"
+                }
+            ],
+            "description": "Based on the markdown editor laravel 5",
+            "time": "2016-06-06T03:00:54+00:00"
+        },
+        {
             "name": "zgldh/qiniu-laravel-storage",
             "version": "v0.6.8",
             "source": {
@@ -4174,7 +4255,9 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "predis/predis": 20
+        "predis/predis": 20,
+        "yuanchao/laravel-5-markdown-editor": 20,
+        "douyasi/laravel-wang-editor": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -52,10 +52,10 @@
                                     <td>2016-09-26</td>
                                     <td>
                                         <div class="tpl-table-black-operation">
-                                            <a href="javascript:;">
+                                            <a href="{{url('admin/news/edit')}}/{{$nlist->id}}">
                                                 <i class="am-icon-pencil"></i> 编辑
                                             </a>
-                                            <a href="javascript:;" class="tpl-table-black-operation-del">
+                                            <a href="{{url('admin/news/del')}}/{{$nlist->id}}" class="tpl-table-black-operation-del">
                                                 <i class="am-icon-trash"></i> 删除
                                             </a>
                                         </div>
