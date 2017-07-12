@@ -46,7 +46,7 @@ class HallController extends Controller
 		$cowsnumber=$request->input("cowsnumber");
 		$seatnumber=$request->input("seatnumber");
 		$allnumber=intval($request->input("allnumber"));
-		$layout=$request->input("layout");
+		$layout=json_encode($request->input("layout"));
 		//执行添加
 		$id=Hall::insertGetId(
 			["cid"=>$cid,"title"=>$title,"cowsnumber"=>$cowsnumber,"seatnumber"=>$seatnumber,"sumnumber"=>$allnumber,"layout"=>$layout]

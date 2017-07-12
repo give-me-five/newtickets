@@ -73,9 +73,15 @@ class FilmController extends Controller
         $fmfirst = Film::where('id',$fid)->first();//影片
         $hfirst = Hall::where('id',$hid)->first();//查询影厅
         $ctit = Shopdetail::where('id',$hfirst->cid)->first();//查询影厅对应的影院
-        $ptime = Projection::where('id',$pid)->first();
+        $ptime = Projection::where('id',$pid)->first();//放映信息
         //print_r($ctit);
-        return view("home.layout",compact('fmfirst','hfirst','ctit','ptime'));
+  //      echo '<pre>';
+//        var_dump('-- 布局信息 ---',$hfirst);
+        var_dump('-- 放映信息---',$ptime);
+        $layout = "{\"0\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"1\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"2\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"3\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"4\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"5\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"6\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"]}";
+
+        $layout =json_decode($layout);
+        return view("home.layout",compact('fmfirst','hfirst','ctit','ptime','layout'));
     }
 
     //执行Ajax评论添加
