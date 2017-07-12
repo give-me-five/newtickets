@@ -18,14 +18,7 @@
         <a href="http://maoyan.com/" class="logo" data-act="icon-click"></a>
         <div class="city-container" data-val="{currentcityid:1 }">
             <div class="city-selected">
-                <div class="city-name">
-                  <select class="btn btn-default dropdown-toggle">
-                    <option value="1">北京</option>  
-                    <option value="2">河北</option>  
-                    <option value="3">天津</option>  
-                  </select>
-                 
-                </div>
+                
             </div>
             <div class="city-list" data-val="{ localcityid: 1 }">
                 <div class="city-list-header">定位城市：<a class="js-geo-city">北京</a></div>
