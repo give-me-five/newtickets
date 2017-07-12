@@ -43,7 +43,7 @@ class LoginController extends Controller
         $users = Users::where('phone',$name)->first();
         if($users){
             //判断密码是否正确
-            if (decrypt($users->password) == $password) {
+            if ($users->password == md5(md5($password."lixuwen"))) {
                 $list = new User();
                 $status = $list::where('id',$users->uid)->first();
                 //如果是1,有权限
@@ -64,6 +64,7 @@ class LoginController extends Controller
                 //获取登陆者ip地址
                 $ip = ip::getClientIp();
                 \DB::table("users")->where("id",$users->id)->update(["login_ip"=>$ip]);
+                //return redirect()->back();
                 return redirect("/");
                 //return back();
             }else{

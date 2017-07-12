@@ -25,7 +25,7 @@
                                             <th width="150">点击数</th>
                                         </tr>
                                     </thead>
-                                   
+
                                 </table>
 
                             </div>

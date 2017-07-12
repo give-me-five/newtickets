@@ -14,12 +14,10 @@
         "laravel/tinker": "~1.0",
         "mews/captcha": "^2.1",
         "predis/predis": "~1.1@dev",
-
         "simplesoftwareio/simple-qrcode": "1.3.*",
         "stevenyangecho/laravel-u-editor": "~1.1",
         "zgldh/qiniu-laravel-storage": "^0.6.8",
 
-        "stevenyangecho/laravel-u-editor": "~1.1",
         "yuanchao/laravel-5-markdown-editor": "dev-master",
         "douyasi/laravel-wang-editor": "dev-master"
 

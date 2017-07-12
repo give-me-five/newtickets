@@ -13,11 +13,12 @@
 div.seatCharts-cell {color: #182C4E;height: 25px;width: 26px;line-height: 25px;margin: 3px;float: left;text-align: center;outline: none;font-size: 13px;}
 div.seatCharts-seat {cursor: pointer;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
 div.seatCharts-row {height: 35px;}
-div.seatCharts-seat.available {background:url({{asset('home/images/26-25.png')}});}
-div.seatCharts-seat.available1{background:url({{asset('home/images/hong26-25.png')}});}
+
+div.seatCharts-seat.available {background:{{url(asset('home/images/26-25.png'))}};}
+div.seatCharts-seat.available1{background:{{url(asset('home/images/hong26-25.png'))}};}
 div.seatCharts-seat.focused {background-color: #76B474;border: none;}
-div.seatCharts-seat.selected {background:url({{asset('home/images/hong26-25.png')}});}
-div.seatCharts-seat.unavailable {background:url({{asset('home/images/26-25hei.png')}});cursor: not-allowed;}
+div.seatCharts-seat.selected {background:{{url(asset('home/images/hong26-25.png'))}};}
+div.seatCharts-seat.unavailable {background:{{url(asset('home/images/26-25hei.png'))}};cursor: not-allowed;}
 div.seatCharts-container {border-right: 1px dotted #adadad;width: 400px;padding: 20px;float: left;}
 div.seatCharts-legend {padding-left: 0px;position: absolute;bottom: 16px;}
 ul.seatCharts-legendList {padding-left: 0px;}
@@ -45,20 +46,55 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <div id="main">
    <h2 class="top_title">{{$ctit->shopname}}</h2>
    <div class="demo">
-   		<div id="seat-map">
-			<div class="front">屏幕</div>					
+
+   		<center>
+	   <div id="seat-map">
+			<div class="front">屏幕中央</div>
+			<div id="newseatmap">
+				@foreach ($layout as $key=>$value)
+				@endforeach
+				@for ($i = 0; $i <=$key; $i++)
+					<ul value="{{($i)}}">
+						@php
+						{{-- @todo 处理一个数组将座位信息删除  显示真实的座位信息 --}}
+						@endphp
+						@for($j=0;$j<count($value);$j++)
+							@if($value[$j]=='a')
+								<button class="seatbutton" style="background-color:#f0f0f0" issale = "{{$value[$j]}}" cowsnumber="{{$i+1}}" value="">{{$j+1}}</button>
+							@elseif ($value[$j]=='_')
+								<button style="visibility:hidden" value="{{$value[$j]}}">{{$j}}</button>
+
+								{{-- @todo  $ptime  ['price'] 价格['seatinfo']  获取售卖出的 座位数组 遍历后输出 --}}
+							@elseif ($value[$j]=='s')
+
+									<button cowsnumber="{{$i+1}}"  issale = "{{$value[$j]}}" disabled style="color:orangered;" value="{{$value[$j]}}">{{$j}}</button>
+
+							@endif
+						@endfor
+
+					</ul>
+				@endfor
+
+
+			</div>
 		</div>
+		</center>
 		<div class="booking-details">
 			<p>影片：<span>{{$fmfirst->title}}</span></p>
 			<p>影厅：<span>{{$hfirst->title}}</span></p>
-			<p>场次：<span>{{$ptime->starttime}}</span></p>
+			<p>场次：<span>{{$ptime->datetime}}</span></p>
+
 			<p>座位：</p>
 			<ul id="selected-seats"></ul>
 			<p>票数：<span id="counter">0</span></p>
 			<p>总计：<b>￥<span id="total">0</span></b></p>
 					
 			<button class="checkout-button">确认信息,下单</button>
-					
+			@verbatim
+			<div class="container">
+				Hello,  @{{arr[0]}}
+			</div>
+			@endverbatim
 			<div id="legend"></div>
 		</div>
 		<div style="clear:both"></div>
@@ -69,74 +105,56 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <script src="{{asset('home/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('home/js/jquery.seat-charts.min.js')}}"></script>
 <script type="text/javascript">
-var price = {{$ptime->price}}; //票价
-$(document).ready(function() {
-	var $cart = $('#selected-seats'), //座位区
-	$counter = $('#counter'), //票数
-	$total = $('#total'); //总计金额
-	
-	var sc = $('#seat-map').seatCharts({
-		map: [<?php echo trim($hfirst->layout);?>],//座位图
-		naming : {
-			top : false,
-			getLabel : function (character, row, column) {
-				return column;
-			}
-		},
-		legend : { //定义图例
-			node : $('#legend'),
-			items : [
-				[ 'a', 'available',   '可选座' ],
-				[ 'a', 'available1',  '已选座' ],
-				[ 'a', 'unavailable', '已售出']
-			]					
-		},
-		click: function () { //点击事件
-			if (this.status() == 'available') { //可选座
-				$('<li>'+(this.settings.row+1)+'排'+this.settings.label+'座</li>')
-					.attr('id', 'cart-item-'+this.settings.id)
-					.data('seatId', this.settings.id)
-					.appendTo($cart);
 
-				$counter.text(sc.find('selected').length+1);
-				$total.text(recalculateTotal(sc)+price);
-							
-				return 'selected';
-			} else if (this.status() == 'selected') { //已选中
-					//更新数量
-					$counter.text(sc.find('selected').length-1);
-					//更新总计
-					$total.text(recalculateTotal(sc)-price);
-						
-					//删除已预订座位
-					$('#cart-item-'+this.settings.id).remove();
-					//可选座
-					return 'available';
-			} else if (this.status() == 'unavailable') { //已售出
-				return 'unavailable';
-			} else {
-				return this.style();
+	var arr =[];
+	$('.seatbutton').toggle(function(){
+		if(arr.length<=3){
+		var cowsnumber = parseInt(($(this).attr('cowsnumber')));
+		var seat =  parseInt(($(this).html()));
+		if(arr.length==0){
+			arr.push([cowsnumber,seat]);
+				console.log('aaa',arr);
+		}else {
+			if(!isInArray(arr,cowsnumber,seat)){
+				arr.push([cowsnumber,seat]);
+				console.log('后来的数组',arr);
+			}
+
+		}
+			$('#counter').html(arr.length);
+			$('#total').html(arr.length*{{intval($ptime['price'])}});
+
+			$(this).css('background','green');//('display','null');
+		}
+		if(arr.length==4){
+			alert('只允许选四张');
+		}
+	}, function(){
+		//元素隐藏 代码④
+		var cowsnumber = ($(this).attr('cowsnumber'));
+		var seat =  ($(this).html());
+		var flag = isInArray(arr,cowsnumber,seat);
+		if(flag || flag==0){
+			arr.splice(flag,1);
+			console.info('切换的数组',arr);
+		}
+		$('#counter').html(arr.length);
+		$('#total').html(arr.length*{{intval($ptime['price'])}});
+		$(this).css('background','#f0f0f0');
+
+	})
+	function isInArray(arr,seatindex,seatvalue){
+		for(var i=0; i<arr.length;i++){
+			if(arr[i][0]==seatindex && arr[i][1]==seatvalue){
+					return i;
+					break;
 			}
 		}
-	});
-	//已售出的座位
-	sc.get([]).status('unavailable');
-		
-});
-//计算总金额
-function recalculateTotal(sc) {
-	var total = 0;
-	sc.find('selected').each(function () {
-		total += price;
-	});
-			
-	return total;
-}
-
-
+		return false
+	}
 
 
 </script>
-@endsection
 
+@endsection
 
