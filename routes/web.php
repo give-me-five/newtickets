@@ -40,6 +40,7 @@ Route::get('/cinemas',"Home\CinemaController@index");//影院列表
 Route::get('/cinemas1',"Home\CinemafsfController@index");//影院列表
 Route::get('/cinemas/show/{id}',"Home\CinemaController@show");//影院详情页
 Route::get('/cinemas/info/{shopname?}/{title?}/{id?}',"Home\CinemaController@info");//影院详情页
+Route::get('/cinemas/date/{id}',"Home\CinemaController@date");//时间信息
 Route::get('/news',"Home\NewsController@index");//热点列表
 Route::get('/news/{id}.html',"Home\NewsController@show");//热点详情
 
@@ -76,6 +77,7 @@ Route::get('/shop/sigup',"Shop\SigupController@index");
 Route::post('/shop/sigup/registered',"Shop\SigupController@registered");
 //完善商户信息
 Route::post('/shop/information/upload',"Shop\InformationController@upload");
+
 //注册成功跳转页面
 Route::get('/shop/information/success',"Shop\InformationController@success");
 
@@ -100,6 +102,8 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     Route::resource('shopdetail', 'Shop\ShopdetailController');
 	//加载商家后台影厅页
     Route::get('/hall', 'Shop\HallController@index');
+    //修改信息
+    Route::post('/information/edit',"Shop\InformationController@edit");
 
 	Route::get('/',"Shop\IndexController@index");
 	Route::resource('shopdetail', 'Shop\ShopdetailController');
