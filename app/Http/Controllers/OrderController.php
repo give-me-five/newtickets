@@ -28,12 +28,11 @@ class OrderController extends Controller
 	//确认订单
 	public function orderAdd($shopname,$filmtitle,$halltitle,$time,$counter,$total,$seat)
 	{
-		echo $shopname."--".$filmtitle."--".$halltitle."--".$time."--".$counter."--".$total."--".$seat;
-
+		echo 1;
 	}
 	//生成二维码
-	public function qrcode()
+	public function qrcode($shopname,$filmtitle,$halltitle,$time,$counter,$total,$seat)
 	{
-		return view("order.qrcode");
+		return view("order.qrcode",compact("shopname","filmtitle","halltitle","time","counter","total","seat"));
 	}
 }

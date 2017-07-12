@@ -104,7 +104,7 @@
                         @foreach($date7 as $key=>$info)
                             <tr>
                                 <td class="hall-time">
-                                    <em class="bold">{{date('H:i',strtotime($info->datetime))}}</em>
+                                    <em class="bold">{{date("H:i",strtotime($info->datetime))}}</em>
                                     预计3小时后散场
                                 </td>
                                 <td class="hall-type">

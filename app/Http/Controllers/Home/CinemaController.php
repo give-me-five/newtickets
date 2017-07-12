@@ -111,17 +111,17 @@ class CinemaController extends Controller
                  $date7[]=$fo; 
             }
                
+
         } 
 
-        //获取影厅信息
-
-      
         //获取影片价格
         $price = Projection::where("fid",$filmid)->get();
         //获取放映关联id
         $cid = Cinema::where("id",$id)->value("cid");
         //获取影片管理id
         $fid = Projection::where("cid",$cid)->pluck("fid");
+        //放映时长
+        $datetime = Projection::where("id",$id)->value("datetime");
         //影院对应影片
         $titles = Film::whereIn("id",$fid)->get();
         //查询影厅关联id
@@ -130,6 +130,7 @@ class CinemaController extends Controller
         $halltitle = Hall::where("id",$hid)->value("title");
 
         return view("home.info",compact("filmtitle","titles","sname","price","language","halltitle","date7","date1","date2","date3"));
+
     }
     public function date($id)
     {   
