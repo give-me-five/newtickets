@@ -64,6 +64,7 @@ class LoginController extends Controller
                 //获取登陆者ip地址
                 $ip = ip::getClientIp();
                 \DB::table("users")->where("id",$users->id)->update(["login_ip"=>$ip]);
+                //return redirect()->back();
                 return redirect("/");
                 //return back();
             }else{

@@ -28,16 +28,17 @@
         <div id="content">
 	<div class="manage clearfix">
 <div class="box">
-<form id="company-form" action="/shop/information/upload" method="post" name="myform" enctype="multipart/form-data">        
+<form id="company-form" action="/shop/information/edit" method="post" name="myform" enctype="multipart/form-data">        
 <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
     <dl class="clearfix">
         <dt>企业名称<font>*</font></dt>
-        <dd><input class="txt" name="shopname" id="Company_name" maxlength="111" value="" type="text"></dd>
+        <dd><input class="txt" name="shopname" id="Company_name" maxlength="111" value="{{$list->shopname}}" type="text"></dd>
         <dd class="error"></dd>
     </dl>
     <dl class="clearfix">
         <dt>影院图片<font> </font></dt>
-        <dd><input class="txt" name="picname" id="Company_license_valid" value="" type="file"></dd>
+        <dd><input class="txt" name="picname" id="Company_license_valid" value="{{$list->picname}}" type="file"></dd>
+        <img src="/upload/pic/{{$list->picname}}" >
         <dd class="error"></dd>
     </dl>
 
@@ -74,31 +75,32 @@ function change() {
     </dl>
     <dl class="clearfix">
         <dt>地址<font>*</font></dt>
-        <dd><input class="txt" name="address" id="Company_office_address" maxlength="111" value="" type="text"></dd>
+        <dd><input class="txt" name="address" id="Company_office_address" maxlength="111" value="{{$list->address}}" type="text"></dd>
         <dd class="error"></dd>
     </dl>
 
     <dl class="clearfix">
         <dt>电话<font>*</font></dt>
-        <dd><input class="txt" name="phone" id="Company_telephone" maxlength="111" value="" type="text"></dd>
+        <dd><input class="txt" name="phone" id="Company_telephone" maxlength="111" value="{{$list->phone}}" type="text"></dd>
         <dd class="error"></dd>
     </dl>
 
     <dl class="clearfix">
         <dt>法人姓名<font>*</font></dt>
-        <dd><input class="txt" name="legal" id="Company_legal_person_name" maxlength="111" value="" type="text"></dd>
+        <dd><input class="txt" name="legal" id="Company_legal_person_name" maxlength="111" value="{{$list->legal}}" type="text"></dd>
         <dd class="error"></dd>
     </dl>
 
     <dl class="clearfix">
         <dt>身份证号码<font>*</font></dt>
-        <dd><input class="txt" name="id_card" id="Company_legal_person_papers_code" maxlength="111" value="" type="text"></dd>
+        <dd><input class="txt" name="id_card" id="Company_legal_person_papers_code" maxlength="111" value="{{$list->id_card}}" type="text"></dd>
         <dd class="error"></dd>
     </dl>
 
     <dl class="clearfix">
         <dt>营业执照<font> </font></dt>
-        <dd><input class="txt" name="licence" id="Company_license_valid" value="" type="file"></dd>
+        <dd><input class="txt" name="licence" id="Company_license_valid" value="{{$list->licence}}" type="file"></dd>
+        <img width="150" src="/upload/{{$list->licence}}">
         <dd class="error"></dd>
     </dl>
 

@@ -1,12 +1,15 @@
-@extends('home.base')
-    @section('content')
-<link rel="stylesheet" type="text/css" href="{{asset('home/css/main.css')}}" />
-<style type="text/css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="{{asset('home/css/main.css')}}" />
+
+	<style type="text/css">
 .demo{width:700px; margin:40px auto 0 auto; min-height:450px;}
 @media screen and (max-width: 360px) {.demo {width:340px}}
 
 .front{width: 300px;margin: 5px 32px 45px 32px;background-color: #f0f0f0;	color: #666;text-align: center;padding: 3px;border-radius: 5px;}
-.booking-details {float: right;position: relative;width:220px;height: 450px; }
+.booking-details {float: right;position: relative;width:200px;height: 450px; }
 .booking-details h3 {margin: 5px 5px 0 0;font-size: 16px;}
 .booking-details p{line-height:26px; font-size:16px; color:#999}
 .booking-details p span{color:#666}
@@ -37,48 +40,57 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 #selected-seats {max-height: 150px;overflow-y: auto;overflow-x: none;width: 200px;}
 #selected-seats li{float:left; width:72px; height:26px; line-height:26px; border:1px solid #d3d3d3; background:#f7f7f7; margin:6px; font-size:14px; font-weight:bold; text-align:center}
 </style>
-
 </head>
 
 <body>
 
 <div id="main">
-   <h2 class="top_title">{{$ctit->shopname}}</h2>
+   <h2 class="top_title">jQuery在线选座订座（影院版</h2>
    <div class="demo">
    		<div id="seat-map">
 			<div class="front">屏幕</div>					
 		</div>
-
-           {{--{{ csrf_field() }}--}}
-            <div class="booking-details">
-                <p>影院：<span id="shopname">{{$ctit->shopname}}</span></p>
-                <p>影片：<span id="filmtitle">{{$fmfirst->title}}</span></p>
-                <p>影厅：<span id="halltitle">{{$hfirst->title}}</span></p>
-                <p>放映时间：<span id="time">{{date("H:i",strtotime("{$ptime->datetime}"))}}</span></p>
-                <p id="seat">座位：1</p>
-                <ul id="selected-seats"></ul>
-                <p>票数：<span id="counter" >0</span></p>
-                <p>总计：<b>￥<span id="total" >0</span></b></p>
-                <button onclick="dosubmit()" class="checkout-button" />确认信息,下单</button>
-                <div id="legend"></div>
-            </div>
-
+		<div class="booking-details">
+			<p>影片：<span>星际穿越</span></p>
+			<p>影院：<span>北京沃美影城回龙观店</span></p>
+			<p>影厅：<span>七号彩虹厅</span></p>
+			<p>场次：<span>11月14日 21:00</span></p>
+			<p>座位：</p>
+			<ul id="selected-seats"></ul>
+			<p>票数：<span id="counter">0</span></p>
+			<p>总计：<b>￥<span id="total">0</span></b></p>
+					
+			<button class="checkout-button">确认信息,下单</button>
+					
+			<div id="legend"></div>
+		</div>
 		<div style="clear:both"></div>
    </div>
-
+	
   <br/>
 </div>
 <script src="{{asset('home/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('home/js/jquery.seat-charts.min.js')}}"></script>
 <script type="text/javascript">
-var price = {{$ptime->price}}; //票价
+var price = 80; //票价
 $(document).ready(function() {
 	var $cart = $('#selected-seats'), //座位区
 	$counter = $('#counter'), //票数
 	$total = $('#total'); //总计金额
 	
 	var sc = $('#seat-map').seatCharts({
-		map: [<?php echo trim($hfirst->layout);?>],//座位图
+		map: [  //座位图
+			'aaaaaaaaaa',
+            'aaaaaaaaaa',
+            '__________',
+            'aaaaaaaa__',
+            'aaaaaaaaaa',
+			'aaaaaaaaaa',
+			'aaaaaaaaaa',
+			'aaaaaaaaaa',
+			'aaaaaaaaaa',
+            'aa__aa__aa'
+		],
 		naming : {
 			top : false,
 			getLabel : function (character, row, column) {
@@ -122,7 +134,7 @@ $(document).ready(function() {
 		}
 	});
 	//已售出的座位
-	sc.get([]).status('unavailable');
+	sc.get(['1_2', '4_4','4_5','6_6','6_7']).status('unavailable');
 		
 });
 //计算总金额
@@ -134,23 +146,4 @@ function recalculateTotal(sc) {
 			
 	return total;
 }
-
-
-
-
 </script>
-<script>
-    function dosubmit(){
-        var shopname = document.getElementById("shopname").innerHTML;
-        var filmtitle = document.getElementById("filmtitle").innerHTML;
-        var halltitle = document.getElementById("halltitle").innerHTML;
-        var time = document.getElementById("time").innerHTML;
-        var counter = document.getElementById("counter").innerHTML;
-        var total = document.getElementById("total").innerHTML;
-        var seat = document.getElementById("seat").innerHTML;
-        window.location.href="/order/qrcode/"+shopname+"/"+filmtitle+"/"+halltitle+"/"+time+"/"+counter+"/"+total+"/"+seat;
-    }
-</script>
-@endsection
-
-
