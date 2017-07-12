@@ -19,9 +19,9 @@ class Film_commentController extends Controller
     public function index()
     {
         //加载评论浏览页
-        
-        
-        return view("admin.flim_comment.index",compact());
+
+        return view("admin.flim_comment.index");
+
 
         
     }

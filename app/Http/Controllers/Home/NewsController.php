@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Film;
+use EndaEditor;
 class NewsController extends Controller
 {
     public function index()

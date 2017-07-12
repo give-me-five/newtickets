@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="news-content">
-        <p>{{$newshow['content']}}</p>
+        <p><?php echo EndaEditor::MarkDecode($newshow['content']);?></p>
       </div>
       
       <div class="news-action" data-val="{ newsid: 22216 }">
