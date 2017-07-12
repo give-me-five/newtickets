@@ -21,7 +21,7 @@ class Film_commentController extends Controller
         //加载评论浏览页
         
         
-        return view("admin.flim_comment.index",compact());
+        return view("admin.flim_comment.index"/*,compact()*/);
 
         
     }
