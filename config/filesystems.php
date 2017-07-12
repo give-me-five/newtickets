@@ -66,13 +66,13 @@ return [
             'driver'  => 'qiniu',
             'domains' => [
 
-                'default'   => 'https://osnbowogj.bkt.clouddn.com', //你的七牛域名
+                'default'   => 'https://oslfdesgv.bkt.clouddn.com', //你的七牛域名
                 'https'     => '',         //你的HTTPS域名
                 'custom'    => '',     //你的自定义域名
             ],
-            'access_key'=> 'JOCbquepaGbkVH9mXgfCUEnJlrXSYgTmuCZ004vq',  //AccessKey
-            'secret_key'=> 'SBMMX0KQpvW-SwF18a44FWYFtkckKmQFLPJEkGRi',  //SecretKey
-            'bucket'    => ' movie',  //Bucket名字
+            'access_key'=> 'p1Bli-5Z_zb95lkzuIa-jBa0WxQuFVlGiu7AoFBL',  //AccessKey
+            'secret_key'=> 'wPQW9UWq6qNqJMIrGyVwPG8NansFt5M_9tPORJWk',  //SecretKey
+            'bucket'    => 'qianduan',  //Bucket名字
             'notify_url'=> '',  //持久化处理回调地址
             'access'    => ''  //空间访问控制 public 或 private*/
         ],

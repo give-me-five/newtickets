@@ -188,7 +188,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        //itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        YuanChao\Editor\EndaEditorServiceProvider::class,
+        Douyasi\WangEditor\EditorServiceProvider::class,
     ],
 
     /*
@@ -240,6 +241,8 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
 		'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,//markdown
+        
     ],
 
 ];
