@@ -143,6 +143,12 @@ Route::post("reg/doLogin","RegController@doLogin");
 
 //新闻资讯路由
 Route::resource('/admin/news',"Admin\NewController");//后台新闻资讯浏览
+Route::get('/admin/news/del/{id}',"Admin\NewController@destroy");//后台新闻资讯删除
+Route::get('/admin/news/edit/{id}',"Admin\NewController@edit");//后台新闻修改
+Route::post('/admin/news/update/{id}',"Admin\NewController@update");//后台新闻修改
+
+Route::get('/admin/news/newinsert',"Admin\NewController@newinsert");//测试编辑器
+
 //站点设置
 Route::resource('/admin/setup',"Admin\SetupController");
 
@@ -236,8 +242,3 @@ Route::group(['prefix' => 'business','middleware' => 'business'], function(){
 });
 // end
 
-
-//富文本编辑器测试
-Route::get('/upload', 'UploadController@index');
-
-Route::post('/upload/put', 'UploadController@uploads');

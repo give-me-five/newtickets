@@ -13,11 +13,13 @@
 div.seatCharts-cell {color: #182C4E;height: 25px;width: 26px;line-height: 25px;margin: 3px;float: left;text-align: center;outline: none;font-size: 13px;}
 div.seatCharts-seat {cursor: pointer;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
 div.seatCharts-row {height: 35px;}
+
 div.seatCharts-seat.available {background:{{url(asset('home/images/26-25.png'))}};}
 div.seatCharts-seat.available1{background:{{url(asset('home/images/hong26-25.png'))}};}
 div.seatCharts-seat.focused {background-color: #76B474;border: none;}
 div.seatCharts-seat.selected {background:{{url(asset('home/images/hong26-25.png'))}};}
 div.seatCharts-seat.unavailable {background:{{url(asset('home/images/26-25hei.png'))}};cursor: not-allowed;}
+
 div.seatCharts-container {border-right: 1px dotted #adadad;width: 400px;padding: 20px;float: left;}
 div.seatCharts-legend {padding-left: 0px;position: absolute;bottom: 16px;}
 ul.seatCharts-legendList {padding-left: 0px;}
@@ -45,6 +47,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <div id="main">
    <h2 class="top_title">{{$ctit->shopname}}</h2>
    <div class="demo">
+<<<<<<< HEAD
    		<center>
 	   <div id="seat-map">
 			<div class="front">屏幕中央</div>
@@ -87,11 +90,13 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 			<p>总计：<b>￥<span id="total">0</span></b></p>
 					
 			<button class="checkout-button">确认信息,下单</button>
+
 			@verbatim
 			<div class="container">
 				Hello,  @{{arr[0]}}
 			</div>
 			@endverbatim
+
 			<div id="legend"></div>
 		</div>
 		<div style="clear:both"></div>
@@ -102,6 +107,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <script src="{{asset('home/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('home/js/jquery.seat-charts.min.js')}}"></script>
 <script type="text/javascript">
+<<<<<<< HEAD
 	var arr =[];
 	$('.seatbutton').toggle(function(){
 		if(arr.length<=3){
@@ -153,6 +159,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 </script>
 
 @endsection
+
 
 
 

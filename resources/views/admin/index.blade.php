@@ -82,66 +82,9 @@
         </div>
     </div>
 
-    <div class="row am-cf">
-        <div class="am-u-sm-12 am-u-md-8">
-            <div class="widget am-cf">
-                <div class="widget-head am-cf">
-                    <div class="widget-title am-fl">月度财务收支计划</div>
-                    <div class="widget-function am-fr">
-                        <a href="javascript:;" class="am-icon-cog"></a>
-                    </div>
-                </div>
-                <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echarts">
-
-                </div>
-            </div>
-        </div>
-
-        <div class="am-u-sm-12 am-u-md-4">
-            <div class="widget am-cf">
-                <div class="widget-head am-cf">
-                    <div class="widget-title am-fl">专用服务器负载</div>
-                    <div class="widget-function am-fr">
-                        <a href="javascript:;" class="am-icon-cog"></a>
-                    </div>
-                </div>
-                <div class="widget-body widget-body-md am-fr">
-
-                    <div class="am-progress-title">CPU Load <span class="am-fr am-progress-title-more">28% / 100%</span></div>
-                    <div class="am-progress">
-                        <div class="am-progress-bar" style="width: 15%"></div>
-                    </div>
-                    <div class="am-progress-title">CPU Load <span class="am-fr am-progress-title-more">28% / 100%</span></div>
-                    <div class="am-progress">
-                        <div class="am-progress-bar  am-progress-bar-warning" style="width: 75%"></div>
-                    </div>
-                    <div class="am-progress-title">CPU Load <span class="am-fr am-progress-title-more">28% / 100%</span></div>
-                    <div class="am-progress">
-                        <div class="am-progress-bar am-progress-bar-danger" style="width: 35%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <div class="row am-cf">
-        <div class="am-u-sm-12 am-u-md-12 am-u-lg-4 widget-margin-bottom-lg ">
-            <div class="tpl-user-card am-text-center widget-body-lg">
-                <div class="tpl-user-card-title">
-                    血战湘江
-                </div>
-                <div class="achievement-subheading">
-                    月度票房最佳
-                </div>
-                <img width="200" height="250" class="achievement-image" src="/uploads/0d3f773a10e60ea98b1bf34573d02d856663779.jpg" alt="">
-                <div class="achievement-description">
-
-                    <strong></strong>
-                    <strong></strong>
-                </div>
-            </div>
-        </div>
 
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-8 widget-margin-bottom-lg">
 

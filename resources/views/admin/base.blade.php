@@ -12,14 +12,10 @@
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" href="{{asset('myadmin/i/favicon.png')}}">
-    <link rel="apple-touch-icon-precomposed" href="{{asset('myadmin/i/app-icon72x72@2x.png')}}">
-    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <script src="{{asset('myadmin/js/echarts.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('myadmin/css/amazeui.min.css')}}" />
-    <link rel="stylesheet" href="{{asset('myadmin/css/amazeui.datatables.min.css')}}" />
+    <!-- <link rel="stylesheet" href="{{asset('myadmin/css/amazeui.datatables.min.css')}}" /> -->
     <link rel="stylesheet" href="{{asset('myadmin/css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('myadmin/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('myadmin/bootstrap/css/bootstrap.min.css')}}">
     <script src="{{asset('myadmin/js/jquery.min.js')}}"></script>
 
 </head>
@@ -53,7 +49,11 @@
                     <ul>
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
-                            <a href="javascript:;">欢迎你, <span>{{ session("admin")->account }}</span> </a>
+
+                            <a href="javascript:;">欢迎你, <span></span> </a>
+
+                         
+
                         </li>
 
                         <!-- 新邮件 -->
@@ -345,8 +345,8 @@
     </div>
     </div>
     <script src="{{asset('myadmin/js/amazeui.min.js')}}"></script>
-    <script src="{{asset('myadmin/js/amazeui.datatables.min.js')}}"></script>
-    <script src="{{asset('myadmin/js/dataTables.responsive.min.js')}}"></script>
+    <!-- <script src="{{asset('myadmin/js/amazeui.datatables.min.js')}}"></script> -->
+    <!-- <script src="{{asset('myadmin/js/dataTables.responsive.min.js')}}"></script> -->
     <script src="{{asset('myadmin/js/app.js')}}"></script>
 
 </body>

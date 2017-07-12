@@ -165,6 +165,7 @@ return [
         Barryvdh\Debugbar\ServiceProvider::class,
         //zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
 		//验证码
+
 		Mews\Captcha\CaptchaServiceProvider::class,
         //阿里短信接口
         iscms\Alisms\AlidayuServiceProvider::class,
@@ -190,7 +191,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-
+        YuanChao\Editor\EndaEditorServiceProvider::class,
+        Douyasi\WangEditor\EditorServiceProvider::class,
         //itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
     ],
 
@@ -243,7 +245,12 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
 		'Captcha' => Mews\Captcha\Facades\Captcha::class,
+<<<<<<< HEAD
 		'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+=======
+        'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,//markdown
+        
+>>>>>>> 83dde7d7322c78529481b2dcba0f98ff121c1c9e
     ],
 
 ];
