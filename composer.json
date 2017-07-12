@@ -18,7 +18,9 @@
         "zgldh/qiniu-laravel-storage": "^0.6.8",
 
         "predis/predis": "~1.1@dev",
-        "stevenyangecho/laravel-u-editor": "~1.1"
+        "stevenyangecho/laravel-u-editor": "~1.1",
+        "yuanchao/laravel-5-markdown-editor": "dev-master",
+        "douyasi/laravel-wang-editor": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
