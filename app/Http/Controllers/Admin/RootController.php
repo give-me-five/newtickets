@@ -59,10 +59,10 @@ class RootController extends Controller
         $name = $request->name;
 
         //判断账号是否存在
-//        $info = Admin::where("account", $account)->first();
-//        if ($info) {
-//            return back()->with('msg', '账号已存在');
-//        }
+        $info = Admin::where("account", $account)->first();
+        if ($info) {
+            return back()->with('msg', '账号已存在');
+        }
         //执行普通管理员添加
         $id = \DB::table('admin')->insertGetId(["account" => $account, "pass" => $password, "name" => $name, "role" => 1, "status" => 3, "addtime" => time()]);
         if($id>0){
@@ -116,7 +116,7 @@ class RootController extends Controller
     public function update(Request $request, $id)
     {
         //如果为1不能禁用
-        if(session("admin")->status == 2){
+        if($id == 1){
             echo "<script>alert('超级管理员不能禁用')</script>";
             echo "<script>window.history.back()</script>";
             return ;

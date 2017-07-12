@@ -53,22 +53,14 @@ class CinemaController extends Controller
         foreach($hhid as $ho){
             $halltitle[]=Hall::where("id",$ho)->value('title');
         }
-
         //获取当天的影片信息
         $ffid=Projection::whereIn("datetime",$date5)->pluck("fid");
-        // print_r($ffid);
-        // die();
-        //$film=Film::whereIn("id",$ffid)->get();
         $film=[];
         foreach($ffid as $fi){
             $film[]=Film::where("id",$fi)->value('title');
         }
-      
         //获取当天影片价格
         $price = Projection::whereIn("datetime",$date5)->get();
-       
-         //print_r($date5);die();
-
     	return view("home.cinema_Show",compact("title","title2","single","halltitle","price","film","shopid","date1","date2","date3","date5","halltitle"));
 
     }

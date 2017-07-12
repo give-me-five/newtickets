@@ -25,19 +25,7 @@
                                             <th width="150">点击数</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                    @foreach($comment as $list)
-                                        <td>{{$list->id}}</td>
-                                        <td>{{$list->fid}}</td>
-                                        <td>{{$list->uid}}</td>
-                                        <td>{{$list->comment}}</td>
-                                        <td>{{$list->created_at}}</td>
-                                        <td>{{$list->support}}</td>
-                                    @endforeach
-                                      
-            
-                                        <!-- more data -->
-                                    </tbody>
+
                                 </table>
 
                             </div>

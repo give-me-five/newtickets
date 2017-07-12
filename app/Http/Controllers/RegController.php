@@ -72,6 +72,7 @@ class RegController extends Controller
             //  发送验证码方法
             $data = $this->sms->send($phone, $name, $content, $code);
             Redis::sEtex($phone,290,$num);
+            Redis::set($phone,$num);
             // 检查对象是否具有 result 属性
         }else{
             //获取用户名
