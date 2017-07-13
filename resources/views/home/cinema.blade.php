@@ -32,7 +32,7 @@
 							<a href="/cinemas/show/{{$ml->id}}">选座</a>
 						</div>
 					</div>
-					<a href="/cinemas/show/{{$ml->id}}" class="detail-left pictures">
+					<a href="/cinemas/show/{{$ml->cid}}" class="detail-left pictures">
 						  <span><img src="./upload/pic/{{$ml->picname}}" alt="{{$ml->shopname}}"></span>
 
 					</a>

@@ -7,6 +7,7 @@ use App\Models\Film;
 use App\Models\Hall;
 use App\Models\Projection;
 use App\Models\Shopdetail;
+use Illuminate\Support\Facades\Redis as Redis;
 class OrderController extends Controller
 {
     //选座
@@ -39,10 +40,19 @@ class OrderController extends Controller
 		//取哈希  存链表
 
 		//echo 1;
+		//选座
 	}
-	//生成二维码
-	public function qrcode($shopname,$filmtitle,$halltitle,$time,$counter,$total,$seat)
+	public function layout($fid,$hid,$pid)
 	{
-		return view("order.qrcode",compact("shopname","filmtitle","halltitle","time","counter","total","seat"));
+		$fmfirst = Film::where('id',$fid)->first();//影片
+		$hfirst = Hall::where('id',$hid)->first();//查询影厅
+		$cti = Shopdetail::where('id',$hfirst->cid)->first();//查询影厅对应的影院
+		$ctit = \DB::table("shop_detail_copy")->where("id",$hfirst->cid)->first();
+		$ptime = Projection::where('id',$pid)->first();//放映信息
+		$layout = "{\"0\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"1\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"2\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"3\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"4\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"5\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"6\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"]}";
+		$layout =json_decode($layout);
+		return view("home.layout",compact('fmfirst','hfirst','ctit','ptime','layout'));
 	}
+	//确认订单
+
 }
