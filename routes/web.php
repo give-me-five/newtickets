@@ -30,7 +30,7 @@ Route::group(['prefix' =>'order','middleware'=>'order'],function(){
     //选座
     Route::get('/choose/{shopname?}/{key?}/{title?}',"OrderController@choose");
     //确认订单
-    Route::get('/orderAdd/{shopname?}/{filmtitle?}/{halltitle?}/{time?}/{counter?}/{total?}/{seat?}',"OrderController@orderAdd");
+    Route::post('/orderAdd',"OrderController@orderAdd");
     //生成二维码
     Route::get('/qrcode/{shopname?}/{filmtitle?}/{halltitle?}/{time?}/{counter?}/{total?}/{seat?}',"OrderController@qrcode");
 });

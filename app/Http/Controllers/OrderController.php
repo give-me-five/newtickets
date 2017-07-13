@@ -26,9 +26,19 @@ class OrderController extends Controller
 	}
 
 	//确认订单
-	public function orderAdd($shopname,$filmtitle,$halltitle,$time,$counter,$total,$seat)
+	public function orderAdd(Request $request)
 	{
-		echo 1;
+		/*  传递过来的参数     座位信息($_POST['seatinfo'])  放映信息($_POST['pid'])
+		 *
+		 * */
+		echo '<pre>';
+		var_dump($_POST);
+		die();
+		//传过来参数   座位信息    uid session里面  整个场次信息
+		//存哈希    座位信息 +场次信息
+		//取哈希  存链表
+
+		//echo 1;
 	}
 	//生成二维码
 	public function qrcode($shopname,$filmtitle,$halltitle,$time,$counter,$total,$seat)
