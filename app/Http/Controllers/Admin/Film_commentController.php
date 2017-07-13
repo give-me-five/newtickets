@@ -40,13 +40,7 @@ class Film_commentController extends Controller
      */
     public function store(Request $request)
     {
-        
-            
-        
 
-        
-        
-       
     }
       public function doUpload(Request $request)
     {

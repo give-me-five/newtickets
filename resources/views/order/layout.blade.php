@@ -139,18 +139,6 @@ function recalculateTotal(sc) {
 
 
 </script>
-<script>
-    function dosubmit(){
-        var shopname = document.getElementById("shopname").innerHTML;
-        var filmtitle = document.getElementById("filmtitle").innerHTML;
-        var halltitle = document.getElementById("halltitle").innerHTML;
-        var time = document.getElementById("time").innerHTML;
-        var counter = document.getElementById("counter").innerHTML;
-        var total = document.getElementById("total").innerHTML;
-        var seat = document.getElementById("seat").innerHTML;
-        window.location.href="/order/orderAdd/"+shopname+"/"+filmtitle+"/"+halltitle+"/"+time+"/"+counter+"/"+total+"/"+seat;
-    }
-</script>
 @endsection
 
 
