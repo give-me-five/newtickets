@@ -117,7 +117,7 @@
 						<!-- <del class="old">39.00</del> -->
 					</td>
 					<td class="hall-seat">
-						<a class="seat-btn" href="/layout/{{$flists->id}}/seat/{{$haid[$key]}}/{{$pro->id}}">选座购票</a>
+						<a class="seat-btn" href="/order/layout/{{$flists->id}}/seat/{{$haid[$key]}}/{{$pro->id}}">选座购票</a>
 						
 					</td>
 				</tr>
@@ -125,6 +125,6 @@
 			</tbody>	
 		</table>
 	</div>
-
+    {{session()->put('url',$_SERVER['REQUEST_URI'])}}
 </div>
 @endsection

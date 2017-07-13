@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 
 class OrderMiddleware
 {
@@ -16,6 +17,7 @@ class OrderMiddleware
     public function handle($request, Closure $next)
     {
         if(!$request->session()->has("users")){
+
             return redirect("login/");
         }
         return $next($request);

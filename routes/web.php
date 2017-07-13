@@ -22,25 +22,30 @@ Route::get('/films/{id}',"Home\FilmController@show");//影片详情
 Route::post('/films/comment/{id}',"Home\FilmController@Ajaxinsert");//影片评论
 
 Route::get('/films/{id}/seat',"Home\FilmController@content");//选座+购票
-Route::get('/layout/{fid}/seat/{hid}/{pid}',"Home\FilmController@layout");//选座
+
 
 
 //购片路由组
 Route::group(['prefix' =>'order','middleware'=>'order'],function(){
     //选座
     Route::get('/choose/{shopname?}/{key?}/{title?}',"OrderController@choose");
+    //选座
+    Route::get('/layout/{fid}/seat/{hid}/{pid}',"OrderController@layout");//选座
     //确认订单
-    Route::get('/orderAdd/{shopname?}/{filmtitle?}/{halltitle?}/{time?}/{counter?}/{total?}/{seat?}',"OrderController@orderAdd");
+
+    Route::post('/orderAdd',"OrderController@orderAdd");
     //生成二维码
     Route::get('/qrcode/{shopname?}/{filmtitle?}/{halltitle?}/{time?}/{counter?}/{total?}/{seat?}',"OrderController@qrcode");
+
+
 });
 
 
 Route::get('/cinemas',"Home\CinemaController@index");//影院列表
 Route::get('/cinemas1',"Home\CinemafsfController@index");//影院列表
-Route::get('/cinemas/show/{id}',"Home\CinemaController@show");//影院详情页
-Route::get('/cinemas/info/{shopname?}/{title?}/{id?}',"Home\CinemaController@info");//影院详情页
-Route::get('/cinemas/date/{id}',"Home\CinemaController@date");//时间信息
+Route::get('/cinemas/show/{cid}',"Home\CinemaController@show");//影院详情页
+Route::get('/cinemas/info/{id?}/{cid?}',"Home\CinemaController@info");//影院详情页
+Route::get('/cinemas/date/{cid?}/{id?}',"Home\CinemaController@date");//时间信息
 Route::get('/news',"Home\NewsController@index");//热点列表
 Route::get('/news/{id}.html',"Home\NewsController@show");//热点详情
 
@@ -175,7 +180,7 @@ Route::post("login/doLogin","LoginController@doLogin");
 Route::get("login/code","LoginController@code");
 //退出登录
 Route::get("login/loginout","LoginController@loginout");
-
+Route::get("personal","PersonalController@index");//个人中心
 
 //后台登录页面
 Route::get("admin/login","Admin\LoginController@login");

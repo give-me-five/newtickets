@@ -64,8 +64,12 @@ class LoginController extends Controller
                 //获取登陆者ip地址
                 $ip = ip::getClientIp();
                 \DB::table("users")->where("id",$users->id)->update(["login_ip"=>$ip]);
-                //return redirect()->back();
-                return redirect("/");
+                $url = session("url");
+                if(empty($url)){
+                    return redirect("/");
+                }else{
+                    echo "<meta http-equiv=\"refresh\" content=\"0.5;url=$url\">";
+                }
                 //return back();
             }else{
                 return back()->with('msg','账号或密码错误');

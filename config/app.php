@@ -173,9 +173,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 		//七牛
 		zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
-        Stevenyangecho\UEditor\UEditorServiceProvider::class,
 		//二维码
-		SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+		//SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -190,10 +189,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
-        YuanChao\Editor\EndaEditorServiceProvider::class,
-        Douyasi\WangEditor\EditorServiceProvider::class,
-        //itbdw\QiniuStorage\QiniuFilesystemServiceProvider::class,
+        Overtrue\LaravelUEditor\UEditorServiceProvider::class,
+        //Overtrue\LaravelFilesystem\Qiniu\QiniuStorageServiceProvider::class,
+        
     ],
 
     /*
@@ -245,6 +243,7 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
 		'Captcha' => Mews\Captcha\Facades\Captcha::class,
+
 		'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
         'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,//markdown
 
