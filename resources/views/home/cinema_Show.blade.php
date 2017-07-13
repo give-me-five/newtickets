@@ -53,15 +53,15 @@
 					<label>选择影片</label>
 					<div class="select-tags">
                         @foreach($title as $info)
-						    <a class="current" href="/cinemas/info/{{$single->shopname}}/{{$info->title}}/{{$single->id}}" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new">{{$info->title}}</a>
+						    <a class="current" href="/cinemas/info/{{$info->id}}/{{$single->cid}}" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new">{{$info->title}}</a>
                         @endforeach
 					</div>
 				</li>
 				<li>
 					<label>选择时间</label>
 					<div class="select-tags">
-						<a class="current" href="#" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date1}}（今天）</a>
-						<a href="/cinemas/date/{{$single->id}}" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-31&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date2}}（星期{{$date3}}）</a>
+						<a class="current" href="/cinemas/show/{{$single->cid}}" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date1}}（今天）</a>
+						<a href="/cinemas/date/{{$single->cid}}/{{$title2->id}}" class="current" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-31&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date2}}（星期{{$date3}}）</a>
 					</div>
 				</li>
 			</ul>
@@ -95,14 +95,14 @@
 				</tr>
 			</thead>
 			<tbody>
-            @foreach($price as $key=>$info)
+            @foreach($date7 as $key=>$info)
 				<tr>
 					<td class="hall-time">
 						<em class="bold">{{date("H:i",strtotime($info->datetime))}}</em>
 						 预计3小时后散场
 					</td>
 					<td class="hall-type">
-						{{$film[$key]}}
+						{{$language}}
 					</td>
 					<td class="hall-name">
                         {{$halltitle[$key]}}

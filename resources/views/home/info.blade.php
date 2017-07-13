@@ -57,15 +57,15 @@
                             <label>选择影片</label>
                             <div class="select-tags">
                                 @foreach($titles as $info)
-                                    <a class="current" href="/cinemas/info/{{$sname->shopname}}/{{$info->title}}/{{$sname->id}}" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new">{{$info->title}}</a>
+                                    <a class="current" href="/cinemas/info/{{$info->id}}/{{$sname->cid}}" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new">{{$info->title}}</a>
                                 @endforeach
                             </div>
                         </li>
                         <li>
                             <label>选择时间</label>
                             <div class="select-tags">
-                                <a class="current" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date1}}（今天）</a>
-                                <a data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-31&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date2}}（星期{{$date3}}）</a>
+                                <a href="#" class="current" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-30&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date1}}（今天）</a>
+                                <a href="/cinemas/date/{{$sname->cid}}/{{$filmtitle->id}}" class="current" data-param="cinemaId=9462&amp;activityId=&amp;fCode=&amp;showId=161044&amp;showDate=2017-05-31&amp;ts=1496139392951&amp;n_s=new" href="javascript:;">{{$date2}}（星期{{$date3}}）</a>
                             </div>
                         </li>
                     </ul>
@@ -111,7 +111,7 @@
                                     3D{{$language}}
                                 </td>
                                 <td class="hall-name">
-                                    {{$halltitle}}
+                                    {{$halltitle[$key]}}
                                 </td>
 
                                 <td class="hall-flow">
@@ -130,6 +130,9 @@
                                      <em class="now">{{$info->price}}</em>
                                     <del class="old">89.00</del>
                                    
+                                </td>
+                                <td class="hall-seat">
+                                    <a class="seat-btn" href="/order/choose/{{$sname->shopname}}/{{$halltitle[$key]}}/{{$filmtitle->title}}">选座购票</a>
                                 </td>
                                 
                             </tr>
