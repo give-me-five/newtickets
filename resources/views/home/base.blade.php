@@ -11,19 +11,16 @@
   <link rel="stylesheet" href="{{asset('home/css/common.dce64fb8.css')}}">
   <link rel="stylesheet" href="{{asset('home/css/home-index.ff98348e.css')}}">
   <link rel="stylesheet" href="{{asset('home/css/movie-list.ffb4de4a.css')}}">
+  <style type="text/css">
+    .login{width:300px;height:80px;line-height:81px;float: right;}
+    .login li{float:left;margin-left:15px;}
+    .login li a{color: rgb(43, 184, 170);}
+  </style>
 </head>
 <body>
 <div class="header">
   <div class="header-inner">
-        <a href="http://maoyan.com/" class="logo" data-act="icon-click"></a>
-        <div class="city-container" data-val="{currentcityid:1 }">
-            <div class="city-selected">
-                
-            </div>
-            <div class="city-list" data-val="{ localcityid: 1 }">
-                <div class="city-list-header">定位城市：<a class="js-geo-city">北京</a></div>
-            </div>
-        </div>
+        <a href="/" class="logo" data-act="icon-click"></a>
         <div class="nav">
             <ul class="navbar">
                 <li><a href="/" data-act="home-click" class="active">首页</a></li>
@@ -36,25 +33,20 @@
         </div>
 
         <div class="user-info">
-            <div class="user-avatar J-login">
-              <img src="{{asset('home/images/panda.png')}}">
-              <span class="caret"></span>
-              <ul class="user-menu">
-                  @if(session("users"))
-                      <li>欢迎：{{session("users")->phone}}</li>
-                      <li><a href="/login/loginout">退出</a></li>
-                  @else
-                      <li><a href="/login/">登录</a></li>
-                      <li><a href="/reg/">注册</a></li>
-                  @endif
+            <div class="login">
+              <ul>
+                @if (session("users"))
+                <li>会员:{{session("users")->phone}}</li>
+                <li><a href="/personal">个人中心</a></li>
+                <li><a href="/login/loginout">退出</a></li>
+                @else
+                <li><a href="/login/">登录</a></li>
+                <li><a href="/reg/">注册</a></li>
+                @endif
               </ul>
             </div>
         </div>
-
-        <form action="http://maoyan.com/query" target="_blank" class="search-form" data-actform="search-click">
-            <input name="kw" class="search" maxlength="32" placeholder="找电影" autocomplete="off" type="search">
-            <input class="submit" value="" type="submit">
-        </form>
+        
   </div>
 </div>
 <div class="header-placeholder"></div>

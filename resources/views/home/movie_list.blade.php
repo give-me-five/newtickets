@@ -12,7 +12,7 @@
 </div>
 <div class="container" id="app">
     <div class="movies-channel">
-        <div class="tags-panel">
+        <!-- <div class="tags-panel">
           <ul class="tags-lines">
             <li class="tags-line" data-val="{tagTypeName:'cat'}">
               <div class="tags-title">类型 :</div>
@@ -62,7 +62,7 @@
               </ul>
             </li>
           </ul>
-        </div>
+        </div> -->
         <div class="movies-panel">
 
             <div class="movies-list">

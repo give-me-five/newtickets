@@ -51,7 +51,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL').'/movie/newtickets/storage/app/public',
             'visibility' => 'public',
         ],
 
@@ -62,11 +62,12 @@ return [
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+
         'qiniu' => [
             'driver'  => 'qiniu',
             'domains' => [
 
-                'default'   => 'https://oslfdesgv.bkt.clouddn.com', //你的七牛域名
+                'default'   => 'http://oslfdesgv.bkt.clouddn.com', //你的七牛域名
                 'https'     => '',         //你的HTTPS域名
                 'custom'    => '',     //你的自定义域名
             ],
