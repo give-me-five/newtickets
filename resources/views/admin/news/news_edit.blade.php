@@ -1,7 +1,7 @@
 @extends('admin.base')
     @section('content')
         <!-- 内容区域 -->
-@include('editor::head')
+@include('vendor.ueditor.assets')
 <div class="row-content am-cf">
     <div class="row">
         <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
@@ -48,8 +48,19 @@
 
                         <div class="am-form-group">
                             <label for="user-intro" class="am-u-sm-3 am-form-label">文章内容</label>
-                            <div class="am-u-sm-9 editor">
-                             <textarea name="content" id="myEditor" cols="30" rows="10">{{$newfir->content}}</textarea>
+                            <div class="am-u-sm-9">
+                             <!-- 实例化编辑器 -->
+                                <script type="text/javascript">
+                                    var ue = UE.getEditor('container');
+                                    ue.ready(function() {
+                                        ue.execCommand('serverparam', '_token', '{{ csrf_token() }}'); // 设置 CSRF token.
+                                    });
+                                </script>
+
+                                <!-- 编辑器容器 -->
+                                <script id="container" name="content" type="text/plain">
+                                {{$newfir->content}}
+                                </script>
                             </div>
                         </div>
                         

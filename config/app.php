@@ -173,9 +173,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 		//七牛
 		zgldh\QiniuStorage\QiniuFilesystemServiceProvider::class,
-        Stevenyangecho\UEditor\UEditorServiceProvider::class,
 		//二维码
-		SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+		//SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -190,8 +189,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Douyasi\WangEditor\EditorServiceProvider::class,
         Overtrue\LaravelUEditor\UEditorServiceProvider::class,
+        //Overtrue\LaravelFilesystem\Qiniu\QiniuStorageServiceProvider::class,
         
     ],
 

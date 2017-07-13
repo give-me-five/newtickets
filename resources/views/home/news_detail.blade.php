@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="news-content">
-        <p><?php echo EndaEditor::MarkDecode($newshow['content']);?></p>
+        <p><?php echo htmlspecialchars_decode($newshow['content']);?></p>
       </div>
       
       <div class="news-action" data-val="{ newsid: 22216 }">

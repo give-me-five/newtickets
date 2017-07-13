@@ -67,7 +67,7 @@ return [
             'driver'  => 'qiniu',
             'domains' => [
 
-                'default'   => 'https://oslfdesgv.bkt.clouddn.com', //你的七牛域名
+                'default'   => 'http://oslfdesgv.bkt.clouddn.com', //你的七牛域名
                 'https'     => '',         //你的HTTPS域名
                 'custom'    => '',     //你的自定义域名
             ],
