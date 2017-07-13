@@ -1,6 +1,5 @@
 @extends('home.base')
-
-    @section('content')
+ @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('home/css/main.css')}}" />
 <style type="text/css">
 .demo{width:900px; margin:40px auto 0 auto; min-height:450px;}
@@ -37,7 +36,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
     line-height: 42px;
     color: rgb(255, 255, 255);
     font-size: 14px; cursor:pointer}
-#selected-seats {max-height: 150px;overflow-y: auto;overflow-x: none;width: 200px;}
+#selected-seats {max-height: 150px;overflow-y: auto;overflow-x:none;width: 200px;}
 #selected-seats li{float:left; width:72px; height:26px; line-height:26px; border:1px solid #d3d3d3; background:#f7f7f7; margin:6px; font-size:14px; font-weight:bold; text-align:center}
 </style>
 
@@ -45,7 +44,6 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <div id="main">
    <h2 class="top_title">{{$ctit->shopname}}</h2>
    <div class="demo">
-
    		<center>
 	   <div id="seat-map" style="width:470px;float:left;">
 			<div class="front">屏幕中央</div>
@@ -66,10 +64,13 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 								{{-- @todo  $ptime  ['price'] 价格['seatinfo']  获取售卖出的 座位数组 遍历后输出 --}}
 							@elseif ($value[$j]=='s')
 
-									<button cowsnumber="{{$i+1}}"  issale = "{{$value[$j]}}" disabled style="color:orangered;" value="{{$value[$j]}}">{{$j}}</button>
+								<button cowsnumber="{{$i+1}}"  issale = "{{$value[$j]}}" disabled style="color:orangered;" value="{{$value[$j]}}">{{$j}}</button>
 
 							@endif
 						@endfor
+
+					</ul>
+				@endfor
 
 
 					</div>
@@ -117,6 +118,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 				}
 			}
 		}
+
 	},function(){
 			//元素隐藏 代码④
 			var cowsnumber = ($(this).attr('cowsnumber'));
@@ -172,10 +174,6 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 				$(this).disabled;
 				}
 		}
-
-
 </script>
 
 @endsection
-
-

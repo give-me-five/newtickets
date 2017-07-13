@@ -4,12 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "89544f32e88cc57806589bd7a57d4b0f",
-
-
-    "content-hash": "7019134cf3bd9ded0c30cac44beb87f4",
-
+    "content-hash": "b49891e7efd710bd8a58cf4068cd7f69",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -225,7 +220,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/douyasi/laravel-wang-editor/zipball/db73ffb52f58fa4ed2f26de8a0853b506751a068",
+                "url": "https://files.phpcomposer.com/files/douyasi/laravel-wang-editor/db73ffb52f58fa4ed2f26de8a0853b506751a068.zip",
                 "reference": "db73ffb52f58fa4ed2f26de8a0853b506751a068",
                 "shasum": ""
             },
@@ -1479,12 +1474,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nrk/predis.git",
-                "reference": "98ec0cc27efc1efab32b369962f97e29ecc0464a"
+                "reference": "111d100ee389d624036b46b35ed0c9ac59c71313"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/nrk/predis/98ec0cc27efc1efab32b369962f97e29ecc0464a.zip",
-                "reference": "98ec0cc27efc1efab32b369962f97e29ecc0464a",
+                "url": "https://files.phpcomposer.com/files/nrk/predis/111d100ee389d624036b46b35ed0c9ac59c71313.zip",
+                "reference": "111d100ee389d624036b46b35ed0c9ac59c71313",
                 "shasum": ""
             },
             "require": {
@@ -1521,7 +1516,7 @@
                 "predis",
                 "redis"
             ],
-            "time": "2016-11-22T14:32:30+00:00"
+            "time": "2017-07-12T14:39:17+00:00"
         },
         {
             "name": "psr/http-message",
@@ -2833,7 +2828,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yccphp/laravel-5-markdown-editor/zipball/420f93671d19b6edff7bd045ed728704c4e083c2",
+                "url": "https://files.phpcomposer.com/files/yccphp/laravel-5-markdown-editor/420f93671d19b6edff7bd045ed728704c4e083c2.zip",
                 "reference": "420f93671d19b6edff7bd045ed728704c4e083c2",
                 "shasum": ""
             },
