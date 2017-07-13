@@ -47,7 +47,6 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <div id="main">
    <h2 class="top_title">{{$ctit->shopname}}</h2>
    <div class="demo">
-<<<<<<< HEAD
    		<center>
 	   <div id="seat-map">
 			<div class="front">屏幕中央</div>
@@ -80,25 +79,18 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 			</div>
 		</div>
 		</center>
-		<div class="booking-details">
-			<p>影片：<span>{{$fmfirst->title}}</span></p>
-			<p>影厅：<span>{{$hfirst->title}}</span></p>
-			<p>场次：<span>{{$ptime->datetime}}</span></p>
-			<p>座位：</p>
-			<ul id="selected-seats"></ul>
-			<p>票数：<span id="counter">0</span></p>
-			<p>总计：<b>￥<span id="total">0</span></b></p>
-					
-			<button class="checkout-button">确认信息,下单</button>
-
-			@verbatim
-			<div class="container">
-				Hello,  @{{arr[0]}}
-			</div>
-			@endverbatim
-
-			<div id="legend"></div>
-		</div>
+       <div class="booking-details">
+           <p>影院：<span id="shopname">{{$ctit->shopname}}</span></p>
+           <p>影片：<span id="filmtitle">{{$fmfirst->title}}</span></p>
+           <p>影厅：<span id="halltitle">{{$hfirst->title}}</span></p>
+           <p>放映时间：<span id="time">{{date("H:i",strtotime("{$ptime->datetime}"))}}</span></p>
+           <p id="seat">座位：1</p>
+           <ul id="selected-seats"></ul>
+           <p>票数：<span id="counter" >0</span></p>
+           <p>总计：<b>￥<span id="total" >0</span></b></p>
+           <button onclick="dosubmit()" class="checkout-button" />确认信息,下单</button>
+           <div id="legend"></div>
+       </div>
 		<div style="clear:both"></div>
    </div>
 	
@@ -107,7 +99,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <script src="{{asset('home/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('home/js/jquery.seat-charts.min.js')}}"></script>
 <script type="text/javascript">
-<<<<<<< HEAD
+
 	var arr =[];
 	$('.seatbutton').toggle(function(){
 		if(arr.length<=3){
@@ -157,7 +149,18 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 
 
 </script>
-
+<script>
+    function dosubmit(){
+        var shopname = document.getElementById("shopname").innerHTML;
+        var filmtitle = document.getElementById("filmtitle").innerHTML;
+        var halltitle = document.getElementById("halltitle").innerHTML;
+        var time = document.getElementById("time").innerHTML;
+        var counter = document.getElementById("counter").innerHTML;
+        var total = document.getElementById("total").innerHTML;
+        var seat = document.getElementById("seat").innerHTML;
+        window.location.href="/order/qrcode/"+shopname+"/"+filmtitle+"/"+halltitle+"/"+time+"/"+counter+"/"+total+"/"+seat;
+    }
+</script>
 @endsection
 
 

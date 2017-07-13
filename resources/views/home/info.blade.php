@@ -143,5 +143,6 @@
             </div>
         </div>
     </div>
+    {{session()->put('url',$_SERVER['REQUEST_URI'])}}
 @show
 @endsection

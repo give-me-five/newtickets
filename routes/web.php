@@ -22,17 +22,18 @@ Route::get('/films/{id}',"Home\FilmController@show");//影片详情
 Route::post('/films/comment/{id}',"Home\FilmController@Ajaxinsert");//影片评论
 
 Route::get('/films/{id}/seat',"Home\FilmController@content");//选座+购票
-Route::get('/layout/{fid}/seat/{hid}/{pid}',"Home\FilmController@layout");//选座
+
 
 
 //购片路由组
 Route::group(['prefix' =>'order','middleware'=>'order'],function(){
     //选座
     Route::get('/choose/{shopname?}/{key?}/{title?}',"OrderController@choose");
+    //选座
+    Route::get('/layout/{fid}/seat/{hid}/{pid}',"OrderController@layout");//选座
     //确认订单
-    Route::get('/orderAdd/{shopname?}/{filmtitle?}/{halltitle?}/{time?}/{counter?}/{total?}/{seat?}',"OrderController@orderAdd");
-    //生成二维码
-    Route::get('/qrcode/{shopname?}/{filmtitle?}/{halltitle?}/{time?}/{counter?}/{total?}/{seat?}',"OrderController@qrcode");
+    Route::get('/orderAdd/',"OrderController@orderAdd");
+
 });
 
 
