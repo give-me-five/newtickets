@@ -3,7 +3,7 @@
     @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('home/css/main.css')}}" />
 <style type="text/css">
-.demo{width:700px; margin:40px auto 0 auto; min-height:450px;}
+.demo{width:900px; margin:40px auto 0 auto; min-height:450px;}
 @media screen and (max-width: 360px) {.demo {width:340px}}
 
 .front{width: 300px;margin: 5px 32px 45px 32px;background-color: #f0f0f0;	color: #666;text-align: center;padding: 3px;border-radius: 5px;}
@@ -14,7 +14,7 @@
 div.seatCharts-cell {color: #182C4E;height: 25px;width: 26px;line-height: 25px;margin: 3px;float: left;text-align: center;outline: none;font-size: 13px;}
 div.seatCharts-seat {cursor: pointer;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
 div.seatCharts-row {height: 35px;}
-
+.seatbutton{background:{{url(asset('home/images/26-25.png'))}};}
 div.seatCharts-seat.available {background:{{url(asset('home/images/26-25.png'))}};}
 div.seatCharts-seat.available1{background:{{url(asset('home/images/hong26-25.png'))}};}
 div.seatCharts-seat.focused {background-color: #76B474;border: none;}
@@ -47,7 +47,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
    <div class="demo">
 
    		<center>
-	   <div id="seat-map">
+	   <div id="seat-map" style="width:470px;float:left;">
 			<div class="front">屏幕中央</div>
 			<div id="newseatmap">
 				@foreach ($layout as $key=>$value)
@@ -59,7 +59,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 						@endphp
 						@for($j=0;$j<count($value);$j++)
 							@if($value[$j]=='a')
-								<button class="seatbutton" style="background-color:#f0f0f0" issale = "{{$value[$j]}}" cowsnumber="{{$i+1}}" value="">{{$j+1}}</button>
+								<button class="seatbutton" issale = "{{$value[$j]}}" cowsnumber="{{$i+1}}" value="">{{$j+1}}</button>
 							@elseif ($value[$j]=='_')
 								<button style="visibility:hidden" value="{{$value[$j]}}">{{$j}}</button>
 
@@ -90,9 +90,9 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 			</div>
 			<div style="clear:both"></div>
 		</div>
-
 		<br/>
 	</div>
+
 
 <script src="{{asset('home/js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('home/js/jquery.seat-charts.min.js')}}"></script>

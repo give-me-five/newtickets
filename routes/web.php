@@ -180,7 +180,7 @@ Route::post("login/doLogin","LoginController@doLogin");
 Route::get("login/code","LoginController@code");
 //退出登录
 Route::get("login/loginout","LoginController@loginout");
-
+Route::get("personal","PersonalController@index");//个人中心
 
 //后台登录页面
 Route::get("admin/login","Admin\LoginController@login");

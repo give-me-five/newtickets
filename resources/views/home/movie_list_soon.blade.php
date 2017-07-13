@@ -12,7 +12,7 @@
 </div>
 <div class="container" id="app">
     <div class="movies-channel">
-        <div class="tags-panel">
+       <!--  <div class="tags-panel">
           <ul class="tags-lines">
             <li class="tags-line" data-val="{tagTypeName:'cat'}">
               <div class="tags-title">类型 :</div>
@@ -62,22 +62,8 @@
               </ul>
             </li>
           </ul>
-        </div>
+        </div> -->
         <div class="movies-panel">
-            <div class="movies-sorter">
-              <div class="cat-sorter">
-                  <ul>
-                      <li>
-                        <span class="sort-control-group" data-act="sort-click">
-                          <span class="sort-control sort-radio"></span>
-                          <span class="sort-control-label">按时间排序</span>
-                        </span>
-                      </li>
-                      
-                  </ul>
-              </div>
-              
-            </div>
             <div class="movies-list">
               <dl class="movie-list">
               @foreach ($soonflist as $flist)
