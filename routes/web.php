@@ -39,9 +39,9 @@ Route::group(['prefix' =>'order','middleware'=>'order'],function(){
 
 Route::get('/cinemas',"Home\CinemaController@index");//影院列表
 Route::get('/cinemas1',"Home\CinemafsfController@index");//影院列表
-Route::get('/cinemas/show/{id}',"Home\CinemaController@show");//影院详情页
-Route::get('/cinemas/info/{shopname?}/{title?}/{id?}',"Home\CinemaController@info");//影院详情页
-Route::get('/cinemas/date/{id}',"Home\CinemaController@date");//时间信息
+Route::get('/cinemas/show/{cid}',"Home\CinemaController@show");//影院详情页
+Route::get('/cinemas/info/{id?}/{cid?}',"Home\CinemaController@info");//影院详情页
+Route::get('/cinemas/date/{cid?}/{id?}',"Home\CinemaController@date");//时间信息
 Route::get('/news',"Home\NewsController@index");//热点列表
 Route::get('/news/{id}.html',"Home\NewsController@show");//热点详情
 

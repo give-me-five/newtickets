@@ -47,6 +47,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 <div id="main">
    <h2 class="top_title">{{$ctit->shopname}}</h2>
    <div class="demo">
+
    		<center>
 	   <div id="seat-map">
 			<div class="front">屏幕中央</div>
@@ -79,6 +80,7 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
 			</div>
 		</div>
 		</center>
+
        <div class="booking-details">
            <p>影院：<span id="shopname">{{$ctit->shopname}}</span></p>
            <p>影片：<span id="filmtitle">{{$fmfirst->title}}</span></p>
@@ -91,6 +93,26 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
            <button onclick="dosubmit()" class="checkout-button" />确认信息,下单</button>
            <div id="legend"></div>
        </div>
+
+		<div class="booking-details">
+			<p>影片：<span>{{$fmfirst->title}}</span></p>
+			<p>影厅：<span>{{$hfirst->title}}</span></p>
+			<p>场次：<span>{{$ptime->datetime}}</span></p>
+
+			<p>座位：</p>
+			<ul id="selected-seats"></ul>
+			<p>票数：<span id="counter">0</span></p>
+			<p>总计：<b>￥<span id="total">0</span></b></p>
+					
+			<button class="checkout-button">确认信息,下单</button>
+			@verbatim
+			<div class="container">
+				Hello,  @{{arr[0]}}
+			</div>
+			@endverbatim
+			<div id="legend"></div>
+		</div>
+
 		<div style="clear:both"></div>
    </div>
 	
@@ -162,7 +184,5 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
     }
 </script>
 @endsection
-
-
 
 
