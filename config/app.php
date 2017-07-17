@@ -243,8 +243,13 @@ return [
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
 		'Captcha' => Mews\Captcha\Facades\Captcha::class,
+
+
 		'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+
         'EndaEditor' => YuanChao\Editor\Facade\EndaEditorFacade::class,//markdown
+        
+
     ],
 
 ];

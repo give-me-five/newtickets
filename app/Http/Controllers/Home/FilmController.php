@@ -76,7 +76,7 @@ class FilmController extends Controller
         $ptime = Projection::where('id',$pid)->first();//放映信息
         //print_r($ctit);
 
-  //      echo '<pre>';
+      //      echo '<pre>';
 //        var_dump('-- 布局信息 ---',$hfirst);
         //var_dump('-- 放映信息---',$ptime);
         $layout = "{\"0\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"1\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"2\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"3\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"4\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"5\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"],\"6\":[\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"a\",\"_\",\"_\",\"a\",\"a\",\"a\",\"a\",\"a\"]}";
@@ -106,6 +106,7 @@ class FilmController extends Controller
         $info = array_merge($data,$str);
         //echo "<pre>";
         //print_r($info); 
+        //添加到数据库
         \DB::table('film_comment')->insertGetId($info);
         return redirect("/films/{$info['fid']}.html");
         

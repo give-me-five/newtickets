@@ -148,7 +148,7 @@ function recalculateTotal(sc) {
         var counter = document.getElementById("counter").innerHTML;
         var total = document.getElementById("total").innerHTML;
         var seat = document.getElementById("seat").innerHTML;
-        window.location.href="/order/qrcode/"+shopname+"/"+filmtitle+"/"+halltitle+"/"+time+"/"+counter+"/"+total+"/"+seat;
+        window.location.href="/order/orderAdd/"+shopname+"/"+filmtitle+"/"+halltitle+"/"+time+"/"+counter+"/"+total+"/"+seat;
     }
 </script>
 @endsection

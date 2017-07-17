@@ -12,14 +12,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" href="{{asset('myadmin/i/favicon.png')}}">
     <script src="{{asset('myadmin/js/echarts.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('myadmin/css/amazeui.min.css')}}" />
     <!-- <link rel="stylesheet" href="{{asset('myadmin/css/amazeui.datatables.min.css')}}" /> -->
     <link rel="stylesheet" href="{{asset('myadmin/css/app.css')}}">
-    <script src="{{asset('myadmin/js/jquery.min.js')}}"></script>
 
+
+
+    <link rel="stylesheet" href="{{asset('myadmin/bootstrap2/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('myadmin/bootstrap2/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('myadmin/bootstrap2/css/bootstrap-theme.css')}}">
+    <link rel="stylesheet" href="{{asset('myadmin/bootstrap2/css/bootstrap-theme.min.css')}}">
+    <script src="{{asset('myadmin/js/jquery.min.js')}}"></script>
+    <script src="{{asset('myadmin/layer/layer.js')}}"></script>
+
+
+
+    <script src="{{asset('myadmin/bootstrap2/js/bootstrap.js')}}"></script>
+    <script src="{{asset('myadmin/bootstrap2/js/bootstrap.min.js')}}"></script>
 </head>
 
 <body data-type="index">
