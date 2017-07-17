@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{asset('home/css/personal_001.css')}}">
   <style type="text/css">
     .login{width:300px;height:80px;line-height:81px;float: right;}
-    .login li{float:left;margin-left:15px; }
+    .login li{float:left;margin-left:15px;}
   </style>
 </head>
 <body class="pg-xuanzuo has-order-nav">
@@ -63,14 +63,14 @@
                     <dt class="first-item" id="yui_3_16_0_1_1498375845651_616"><strong id="yui_3_16_0_1_1498375845651_617">我的订单</strong></dt>
                     <dd id="yui_3_16_0_1_1498375845651_606">
                         <ul class="item-list" id="yui_3_16_0_1_1498375845651_605">
-                            <li  class="current" id="yui_3_16_0_1_1498375845651_613"><a href="/personal/orders" id="yui_3_16_0_1_1498375845651_612">我的订单</a></li>
+                            <li id="yui_3_16_0_1_1498375845651_613"><a href="/personal/orders" id="yui_3_16_0_1_1498375845651_612">我的订单</a></li>
             		    </ul>
                     </dd>
 
                     <dt><strong>我的账户</strong></dt>
                     <dd class="last">
                         <ul class="item-list">
-                            <li><a href="/account">我的余额</a></li>
+                            <li class="current"><a href="/account">我的余额</a></li>
                             <li><a href="/account/settings">账户设置</a></li>
                         </ul>
                     </dd>
@@ -81,29 +81,9 @@
             <div class="mainbox mine">
                 <div class="table-section">
                     <table id="order-list" cellspacing="0" cellpadding="0" border="0">
-                        <tbody><tr>
-                            <th class="item-info" width="auto">在线选座电影</th>
-                            <th class="item-info" width="110">影院</th>
-                            <th width="30">数量</th>
-                            <th width="60">金额</th>
-                            <th width="80">订单状态</th>
-                            <th width="112">操作</th>
-                        </tr>
+                        <tbody>
                         <tr>
-        	                <td>金刚：骷髅岛</td>
-        	                <td>沃美影城(回龙观店)</td>
-        	                <td>1</td>
-        	                <td><span class="money">¥</span>49</td>
-        	                <td>已完成</td>
-        	                <td>
-        	                <a class="inline-link" href="http://www.meituan.com/movie/orderinfo/1226826195">查看订单详情</a>
-        		                <form action="" method="post" class="op">
-        			                <span style="display: none;">
-        			                <input name="csrf" value="3VmwEH_wJ8jkNEHS5DtEwkTsrwpvEusg0mDEfcFNuuIa601cl9ybRcV7pDIiOqSq" type="hidden">
-        			                </span>
-        		                	<input class="order-cancel" value="删除订单" type="submit">
-        		                </form>
-        	                </td>
+        	                <td style="font-size:16px;">您当前的账户余额： <span style="font-size:16px;color:#ef4238;font-weight:bold;">￥{{$money}}</span></td>
                         </tr>
 
                      </tbody>

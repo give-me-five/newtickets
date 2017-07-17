@@ -10,10 +10,23 @@
   <link rel="shortcut icon" href="{{asset('home/images/favicon.ico')}}" type="image/x-icon" />
   <link rel="stylesheet" href="{{asset('home/css/common.dce64fb8.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/personal.css')}}">
+    <link rel="stylesheet" href="{{asset('home/css/common.css')}}">
+
     <link rel="stylesheet" href="{{asset('home/css/personal_001.css')}}">
+
+
   <style type="text/css">
     .login{width:300px;height:80px;line-height:81px;float: right;}
-    .login li{float:left;margin-left:15px; }
+    .login li{float:left;margin-left:15px;}
+    .form {margin: 0 0 10px;position: relative;}
+    .form-field--text {padding: 0 0 4px 110px;}
+    .form-field {position: relative;padding: 8px 0 8px 110px;zoom: 1;}
+    .form-field label {position: absolute;left: 0;width: 100px;padding-top: 0px;font-size: 14px;text-align: right;
+        color: #333;
+    }#settings-info-container .form-field--text .text {
+        width: 150px;
+        font-family: initial;
+    }
   </style>
 </head>
 <body class="pg-xuanzuo has-order-nav">
@@ -63,7 +76,7 @@
                     <dt class="first-item" id="yui_3_16_0_1_1498375845651_616"><strong id="yui_3_16_0_1_1498375845651_617">我的订单</strong></dt>
                     <dd id="yui_3_16_0_1_1498375845651_606">
                         <ul class="item-list" id="yui_3_16_0_1_1498375845651_605">
-                            <li  class="current" id="yui_3_16_0_1_1498375845651_613"><a href="/personal/orders" id="yui_3_16_0_1_1498375845651_612">我的订单</a></li>
+                            <li id="yui_3_16_0_1_1498375845651_613"><a href="/personal/orders" id="yui_3_16_0_1_1498375845651_612">我的订单</a></li>
             		    </ul>
                     </dd>
 
@@ -78,41 +91,36 @@
             </div>
         </div>
         <div id="content" class="pg-xorders coupons-box">
-            <div class="mainbox mine">
-                <div class="table-section">
-                    <table id="order-list" cellspacing="0" cellpadding="0" border="0">
-                        <tbody><tr>
-                            <th class="item-info" width="auto">在线选座电影</th>
-                            <th class="item-info" width="110">影院</th>
-                            <th width="30">数量</th>
-                            <th width="60">金额</th>
-                            <th width="80">订单状态</th>
-                            <th width="112">操作</th>
-                        </tr>
-                        <tr>
-        	                <td>金刚：骷髅岛</td>
-        	                <td>沃美影城(回龙观店)</td>
-        	                <td>1</td>
-        	                <td><span class="money">¥</span>49</td>
-        	                <td>已完成</td>
-        	                <td>
-        	                <a class="inline-link" href="http://www.meituan.com/movie/orderinfo/1226826195">查看订单详情</a>
-        		                <form action="" method="post" class="op">
-        			                <span style="display: none;">
-        			                <input name="csrf" value="3VmwEH_wJ8jkNEHS5DtEwkTsrwpvEusg0mDEfcFNuuIa601cl9ybRcV7pDIiOqSq" type="hidden">
-        			                </span>
-        		                	<input class="order-cancel" value="删除订单" type="submit">
-        		                </form>
-        	                </td>
-                        </tr>
+            <div data-component="account-info" class="component-account-info mt-component--booted" mt-scope="[]" data-component-config="{&quot;lazyRender&quot;:false,&quot;afterLoad&quot;:false}" id="yui_3_16_0_1_1499927036081_107">
+                <div class="account-info" id="yui_3_16_0_1_1499927036081_1324">
+                    <div class="avatar-box">
+                        <a title="头像"  class="J-user item user"><img src="{{asset('home/images/panda.png')}}" width="76" height="76"></a>
+                    </div>
+                    
+                    <div class="info-box" data-uix="tooltip" data-params="{delay:500}" id="yui_3_16_0_1_1499927036081_394">
+                        <div class="user" id="yui_3_16_0_1_1499927036081_1283">
+                            <span class="user__name" id="yui_3_16_0_1_1499927036081_1282">下午好，{{$ufir->nickname}}</span>
+                            <span class="user__vip sp-growth-icons level-avatar level-avatar-3" id="yui_3_16_0_1_1499927036081_1328"></span>
+                        </div>
+                        <div class="safe cf" id="yui_3_16_0_1_1499927036081_1240">
+                            
+                            <div class="safe__level" id="yui_3_16_0_1_1499927036081_1322">安全等级<span class="high" id="yui_3_16_0_1_1499927036081_1323">高</span></div>
+                        </div>
+                    </div>
 
-                     </tbody>
-                </table>
+                    <div class="account-box">
+                        <div class="item item__credit">
+                            <span>当前余额</span>
+                            <a gaevent="/orders/nav/credit" target="_blank" href="/account/credit" title="0">￥{{$ufir->money}}</a>
+                        </div>
+                    </div>      
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+
 <div class="footer" style="visibility: visible;">
     <p>
         ©2016 熊猫电影

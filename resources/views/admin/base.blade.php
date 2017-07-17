@@ -54,8 +54,6 @@
 
                             <a href="javascript:;">欢迎你, <span></span> </a>
 
-                         
-
                         </li>
 
                         <!-- 新邮件 -->

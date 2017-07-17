@@ -175,8 +175,19 @@ Route::post("login/doLogin","LoginController@doLogin");
 Route::get("login/code","LoginController@code");
 //退出登录
 Route::get("login/loginout","LoginController@loginout");
-Route::get("personal","PersonalController@index");//个人中心
 
+// 个人中心路由
+Route::get("personal","PersonalController@index");//个人中心
+Route::get("account","PersonalController@account");//余额
+Route::get("account/settings","PersonalController@setting");//设置
+Route::get("personal/orders","PersonalController@orders");//个人订单
+Route::post("account/settings/{id}","PersonalController@upaddress");//修改地址
+Route::get("personal/orders/show/{id}","PersonalController@show");//订单详情
+Route::get("personal/orders/del/{id}","PersonalController@destroy");//用户删除订单
+
+
+
+//end个人中心
 //后台登录页面
 Route::get("admin/login","Admin\LoginController@login");
 //后台登录验证码
