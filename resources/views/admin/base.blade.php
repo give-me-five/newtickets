@@ -51,9 +51,9 @@
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
 
-                            <a href="javascript:;">欢迎你, <span></span> </a>
+                            <a href="javascript:;">欢迎你：{{session("admin")->account}} <span></span> </a>
 
-                         
+                              
 
                         </li>
 

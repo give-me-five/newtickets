@@ -49,7 +49,7 @@
                                     <td>{{ $info->city }}</td>
                                     <td>{{ $info->region }}</td>
                                     <td>{{ $info->address }}</td>
-                                    <td><img src="../upload/{{$info->licence}}" width="100" height="100"/></td>
+                                    <td><img src="../upload/{{$info->id}}/{{$info->licence}}" width="100" height="100"/></td>
                                     <td>
                                         @if($info->status == 1)
                                             待审核
