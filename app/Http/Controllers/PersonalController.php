@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class PersonalController extends Controller
 {
@@ -14,7 +15,8 @@ class PersonalController extends Controller
     public function index()
     {
         $uid = session("users")->id;
-        $ufirst = \DB::table()->where("uid",$uid)->first();
+        $ufirst = User::where("id",$uid)->first();
+       
         return view("personal.personal",compact('ufirst'));
     }
 

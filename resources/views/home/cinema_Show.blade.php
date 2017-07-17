@@ -16,7 +16,7 @@
 					<object style="display: block; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;" type="text/html" data="about:blank"></object><div class="amap-maps"><div class="amap-drags" style=""><div class="amap-layers" style="transform: translateZ(0px);"><canvas class="amap-layer" width="240" height="160" style="position: absolute; z-index: 0; top: 0px; left: 0px; height: 160px; width: 240px;"></canvas><canvas class="amap-labels" draggable="false" style="position: absolute; z-index: 99; height: 160px; width: 240px; top: 0px; left: 0px;" width="240" height="160"></canvas><div class="amap-markers" style="position: absolute; z-index: 120; top: 80px; left: 120px;"><div class="amap-marker" style="top: -31px; left: -9px; z-index: 100; transform: rotate(0deg); transform-origin: 9px 31px 0px; display: block;"><div class="amap-icon" style="position: absolute; width: 28px; height: 37px; opacity: 1;"><img src="" style="top: 0px; left: -28px;"></div></div></div></div><div class="amap-overlays" style=""></div></div></div><div style="display: none;"></div><div class="amap-controls"></div><a class="amap-logo" href="http://gaode.com/" target="_blank"><img src="/upload/{{$single->picname}}"></a><div class="amap-copyright" style="display: none;"></div></div>
 				</div>
    				<a data-type="image" class="float-layer-hook float-layer-wrapper">
-					<img data-src="" src="/upload/pic/{{$single->picname}}">
+					<img data-src="" src="/upload/pic/{{$single->cid}}/b_{{$single->picname}}">
 				</a>
    				<ul class="info-list">
 					<li>详细地址：{{$single->address}}<a class="pos-hook" data-href="#J-map"></a></li>					<li>联系电话：{{$single->phone}}</li>

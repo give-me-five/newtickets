@@ -10,12 +10,13 @@
 				<li>
 					<label>选择区域</label>
 					<div class="select-tags">
-						<a class="current" href="http://dianying.taobao.com/cinemaList.htm?regionName=&amp;n_s=new" data-param="city=110100">全部区域</a>
-						<a href="#">昌平区</a>
-						<a href="http://dianying.taobao.com/cinemaList.htm?regionName=%E6%9C%9D%E9%98%B3%E5%8C%BA&amp;n_s=new">朝阳区</a>
+						<a class="current" href="/cinemas" data-param="city=110100">全部区域</a>
+						@foreach($region as $vo)
+						<a href="/cinemas/{{$vo->city}}">{{$vo->city}}</a>
+						@endforeach
+						
 					</div>					
-					<a class="J_show select-show" href="javascript:;">更多&gt;</a></li>
-				
+					
 			
 			</ul>
 			<div class="list-sort M-sort">

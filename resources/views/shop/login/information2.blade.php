@@ -37,8 +37,8 @@
     </dl>
     <dl class="clearfix">
         <dt>影院图片<font> </font></dt>
-        <dd><input class="txt" name="picname" id="Company_license_valid" value="{{$list->picname}}" type="file"></dd>
-        <img src="/upload/pic/{{$list->picname}}" >
+        <dd><input class="txt" name="picname" id="Company_license_valid" value="{{$list->s_picname}}" type="file"></dd>
+        <img src="/upload/pic/{{$list->cid}}/s_{{$list->picname}}" >
         <dd class="error"></dd>
     </dl>
 
@@ -100,7 +100,7 @@ function change() {
     <dl class="clearfix">
         <dt>营业执照<font> </font></dt>
         <dd><input class="txt" name="licence" id="Company_license_valid" value="{{$list->licence}}" type="file"></dd>
-        <img width="150" src="/upload/{{$list->licence}}">
+        <img src="/upload/{{$list->cid}}/s_{{$list->licence}}">
         <dd class="error"></dd>
     </dl>
 

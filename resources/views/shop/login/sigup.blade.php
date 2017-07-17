@@ -12,6 +12,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <link rel="icon" type="image/png" href="{{asset('myadmin/assets/i/favicon.png')}}">
+	 <link href="{{asset('myadmin/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+      <link href="{{asset('myadmin/bootstrap/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />  
+       <link href="{{asset('myadmin/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />  
     <link rel="apple-touch-icon-precomposed" href="{{asset('myadmin/assets/i/app-icon72x72@2x.png')}}">
     <meta name="apple-mobile-web-app-title" content="Amaze UI" />
     <link rel="stylesheet" href="{{asset('myadmin/assets/css/amazeui.min.css')}}" />
@@ -67,7 +70,7 @@
 					 <div class="am-form-group">
 					 
 						<div class="col-xs-6"> 
-							  <div class="form-group has-feedback" style="width:140px;">
+							  <div class="form-group has-feedback" style="width:160px;">
 								<input type="text" name="mycode" class="form-control" placeholder="验证码"/>
 							  </div>
 

@@ -10,7 +10,7 @@
                                
                             </div>
                             <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echarts">
-								 <p class="text-center list-group-item"><img width="500" height="200" src="/upload/pic/{{$shopdetail->picname}}"/></p>
+								 <p class="text-center list-group-item"><img width="500" height="200" src="/upload/pic/{{$shopdetail->cid}}/{{$shopdetail->picname}}"/></p>
                             </div>
                         </div>
                         <div class="widget am-cf">
@@ -19,7 +19,7 @@
                                 
                             </div>
                             <div class="widget-body-md widget-body tpl-amendment-echarts am-fr" id="tpl-echarts">
-								  <p class="text-center list-group-item"><img width="500" height="200" src="/upload/{{$shopdetail->licence}}"/></p>
+								  <p class="text-center list-group-item"><img width="500" height="200" src="/upload/{{$shopdetail->cid}}/{{$shopdetail->licence}}"/></p>
 		 
                             </div>
                         </div>

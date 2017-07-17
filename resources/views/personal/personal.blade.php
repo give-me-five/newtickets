@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="{{asset('home/css/common.dce64fb8.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/personal.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/personal_001.css')}}">
+	
+
   <style type="text/css">
     .login{width:300px;height:80px;line-height:81px;float: right;}
     .login li{float:left;margin-left:15px;}
@@ -63,7 +65,7 @@
                     <dt class="first-item" id="yui_3_16_0_1_1498375845651_616"><strong id="yui_3_16_0_1_1498375845651_617">我的订单</strong></dt>
                     <dd id="yui_3_16_0_1_1498375845651_606">
                         <ul class="item-list" id="yui_3_16_0_1_1498375845651_605">
-                            <li id="yui_3_16_0_1_1498375845651_613"><a href="http://www.meituan.com/orders/other" id="yui_3_16_0_1_1498375845651_612">我的订单</a></li>
+                            <li id="yui_3_16_0_1_1498375845651_613"><a href="/personal" id="yui_3_16_0_1_1498375845651_612">我的订单</a></li>
                            
                             <li><a href="">我的收藏</a></li>
             		    </ul>
@@ -82,14 +84,14 @@
                     <dd class="last">
                         <ul class="item-list">
                             <li><a href="http://www.meituan.com/account/credit">我的余额</a></li>
-                            <li><a href="http://www.meituan.com/account/settings">账户设置</a></li>
+                            <li><a href="/profile">账户设置</a></li>
                             <li><a href="http://www.meituan.com/account/security" gaevent="/account/security/ordernav">安全中心</a></li>
                         </ul>
                     </dd>
                 </dl>
             </div>
         </div>
-        <div id="content" class="pg-xorders coupons-box">
+       <div id="content" class="pg-xorders coupons-box">
             <div class="mainbox mine">
                 <div class="table-section">
                     <table id="order-list" cellspacing="0" cellpadding="0" border="0">
@@ -105,7 +107,7 @@
         	                <td>金刚：骷髅岛</td>
         	                <td>沃美影城(回龙观店)</td>
         	                <td>1</td>
-        	                <td><span class="money">¥</span>49</td>
+        	                <td><span class="money">￥</span>49</td>
         	                <td>已完成</td>
         	                <td>
         	                <a class="inline-link" href="http://www.meituan.com/movie/orderinfo/1226826195">查看订单详情</a>
@@ -123,6 +125,7 @@
                 </div>
             </div>
         </div>
+      
     </div>
 </div>
 <div class="footer" style="visibility: visible;">
@@ -135,5 +138,7 @@
     </p>
     <p>北京熊猫文化传媒有限公司</p>
 </div>
+   <script src="{{asset('home/css/common.78ef724e.js.下载')}}"></script>
+<script src="{asset('home/css/profile-profile.9e78f285.js.下载')}}"></script>
 </body>
 </html>

@@ -44,6 +44,7 @@ Route::group(['prefix' =>'order','middleware'=>'order'],function(){
 
 Route::get('/cinemas',"Home\CinemaController@index");//影院列表
 Route::get('/cinemas1',"Home\CinemafsfController@index");//影院列表
+Route::get('/cinemas/{city}',"Home\CinemaController@indexcity");//影院列表
 Route::get('/cinemas/show/{cid}',"Home\CinemaController@show");//影院详情页
 Route::get('/cinemas/info/{id?}/{cid?}',"Home\CinemaController@info");//影院详情页
 Route::get('/cinemas/date/{cid?}/{id?}',"Home\CinemaController@date");//时间信息
@@ -136,6 +137,11 @@ Route::group(['prefix' =>'shop','middleware'=>'shop'],function(){
     //商户退出登录
     Route::get('/Logout',"Shop\LoginController@Logout");
     Route::get('/information/{id}',"Shop\InformationController@index");
+    //订单中心
+    Route::get('/orders',"Shop\OrdersController@index");
+    //订单详情
+    Route::get('/orders/store/{id}',"Shop\OrdersController@store");
+
 
 });
 
@@ -182,6 +188,7 @@ Route::get("login/code","LoginController@code");
 //退出登录
 Route::get("login/loginout","LoginController@loginout");
 Route::get("personal","PersonalController@index");//个人中心
+
 
 //后台登录页面
 Route::get("admin/login","Admin\LoginController@login");
