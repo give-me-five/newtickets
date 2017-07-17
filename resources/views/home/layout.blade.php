@@ -173,15 +173,14 @@
 					data:argm,
 					datatype:'json',
 					success:function(Responsedata){
-						console.log(Responsedata);
+                        if(Responsedata==1){
+                            window.location.href="/order/ispay";
+                        }
 					}
-
 				});
 				$(this).disabled;
 			}
 		}
-
 	</script>
-
 @endsection
 

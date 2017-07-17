@@ -35,8 +35,6 @@ class PassController extends Controller
                 $request->session()->forget("admin");
                 echo "<script>alert('修改成功，请重新登录')</script>";
                 echo "<script>window.location.href='/admin/login'</script>";
-
-
         }
     }
 }

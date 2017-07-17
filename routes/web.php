@@ -32,12 +32,13 @@ Route::group(['prefix' =>'order','middleware'=>'order'],function(){
     //选座
     Route::get('/layout/{fid}/seat/{hid}/{pid}',"OrderController@layout");//选座
     //确认订单
-
     Route::post('/orderAdd',"OrderController@orderAdd");
-    //生成二维码
-    Route::get('/qrcode/{shopname?}/{filmtitle?}/{halltitle?}/{time?}/{counter?}/{total?}/{seat?}',"OrderController@qrcode");
-
-
+    //确认支付
+    Route::get('/ispay',"OrderController@ispay");
+    //支付
+    Route::post("/pay","OrderController@pay");
+    //支付成功
+    Route::get("/success","OrderController@success");
 });
 
 
