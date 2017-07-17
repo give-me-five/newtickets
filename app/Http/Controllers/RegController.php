@@ -54,10 +54,10 @@ class RegController extends Controller
     {
         if($request->has('num')){
             $input = $request->input("phone");
-            $exists = Redis::expire($input,300);
-            if($exists === true){
-                return back()->with("msg","不能重复获取");
-            }
+//            $exists = Redis::expire($input,300);
+//            if($exists === true){
+//                return back()->with("msg","不能重复获取");
+//            }
             $num = rand(100000,999999);
             // 组装参数
             $smsParams = [

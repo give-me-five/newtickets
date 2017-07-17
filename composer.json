@@ -7,7 +7,6 @@
     "require": {
         "php": ">=5.6.4",
         "barryvdh/laravel-debugbar": "^2.4",
-        "douyasi/laravel-wang-editor": "dev-master",
         "gregwar/captcha": "1.*",
         "iscms/alisms-for-laravel": "^0.0.3",
         "itbdw/laravel-storage-qiniu": "^1.0",

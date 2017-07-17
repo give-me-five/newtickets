@@ -51,9 +51,9 @@
                         <!-- 欢迎语 -->
                         <li class="am-text-sm tpl-header-navbar-welcome">
 
-                            <a href="javascript:;">欢迎你, <span></span> </a>
+                            <a href="javascript:;">欢迎你：{{session("admin")->account}} <span></span> </a>
 
-                         
+                              
 
                         </li>
 
@@ -199,7 +199,7 @@
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
               管理员
           </span>
-                    <a href="javascript:;" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
+                    <a href="/admin/pass/" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 账号设置</a>
                 </div>
             </div>
 

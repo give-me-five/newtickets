@@ -9,6 +9,7 @@ use App\Models\Projection;
 use App\Models\Hall;
 use App\Models\Film;
 use App\Models\ShopDetailCopy;
+use App\Models\ShopRegion;
 
 
 
@@ -18,7 +19,9 @@ class CinemaController extends Controller
     {
         //获取前5条影院
         $list = Cinema::where("status",4)->limit(5)->get();
-    	return view("home.cinema",["list"=>$list]);
+        $region=ShopRegion::where("upid",1)->get();
+    
+        return view("home.cinema",compact("list","region"));
     }
 
     public function show($cid=0)//影院详情
@@ -37,6 +40,7 @@ class CinemaController extends Controller
         $language=Film::where("id",$firstfid)->value("language");
         //获取商家id
         $fid = Projection::where("cid",$cid)->pluck("fid");
+        
         //获取影片
         $title = Film::whereIn("id",$fid)->get();
         //获取影片名
@@ -53,7 +57,7 @@ class CinemaController extends Controller
         //获取放映信息
         $date6=[];
         foreach ($date5 as $po) {
-           $date6[]=\DB::select("select * from projection where fid = {$filmid} and datetime = '{$po}'");
+           $date6[]=\DB::select("select * from projection where cid = '{$cid}' and fid = {$filmid} and datetime = '{$po}'");
         }
         $date7=[];
         foreach($date6 as $lo){
@@ -68,9 +72,11 @@ class CinemaController extends Controller
                  $date8[]=$ao->hid; 
             }
         } 
-       $halltitle=Hall::whereIn("id",$date8)->pluck("title");
 
-    
+       $halltitle=Hall::whereIn("id",$date8)->pluck("title");
+       // echo "<pre>";
+       //  print_r($date7);
+       //  die();
     	return view("home.cinema_Show",compact("language","title","title2","single","date7","halltitle","price","shopid","date1","date2","date3","date5","halltitle"));
 
     }
@@ -102,7 +108,7 @@ class CinemaController extends Controller
         $data6=[];
         foreach($date5 as $v){
            
-        $date6[]=\DB::select("select * from projection where fid = {$filmid} and datetime = '{$v}'");
+        $date6[]=\DB::select("select * from projection where cid = {$cid} and fid = {$filmid} and datetime = '{$v}'");
        
         }
         $date7=[];
@@ -159,7 +165,7 @@ class CinemaController extends Controller
         //获取对应的放映信息
         $date6=[];
         foreach ($date5 as $va) {
-            $date6[]=\DB::select("select * from projection where fid = {$id} and datetime = '{$va}'");
+            $date6[]=\DB::select("select * from projection where cid={$cid} and fid = {$id} and datetime = '{$va}'");
         }
          
         $date7=[];
@@ -193,5 +199,14 @@ class CinemaController extends Controller
       
 
         return view('home.date',compact('shop1','title',"date7","date1","date2","date3","title2","language","hall"));
+    }
+     public function indexcity($city)
+    {
+        
+        $list=\DB::select("select * from shop_detail_copy where region = '{$city}' and status = 4");
+      
+        $region=ShopRegion::where("upid",1)->get();
+        //echo "<pre>";print_r($list);die();
+        return view("home.cinemacity",compact("list","region"));
     }
 }

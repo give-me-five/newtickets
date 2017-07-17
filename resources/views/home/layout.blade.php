@@ -173,15 +173,15 @@
 					data:argm,
 					datatype:'json',
 					success:function(Responsedata){
-					//	window.location.href = "{{ '/' }}";
-					}
+                        if(Responsedata==1){
+                            window.location.href="/order/ispay";
+                        }
 
+					}
 				});
 				$(this).disabled;
 			}
 		}
-
 	</script>
-
 @endsection
 

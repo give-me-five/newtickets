@@ -33,7 +33,7 @@
 						</div>
 					</div>
 					<a href="/cinemas/show/{{$ml->cid}}" class="detail-left pictures">
-						  <span><img src="./upload/pic/{{$ml->picname}}" alt="{{$ml->shopname}}"></span>
+						  <span><img src="./upload/pic/{{$ml->cid}}/m_{{$ml->picname}}" alt="{{$ml->shopname}}"></span>
 
 					</a>
 					<div class="detail-middle">
