@@ -173,7 +173,7 @@
 					data:argm,
 					datatype:'json',
 					success:function(Responsedata){
-						console.log(Responsedata);
+					//	window.location.href = "{{ '/' }}";
 					}
 
 				});
