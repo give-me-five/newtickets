@@ -33,6 +33,8 @@
     <link href="{{asset('myadmin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}" rel="stylesheet" type="text/css" />
 	<script src="{{asset('myadmin/assets/js/amazeui.min.js')}}"></script>
     <script src="{{asset('myadmin/assets/js/amazeui.datatables.min.js')}}"></script>
+    <script src="{{asset('myadmin/layer-v3.0.3/layer/layer.js')}}"></script>
+    <script src="{{asset('myadmin/assets/js/jquery-1.8.3.min.js')}}"></script>
     <script src="{{asset('myadmin/assets/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('myadmin/assets/js/app.js')}}"></script>
 	 <link rel="icon" type="image/png" href="{{asset('myadmin/assets/i/favicon.png')}}">
@@ -331,6 +333,7 @@
                 <li><a href="{{url('shop/projection')}}"><i class="fa fa-circle-o"></i>放映信息</a></li>
                 <li><a href="{{url('shop/projection/create')}}"><i class="fa fa-circle-o"></i>添加放映信息</a></li>
                 <li><a href="{{url('shop/layout')}}"><i class="fa fa-circle-o"></i>添加影厅</a></li>
+                <li><a href="{{url('shop/orders')}}"><i class="fa fa-circle-o"></i>订单中心</a></li>
               </ul>
             </li>
           </ul>
