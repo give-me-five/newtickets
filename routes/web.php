@@ -71,7 +71,7 @@ Route::post('/admin/film/update/{id}', 'Admin\FilmController@update');
 
 //后台影片评论路由
 Route::get('/admin/film_comment','Admin\film_commentController@index');
-//加载登录页面
+
 Route::get('/shop/login',"Shop\LoginController@index");
 //商户执行登录
 Route::post('/shop/doLogin',"Shop\LoginController@doLogin");
@@ -187,7 +187,16 @@ Route::post("login/doLogin","LoginController@doLogin");
 Route::get("login/code","LoginController@code");
 //退出登录
 Route::get("login/loginout","LoginController@loginout");
+
+// 个人中心路由
 Route::get("personal","PersonalController@index");//个人中心
+Route::get("account","PersonalController@account");//余额
+Route::get("account/settings","PersonalController@setting");//设置
+Route::get("personal/orders","PersonalController@orders");//个人订单
+Route::post("account/settings/{id}","PersonalController@upaddress");//修改地址
+Route::get("personal/orders/show/{id}","PersonalController@show");//订单详情
+Route::get("personal/orders/del/{id}","PersonalController@destroy");//用户删除订单
+
 
 
 //后台登录页面

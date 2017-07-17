@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="{{asset('home/css/common.dce64fb8.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/personal.css')}}">
     <link rel="stylesheet" href="{{asset('home/css/personal_001.css')}}">
-	
-
   <style type="text/css">
     .login{width:300px;height:80px;line-height:81px;float: right;}
     .login li{float:left;margin-left:15px; }
@@ -65,24 +63,21 @@
                     <dt class="first-item" id="yui_3_16_0_1_1498375845651_616"><strong id="yui_3_16_0_1_1498375845651_617">我的订单</strong></dt>
                     <dd id="yui_3_16_0_1_1498375845651_606">
                         <ul class="item-list" id="yui_3_16_0_1_1498375845651_605">
-
-                            <li  class="current" id="yui_3_16_0_1_1498375845651_613"><a href="/personal/orders" id="yui_3_16_0_1_1498375845651_612">我的订单</a></li>
+                            <li  class="current" id="yui_3_16_0_1_1498375845651_613"><a href="/orders/other" id="yui_3_16_0_1_1498375845651_612">我的订单</a></li>
             		    </ul>
                     </dd>
 
                     <dt><strong>我的账户</strong></dt>
                     <dd class="last">
                         <ul class="item-list">
-
                             <li><a href="/account">我的余额</a></li>
                             <li><a href="/account/settings">账户设置</a></li>
-
                         </ul>
                     </dd>
                 </dl>
             </div>
         </div>
-       <div id="content" class="pg-xorders coupons-box">
+        <div id="content" class="pg-xorders coupons-box">
             <div class="mainbox mine">
                 <div class="table-section">
                     <table id="order-list" cellspacing="0" cellpadding="0" border="0">
@@ -90,33 +85,35 @@
                             <th class="item-info" width="auto">在线选座电影</th>
                             <th class="item-info" width="110">影院</th>
                             <th width="30">数量</th>
-                            <th width="60">金额</th>
+                            <th width="60">总金额</th>
                             <th width="80">订单状态</th>
                             <th width="112">操作</th>
                         </tr>
+                        @foreach ($olist as $k=>$vo)
                         <tr>
-        	                <td>金刚：骷髅岛</td>
-        	                <td>沃美影城(回龙观店)</td>
-        	                <td>1</td>
-        	                <td><span class="money">￥</span>49</td>
-        	                <td>已完成</td>
+                            <td>
+                            <a href="/films/{{$ftit[$k]->id}}.html" target="_blank">{{$ftit[$k]->title}}</a>
+                            </td>
+                            
+        	                <td>{{$ctit[$k]->shopname}}</td>
+        	                <td><?php  echo $num = $vo->totalprice/$ptit[$k]->price;?></td>
+        	                <td><span class="money">¥</span>{{$vo->totalprice}}</td>
+                            @if ($vo->ispay==1) 
+        	                <td>待支付</td>
+                            @else ($vo->ispay==2) 
+                             <td>已支付</td>
+                             @endif
         	                <td>
-        	                <a class="inline-link" href="http://www.meituan.com/movie/orderinfo/1226826195">查看订单详情</a>
-        		                <form action="" method="post" class="op">
-        			                <span style="display: none;">
-        			                <input name="csrf" value="3VmwEH_wJ8jkNEHS5DtEwkTsrwpvEusg0mDEfcFNuuIa601cl9ybRcV7pDIiOqSq" type="hidden">
-        			                </span>
-        		                	<input class="order-cancel" value="删除订单" type="submit">
-        		                </form>
+                            <a class="inline-link" href="{{url('personal/orders/show')}}/{{$vo->id}}">查看订单详情</a><br>
+        	                <a class="inline-link" href="{{url('personal/orders/del')}}/{{$vo->id}}">删除订单</a>
         	                </td>
                         </tr>
-
+                        @endforeach
                      </tbody>
                 </table>
                 </div>
             </div>
         </div>
-      
     </div>
 </div>
 <div class="footer" style="visibility: visible;">
@@ -129,7 +126,5 @@
     </p>
     <p>北京熊猫文化传媒有限公司</p>
 </div>
-   <script src="{{asset('home/css/common.78ef724e.js.下载')}}"></script>
-<script src="{asset('home/css/profile-profile.9e78f285.js.下载')}}"></script>
 </body>
 </html>
