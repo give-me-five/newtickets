@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="{{asset('home/css/common.dce64fb8.css')}}">
   <link rel="stylesheet" href="{{asset('home/css/home-index.ff98348e.css')}}">
   <link rel="stylesheet" href="{{asset('home/css/movie-list.ffb4de4a.css')}}">
-  <style type="text/css">
+    <link href="{{asset('myadmin/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <style type="text/css">
     .login{width:300px;height:80px;line-height:81px;float: right;}
     .login li{float:left;margin-left:15px;}
     .login li a{color: rgb(43, 184, 170);}

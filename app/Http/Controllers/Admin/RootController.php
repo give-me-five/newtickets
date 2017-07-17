@@ -36,12 +36,12 @@ class RootController extends Controller
     public function create()
     {
         //加载管理员添加模板
-//        if(session("admin")->status != 2){
-//            echo "<script>alert('抱歉，您没有操作权限!!!')</script>";
-//            echo "<script>window.history.back()</script>";
-//        }else{
+        if(session("admin")->status != 2){
+            echo "<script>alert('抱歉，您没有操作权限!!!')</script>";
+            echo "<script>window.history.back()</script>";
+        }else{
             return view("admin.root.add");
-//        }
+        }
     }
 
     /**
