@@ -17,8 +17,20 @@
     <link rel="stylesheet" href="{{asset('myadmin/css/amazeui.min.css')}}" />
     <!-- <link rel="stylesheet" href="{{asset('myadmin/css/amazeui.datatables.min.css')}}" /> -->
     <link rel="stylesheet" href="{{asset('myadmin/css/app.css')}}">
-    <script src="{{asset('myadmin/js/jquery.min.js')}}"></script>
 
+
+
+    <link rel="stylesheet" href="{{asset('myadmin/bootstrap2/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('myadmin/bootstrap2/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('myadmin/bootstrap2/css/bootstrap-theme.css')}}">
+    <link rel="stylesheet" href="{{asset('myadmin/bootstrap2/css/bootstrap-theme.min.css')}}">
+    <script src="{{asset('myadmin/js/jquery.min.js')}}"></script>
+    <script src="{{asset('myadmin/layer/layer.js')}}"></script>
+
+
+
+    <script src="{{asset('myadmin/bootstrap2/js/bootstrap.js')}}"></script>
+    <script src="{{asset('myadmin/bootstrap2/js/bootstrap.min.js')}}"></script>
 </head>
 
 <body data-type="index">

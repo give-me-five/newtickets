@@ -106,6 +106,7 @@ class FilmController extends Controller
         $info = array_merge($data,$str);
         //echo "<pre>";
         //print_r($info); 
+        //添加到数据库
         \DB::table('film_comment')->insertGetId($info);
         return redirect("/films/{$info['fid']}.html");
         
